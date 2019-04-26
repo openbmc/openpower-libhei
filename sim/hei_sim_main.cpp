@@ -15,4 +15,9 @@ int main()
     return 0;
 }
 
-}; // end namespace HEI_SIM
+} // end namespace HEI_SIM
+
+int main() {
+    HEI_SIM::main();
+}
+
