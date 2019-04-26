@@ -1,5 +1,5 @@
 
-#include "hei_isolator.hpp";
+#include "hei_isolator.hpp"
 
 namespace HEI
 {
@@ -24,5 +24,12 @@ void Isolator::isolate()
     HEI_TRAC( "Isolator::isolate()" );
 }
 
-}; // end namespace HEI
+} // end namespace HEI
 
+#if HEI_SIM_ENABLE
+#else
+int main()
+{
+    return 0;
+}
+#endif // HEI_SIM_ENABLE

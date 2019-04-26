@@ -1,7 +1,7 @@
 
 #pragma once
 
-#include "hei_user_interface.hpp";
+#include "hei_user_interface.hpp"
 
 namespace HEI
 {
@@ -22,5 +22,8 @@ class Isolator
 
 }; // end class Isolator
 
-}; // end namespace HEI
+void HEI_TRAC(const char *msg) {
+    msg = msg;
+}
 
+} // end namespace HEI
