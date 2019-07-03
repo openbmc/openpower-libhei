@@ -1,3 +1,6 @@
+#ifndef CHIP_DATA_STREAM
+#define CHIP_DATA_STREAM
+
 #include <endian.h>
 #include <iostream>
 #include <stdint.h>
@@ -60,4 +63,4 @@ class ChipDataStream
           }
 
 };
-
+#endif

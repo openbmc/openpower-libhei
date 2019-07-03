@@ -93,4 +93,3 @@ template <>
         be64toh( o_right );
         return *this;
     }
-
