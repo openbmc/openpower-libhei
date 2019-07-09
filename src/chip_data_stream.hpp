@@ -1,5 +1,5 @@
-#ifndef CHIP_DATA_STREAM
-#define CHIP_DATA_STREAM
+#ifndef CHIP_DATA_STREAM_H
+#define CHIP_DATA_STREAM_H
 
 #include <endian.h>
 #include <iostream>
@@ -8,7 +8,7 @@
 #include <string.h>
 #include <assert.h>
 
-//Remove
+//Remove -- Paul Greenwood
 //Temporarily adding assert macro until it makes its way into the project.
 #define HEI_ASSERT( expression ) \
       assert( expression );
