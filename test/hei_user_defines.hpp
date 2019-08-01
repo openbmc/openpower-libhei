@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdio.h>
 #include <assert.h>
 
@@ -15,4 +17,3 @@
 
 #define HEI_ASSERT( expression ) \
   assert( expression );
-
