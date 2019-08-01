@@ -61,5 +61,5 @@ class ReturnCode
 /** Function returned successfully. */
 static constexpr ReturnCode RC_SUCCESS = ReturnCode();
 
-}; // end namespace libhei
+} // end namespace libhei
 
