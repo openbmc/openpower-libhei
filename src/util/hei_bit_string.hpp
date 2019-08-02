@@ -1,15 +1,12 @@
 #pragma once
 
-#include <prdf_types.h>
+#include <stdint.h>
 
 namespace libhei
 {
 
 class BitStringBuffer;
 
-/** This type is used to take advantage of the most efficient memory reference
- *  size for a specific CPU architecture. */
-typedef uint32_t CPU_WORD;
 
 //##############################################################################
 //                             BitString class
@@ -27,33 +24,22 @@ typedef uint32_t CPU_WORD;
  * The length of a BitString is only limited by the amount of memory that
  * contains the data buffer.
  *
- * The CPU_WORD type is used internally to reference memory and as the interface
- * type for the field. Ensure that any buffer allocated for a BitString is
- * CPU_WORD aligned so that the BitString does not accidentally access memory
- * beyond availability. For example, say we have a buffer allocated for 6 byte
- * (48 bits) and those 6 bytes are allocated at the very end of accessible
- * memory. When the BitString tries to access the second CPU_WORD, which
- * contains the last 2 bytes of the buffer, an expection will be thrown because
- * the BitString always access an entire CPU_WORD (4 bytes) at a time and the
- * last two bytes are not accessible. Utilize the static function
- * getNumCpuWords() to get the minimum number of CPU_WORDs required to allocate
- * sufficient space in the buffer. For example, getNumCpuWords(48) returns 2.
- *
  * The bit positions are ordered 0 to n (left to right), where n is the bit
  * length minus one. By default, position 0 will be the first bit of the
  * buffer's start address. The optional constructor allows users to input an
  * offset anywhere within the buffer, which is then used as position 0. This is
- * useful when the data within the buffer is a right-justified.
+ * useful when the data within the buffer is right-justified.
+ *
+ * This class always assumes bitstrings are stored in memory in big-endian
+ * order. Keep this in mind when accessing bitstrings directly. Use class
+ * methods to get and set bitstrings whenever possible.
  */
 class BitString
 {
-  public: // constants
+  private: // constants
 
-    /** Bit length of a CPU_WORD */
-    static const uint32_t CPU_WORD_BIT_LEN;
-
-    /** A CPU_WORD with all of the bits set to 1 */
-    static const CPU_WORD CPU_WORD_MASK;
+    static const uint32_t UINT64_BIT_LEN;
+    static const uint32_t UINT8_BIT_LEN;
 
   public: // functions
 
@@ -63,16 +49,14 @@ class BitString
      * @param i_bufAddr The starting address of the memory buffer.
      * @param i_offset  Optional input to indicate the actual starting position
      *                  of the bit string within the memory buffer.
-     * @post  It is possible that i_bitLen + i_offset may not be CPU_WORD
-     *        aligned, however, the memory space allocated for i_bufAddr must be
-     *        CPU_WORD aligned to avoid functions in this class accessing memory
-     *        outside the available memory space. Use getNumCpuWords() to
-     *        calulate the number of CPU_WORDs needed to allocate sufficient
-     *        memory space.
+     * @post  It is possible that i_bitLen + i_offset may not be byte aligned,
+     *        you can use getMinBytes() to calulate the number of bytes
+     *        needed to allocate sufficient memory space.
      */
-    BitString( uint32_t i_bitLen, CPU_WORD * i_bufAddr,
+
+    BitString( uint32_t i_bitLen, void * i_bufAddr,
                uint32_t i_offset = 0 ) :
-        iv_bitLen(i_bitLen), iv_bufAddr(i_bufAddr), iv_offset(i_offset)
+        iv_bitLen(i_bitLen), iv_bufAddr((uint8_t *)i_bufAddr), iv_offset(i_offset)
     {}
 
     /** @brief Destructor */
@@ -83,18 +67,18 @@ class BitString
 
     /** @return The address of the bit string buffer. Note that this may
      *          return nullptr. */
-    CPU_WORD * getBufAddr() const { return iv_bufAddr; }
+    uint8_t * getBufAddr() const { return (uint8_t *)iv_bufAddr; }
 
     /**
      * @param i_bitLen The number of bits for a bit string.
      * @param i_offset Optional starting position of the bit string within the
      *                 memory buffer.
-     * @return The minimum number of CPU_WORDs required to allocate sufficient
+     * @return The minimum number of bytes required to allocate sufficient
      *         memory space for a bit string.
      */
-    static uint32_t getNumCpuWords( uint32_t i_bitLen, uint32_t i_offset = 0 )
+    static uint32_t getMinBytes( uint32_t i_bitLen, uint32_t i_offset = 0 )
     {
-        return (i_bitLen + i_offset + CPU_WORD_BIT_LEN-1) / CPU_WORD_BIT_LEN;
+        return (i_bitLen + i_offset + UINT8_BIT_LEN-1) / UINT8_BIT_LEN;
     }
 
     /**
@@ -105,10 +89,13 @@ class BitString
      * @return The value of the field range specified (left-justified).
      * @pre    nullptr != getBufAddr()
      * @pre    0 < i_len
-     * @pre    i_len <= CPU_WORD_BIT_LEN
+     * @pre    i_len <= UINT64_BIT_LEN
      * @pre    i_pos + i_len <= getBitLen()
      */
-    CPU_WORD getField( uint32_t i_pos, uint32_t i_len ) const;
+    uint64_t getFieldLeft( uint32_t i_pos, uint32_t i_len ) const
+    {
+        return getFieldRight(i_pos, i_len) << (UINT64_BIT_LEN - i_len);
+    }
 
     /**
      * @brief  Returns a right-justified value of the given length from the bit
@@ -118,13 +105,10 @@ class BitString
      * @return The value of the field range specified (right-justified).
      * @pre    nullptr != getBufAddr()
      * @pre    0 < i_len
-     * @pre    i_len <= CPU_WORD_BIT_LEN
+     * @pre    i_len <= UINT64_BIT_LEN
      * @pre    i_pos + i_len <= getBitLen()
      */
-    CPU_WORD getFieldJustify( uint32_t i_pos, uint32_t i_len ) const
-    {
-        return getField(i_pos, i_len) >> (CPU_WORD_BIT_LEN - i_len);
-    }
+    uint64_t getFieldRight( uint32_t i_pos, uint32_t i_len ) const;
 
     /**
      * @brief  Sets a left-justified value of the given length into the bit
@@ -134,10 +118,13 @@ class BitString
      * @param i_val The left-justified value to set.
      * @pre   nullptr != getBufAddr()
      * @pre   0 < i_len
-     * @pre   i_len <= CPU_WORD_BIT_LEN
+     * @pre   i_len <= UINT64_BIT_LEN
      * @pre   i_pos + i_len <= getBitLen()
      */
-    void setField( uint32_t i_pos, uint32_t i_len, CPU_WORD i_val );
+    void setFieldLeft( uint32_t i_pos, uint32_t i_len, uint64_t i_val )
+    {
+        setFieldRight( i_pos, i_len, i_val >> (UINT64_BIT_LEN - i_len));
+    };
 
     /**
      * @brief  Sets a right-justified value of the given length into the bit
@@ -147,37 +134,34 @@ class BitString
      * @param i_val The right-justified value to set.
      * @pre   nullptr != getBufAddr()
      * @pre   0 < i_len
-     * @pre   i_len <= CPU_WORD_BIT_LEN
+     * @pre   i_len <= UINT64_BIT_LEN
      * @pre   i_pos + i_len <= getBitLen()
      */
-    void setFieldJustify( uint32_t i_pos, uint32_t i_len, CPU_WORD i_val )
-    {
-        setField( i_pos, i_len, i_val << (CPU_WORD_BIT_LEN - i_len) );
-    }
+    void setFieldRight( uint32_t i_pos, uint32_t i_len, uint64_t i_val );
 
     /**
      * @param  i_pos The target position.
      * @return True if the bit at the given position is set(1), false otherwise.
      * @pre    i_pos < getBitLen().
      */
-    bool isBitSet( uint32_t i_pos ) const { return 0 != getField(i_pos, 1); }
+    bool isBitSet( uint32_t i_pos ) const { return 0 != getFieldLeft(i_pos, 1); }
 
     /**
      * @brief Sets the target position to 1.
      * @param i_pos The target position.
      * @pre   i_pos < getBitLen().
      */
-    void setBit( uint32_t i_pos ) { setFieldJustify( i_pos, 1, 1 ); }
+    void setBit( uint32_t i_pos ) { setFieldRight( i_pos, 1, 1 ); }
 
     /** @brief Sets the entire bit string to 1's. */
-    void setAll() { setPattern(CPU_WORD_MASK); }
+    void setAll() { setPattern(UINT64_MAX); }
 
     /**
      * @brief Sets the target position to 0.
      * @param i_pos The target position.
      * @pre   i_pos < getBitLen().
      */
-    void clearBit( uint32_t i_pos ) { setFieldJustify( i_pos, 1, 0 ); }
+    void clearBit( uint32_t i_pos ) { setFieldRight( i_pos, 1, 0 ); }
 
     /** @brief Sets the entire bit string to 0's. */
     void clearAll() { setPattern(0); }
@@ -192,7 +176,7 @@ class BitString
      * @pre   nullptr != getBufAddr()
      * @pre   0 < i_sLen
      * @pre   i_sPos + i_sLen <= getBitLen()
-     * @pre   0 < i_pLen <= CPU_WORD_BIT_LEN
+     * @pre   0 < i_pLen <= UINT64_BIT_LEN
      * @post  The pattern is repeated/truncated as needed.
      *
      * Examples:  i_sPos(0), i_sLen(10), i_pattern(0xA), i_pLen(4)
@@ -204,7 +188,7 @@ class BitString
      *            New String: 0000110000
      */
     void setPattern( uint32_t i_sPos, uint32_t i_sLen,
-                     CPU_WORD i_pattern, uint32_t i_pLen );
+                     uint64_t i_pattern, uint32_t i_pLen );
 
     /**
      * @brief Sets entire string based on the pattern and length provided.
@@ -214,22 +198,21 @@ class BitString
      * @post  The entire string is filled with the pattern.
      * @post  The pattern is repeated/truncated as needed.
      */
-    void setPattern( CPU_WORD i_pattern, uint32_t i_pLen )
+    void setPattern( uint64_t i_pattern, uint32_t i_pLen )
     {
         setPattern( 0, getBitLen(), i_pattern, i_pLen );
     }
 
     /**
-     * @brief Sets entire string based on the pattern provided (length of
-     *        CPU_WORD).
-     * @param i_pattern The pattern to set.
+     * @brief Sets entire string based on the pattern provided.
+     * @param i_pattern The pattern to set (right justified).
      * @note  See definition above for prerequisites.
      * @post  The entire string is filled with the pattern.
      * @post  The pattern is repeated/truncated as needed.
      */
-    void setPattern( CPU_WORD i_pattern )
+    void setPattern( uint64_t i_pattern )
     {
-        setPattern( i_pattern, CPU_WORD_BIT_LEN );
+        setPattern( i_pattern, sizeof(i_pattern) * 8 );
     }
 
     /**
@@ -269,7 +252,7 @@ class BitString
     /**
      * @brief Masks (clears) any bits set in this string that correspond to bits
      *        set in the given string (this & ~mask).
-     * @param i_mask The mask string.
+     * @param i_mask The mask string (right justified).
      * @note  If the length of the given string is greater than the length of
      *        this string, then the extra bits are ignored.
      * @note  If the length of the given string is less than the length of this
@@ -319,6 +302,18 @@ class BitString
     /** @brief Left shift operator. */
     BitStringBuffer operator<<( uint32_t i_shift ) const;
 
+    // Prevent the assignment operator and copy constructor from a
+    // BitStringBuffer. While technically these could be done. We run into
+    // serious problems like with the operator functions above that all return
+    // a BitStringBuffer. If we allowed these, the BitString would end up
+    // pointing to memory that is no longer in context.
+
+    /** @brief Delete copy constructor BitString from BitStringBuffer */
+    BitString & operator=( const BitStringBuffer & i_bsb ) = delete;
+
+    /** @brief Delete move assignment operator BitString from BitStringBuffer */
+    BitString( const BitStringBuffer & i_bsb ) = delete;
+
   protected: // functions
 
     /**
@@ -326,20 +321,12 @@ class BitString
      * @pre   Before calling this function, make sure you deallocate the old
      *        buffer to avoid memory leaks.
      */
-    void setBufAddr( CPU_WORD * i_newBufAddr ) { iv_bufAddr = i_newBufAddr; }
+    void setBufAddr( void * i_newBufAddr ) { iv_bufAddr = i_newBufAddr; }
 
     /** @param i_newBitLen The new bit length of this bit string buffer. */
     void setBitLen( uint32_t i_newBitLen ) { iv_bitLen = i_newBitLen; }
 
   private: // functions
-
-    // Prevent the assignment operator and copy constructor from a
-    // BitStringBuffer. While technically these could be done. We run into
-    // serious problems like with the operator functions above that all return
-    // a BitStringBuffer. If we allowed these, the BitString would end up
-    // pointing to memory that is no longer in context.
-    BitString & operator=( const BitStringBuffer & i_bsb );
-    BitString( const BitStringBuffer & i_bsb );
 
     /**
      * @brief  Given a bit position within the bit string, this function returns
@@ -351,13 +338,13 @@ class BitString
      * @pre    nullptr != getBufAddr()
      * @pre    i_absPos < getBitLen()
      */
-    CPU_WORD * getRelativePosition( uint32_t & o_relPos,
+    void * getRelativePosition( uint32_t & o_relPos,
                                     uint32_t   i_absPos ) const;
 
   private: // instance variables
 
     uint32_t   iv_bitLen;  ///< The bit length of this buffer.
-    CPU_WORD * iv_bufAddr; ///< The beginning address of this buffer.
+    void     * iv_bufAddr; ///< The beginning address of this buffer.
     uint32_t   iv_offset;  ///< Start position offset
 };
 
