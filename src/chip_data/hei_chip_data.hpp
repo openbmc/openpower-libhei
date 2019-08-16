@@ -1,7 +1,5 @@
 #pragma once
 
-#include <hei_includes.hpp>
-
 namespace libhei
 {
 
