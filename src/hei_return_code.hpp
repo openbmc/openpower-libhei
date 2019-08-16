@@ -72,4 +72,3 @@ static constexpr ReturnCode RC_CHIP_DATA_INITIALIZED   = ReturnCode(0x00000002);
 static constexpr ReturnCode RC_CHIP_DATA_MISSING       = ReturnCode(0x00000003);
 
 } // end namespace libhei
-

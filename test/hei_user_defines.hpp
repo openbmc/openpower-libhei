@@ -1,5 +1,6 @@
 #pragma once
 
+
 /**
 * @file hei_user_defines.hpp
 * @brief The purpose of this file is to create common defines that
