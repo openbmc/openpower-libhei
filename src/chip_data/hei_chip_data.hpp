@@ -1,6 +1,6 @@
 #pragma once
 
-#include <hei_includes.hpp>
+#include <stdint.h>
 
 namespace libhei
 {
