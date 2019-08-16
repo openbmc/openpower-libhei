@@ -1,404 +1,340 @@
 #pragma once
 
-// Module Description **************************************************
-//
-//  Description:  This module contains the declarations for the
-//                Processor Runtime Diagnostics Scan Communication
-//                Register class.
-//
-//  Notes:  Unless stated otherwise, assume that each function
-//          specification has no side-effects, no dependencies, and
-//          constant time complexity.
-//
-// End Module Description **********************************************
+/**
+@file hei_register.hpp
+@brief Description:  The Register class.
 
+Class Specification
 
-//----------------------------------------------------------------------
-//  Includes
-//----------------------------------------------------------------------
+Name:             Register
+Title:            Scan Communication Register
+Purpose:          "Register" provides the representation and access to a
+                  physical register.
+Usage:            This is an abstract base class.
+Side-effects:     Memory is allocated.
+Dependencies:     None.
+Notes:            The Register class is a model of an actual physical register.
+                  The bits in the register are represented by the bit_string
+                  data member which is modified dynamically as operations are
+                  preformed.  It acts as a temporarily cached value of the
+                  register.  When a read is performed, the bit values are
+                  updated in the bit string. When a write is performed, the
+                  current value of the bits are used as the value to write.
+                  The current value of this cached bit string can be accessed
+                  or modified by other objects via the public interface.  The
+                  physical address and bit length of the hardware register are
+                  set during initialization and used on all acceses.
 
-#include <iipbits.h>
-#include <iipconst.h>
-#include <iipsdbug.h>
-#include <prdfMain.H>
-#include <prdfTrace.H>
+                  The basic Read() and Write() functions are virtual.  The
+                  actual implemenations are dependent on the actual hardware
+                  and the software Hardware Manual Ops Scan Control Routines.
+                  These function specifications describe a common behaviour
+                  that every derived class must follow.  Additional,
+                  information may also be specified.
+
+                  A Read() function is also provided that has a Bit String mask
+                  parameter.  This function calls the virtual Read() and then
+                  applies the mask so that the internal Bit String contains the
+                  hardware register contents with certain bits ignored (masked
+                  off).
+
+Cardinality:      0
+
+Space Complexity: Linear
+                  K + Mn where K and M are constants and n is the
+                  number of bits in the register.
+*/
+
+#include <hei_includes.hpp>
 
 namespace libhei
 {
 
-/*--------------------------------------------------------------------*/
-/*  Forward References                                                */
-/*--------------------------------------------------------------------*/
-
-/*--------------------------------------------------------------------*/
-/*  User Types                                                        */
-/*--------------------------------------------------------------------*/
-
-/*--------------------------------------------------------------------*/
-/*  Constants                                                         */
-/*--------------------------------------------------------------------*/
-
-/*--------------------------------------------------------------------*/
-/*  Macros                                                            */
-/*--------------------------------------------------------------------*/
-
-/*--------------------------------------------------------------------*/
-/*  Global Variables                                                  */
-/*--------------------------------------------------------------------*/
-
-/*--------------------------------------------------------------------*/
-/*  Function Prototypes                                               */
-/*--------------------------------------------------------------------*/
-
-// Class Specification *************************************************
-//
-//  Name:  SCAN_COMM_REGISTER_CLASS
-//
-//  Title:  Scan Communication Register
-//
-//  Purpose:  SCAN_COMM_REGISTER_CLASS provides the representation
-//            and access to a physical register.
-//
-//  Usage:  This is an abstract base class.
-//
-//  Side-effects:  Memory is allocated.
-//
-//  Dependencies:  None.
-//
-//  Notes: The Scan Communication Register is a model of an actual
-// physical register.  The bits in the register are represented by the
-// bit_string data member which is modified dynamically as operations
-// are preformed.  It acts as a temporarily cached value of the
-// register.  When a read is performed, the bit values are updated in
-// the bit string. When a write is performed, the current value of the
-// bits are used as the value to write.  The current value of this
-// cached bit string can be accessed or modified by other objects via
-// the public interface.  The physical address and bit length of the
-// hardware register are set during initialization and used on all
-// acceses.
-//
-// The basic Read() and Write() functions are virtual.  The
-// actual implemenations are dependent on the actual hardware
-// and the software Hardware Manual Ops Scan Control Routines.
-// These function specifications describe a common behaviour
-// that every derived class must follow.  Additional,
-// information may also be specified.
-//
-// A Read() function is also provided that has a Bit String
-// mask parameter.  This function calls the virtual Read()
-// and then applies the mask so that the internal Bit String
-// contains the hardware register contents with certain bits
-// ignored (masked off).
-//
-//  Cardinality:  0
-//
-//  Space Complexity:  Linear
-//                     K + Mn where K and M are constants and n is the
-//                     number of bits in the register.
-//
-// End Class Specification *********************************************
 /**
- SCAN_COMM_REGISTER_CLASS
- @author Doug Gilbert
- @V5R2
- */
-class SCAN_COMM_REGISTER_CLASS
+Register class
+Register provides the representation and access to a physical register.
+*/
+class Register
 {
-  public: // enums, structs, typedefs
+  private:
+    
 
-    /** The register access level */
+  public:
+
+    /* The register access level */
     enum AccessLevel
     {
-        ACCESS_NONE = 0x0, ///< No access
-        ACCESS_RO   = 0x1, ///< Read-only access
-        ACCESS_WO   = 0x2, ///< Write-only access
-        ACCESS_RW   = 0x3, ///< Read/Write access
+        ACCESS_NONE = 0x0, //< No access
+        ACCESS_RO   = 0x1, //< Read-only access
+        ACCESS_WO   = 0x2, //< Write-only access
+        ACCESS_RW   = 0x3, //< Read/Write access
     };
 
-  public: // functions
+  public:
 
-  /**
-   Destructor
-   */
-  virtual ~SCAN_COMM_REGISTER_CLASS(void);
+    /* Constructor */
+    Register() {};
 
-  /**
-   Read hardware register (virtual)
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> [SUCCESS | MOPs return code]
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> Internal bit string represents the value of the
-                            hardware register (if rc == SUCCESS)
-   <br><b>Sideaffects: </b> Value guaranteed to be read from hardware.
-   <br><b>Exceptions:  </b> None.
-   <br><b>Notes:       </b> Default is to call Read().  If a child class cannot
-                            guarantee hardware access every time Read() is
-                            called then the function ForceRead() should be
-                            overridden.
-   </ul><br>
-   */
-  virtual uint32_t ForceRead(void) const { return Read(); }
+    /* Disable the copy and move semantics
+       Doing this with copy also does it for moves */
+    Register(const Register&) = delete;                 // copy
+    Register& operator=(const Register&) = delete;      // assignment
 
-  /**
-   Read hardware register (pure virtual)
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> [SUCCESS | MOPs return code]
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> Internal bit string represents the value of the
-                            hardware register (if rc == SUCCESS)
-   <br><b>Sideaffects: </b> The bit string value may or may not be retrieved
-                            from hardware; a buffered copy may be used.
-   <br><b>Exceptions:  </b> None.
-   </ul><br>
-   */
-  virtual uint32_t Read(void) const = 0;
-
-  /**
-   Read hardware register and apply a mask
-   <ul>
-   <br><b>Parameters:  </b> Mask to apply
-   <br><b>Returns:     </b> [SUCCESS | MOPs return code]
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> Internal bit string represents the value of the
-                            hardware register with the bits turned off as
-                            specified by the mask.
-   <br><b>Sideaffects: </b> The bit string value may or may not be retrieved
-   from hardware. a buffered copy may be used.
-   <br><b>Exceptions:  </b> None.
-   <br><b>Notes:       </b> if bits read from hardware = '00110100'
-                            and mask =                   '01110000'
-                            then internal bit sting =    '00000100'
-
-                            if mask.Length() < GetBitString()->Length()
-                            then mask is right extended with 0's
-                            if mask.Length() > GetBitString()->Length()
-                            then extra mask bits are ignored.
-   </ul><br>
-   */
-  uint32_t Read(BitString & mask);
-
-  /**
-   Write hardware register (pure virtual)
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> [SUCCESS | MOPs return code]
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> Internal bit string value written to hardware
-   <br><b>Exceptions:  </b> None.
-   <br><b>Notes:       </b> If internal bitstring was never read/set/modified then
-                            zeros are written to corresponding hardware register.
-   </ul><br>
-   */
- virtual uint32_t Write(void) = 0;
-
-  /**
-   Access a copy of the scan comm address
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> Returns scom address
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> None.
-   <br><b>Exceptions:  </b> None.
-   </ul><br>
-   */
-  virtual uint64_t GetAddress(void) const {return 0 ;}
-
-  /**
-   Access a copy of the short id for signatures.
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> ID.
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> None.
-   <br><b>Exceptions:  </b> None.
-   </ul><br>
-   */
-  virtual uint16_t GetId(void) const = 0;
-
-  /**
-   Set the short id for signatures.
-   <ul>
-   <br><b>Parameters:  </b> ID.
-   <br><b>Returns:     </b> None.
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> None.
-   <br><b>Exceptions:  </b> For virtual registers, this is not required to have
-                            any effect.
-   </ul><br>
-   */
-  virtual void SetId(uint16_t) = 0;
-
-
-  /**
-   Access the bit length of the register
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> bit length of the register
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> None.
-   <br><b>Exceptions:  </b> None.
-   </ul><br>
-   */
-   virtual uint32_t GetBitLength(void) const { return DEFAULT_BIT_LENGTH ;}
-
-  /**
-   Access the internal bit string (pure virtual)
-   <ul>
-   <br><b>Parameters:  </b> None
-   <br><b>Returns:     </b> ptr to the internal bit string (const)
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> None.
-   <br><b>Exceptions:  </b> None.
-   <br><b>Notes:       </b> If the internal bit string was never read/modified then
-                            all bits are zero
-   </ul><br>
-   */
-  virtual
-  const BitString * GetBitString(ATTENTION_TYPE
-                                        i_type = INVALID_ATTENTION_TYPE
-                                       ) const = 0;
-
-  /**
-   Modify the internal bit string (pure virtual)
-   <ul>
-   <br><b>Parameters:  </b> a bit string
-   <br><b>Returns:     </b> Nothing
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> Internal bit string == *bs for first len bits where
-                            len is the smaller of the two lengths.
-                            Memory may be (re)allocated
-   <br><b>Exceptions:  </b> None.
-   <br><b>Notes:       </b> The hardware register value is not modified until
-                            Write() is called
-   </ul><br>
-   */
-  virtual void SetBitString(const BitString * bs) = 0;
-
-  /**
-   SetBit
-   <ul>
-   <br><b>Parameters:  </b> Position of bit to set (= 1)
-   <br><b>Returns:     </b> None.
-   <br><b>Requirements:</b> bit position < GetBitString()->Length()
-   <br><b>Promises:    </b> GetBitString()->isBitSet(bit_position) == true
-   <br><b>Exceptions:  </b> None.
-   <br><b> Notes:      </b> Register value is not reflected in hardware until
-                            Write() is called
-   </ul><br>
-   */
-  void SetBit(uint32_t bit_position);
-
-  /**
-   ClearBit (reset bit)
-   <ul>
-   <br><b>Parameters:  </b> Position of bit to clear (= 0)
-   <br><b>Returns:     </b> None.
-   <br><b>Requirements:</b> bit position < GetBitString()->Length()
-   <br><b>Promises:    </b> GetBitString()->isBitSet(bit_position) == false
-   <br><b>Exceptions:  </b> None.
-   <br><b> Notes:      </b> Register value is not reflected in hardware until
-                            Write() is called
-   </ul><br>
-   */
-  void ClearBit(uint32_t bit_position);
+    /* Destructor */
+    virtual ~Register(void);
 
     /**
-     * @brief  Will query if a bit is set.
-     * @param  i_bitPos The bit position to query.
-     * @pre    The bit position must be less than GetBitString()->Length()
-     * @return TRUE if the bit is set, FALSE otherwise.
-     */
-    bool IsBitSet( uint32_t i_bitPos )
-    {  return GetBitString()->isBitSet(i_bitPos);  }
+    @brief Read hardware register (virtual)
+    @param        None
+    @return       [SUCCESS | MOPs return code]
+    Requirements: None.
+    Promises:     Internal bit string represents the value of the
+                  hardware register (if rc == SUCCESS).
+    Sideaffects:  Value guaranteed to be read from hardware.
+    Exceptions:   None.
+    Notes:        Default is to call Read().  If a child class cannot
+                  guarantee hardware access every time Read() is
+                  called then the function ForceRead() should be
+                  overridden.
+    */
+    virtual uint32_t forceRead(void) const { return read(); }
 
-    /** @brief Flushes all bits to 0. */
+    /**
+    @brief Read hardware register (pure virtual)
+    @param        None
+    @return       [SUCCESS | MOPs return code]
+    Requirements: None.
+    Promises:     Internal bit string represents the value of the
+                  hardware register (if rc == SUCCESS)
+    Sideaffects:  The bit string value may or may not be retrieved
+                  from hardware; a buffered copy may be used.
+    Exceptions:   None.
+
+    */
+    virtual uint32_t read(void) const = 0;
+
+    /**
+    @brief        Read hardware register and apply a mask
+    @param        Mask to apply
+    @return       [SUCCESS | MOPs return code]
+    Requirements: None.
+    Promises:     Internal bit string represents the value of the hardware
+                  register with the bits turned off as specified by the mask.
+    Sideaffects:  The bit string value may or may not be retrieved
+                  from hardware. a buffered copy may be used.
+    Exceptions:   None.
+    Notes:        if bits read from hardware = '00110100'
+                  and mask =                   '01110000'
+                  then internal bit sting =    '00000100'
+
+                  if mask.Length() < GetBitString()->Length()
+                  then mask is right extended with 0's
+
+                  if mask.Length() > GetBitString()->Length()
+                  then extra mask bits are ignored.
+    */
+    uint32_t read(BitString & mask);
+
+    /**
+    @brief        Write hardware register (pure virtual)
+    @param        None
+    @return       [SUCCESS | MOPs return code]
+    Requirements: None.
+    Promises:     Internal bit string value written to hardware
+    Exceptions:   None.
+    Notes:        If internal bitstring was never read/set/modified then
+                  zeros are written to corresponding hardware register.
+    */
+    virtual uint32_t write(void) = 0;
+
+    /**
+    @brief Access a copy of the scan comm address
+    @param        None
+    @return       Returns scom address
+    Requirements: None.
+    Promises:     None.
+    Exceptions:   None.
+    */
+    virtual uint64_t getAddress(void) const {return 0 ;}
+
+    /**
+    @brief Access a copy of the short id for signatures.
+    @param        None
+    @return       ID.
+    Requirements: None.
+    Promises:     None.
+    Exceptions:   None.
+    */
+    virtual uint16_t getId(void) const = 0;
+
+    /**
+    @brief Set the short id for signatures.
+    @param        ID.
+    @return       None.
+    Requirements: None.
+    Promises:     None.
+    Exceptions:   For virtual registers, this is not required to have
+                  any effect.
+    */
+    virtual void setId(uint16_t) = 0;
+
+
+    /**
+    @brief Access the bit length of the register
+    @param        None
+    @return       bit length of the register
+    Requirements: None.
+    Promises:     None.
+    Exceptions:   None.
+    */
+    virtual uint32_t getByteLength(void) const
+    {
+        return DEFAULT_BYTE_LENGTH;
+    }
+
+    /**
+    @brief Access the internal bit string (pure virtual)
+    @param        None
+    @return       ptr to the internal bit string (const)
+    Requirements: None.
+    Promises:     None.
+    Exceptions:   None.
+    Notes:        If the internal bit string was never read/modified then
+                  all bits are zero
+    */
+    virtual const BitString * getBitString(ATTENTION_TYPE
+                  i_type = INVALID_ATTENTION_TYPE) const = 0;
+
+    /**
+    @brief Modify the internal bit string (pure virtual)
+    @param        a bit string
+    @return       Nothing
+    Requirements: None.
+    Promises:     Internal bit string == *bs for first len bits where
+                  len is the smaller of the two lengths.  Memory may
+                  be (re)allocated
+    Exceptions:   None.
+    Notes:        The hardware register value is not modified until
+                  Write() is called
+    */
+    virtual void setBitString(const BitString * bs) = 0;
+
+    /**
+    @brief        SetBit
+    @param        Position of bit to set (= 1)
+    @return       None.
+    Requirements: bit position < GetBitString()->Length()
+    Promises:     GetBitString()->isBitSet(bit_position) == true
+    Exceptions:   None.
+    Notes:        Register value is not reflected in hardware until
+                  Write() is called
+    */
+    void setBit(uint32_t bit_position);
+
+    /**
+    @brief        ClearBit (reset bit)
+    @param        Position of bit to clear (= 0)
+    @return       None.
+    Requirements: bit position < GetBitString()->Length()
+    Promises:     GetBitString()->isBitSet(bit_position) == false
+    Exceptions:   None.
+     Notes:       Register value is not reflected in hardware until
+                  Write() is called
+    */
+    void clearBit(uint32_t bit_position);
+
+    /**
+    @brief        Will query if a bit is set.
+    @param        i_bitPos The bit position to query.
+                  Bit position must be less than GetBitString()->Length()
+    @return       TRUE if the bit is set, FALSE otherwise.
+    */
+    bool isBitSet( uint32_t i_bitPos )
+    {
+        return getBitString()->isBitSet(i_bitPos);
+    }
+
+    /**
+    @brief        Flushes all bits to 0.
+    */
     void clearAllBits();
 
-    /** @brief Flushes all bits to 1. */
+    /**
+    @brief        Flushes all bits to 1.
+    */
     void setAllBits();
 
     /**
-     * @brief Returns target value from the BitString (right justified).
-     * @param i_pos   Starting position in the bit string.
-     * @param i_len   Length of target value.
-     * @pre   i_pos + i_len must be less than or equal 64 bits.
-     * @return The target value (right justified).
-     */
-    uint64_t GetBitFieldJustified( uint32_t i_pos, uint32_t i_len ) const;
+    @brief        Returns target value from the BitString (right justified).
+    @param        i_pos   Starting position in the bit string.
+    @param        i_len   Length of target value.
+                  i_pos + i_len must be less than or equal 64 bits.
+    @return       The target value (right justified).
+    */
+    uint64_t getBitFieldJustified( uint32_t i_pos, uint32_t i_len ) const;
 
     /**
-     * @brief Set a field within the BitString with a value (right justified).
-     * @param i_pos   Starting position in the bit string.
-     * @param i_len   Length of target value.
-     * @param i_value Value to add to BitString.
-     * @pre   i_pos + i_len must be less than or equal 64 bits.
-     */
-    void SetBitFieldJustified( uint32_t i_pos, uint32_t i_len,
+    @brief        Set a field within the BitString with a value (right
+                  justified).
+    @param        i_pos   Starting position in the bit string.
+    @param        i_len   Length of target value.
+    @param        i_value Value to add to BitString.
+                  i_pos + i_len must be less than or equal 64 bits.
+    */
+    void setBitFieldJustified( uint32_t i_pos, uint32_t i_len,
                                uint64_t i_value );
 
-  /**
-   Query if bit string is all zeros
-   <ul>
-   <br><b>Parameters:  </b> None.
-   <br><b>Returns:     </b> [true | false]
-   <br><b>Requirements:</b> None.
-   <br><b>Promises:    </b> None.
-   <br><b>Exceptions:  </b> None.
-   </ul><br>
-   */
-  bool BitStringIsZero()
-  { return GetBitString()->isZero(); }
+    /**
+    @brief        Query if bit string is all zeros
+    @param        None.
+    @return       [true | false]
+    Requirements: None.
+    Promises:     None.
+    Exceptions:   None.
+    */
+    bool bitStringIsZero()
+    {
+        return getBitString()->isZero();
+    }
 
-   /**
-    *@brief    Returns TYPE_NA as type of Target associated with register.Actual
-    *          implementation is expected in derived class
-     *@return   TYPE_NA
-   */
-  virtual TARGETING::TYPE getChipType(void)const { return TARGETING::TYPE_NA; }
+    /**
+    @brief        Returns DEFAULT_CHIP_TYPE (0) as type of Target associated
+                  with class "register".  Actual implementation is expected in
+                  derived class. 
+    */
+    virtual ChipType_t getChipType(void)const
+    {
+        return DEFAULT_CHIP_TYPE;
+    }
 
-    /** @return The register access level (see enum AccessLevel). */
-    virtual AccessLevel getAccessLevel() const { return ACCESS_RW; }
+    /**
+    @brief        The register access level (see enum AccessLevel).
+    */
+    virtual AccessLevel getAccessLevel() const
+    {
+        return ACCESS_RW;
+    }
 
-    /** @brief Sets the register access level (see enum AccessLevel). */
+    /**
+    @brief        Sets the register access level (see enum AccessLevel).
+    */
     virtual void setAccessLevel( AccessLevel i_op ) {}
 
-protected:
+  protected:
 
-  /**
-   Get modifiable reference to internal bit string (don't even thing about making this public!!!)
-   <ul>
-   <br><b>Parameters:    </b> None.
-   <br><b>Returns       </b> Reference to the internal bit string
-   <br><b>Requirments   </b> None.
-   <br><b>Promises      </b> None.
-   </ul><br>
-   */
-  virtual BitString & AccessBitString(void) = 0;
-private: // Data
-  static const int DEFAULT_BIT_LENGTH = 64;
+    /**
+    @brief        Get modifiable reference to internal bit string
+    @param        None.
+    @return       Reference to the internal bit string
+    Requirements: None.
+    Promises:     None.
+    */
+  virtual BitString & accessBitString(void) = 0;
 
-  // Enum Specification //////////////////////////////////////////////
-  //
-  // Purpose:  These enumerated constants specify implementation data.
-  //
-  // End Enum Specification //////////////////////////////////////////
-
-  enum
-  {
-    ODD_PARITY_SET_BIT_POSITION = 16
-  };
-
-  // Data Specification //////////////////////////////////////////////
-  //
-  // Purpose:  These data members specify the physical properties of
-  //           register.
-  //
-  // End Data Specification //////////////////////////////////////////
-
+  private:
+    static const int DEFAULT_BYTE_LENGTH = 8;
+    static const int SUCCESS = 0;
 
 };
 
-} // end namespace libhei
-
+}//namespace libhei
