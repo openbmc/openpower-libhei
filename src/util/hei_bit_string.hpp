@@ -7,7 +7,6 @@ namespace libhei
 
 class BitStringBuffer;
 
-
 //##############################################################################
 //                             BitString class
 //##############################################################################
@@ -24,27 +23,38 @@ class BitStringBuffer;
  * The length of a BitString is only limited by the amount of memory that
  * contains the data buffer.
  *
- * The bit positions are ordered 0 to n (left to right), where n is the bit
- * length minus one. By default, position 0 will be the first bit of the
- * buffer's start address. The optional constructor allows users to input an
- * offset anywhere within the buffer, which is then used as position 0. This is
- * useful when the data within the buffer is right-justified.
+ * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  *
- * This class always assumes bitstrings are stored in memory in big-endian
- * order. Keep this in mind when accessing bitstrings directly. Use class
- * methods to get and set bitstrings whenever possible.
+ *  - The bit positions are ordered 0 to n (left to right), where n is the bit
+ *    length minus one.
+ *  - The data stored in memory is assumed to be in big-endian byte format.
  *
- *   Example:
- *     Suppose i_field = 0x1122334455667788
+ * So, for example:
  *
- *     Do NOT do this:
+ *    uint8_t a[2];                       // 16 bits of memory
+ *    BitString bs { 16, a };             // init BitString for a
+ *    bs.setFieldRight( 0, 16, 0x1122 );  // set all 16 bits to 0x1122
  *
- *       my_bitstring = new BitString(sizeof(i_field), &i_field);
+ * Results in:
  *
- *     Do something like this:
+ *    a[0] == bs.getFieldRight(0, 8) (i.e. 0x11)
+ *    a[1] == bs.getFieldRight(8, 8) (i.e. 0x22)
  *
- *       my_bitstring = new BitStringBuffer(sizeof(i_field);
- *       my_bitstring.setFieldRight(0, sizeof(i_field), i_field);
+ * It is very important you do NOT do this:
+ *
+ *    uint16_t x = 0x1122;      // 16 bits of memory
+ *    BitString bs { 16, &x };  // init BitString for x
+ *
+ * The results are undefined, or at least not portable. For example:
+ *
+ *   Big-endian:
+ *      x is stored in memory as |0x11|0x22|.
+ *      Therefore, bs.getFieldRight(0, 8) returns 0x11.
+ *
+ *   Little-endian:
+ *      x is stored in memory as |0x22|0x11|.
+ *      Therefore, bs.getFieldRight(0, 8) returns 0x22.
+ *
  */
 class BitString
 {
@@ -59,13 +69,13 @@ class BitString
      * @brief Constructor
      * @param i_bitLen  The number of bits in the bit string.
      * @param i_bufAddr The starting address of the memory buffer.
-     * @param i_offset  Optional input to indicate the actual starting position
-     *                  of the bit string within the memory buffer.
-     * @post  It is possible that i_bitLen + i_offset may not be byte aligned,
-     *        you can use getMinBytes() to calulate the number of bytes
-     *        needed to allocate sufficient memory space.
+     * @param i_offset  By default, position 0 will be the first bit of the
+     *                  buffer's start address. However, this parameter can be
+     *                  used to indicate that position 0 actually starts
+     *                  somewhere in the middle of the buffer.
+     * @pre   Use getMinBytes() to calulate the minimum number of bytes needed
+     *        to allocate sufficient memory space for this bit string.
      */
-
     BitString( uint32_t i_bitLen, void * i_bufAddr,
                uint32_t i_offset = 0 ) :
         iv_bitLen(i_bitLen), iv_bufAddr(i_bufAddr), iv_offset(i_offset)
@@ -136,7 +146,7 @@ class BitString
     void setFieldLeft( uint32_t i_pos, uint32_t i_len, uint64_t i_val )
     {
         setFieldRight( i_pos, i_len, i_val >> (UINT64_BIT_LEN - i_len));
-    };
+    }
 
     /**
      * @brief  Sets a right-justified value of the given length into the bit
@@ -156,7 +166,10 @@ class BitString
      * @return True if the bit at the given position is set(1), false otherwise.
      * @pre    i_pos < getBitLen().
      */
-    bool isBitSet( uint32_t i_pos ) const { return 0 != getFieldLeft(i_pos, 1); }
+    bool isBitSet( uint32_t i_pos ) const
+    {
+        return 0 != getFieldRight(i_pos, 1);
+    }
 
     /**
      * @brief Sets the target position to 1.
@@ -314,16 +327,20 @@ class BitString
     /** @brief Left shift operator. */
     BitStringBuffer operator<<( uint32_t i_shift ) const;
 
-    // Prevent the assignment operator and copy constructor from a
-    // BitStringBuffer. While technically these could be done. We run into
-    // serious problems like with the operator functions above that all return
-    // a BitStringBuffer. If we allowed these, the BitString would end up
-    // pointing to memory that is no longer in context.
-
-    /** @brief Delete copy constructor BitString from BitStringBuffer */
+    /**
+     * @brief Explicitly disables assignment from BitStringBuffer.
+     *
+     * Allowing this would be dangerous if the BitStringBuffer goes out of scope
+     * because the BitString would point to memory that is no longer in context.
+     */
     BitString & operator=( const BitStringBuffer & i_bsb ) = delete;
 
-    /** @brief Delete move assignment operator BitString from BitStringBuffer */
+    /**
+     * @brief Explicitly disables copy from BitStringBuffer.
+     *
+     * Allowing this would be dangerous if the BitStringBuffer goes out of scope
+     * because the BitString would point to memory that is no longer in context.
+     */
     BitString( const BitStringBuffer & i_bsb ) = delete;
 
   protected: // functions

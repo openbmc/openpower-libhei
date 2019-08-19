@@ -26,75 +26,44 @@ uint64_t BitString::getFieldRight( uint32_t i_pos, uint32_t i_len ) const
 {
     HEI_ASSERT( nullptr != getBufAddr() );      // must to have a valid address
     HEI_ASSERT( 0 < i_len );                    // must have at least one bit
-    HEI_ASSERT( i_len <= UINT64_BIT_LEN );       // i_len length must be valid
+    HEI_ASSERT( i_len <= UINT64_BIT_LEN );      // i_len length must be valid
     HEI_ASSERT( i_pos + i_len <= getBitLen() ); // field must be within range
 
     // The returned value.
     uint64_t o_val = 0;
 
-    // The desired bitstring may be larger than one byte so retrieve one
-    // byte at a time. Each byte that is to be retrieved may cross a byte
-    // boundary. In this case retrieve each byte as a low chunk and a high
-    // chunk masking and shifting each chunk and combining them to form one.
-
-    uint32_t bytes_remain = getMinBytes(i_len);
-    uint32_t len0;
-    uint32_t len1;
-
-    while (0 != bytes_remain)
-    {
-
-    o_val <<= UINT8_BIT_LEN; // next byte
-
     // Get the relative address and position of the field.
     uint32_t relPos = 0;
     uint8_t * relAddr = getRelativePosition( relPos, i_pos );
 
-    // Assume the low  chunk contains the entire value
-    len0 = i_len;
-    len1 = 0;
+    // Get the bit length for this byte and any remaining bits. Initially assume
+    // everything fits within this byte.
+    uint32_t byte_len   = i_len;
+    uint32_t remain_len = 0;
 
-    // If value crosses byte boundary calculate low and high chunk lengths
+    // If target value crosses a byte boundary truncate the byte length and
+    // update the remaining length.
     if ( UINT8_BIT_LEN < relPos + i_len )
     {
-        len0 = UINT8_BIT_LEN - relPos; // low chunk size
-        len1 = i_len - len0; // high chunk size
-
-        // Limit value to fit in one byte - handle remaining bits in next pass
-        if ( i_len >= UINT8_BIT_LEN )
-        {
-            len1 = UINT8_BIT_LEN - len0;
-        }
+        byte_len   = UINT8_BIT_LEN - relPos;
+        remain_len = i_len - byte_len;
     }
 
-    // Masks are length of chunk
-    uint8_t mask0 = UINT8_MAX << ( UINT8_BIT_LEN - len0 );
-    uint8_t mask1 = UINT8_MAX << ( UINT8_BIT_LEN - len1 );
+    // Get the value of this byte.
+    uint8_t byte = *relAddr;
+    byte <<= relPos;                   // Mask off uneeded bits on the left side
+    byte >>= UINT8_BIT_LEN - byte_len; // Right justify the value
 
-    uint32_t shift = UINT8_BIT_LEN - relPos;
+    // Set the returned value.
+    o_val = byte;
 
-    o_val |= ((*relAddr << relPos) & mask0);
-
-    // Get the high chunk if needed
-    if (0 != len1)
+    // If there are any remaining bits, push them into the return value from the
+    // right side.
+    if ( 0 != remain_len )
     {
-        ++relAddr; // high chunk is in the next array element
-
-        // Get the high chunk, mask the bits of interest and
-        // align it to bit position 0 plus the length
-        o_val |= ( (*relAddr & mask1) >> shift );
+        o_val <<= remain_len;
+        o_val |= getFieldRight( i_pos + byte_len, remain_len );
     }
-
-    // Next field
-    i_pos += (len0 + len1);
-    i_len -= (len0 + len1);
-
-    bytes_remain--;
-
-    } // end while (0 != bytes_remain)
-
-    // right-justify the return value
-    o_val >>= (UINT8_BIT_LEN - (len0 +len1));
 
     return o_val;
 }
@@ -105,10 +74,8 @@ void BitString::setFieldRight( uint32_t i_pos, uint32_t i_len, uint64_t i_val )
 {
     HEI_ASSERT( nullptr != getBufAddr() );      // must to have a valid address
     HEI_ASSERT( 0 < i_len );                    // must have at least one bit
-    HEI_ASSERT( i_len <= UINT64_BIT_LEN );       // i_len length must be valid
+    HEI_ASSERT( i_len <= UINT64_BIT_LEN );      // i_len length must be valid
     HEI_ASSERT( i_pos + i_len <= getBitLen() ); // field must be within range
-
-    uint64_t set_val = 0; // the value to set
 
     // Swap byte order
     i_val <<= (UINT64_BIT_LEN - i_len);
@@ -197,8 +164,12 @@ void BitString::setPattern( uint32_t i_sPos, uint32_t i_sLen,
     HEI_ASSERT(i_pLen <= UINT64_BIT_LEN);        // i_pLen length must be valid
 
     // Get a bit string for the pattern subset (right justified).
-    BitStringBuffer bso(UINT64_BIT_LEN);
-    bso.setFieldRight(0, i_pLen, i_pattern);
+    // Note that we cannot use a BitStringBuffer here because this function
+    // could be used in the constructor of BitStringBuffer, which could causes
+    // an infinite loop.
+    uint8_t a[sizeof(i_pattern)] = {};
+    BitString bs { sizeof(i_pattern)*8, a };
+    bs.setFieldRight(0, i_pLen, i_pattern);
 
     // Iterate the range in chunks the size of i_pLen.
     uint32_t endPos = i_sPos + i_sLen;
@@ -208,7 +179,7 @@ void BitString::setPattern( uint32_t i_sPos, uint32_t i_sLen,
         uint32_t len = std::min( i_pLen, endPos - pos );
 
         // Get this chunk's pattern value, truncate (right justified) if needed.
-        uint64_t pattern = bso.getFieldRight( 0, len );
+        uint64_t pattern = bs.getFieldRight( 0, len );
 
         // Set the pattern in this string.
         setFieldRight( pos, len, pattern );
@@ -248,9 +219,9 @@ void BitString::setString( const BitString & i_sStr, uint32_t i_sPos,
               ((dRelAddr == sRelAddr) && (dRelOffset < sRelOffset)) )
     {
         // Copy the data forward.
-        for ( uint32_t pos = 0; pos < actLen; pos += UINT8_BIT_LEN )
+        for ( uint32_t pos = 0; pos < actLen; pos += UINT64_BIT_LEN )
         {
-            uint32_t len = std::min( actLen - pos, UINT8_BIT_LEN );
+            uint32_t len = std::min( actLen - pos, UINT64_BIT_LEN );
 
             uint64_t value = i_sStr.getFieldRight( i_sPos + pos, len );
             setFieldRight( i_dPos + pos, len, value );
@@ -259,12 +230,12 @@ void BitString::setString( const BitString & i_sStr, uint32_t i_sPos,
     else // Copy the data backwards.
     {
         // Get the first position of the last chunk (byte aligned).
-        uint32_t lastPos = ((actLen-1) / UINT8_BIT_LEN) * UINT8_BIT_LEN;
+        uint32_t lastPos = ((actLen-1) / UINT64_BIT_LEN) * UINT64_BIT_LEN;
 
         // Start with the last chunk and work backwards.
-        for ( int32_t pos = lastPos; 0 <= pos; pos -= UINT8_BIT_LEN )
+        for ( int32_t pos = lastPos; 0 <= pos; pos -= UINT64_BIT_LEN )
         {
-            uint32_t len = std::min( actLen - pos, UINT8_BIT_LEN );
+            uint32_t len = std::min( actLen - pos, UINT64_BIT_LEN );
             uint64_t value = i_sStr.getFieldRight( i_sPos + pos, len );
             setFieldRight( i_dPos + pos, len, value );
         }
@@ -278,9 +249,9 @@ void BitString::maskString( const BitString & i_mask )
     // Get the length of the smallest string.
     uint32_t actLen = std::min( getBitLen(), i_mask.getBitLen() );
 
-    for ( uint32_t pos = 0; pos < actLen; pos += UINT8_BIT_LEN )
+    for ( uint32_t pos = 0; pos < actLen; pos += UINT64_BIT_LEN )
     {
-        uint32_t len = std::min( actLen - pos, UINT8_BIT_LEN );
+        uint32_t len = std::min( actLen - pos, UINT64_BIT_LEN );
 
         uint64_t dVal =        getFieldRight( pos, len );
         uint64_t sVal = i_mask.getFieldRight( pos, len );
@@ -296,9 +267,9 @@ bool BitString::isEqual( const BitString & i_str ) const
     if ( getBitLen() != i_str.getBitLen() )
         return false; // size not equal
 
-    for ( uint32_t pos = 0; pos < getBitLen(); pos += UINT8_BIT_LEN )
+    for ( uint32_t pos = 0; pos < getBitLen(); pos += UINT64_BIT_LEN )
     {
-        uint32_t len = std::min( getBitLen() - pos, UINT8_BIT_LEN );
+        uint32_t len = std::min( getBitLen() - pos, UINT64_BIT_LEN );
 
         if ( getFieldRight(pos, len) != i_str.getFieldRight(pos, len) )
             return false; // bit strings do not match
@@ -311,9 +282,9 @@ bool BitString::isEqual( const BitString & i_str ) const
 
 bool BitString::isZero() const
 {
-    for ( uint32_t pos = 0; pos < getBitLen(); pos += UINT8_BIT_LEN )
+    for ( uint32_t pos = 0; pos < getBitLen(); pos += UINT64_BIT_LEN )
     {
-        uint32_t len = std::min( getBitLen() - pos, UINT8_BIT_LEN );
+        uint32_t len = std::min( getBitLen() - pos, UINT64_BIT_LEN );
 
         if ( 0 != getFieldRight(pos, len) )
             return false; // something is non-zero
@@ -346,9 +317,9 @@ BitStringBuffer BitString::operator~() const
 {
     BitStringBuffer bsb( getBitLen() );
 
-    for ( uint32_t pos = 0; pos < getBitLen(); pos += UINT8_BIT_LEN )
+    for ( uint32_t pos = 0; pos < getBitLen(); pos += UINT64_BIT_LEN )
     {
-        uint32_t len = std::min( getBitLen() - pos, UINT8_BIT_LEN );
+        uint32_t len = std::min( getBitLen() - pos, UINT64_BIT_LEN );
 
         uint64_t dVal = getFieldRight( pos, len );
 
@@ -367,9 +338,9 @@ BitStringBuffer BitString::operator&( const BitString & i_bs ) const
 
     BitStringBuffer bsb( actLen );
 
-    for ( uint32_t pos = 0; pos < actLen; pos += UINT8_BIT_LEN )
+    for ( uint32_t pos = 0; pos < actLen; pos += UINT64_BIT_LEN )
     {
-        uint32_t len = std::min( actLen - pos, UINT8_BIT_LEN );
+        uint32_t len = std::min( actLen - pos, UINT64_BIT_LEN );
 
         uint64_t dVal =      getFieldRight( pos, len );
         uint64_t sVal = i_bs.getFieldRight( pos, len );
@@ -389,9 +360,9 @@ BitStringBuffer BitString::operator|( const BitString & i_bs ) const
 
     BitStringBuffer bsb( actLen );
 
-    for ( uint32_t pos = 0; pos < actLen; pos += UINT8_BIT_LEN )
+    for ( uint32_t pos = 0; pos < actLen; pos += UINT64_BIT_LEN )
     {
-        uint32_t len = std::min( actLen - pos, UINT8_BIT_LEN );
+        uint32_t len = std::min( actLen - pos, UINT64_BIT_LEN );
 
         uint64_t dVal =      getFieldRight( pos, len );
         uint64_t sVal = i_bs.getFieldRight( pos, len );
