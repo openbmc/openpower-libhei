@@ -55,7 +55,7 @@ class ReturnCode
 
   private:
 
-    const uint32_t iv_rc; ///< return code value
+    uint32_t iv_rc; ///< return code value
 };
 
 /** Function returned successfully. */
@@ -70,6 +70,13 @@ static constexpr ReturnCode RC_CHIP_DATA_INITIALIZED   = ReturnCode(0x00000002);
 
 /** The given chip type has not been initialized. */
 static constexpr ReturnCode RC_CHIP_DATA_MISSING       = ReturnCode(0x00000003);
+
+/** The given register type is unsupported by the user application. */
+static constexpr ReturnCode RC_REG_ACCESS_UNSUPPORTED  = ReturnCode(0x00000004);
+
+/** Generic return code indicating something along the register access path
+ *  failed and the returned data is undefined and should not be used. */
+static constexpr ReturnCode RC_REG_ACCESS_FAILURE      = ReturnCode(0x00000005);
 
 } // end namespace libhei
 

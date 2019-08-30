@@ -1,5 +1,6 @@
 sim_sources = [
     'hei_sim_main.cpp',
+    'hei_sim_user_interface.cpp',
     '../../src/isolator/hei_isolator.cpp'
 ]
 
