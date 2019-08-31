@@ -22,6 +22,7 @@
 namespace libhei
 {
 
+#if 0
 /*--------------------------------------------------------------------*/
 /*  User Types                                                        */
 /*--------------------------------------------------------------------*/
@@ -240,6 +241,7 @@ void Register::SetBitFieldJustified( uint32_t i_pos,
                             static_cast<CPU_WORD>(value) );
     }
 }
+#endif
 
 } // end namespace libhei
 

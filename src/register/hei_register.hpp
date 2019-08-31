@@ -20,8 +20,10 @@
 #include <hei_includes.hpp>
 #include <util/hei_bit_string.hpp>
 
+#if 0
 #include <iipsdbug.h>
 #include <prdfMain.H>
+#endif
 
 namespace libhei
 {
@@ -104,6 +106,7 @@ namespace libhei
  */
 class Register
 {
+#if 0
   public: // enums, structs, typedefs
 
     /** The register access level */
@@ -397,6 +400,7 @@ private: // Data
   //
   // End Data Specification //////////////////////////////////////////
 
+#endif
 
 };
 
