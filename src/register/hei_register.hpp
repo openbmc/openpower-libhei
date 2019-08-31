@@ -52,11 +52,11 @@ namespace libhei
 
 // Class Specification *************************************************
 //
-//  Name:  SCAN_COMM_REGISTER_CLASS
+//  Name:  Register
 //
 //  Title:  Scan Communication Register
 //
-//  Purpose:  SCAN_COMM_REGISTER_CLASS provides the representation
+//  Purpose:  Register provides the representation
 //            and access to a physical register.
 //
 //  Usage:  This is an abstract base class.
@@ -98,11 +98,11 @@ namespace libhei
 //
 // End Class Specification *********************************************
 /**
- SCAN_COMM_REGISTER_CLASS
+ Register
  @author Doug Gilbert
  @V5R2
  */
-class SCAN_COMM_REGISTER_CLASS
+class Register
 {
   public: // enums, structs, typedefs
 
@@ -120,7 +120,7 @@ class SCAN_COMM_REGISTER_CLASS
   /**
    Destructor
    */
-  virtual ~SCAN_COMM_REGISTER_CLASS(void);
+  virtual ~Register(void);
 
   /**
    Read hardware register (virtual)

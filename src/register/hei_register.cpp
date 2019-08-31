@@ -48,7 +48,7 @@ namespace libhei
 
 // Function Specification //////////////////////////////////////////
 //
-// Title:  ~SCAN_COMM_REGISTER_CLASS (Virtual destructor)
+// Title:  ~Register (Virtual destructor)
 //
 // Purpose:  This destructor deallocates the Bit String.
 //
@@ -58,7 +58,7 @@ namespace libhei
 //
 // End Function Specification //////////////////////////////////////
 
-SCAN_COMM_REGISTER_CLASS::~SCAN_COMM_REGISTER_CLASS
+Register::~Register
 (
  void
  /*!i No parameters                                               */
@@ -83,7 +83,7 @@ SCAN_COMM_REGISTER_CLASS::~SCAN_COMM_REGISTER_CLASS
 //
 // End Function Specification //////////////////////////////////////
 
-uint32_t SCAN_COMM_REGISTER_CLASS::Read
+uint32_t Register::Read
 (
  BitString & mask
  /*!i Reference to Bit String mask                                */
@@ -116,7 +116,7 @@ uint32_t SCAN_COMM_REGISTER_CLASS::Read
 //
 // End Function Specification //////////////////////////////////////
 
-void SCAN_COMM_REGISTER_CLASS::SetBit
+void Register::SetBit
 (
  uint32_t bit_position
  /*!i Bit position in string                                      */
@@ -143,7 +143,7 @@ void SCAN_COMM_REGISTER_CLASS::SetBit
 //
 // End Function Specification //////////////////////////////////////
 
-void SCAN_COMM_REGISTER_CLASS::ClearBit
+void Register::ClearBit
 (
  uint32_t bit_position
  /*!i Bit position in string                                      */
@@ -169,13 +169,13 @@ void SCAN_COMM_REGISTER_CLASS::ClearBit
 //
 // End Function Specification //////////////////////////////////////
 
-void SCAN_COMM_REGISTER_CLASS::clearAllBits()
+void Register::clearAllBits()
 {
     BitString & bitString = AccessBitString();
     bitString.clearAll();
 }
 
-void SCAN_COMM_REGISTER_CLASS::setAllBits()
+void Register::setAllBits()
 {
     BitString & bitString = AccessBitString();
     bitString.setAll();
@@ -183,7 +183,7 @@ void SCAN_COMM_REGISTER_CLASS::setAllBits()
 
 //------------------------------------------------------------------------------
 
-uint64_t SCAN_COMM_REGISTER_CLASS::GetBitFieldJustified( uint32_t i_pos,
+uint64_t Register::GetBitFieldJustified( uint32_t i_pos,
                                                          uint32_t i_len ) const
 {
     uint64_t o_value = 0;
@@ -214,7 +214,7 @@ uint64_t SCAN_COMM_REGISTER_CLASS::GetBitFieldJustified( uint32_t i_pos,
 
 //------------------------------------------------------------------------------
 
-void SCAN_COMM_REGISTER_CLASS::SetBitFieldJustified( uint32_t i_pos,
+void Register::SetBitFieldJustified( uint32_t i_pos,
                                                      uint32_t i_len,
                                                      uint64_t i_value )
 {
