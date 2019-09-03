@@ -193,7 +193,7 @@ uint64_t Register::GetBitFieldJustified( uint32_t i_pos,
     const uint32_t len_uint64   = sizeof(uint64_t) * 8;
     const uint32_t pos_end      = i_pos + i_len;
 
-    PRDF_ASSERT( pos_end <= len_uint64 );
+    HEI_ASSERT( pos_end <= len_uint64 );
 
     const BitString * bs = GetBitString();
 
@@ -222,7 +222,7 @@ void Register::SetBitFieldJustified( uint32_t i_pos,
     const uint32_t len_cpu_word = sizeof(CPU_WORD) * 8;
     const uint32_t len_uint64   = sizeof(uint64_t) * 8;
 
-    PRDF_ASSERT( i_pos + i_len <= len_uint64 );
+    HEI_ASSERT( i_pos + i_len <= len_uint64 );
 
     BitString & bs = AccessBitString();
 
