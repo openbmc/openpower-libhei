@@ -14,22 +14,48 @@
 #include <register/hei_register.hpp>
 #include <util/hei_bit_string.hpp>
 
-#if 0
-#include <prdfHomRegisterAccess.H>
-#endif
-
 namespace libhei
 {
 
 #if 0
 // Forward References
 class CHIP_CLASS;
-class MopsRegisterAccess;
 class ExtensibleChip;
 #endif
 
+/**
+ * @brief TODO
+ *
+ * Hardware access:
+ *  Actual hardware access is defined by the user application via the user
+ *  interface APIs. In order to tell the user application which chip to target,
+ *  the user application gives the isolator a pointer to their chip object. That
+ *  pointer gets stored as a static variable in this class. The intended use is:
+ *   - Call HardwareRegister::setAccessor() with the target chip.
+ *   - Preform all necessary hardware accesses to that chip.
+ *   - Call HardwareRegister::clearAccessor() to remove the chip access. This
+ *     ensures we don't have a code bug that tries to access hardware outside
+ *     the scope of the isolation function.
+ */
 class HardwareRegister : public Register
 {
+  public:
+
+    /** @brief Default constructor. */
+    HardwareRegister() = default;
+
+    /** @brief Destructor. */
+    ~HardwareRegister()
+    {
+        clearAccessor();
+    }
+
+    /** @brief Copy constructor. */
+    HardwareRegister( const HardwareRegister & ) = default;
+
+    /** @brief Assignment operator. */
+    HardwareRegister & operator=( const HardwareRegister & ) = default;
+
 #if 0
   public:
 
@@ -173,15 +199,6 @@ class HardwareRegister : public Register
     * @return   Refer to function description
    */
     virtual BitString & AccessBitString( );
-    /**
-     * @brief     Gets the register read and write done by calling access
-     *            function of scom  accessor service.
-     * @param     reference to bit string maintained in caller  class
-     * @param     Read or write operation
-     * @return    [SUCCESS|FAIL]
-     */
-    uint32_t Access( BitString & bs,
-                     RegisterAccess::Operation op )const;
 
     /**
      * @brief  Returns rulechip pointer associated with the register
@@ -218,6 +235,91 @@ private: // functions
     AccessLevel     iv_operationType; // Operation supported (RO, WO, or RW)
 
 #endif
+
+  public:
+
+    /**
+     * @brief Initializes a new hardware accessor.
+     * @param i_chip A pointer to the user application chip target.
+     */
+    static void setAccessor( void * i_chip )
+    {
+        clearAccessor();
+        cv_accessor = new Accessor( i_chip );
+    }
+
+    /**
+     * @brief Deletes the current hardware accessor.
+     *
+     * This function is called in the destructor. Therefore, it should never
+     * throw an exception.
+     */
+    static void clearAccessor()
+    {
+        delete cv_accessor;
+        cv_accessor = nullptr;
+    }
+
+  private:
+
+    /**
+     * @brief This is a simple class that stores a pointer to the target chip
+     *        that the user application would like the isolator to access.
+     */
+    class Accessor
+    {
+      public:
+
+        /** @brief Default constructor. */
+        explicit Accessor( void * i_chip ) :
+            iv_chip( i_chip )
+        {}
+
+        /** @brief Destructor. */
+        ~Accessor() = default;
+
+        /** @brief Copy constructor. */
+        Accessor( const Accessor & ) = delete;
+
+        /** @brief Assignment operator. */
+        Accessor & operator=( const Accessor & ) = delete;
+
+        /**
+         * @brief  Reads a register from hardware via the user interface APIs.
+         * @param  i_hwReg The target register.
+         * @param  o_bs    The returned register contents.
+         * @return RC_SUCCESS
+         */
+        ReturnCode read( const HardwareRegister * i_hwReg,
+                         BitString & o_bs ) const;
+
+        #ifndef __HEI_READ_ONLY
+        /**
+         * @brief  Writes a register to hardware via the user interface APIs.
+         * @param  i_hwReg The target register.
+         * @param  i_bs    The new register contents.
+         * @return RC_SUCCESS
+         */
+        ReturnCode write( const HardwareRegister * i_hwReg,
+                          const BitString & i_bs ) const;
+        #endif
+
+      private:
+
+        /**
+         * This is simply a pointer to a user application object that represents
+         * the target chip. The isolator does not know anything about this
+         * object nor how to use it. Its only purpose is to get passed back to
+         * the user application for hardware access operations.
+         */
+        void * const iv_chip = nullptr;
+
+    }; // end class Accessor
+
+    /** This allows all HardwareRegisters access to hardware via the user
+     *  interface APIs. */
+    static Accessor * cv_accessor;
+
 };
 
 } // end namespace libhei

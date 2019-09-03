@@ -10,6 +10,7 @@
 //----------------------------------------------------------------------
 
 #include <hei_includes.hpp>
+#include <hei_user_interface.hpp>
 #include <register/hei_hardware_register.hpp>
 #include <util/hei_bit_string.hpp>
 
@@ -18,7 +19,6 @@
 #include <prdfMain.H>
 #include <prdfRasServices.H>
 #include <prdfRegisterCache.H>
-#include <prdfHomRegisterAccess.H>
 #include <prdfPlatServices.H>
 #include <prdfExtensibleChip.H>
 
@@ -135,7 +135,8 @@ uint32_t HardwareRegister::ForceRead() const
         }
 
         // Read hardware.
-        o_rc = Access( readCache(), RegisterAccess::READ );
+        HEI_ASSERT( nullptr != cv_accessor );
+        o_rc = cv_accessor->read( this, readCache() );
         if ( SUCCESS != o_rc )
         {
             // The read failed. Remove the entry from the cache so a subsequent
@@ -181,7 +182,8 @@ uint32_t HardwareRegister::Write()
         }
 
         // Write hardware.
-        o_rc = Access( readCache(), RegisterAccess::WRITE );
+        HEI_ASSERT( nullptr != cv_accessor );
+        o_rc = cv_accessor->write( this, readCache() );
 
     } while (0);
 
@@ -190,17 +192,6 @@ uint32_t HardwareRegister::Write()
     #undef PRDF_FUNC
 }
 
-//------------------------------------------------------------------------------
-
-uint32_t HardwareRegister::Access( BitString & bs,
-                               RegisterAccess::Operation op ) const
-{
-    int32_t l_rc = SCR_ACCESS_FAILED;
-    TARGETING::TargetHandle_t i_pchipTarget = getChip()->GetChipHandle();
-    l_rc = getScomService().Access( i_pchipTarget,bs,iv_scomAddress,op );
-
-    return(l_rc);
-}
 //-----------------------------------------------------------------------------
 ExtensibleChip* HardwareRegister::getChip( )const
 {
@@ -279,6 +270,48 @@ bool HardwareRegister::operator >= ( const HardwareRegister & i_rightRegister  )
     return !( *this < i_rightRegister );
 }
 #endif
+
+//------------------------------------------------------------------------------
+
+HardwareRegister::Accessor * HardwareRegister::cv_accessor = nullptr;
+
+//------------------------------------------------------------------------------
+
+ReturnCode HardwareRegister::Accessor::read( const HardwareRegister * i_hwReg,
+                                             BitString & o_bs ) const
+{
+    HEI_ASSERT( nullptr != i_hwReg );
+    HEI_ASSERT( nullptr != iv_chip );
+
+    // Get the byte size of the buffer.
+    size_t sz_buffer = BitString::getMinBytes( o_bs.getBitLen() );
+
+    // Read the register.
+    return registerRead( iv_chip, i_hwReg->getType(), i_hwReg->getAddress(),
+                         o_bs.getBufAddr(), sz_buffer );
+}
+
+//------------------------------------------------------------------------------
+
+#ifndef __HEI_READ_ONLY
+
+ReturnCode HardwareRegister::Accessor::write( const HardwareRegister * i_hwReg,
+                                              const BitString & i_bs ) const
+{
+    HEI_ASSERT( nullptr != i_hwReg );
+    HEI_ASSERT( nullptr != iv_chip );
+
+    // Get the byte size of the buffer.
+    size_t sz_buffer = BitString::getMinBytes( i_bs.getBitLen() );
+
+    // Write the register.
+    return registerWrite( iv_chip, i_hwReg->getType(), i_hwReg->getAddress(),
+                          i_bs.getBufAddr(), sz_buffer );
+}
+
+#endif // __HEI_READ_ONLY
+
+//------------------------------------------------------------------------------
 
 } // end namespace libhei
 

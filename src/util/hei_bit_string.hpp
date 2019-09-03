@@ -98,7 +98,7 @@ class BitString
      * @return The minimum number of bytes required to allocate sufficient
      *         memory space for a bit string.
      */
-    static uint32_t getMinBytes( uint32_t i_bitLen, uint32_t i_offset = 0 )
+    static size_t getMinBytes( uint32_t i_bitLen, uint32_t i_offset = 0 )
     {
         return (i_bitLen + i_offset + UINT8_BIT_LEN-1) / UINT8_BIT_LEN;
     }

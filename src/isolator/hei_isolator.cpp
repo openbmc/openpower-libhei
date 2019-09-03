@@ -1,5 +1,6 @@
 
 #include <isolator/hei_isolator.hpp>
+#include <register/hei_hardware_register.hpp>
 
 namespace libhei
 {
@@ -31,10 +32,17 @@ ReturnCode Isolator::isolate( IsolationData & o_isoData ) const
     // Flush the isolation data to ensure a clean slate.
     o_isoData.clear();
 
+    // Initialize the hardware register accessor.
+    HardwareRegister::setAccessor( o_isoData.getChip() );
+
     // BEGIN temporary code
     HEI_INF( "Isolator::isolate(%p,%u)", o_isoData.getChip(),
              o_isoData.getChipType() );
     // END temporary code
+
+    // Clear the hardware register accessor. This ensures we don't have a code
+    // bug that tries to access hardware outside the scope of this function.
+    HardwareRegister::clearAccessor();
 
     return rc;
 }

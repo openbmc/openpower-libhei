@@ -46,6 +46,7 @@ RegDataCache::~RegDataCache()
 
 //------------------------------------------------------------------------------
 
+// TODO: This is fishy. Why not just return a pointer?
 BitString & RegDataCache::read( ExtensibleChip * i_chip,
                                        const Register * i_reg )
 {
