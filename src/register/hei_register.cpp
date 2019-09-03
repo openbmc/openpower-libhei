@@ -106,7 +106,7 @@ uint32_t Register::Read
 //  Title:  Set Bit
 //
 //  Purpose:  This function sets(1) the specified bit position in
-//            the Bit String.  If the Bit String is NULL, then a
+//            the Bit String.  If the Bit String is nullptr, then a
 //            new Bit String is allocated and cleared to all zero
 //            before setting the bit.
 //
@@ -134,7 +134,7 @@ void Register::SetBit
 //  Title:  Clear Bit
 //
 //  Purpose:  This function clears(0) the specified bit position in
-//            the Bit String.  If the Bit String is NULL, then a
+//            the Bit String.  If the Bit String is nullptr, then a
 //            new Bit String is allocated and cleared to all zeros.
 //
 //  Side-effects:  Bit String is modified.
@@ -162,7 +162,7 @@ void Register::ClearBit
 // Title:  Clear Bit String
 //
 // Purpose:  This function clears the Bit String.  If the data
-//           member is NULL, then a new Bit String is allocated.
+//           member is nullptr, then a new Bit String is allocated.
 //           Upon return, the state of the Bit String is all zero.
 //
 // Side-effects:  Bit String data member is modified.
