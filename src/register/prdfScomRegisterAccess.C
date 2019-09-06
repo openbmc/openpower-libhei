@@ -21,9 +21,10 @@
 /*                                                                        */
 /* IBM_PROLOG_END_TAG                                                     */
 
+#include <register/hei_register_cache.hpp>
+
 #include <prdfScomRegisterAccess.H>
 #include <prdfScanFacility.H>
-#include <prdfRegisterCache.H>
 #include <prdfExtensibleChip.H>
 
 namespace libhei

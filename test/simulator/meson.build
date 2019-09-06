@@ -3,6 +3,7 @@ sim_sources = [
     '../../src/isolator/hei_isolator.cpp',
     '../../src/register/hei_hardware_register.cpp',
     '../../src/register/hei_register.cpp',
+    '../../src/register/hei_register_cache.cpp',
     '../../src/util/hei_bit_string.cpp',
 ]
 

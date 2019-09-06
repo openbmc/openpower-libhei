@@ -11,13 +11,13 @@
 
 #include <hei_includes.hpp>
 #include <register/hei_hardware_register.hpp>
+#include <register/hei_register_cache.hpp>
 #include <util/hei_bit_string.hpp>
 
 #if 0
 #include <iipchip.h>
 #include <prdfMain.H>
 #include <prdfRasServices.H>
-#include <prdfRegisterCache.H>
 #include <prdfHomRegisterAccess.H>
 #include <prdfPlatServices.H>
 #include <prdfExtensibleChip.H>
