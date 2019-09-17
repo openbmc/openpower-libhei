@@ -1,7 +1,7 @@
 // Module Description **************************************************
 //
-// Description: This module provides the implementation for the PRD Scan
-//              Comm Register Chip class.
+// Description: This module provides the implementation for the Hardware
+//              Register Chip class.
 //
 // End Module Description **********************************************
 
@@ -9,49 +9,14 @@
 //  Includes
 //----------------------------------------------------------------------
 
-#include <hei_includes.hpp>
-#include <register/hei_hardware_register.hpp>
-#include <util/hei_bit_string.hpp>
+#include <hei_hardware_register.hpp>
 
-#include <iipchip.h>
-#include <prdfMain.H>
-#include <prdfRasServices.H>
-#include <prdfRegisterCache.H>
-#include <prdfHomRegisterAccess.H>
-#include <prdfPlatServices.H>
-#include <prdfExtensibleChip.H>
-
-//----------------------------------------------------------------------
-//  User Types
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Constants
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Macros
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Internal Function Prototypes
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Global Variables
-//----------------------------------------------------------------------
-
-//---------------------------------------------------------------------
-// Member Function Specifications
-//---------------------------------------------------------------------
-
-// --------------------------------------------------------------------
 namespace libhei
 {
 
 // ---------------------------------------------------------------------
 
-void ScomRegister::SetBitString( const BitString *bs )
+void HardwareRegister::setBitString( const BitString *bs )
 {
     BitString & l_string  = AccessBitString();
     l_string.setString(*bs);
@@ -60,7 +25,7 @@ void ScomRegister::SetBitString( const BitString *bs )
 
 //------------------------------------------------------------------------------
 
-const BitString * ScomRegister::GetBitString(ATTENTION_TYPE i_type) const
+const BitString * HardwareRegister::getBitString() const
 {
     // Calling Read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
@@ -77,7 +42,7 @@ const BitString * ScomRegister::GetBitString(ATTENTION_TYPE i_type) const
 
 //------------------------------------------------------------------------------
 
-BitString & ScomRegister::AccessBitString()
+BitString & HardwareRegister::accessBitString()
 {
     // Calling Read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
@@ -85,7 +50,7 @@ BitString & ScomRegister::AccessBitString()
     // will be created in the cache, if it does not exist, when readCache() is
     // called below.
     if ( ( ACCESS_NONE != iv_operationType ) &&
-            ( ACCESS_WO != iv_operationType ) )
+           ( ACCESS_WO != iv_operationType ) )
     {
         Read();
     }
@@ -95,7 +60,7 @@ BitString & ScomRegister::AccessBitString()
 
 //------------------------------------------------------------------------------
 
-uint32_t ScomRegister::Read() const
+uint32_t HardwareRegister::read() const
 {
     uint32_t o_rc = SUCCESS;
 
@@ -112,9 +77,9 @@ uint32_t ScomRegister::Read() const
 
 //------------------------------------------------------------------------------
 
-uint32_t ScomRegister::ForceRead() const
+uint32_t HardwareRegister::forceRead() const
 {
-    #define PRDF_FUNC "[ScomRegister::ForceRead] "
+    #define PRDF_FUNC "[HardwareRegister::ForceRead] "
 
     uint32_t o_rc = FAIL;
 
@@ -131,7 +96,7 @@ uint32_t ScomRegister::ForceRead() const
         }
 
         // Read hardware.
-        o_rc = Access( readCache(), RegisterAccess::READ );
+        o_rc = access( readCache(), RegisterAccess::READ );
         if ( SUCCESS != o_rc )
         {
             // The read failed. Remove the entry from the cache so a subsequent
@@ -148,9 +113,9 @@ uint32_t ScomRegister::ForceRead() const
 
 //------------------------------------------------------------------------------
 
-uint32_t ScomRegister::Write()
+uint32_t HardwareRegister::write()
 {
-    #define PRDF_FUNC "[ScomRegister::Write] "
+    #define PRDF_FUNC "[HardwareRegister::Write] "
 
     uint32_t o_rc = FAIL;
 
@@ -177,7 +142,7 @@ uint32_t ScomRegister::Write()
         }
 
         // Write hardware.
-        o_rc = Access( readCache(), RegisterAccess::WRITE );
+        o_rc = access( readCache(), RegisterAccess::WRITE );
 
     } while (0);
 
@@ -188,7 +153,7 @@ uint32_t ScomRegister::Write()
 
 //------------------------------------------------------------------------------
 
-uint32_t ScomRegister::Access( BitString & bs,
+uint32_t HardwareRegister::access( BitString & bs,
                                RegisterAccess::Operation op ) const
 {
     int32_t l_rc = SCR_ACCESS_FAILED;
@@ -198,11 +163,11 @@ uint32_t ScomRegister::Access( BitString & bs,
     return(l_rc);
 }
 //-----------------------------------------------------------------------------
-ExtensibleChip* ScomRegister::getChip( )const
+ExtensibleChip* HardwareRegister::getChip( )const
 {
-    ExtensibleChip* l_pchip = NULL;
+    ExtensibleChip* l_pchip = nullptr;
     l_pchip = ServiceDataCollector::getChipAnalyzed();
-    TARGETING::TYPE l_type = PlatServices::getTargetType(
+    ChipType_t l_type = PlatServices::getTargetType(
                                                 l_pchip->GetChipHandle() );
     PRDF_ASSERT( iv_chipType == l_type )
     return l_pchip;
@@ -210,16 +175,16 @@ ExtensibleChip* ScomRegister::getChip( )const
 
 //------------------------------------------------------------------------------
 
-bool ScomRegister::queryCache() const
+bool HardwareRegister::queryCache() const
 {
     RegDataCache & cache = RegDataCache::getCachedRegisters();
     BitString * bs = cache.queryCache( getChip(), this );
-    return ( NULL != bs );
+    return ( nullptr != bs );
 }
 
 //------------------------------------------------------------------------------
 
-BitString & ScomRegister::readCache() const
+BitString & HardwareRegister::readCache() const
 {
     RegDataCache & cache = RegDataCache::getCachedRegisters();
     return cache.read( getChip(), this );
@@ -227,10 +192,10 @@ BitString & ScomRegister::readCache() const
 
 //------------------------------------------------------------------------------
 
-void ScomRegister::flushCache( ExtensibleChip *i_pChip ) const
+void HardwareRegister::flushCache( ExtensibleChip *i_pChip ) const
 {
      RegDataCache & regDump = RegDataCache::getCachedRegisters();
-    if( NULL == i_pChip )
+    if( nullptr == i_pChip )
     {
         regDump.flush();
     }
@@ -242,7 +207,7 @@ void ScomRegister::flushCache( ExtensibleChip *i_pChip ) const
 
 //-----------------------------------------------------------------------------
 
-bool ScomRegister::operator == ( const ScomRegister & i_rightRegister ) const
+bool HardwareRegister::operator == ( const HardwareRegister & i_rightRegister ) const
 {
     if( iv_scomAddress == i_rightRegister.GetAddress() )
     {
@@ -256,7 +221,7 @@ bool ScomRegister::operator == ( const ScomRegister & i_rightRegister ) const
 }
 
 //-----------------------------------------------------------------------------
-bool ScomRegister::operator < ( const ScomRegister & i_rightRegister  ) const
+bool HardwareRegister::operator < ( const HardwareRegister & i_rightRegister  ) const
 {
     if( iv_scomAddress == i_rightRegister.GetAddress() )
     {
@@ -270,10 +235,8 @@ bool ScomRegister::operator < ( const ScomRegister & i_rightRegister  ) const
 
 }
 //-----------------------------------------------------------------------------
-bool ScomRegister::operator >= ( const ScomRegister & i_rightRegister  ) const
+bool HardwareRegister::operator >= ( const HardwareRegister & i_rightRegister  ) const
 {
     return !( *this < i_rightRegister );
 }
-
-} // end namespace libhei
-
+}//namespace libhei ends
