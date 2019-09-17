@@ -26,4 +26,9 @@ typedef uint32_t ChipType_t;
  */
 static constexpr ChipType_t DEFAULT_CHIP_TYPE = 0;
 
+/**
+ * User application uses this to know how to access a particular register.
+ */
+typedef uint16_t RegisterType_t;
+
 } // end namespace libhei
