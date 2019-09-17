@@ -1,7 +1,7 @@
 // Module Description **************************************************
 //
-// Description: This module provides the implementation for the PRD Scan
-//              Comm Register Chip class.
+// Description: This module provides the implementation for the Hardware
+//              Register Chip class.
 //
 // End Module Description **********************************************
 
@@ -14,56 +14,20 @@
 #include <register/hei_hardware_register.hpp>
 #include <util/hei_bit_string.hpp>
 
-#if 0
-#include <iipchip.h>
-#include <prdfMain.H>
-#include <prdfRasServices.H>
-#include <prdfPlatServices.H>
-#include <prdfExtensibleChip.H>
-
-//----------------------------------------------------------------------
-//  User Types
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Constants
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Macros
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Internal Function Prototypes
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Global Variables
-//----------------------------------------------------------------------
-
-//---------------------------------------------------------------------
-// Member Function Specifications
-//---------------------------------------------------------------------
-
-// --------------------------------------------------------------------
-#endif
-
 namespace libhei
 {
 
-#if 0
 // ---------------------------------------------------------------------
 
-void HardwareRegister::SetBitString( const BitString *bs )
+void HardwareRegister::setBitString( const BitString *bs )
 {
-    BitString & l_string  = AccessBitString();
+    BitString & l_string  = accessBitString();
     l_string.setString(*bs);
 }
 
-
 //------------------------------------------------------------------------------
 
-const BitString * HardwareRegister::GetBitString(ATTENTION_TYPE i_type) const
+const BitString * HardwareRegister::getBitString() const
 {
     // Calling Read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
@@ -74,7 +38,7 @@ const BitString * HardwareRegister::GetBitString(ATTENTION_TYPE i_type) const
     if ( ( ACCESS_NONE != iv_operationType ) &&
          ( ACCESS_WO   != iv_operationType ) )
     {
-        Read();
+        read();
     }
 
     return &( accessCache() );
@@ -82,7 +46,7 @@ const BitString * HardwareRegister::GetBitString(ATTENTION_TYPE i_type) const
 
 //------------------------------------------------------------------------------
 
-BitString & HardwareRegister::AccessBitString()
+BitString & HardwareRegister::accessBitString()
 {
     // Calling Read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
@@ -93,12 +57,11 @@ BitString & HardwareRegister::AccessBitString()
     if ( ( ACCESS_NONE != iv_operationType ) &&
          ( ACCESS_WO   != iv_operationType ) )
     {
-        Read();
+        read();
     }
 
     return accessCache();
 }
-#endif
 
 //------------------------------------------------------------------------------
 
@@ -110,7 +73,6 @@ ReturnCode HardwareRegister::read( bool i_force ) const
     // instance does not exist in the cache.
     if ( i_force || !queryCache() )
     {
-#if 0
         // This register must be readable.
         HEI_ASSERT( ( ACCESS_NONE != iv_operationType ) &&
                     ( ACCESS_WO   != iv_operationType ) );
@@ -124,21 +86,18 @@ ReturnCode HardwareRegister::read( bool i_force ) const
         // Read this register from hardware.
         rc = registerRead( getAccessorChip().getChip(), bs.getBufAddr(),
                            sz_buffer, getRegisterType(), getAddress() );
-#endif
         if ( RC_SUCCESS != rc )
         {
             // The read failed and we can't trust what was put in the register
             // cache. So remove this instance's entry from the cache.
             cv_cache.query( getAccessorChip(), this );
         }
-#if 0
         else
         {
             // Sanity check. The returned size of the data written to the buffer
             // should match the register size.
-            HEI_ASSERT( getSize() == sz_buffer );
+            HEI_ASSERT( getByteSize() == sz_buffer );
         }
-#endif
     }
 
     return rc;
@@ -152,7 +111,6 @@ ReturnCode HardwareRegister::write() const
 {
     ReturnCode rc;
 
-#if 0
     // This register must be writable.
     HEI_ASSERT( ( ACCESS_NONE != iv_operationType ) &&
                 ( ACCESS_RO   != iv_operationType ) );
@@ -174,21 +132,19 @@ ReturnCode HardwareRegister::write() const
     {
         // Sanity check. The returned size of the data written to the buffer
         // should match the register size.
-        HEI_ASSERT( getSize() == sz_buffer );
+        HEI_ASSERT( getByteSize() == sz_buffer );
     }
-#endif
 
     return rc;
 }
 
 #endif // __HEI_READ_ONLY
 
-#if 0
 //------------------------------------------------------------------------------
 
 bool HardwareRegister::operator == ( const HardwareRegister & i_rightRegister ) const
 {
-    if( iv_scomAddress == i_rightRegister.GetAddress() )
+    if( iv_address == i_rightRegister.getAddress() )
     {
         return ( iv_chipType == i_rightRegister.getChipType() );
     }
@@ -202,13 +158,13 @@ bool HardwareRegister::operator == ( const HardwareRegister & i_rightRegister ) 
 //-----------------------------------------------------------------------------
 bool HardwareRegister::operator < ( const HardwareRegister & i_rightRegister  ) const
 {
-    if( iv_scomAddress == i_rightRegister.GetAddress() )
+    if( iv_address == i_rightRegister.getAddress() )
     {
         return ( iv_chipType < i_rightRegister.getChipType() );
     }
     else
     {
-        return( iv_scomAddress  < i_rightRegister.GetAddress() );
+        return( iv_address  < i_rightRegister.getAddress() );
     }
 
 
@@ -218,7 +174,6 @@ bool HardwareRegister::operator >= ( const HardwareRegister & i_rightRegister  )
 {
     return !( *this < i_rightRegister );
 }
-#endif
 
 //------------------------------------------------------------------------------
 
