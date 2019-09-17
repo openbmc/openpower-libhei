@@ -1,7 +1,7 @@
 // Module Description **************************************************
 //
-// Description: This module provides the implementation for the PRD Scan
-//              Comm Register Chip class.
+// Description: This module provides the implementation for the Hardware
+//              Register Chip class.
 //
 // End Module Description **********************************************
 
@@ -14,47 +14,13 @@
 #include <register/hei_hardware_register.hpp>
 #include <util/hei_bit_string.hpp>
 
-#if 0
-#include <iipchip.h>
-#include <prdfMain.H>
-#include <prdfRasServices.H>
-#include <prdfPlatServices.H>
-#include <prdfExtensibleChip.H>
-
-//----------------------------------------------------------------------
-//  User Types
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Constants
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Macros
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Internal Function Prototypes
-//----------------------------------------------------------------------
-
-//----------------------------------------------------------------------
-//  Global Variables
-//----------------------------------------------------------------------
-
-//---------------------------------------------------------------------
-// Member Function Specifications
-//---------------------------------------------------------------------
-
-// --------------------------------------------------------------------
-#endif
-
 namespace libhei
 {
 
 #if 0
 // ---------------------------------------------------------------------
 
-void HardwareRegister::SetBitString( const BitString *bs )
+void HardwareRegister::setBitString( const BitString *bs )
 {
     BitString & l_string  = AccessBitString();
     l_string.setString(*bs);
@@ -63,7 +29,7 @@ void HardwareRegister::SetBitString( const BitString *bs )
 
 //------------------------------------------------------------------------------
 
-const BitString * HardwareRegister::GetBitString(ATTENTION_TYPE i_type) const
+const BitString * HardwareRegister::getBitString() const
 {
     // Calling Read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
@@ -82,7 +48,7 @@ const BitString * HardwareRegister::GetBitString(ATTENTION_TYPE i_type) const
 
 //------------------------------------------------------------------------------
 
-BitString & HardwareRegister::AccessBitString()
+BitString & HardwareRegister::accessBitString()
 {
     // Calling Read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we

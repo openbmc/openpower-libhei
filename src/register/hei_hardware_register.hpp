@@ -1,14 +1,19 @@
 #pragma once
 
 /**
- * @brief Models register.It does not contain target.
- *
- * This class stores the hash id and bit length of scom registers It models
- * registers without maintaining target information. Instances of this class
- * are shared across rule chip objects of same type.Once prd object model is
- * built, instances of this register are saved in flyweight.These instances
- * persist as long as prd object model survives.
- */
+@file hei_hardware_register.hpp
+@brief Models Register.  It does not contain target.
+
+Class Specification
+
+Name:     Hardware Register
+Purpose:  This class stores the hash ID and bit length of scom registers.
+Notes:    It models registers without maintaining target information.
+          Instances of this class are shared across rule chip objects of same
+          type.  Once prd object model is built, instances of this register
+          are saved in flyweight.  These instances persist as long as prd
+          object model survives.
+*/
 
 #include <hei_includes.hpp>
 #include <register/hei_register.hpp>
@@ -53,14 +58,28 @@ class HardwareRegister : public Register
   public:
 
 #if 0
+    /* Disable the copy and move semantics\n
+        Deleting the following also keeps implicit moves from being created */
+    HardwareRegister(const HardwareRegister&) = delete;            // copy
+    HardwareRegister& operator=(const HardwareRegister&) = delete; // assignment
+
+    /* The register access level */
+    enum AccessLevel
+    {   
+        ACCESS_NONE = 0x0, //< No access
+        ACCESS_RO   = 0x1, //< Read-only access
+        ACCESS_WO   = 0x2, //< Write-only access
+        ACCESS_RW   = 0x3, //< Read/Write access
+    };
+
     /**
-     * @brief     constructor
-     * @param     i_address        address of the register
-     * @param     i_bitLength      bit length of register
-     * @param     i_targetType     target type associated with register
-     */
+    @brief     Constructor
+    @param     i_address        address of the register
+    @param     i_bitLength      bit length of register
+    @param     i_targetType     target type associated with register
+    */
     HardwareRegister( uint64_t i_address, uint32_t i_bitLength,
-                  TARGETING::TYPE i_targetType, AccessLevel i_access ) :
+                  ChipType_t i_targetType, AccessLevel i_access ) :
         Register(),
         iv_bitLength( i_bitLength ),
         iv_chipType( i_targetType ),
@@ -69,7 +88,7 @@ class HardwareRegister : public Register
     {}
 
     /**
-     * @brief     constructor .Added this because we save object of this type in
+     * @brief     Constructor, added because we save object of this type in
      * @          FlyweightS
      */
     HardwareRegister():
@@ -80,27 +99,61 @@ class HardwareRegister : public Register
         iv_operationType( ACCESS_NONE )
     {}
 
+    /* The register access level */
+    enum AccessLevel_t
+    {
+        ACCESS_NONE = 0x0, //< No access
+        ACCESS_RO   = 0x1, //< Read-only access
+        ACCESS_WO   = 0x2, //< Write-only access
+        ACCESS_RW   = 0x3, //< Read/Write access
+    };
+    const AccessLevel_t iv_accessLevel;
+
+    /*
+     *Instance variables
+     */
+//These will get their types from  hei_chip_data.hpp but they aren't there yet.
+    /** A unique ID for tihs register. */
+    const uint16_t iv_id;
+
+    /** A register may have multiple instances.  All of those registers will
+        have the same iv_id and this instance variable will be used to
+        distinguish between each instance. */
+    const uint8_t iv_instance;
+
+    /** The 1, 2, 4, or 8 byte address (right justified) of this register. */
+    const uint64_t iv_address;
+
+    /** The byte length of this register. */
+    const size_t iv_size;
+
+    /** This is given to the user application to indicate what type of
+        register access is needed. */
+    const uint16_t iv_type;
+
+    /*
+     * Public Member functions.
+     */
+
     /**
      * @brief     Returns the pointer to bit string
      * @param     i_type               attention type
      * @return    BitString *   pointer to bit string
      */
+    virtual const BitString * getBitString() const = 0;
 
-    virtual const BitString * GetBitString(ATTENTION_TYPE i_type =
-                                                  INVALID_ATTENTION_TYPE) const;
     /**
      * @brief     Updates bit string contents associated with register
      * @param     i_bs               poiner to bit string
      * @return    Nil
      */
-
-    virtual void SetBitString(const BitString * i_bs) ;
+    virtual void setBitString(const BitString * i_bs) ;
 
     /**
      * @brief     Returns length of the bits string associated with register
      * @return    length of bit string
      */
-    uint32_t GetBitLength(void) const { return iv_bitLength ;}
+    uint32_t getBitLength(void) const { return iv_bitLength ;}
 #endif
     size_t getByteSize() const { return 8; } // TODO
 
@@ -130,42 +183,43 @@ class HardwareRegister : public Register
     /**
      * @brief     Returns the hash id of register
      * @return    returns  hash id of register
-     * @pre       None
-     * @post      None
-     * @note
      */
-    virtual uint16_t GetId(void) const { return iv_shortId; };
+    virtual uint16_t getId(void) const { return iv_shortId; };
 
     /**
      * @brief     Sets the hash id of register
      * @param     i_id     hash id of register
      * @return    Nil
      */
-    virtual void SetId(uint16_t i_id) { iv_shortId = i_id; };
+    virtual void setId(uint16_t i_id) { iv_shortId = i_id; };
 
-   /**
+    /**
     * @brief    Returns type of Target associated with register.
     * @return   Refer to function description
     */
-   TARGETING::TYPE getChipType()const{ return iv_chipType ;} ;
-   /**
+   ChipType_t getChipType()const{ return iv_chipType ;} ;
+
+    /**
     * @brief    Returns scom address of register
     * @return   Refer to function description
     */
-   uint64_t GetAddress( ) const {return iv_scomAddress ;};
-   /**
+   uint64_t getAddress( ) const {return iv_scomAddress ;};
+
+    /**
     * @brief     compares two ScomRegisterAccess register for equality
     * @param     i_rightRegister   register to be compared against
     * @return    Returns true if registers are equal false otherwise
     */
-   bool operator == ( const HardwareRegister & i_rightRegister ) const ;
-   /**
+   bool operator == ( const HardwareRegister & i_r) const ;
+
+    /**
     * @brief     defines < operation for ScomRegisterAccess
     * @param     i_rightRegister   register to be compared against
     * @return    Returns false if i_rightRegisters is less and true otherwise
     */
-   bool operator < ( const HardwareRegister & i_rightRegister  ) const ;
-   /**
+   bool operator < ( const HardwareRegister & i_r) const ;
+
+    /**
     * @brief     defines >= operation for ScomRegisterAccess
     * @param     i_rightRegister   register to be compared against
     * @return    Returns true if registers is >= i_rightRegister false
@@ -194,13 +248,13 @@ class HardwareRegister : public Register
         iv_operationType( i_scomRegister.getAccessLevel() )
     {}
 
-   /**
+    /**
     * @brief    Returns reference to bit string associated with register
     * @return   Refer to function description
-   */
-    virtual BitString & AccessBitString( );
+    */
+    virtual BitString & accessBitString( );
 
-private: // functions
+  private: // functions
 
   friend class CaptureData;
 
@@ -208,7 +262,7 @@ private: // functions
 
     uint32_t        iv_bitLength;     // bit length of scom
     uint16_t        iv_shortId;       // unique hash id of register
-    TARGETING::TYPE iv_chipType;      // type of target associated with register
+    ChipType_t      iv_chipType;      // type of target associated with register
     uint64_t        iv_scomAddress;   // scom address associated with regiser
     AccessLevel     iv_operationType; // Operation supported (RO, WO, or RW)
 
