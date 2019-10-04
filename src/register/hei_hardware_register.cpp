@@ -59,56 +59,68 @@ void HardwareRegister::SetBitString( const BitString *bs )
     BitString & l_string  = AccessBitString();
     l_string.setString(*bs);
 }
-
+#endif
 
 //------------------------------------------------------------------------------
 
-const BitString * HardwareRegister::GetBitString(ATTENTION_TYPE i_type) const
+const BitString * HardwareRegister::getBitString( const Chip & i_chip ) const
 {
-    // Calling Read() will ensure that an entry exists in the cache and the
+    // Verify this register belongs on i_chip.
+    verifyAccessorChip( i_chip );
+
+    // Calling read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
     // cannot read hardware for write-only registers. In this case, an entry
     // will be created in the cache, if it does not exist, when the cache is
-    // read below.
+    // accessed below.
 
+#if 0
     if ( ( ACCESS_NONE != iv_operationType ) &&
          ( ACCESS_WO   != iv_operationType ) )
     {
-        Read();
+        read( i_chip );
     }
+#endif
 
-    return &( accessCache() );
+    return &( accessCache(i_chip) );
 }
 
 //------------------------------------------------------------------------------
 
-BitString & HardwareRegister::AccessBitString()
+#if 0
+BitString & HardwareRegister::AccessBitString( const Chip & i_chip )
 {
-    // Calling Read() will ensure that an entry exists in the cache and the
+    // Verify this register belongs on i_chip.
+    verifyAccessorChip( i_chip );
+
+    // Calling read() will ensure that an entry exists in the cache and the
     // entry has at been synched with hardware at least once. Note that we
     // cannot read hardware for write-only registers. In this case, an entry
     // will be created in the cache, if it does not exist, when the cache is
-    // read below.
+    // accessed below.
 
     if ( ( ACCESS_NONE != iv_operationType ) &&
          ( ACCESS_WO   != iv_operationType ) )
     {
-        Read();
+        read( i_chip );
     }
 
-    return accessCache();
+    return accessCache( i_chip );
 }
 #endif
 
 //------------------------------------------------------------------------------
 
-ReturnCode HardwareRegister::read( bool i_force ) const
+ReturnCode HardwareRegister::read( const Chip & i_chip, bool i_force ) const
 {
     ReturnCode rc;
 
+    // Verify this register belongs on i_chip.
+    verifyAccessorChip( i_chip );
+
     // Read from hardware only if the read is forced or the entry for this
     // instance does not exist in the cache.
-    if ( i_force || !queryCache() )
+    if ( i_force || !queryCache(i_chip) )
     {
 #if 0
         // This register must be readable.
@@ -116,20 +128,20 @@ ReturnCode HardwareRegister::read( bool i_force ) const
                     ( ACCESS_WO   != iv_operationType ) );
 
         // Get the buffer from the register cache.
-        BitString & bs = accessCache();
+        BitString & bs = accessCache( i_chip );
 
         // Get the byte size of the buffer.
         size_t sz_buffer = BitString::getMinBytes( bs.getBitLen() );
 
         // Read this register from hardware.
-        rc = registerRead( getAccessorChip().getChip(), bs.getBufAddr(),
+        rc = registerRead( i_chip.getChip(), bs.getBufAddr(),
                            sz_buffer, getRegisterType(), getAddress() );
 #endif
         if ( RC_SUCCESS != rc )
         {
             // The read failed and we can't trust what was put in the register
             // cache. So remove this instance's entry from the cache.
-            cv_cache.flush( getAccessorChip(), this );
+            cv_cache.flush( i_chip, this );
         }
 #if 0
         else
@@ -148,9 +160,12 @@ ReturnCode HardwareRegister::read( bool i_force ) const
 
 #ifndef __HEI_READ_ONLY
 
-ReturnCode HardwareRegister::write() const
+ReturnCode HardwareRegister::write( const Chip & i_chip ) const
 {
     ReturnCode rc;
+
+    // Verify this register belongs on i_chip.
+    verifyAccessorChip( i_chip );
 
 #if 0
     // This register must be writable.
@@ -158,16 +173,16 @@ ReturnCode HardwareRegister::write() const
                 ( ACCESS_RO   != iv_operationType ) );
 
     // An entry for this register must exist in the cache.
-    HEI_ASSERT( queryCache() );
+    HEI_ASSERT( queryCache(i_chip) );
 
     // Get the buffer from the register cache.
-    BitString & bs = accessCache();
+    BitString & bs = accessCache( i_chip );
 
     // Get the byte size of the buffer.
     size_t sz_buffer = BitString::getMinBytes( bs.getBitLen() );
 
     // Write to this register to hardware.
-    rc = registerWrite( getAccessorChip().getChip(), bs.getBufAddr(),
+    rc = registerWrite( i_chip.getChip(), bs.getBufAddr(),
                         sz_buffer, getRegisterType(), getAddress() );
 
     if ( RC_SUCCESS == rc )
@@ -219,10 +234,6 @@ bool HardwareRegister::operator >= ( const HardwareRegister & i_rightRegister  )
     return !( *this < i_rightRegister );
 }
 #endif
-
-//------------------------------------------------------------------------------
-
-HardwareRegister::Accessor * HardwareRegister::cv_accessor = nullptr;
 
 //------------------------------------------------------------------------------
 
