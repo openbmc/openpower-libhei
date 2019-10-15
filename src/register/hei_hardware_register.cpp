@@ -24,27 +24,11 @@ void HardwareRegister::setBitString( const BitString *bs )
 
 const BitString * HardwareRegister::getBitString( const Chip & i_chip ) const
 {
-    // Verify this register belongs on i_chip.
-    verifyAccessorChip( i_chip );
-
-    // Calling read() will ensure that an entry exists in the cache and the
-    // entry has at been synched with hardware at least once. Note that we
-    // cannot read hardware for write-only registers. In this case, an entry
-    // will be created in the cache, if it does not exist, when the cache is
-    // accessed below.
-
-    if ( ( REG_ACCESS_NONE != getAccessLevel() ) &&
-         ( REG_ACCESS_WO   != getAccessLevel() ) )
-    {
-        read( i_chip );
-    }
-
-    return &( accessCache(i_chip) );
+    return &( accessBitString(i_chip) );
 }
 
 //------------------------------------------------------------------------------
 
-#if 0
 BitString & HardwareRegister::accessBitString( const Chip & i_chip )
 {
     // Verify this register belongs on i_chip.
@@ -64,7 +48,6 @@ BitString & HardwareRegister::accessBitString( const Chip & i_chip )
 
     return accessCache( i_chip );
 }
-#endif
 
 //------------------------------------------------------------------------------
 
