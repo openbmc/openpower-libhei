@@ -1,6 +1,7 @@
 
 #include <isolator/hei_isolator.hpp>
 #include <register/hei_hardware_register.hpp>
+#include <register/hei_isolation_register.hpp>
 #include <util/hei_flyweight.hpp>
 
 // BEGIN temporary code
@@ -40,15 +41,19 @@ ReturnCode Isolator::initialize( void * i_buffer, size_t i_bufferSize,
 
 void Isolator::uninitialize()
 {
+    // Must flush the isolation stack before deleting any IsolationRegister
+    // objects.
+    IsolationRegister::flushIsolationStack();
+
+    // Remove all of the IsolationRegister objects stored in the flyweights.
+    // Must be done before removing the HardwareRegister objects
+    Flyweight<IsolationRegister>::getSingleton().clear();
+
     // Must flush the hardware register cache before deleting any
     // HardwareRegister objects.
     HardwareRegister::flushAll();
 
-    // BEGIN temporary code
-    HEI_INF( "Isolator::uninitialize()" );
-    // END temporary code
-
-    // Remove all of the isolation objects stored in the flyweights.
+    // Remove all of the HardwareRegister objects stored in the flyweights.
     Flyweight<ScomRegister>::getSingleton().clear();
     Flyweight<IdScomRegister>::getSingleton().clear();
 }
@@ -63,6 +68,9 @@ ReturnCode Isolator::isolate( const std::vector<Chip> & i_chipList,
 
     // Flush the hardware register cache to avoid using stale data.
     HardwareRegister::flushAll();
+
+    // Flush the isolation stack since this is an new round of isolation.
+    IsolationRegister::flushIsolationStack();
 
     // Analyze active error on each chip.
     for ( auto const & chip : i_chipList )
