@@ -15,17 +15,17 @@ class NotRegister : public Register
     NotRegister() :
         Register( ), iv_child(nullptr), iv_iBS(0)
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    NotRegister(Register & i_arg) :
+    NotRegister(Register& i_arg) :
         Register( ), iv_child(&i_arg),
         iv_iBS(i_arg.GetBitLength())
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    NotRegister & operator=(const NotRegister & r)
+    NotRegister& operator=(const NotRegister& r)
     {
         iv_child = r.iv_child;
         iv_iBS = r.iv_iBS;
@@ -36,7 +36,7 @@ class NotRegister : public Register
     virtual uint32_t Read() const { return iv_child->Read();  }
     virtual uint32_t Write()      { return iv_child->Write(); }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
         (*iv_bs) = ~(*iv_child->getBitString(i_chip));
         return iv_bs;
@@ -45,17 +45,17 @@ class NotRegister : public Register
     virtual uint16_t GetId() const { return iv_child->GetId(); }
     virtual void SetId(uint16_t i_id) {}
 
-    bool operator==(const NotRegister & r) const
+    bool operator==(const NotRegister& r) const
     { return r.iv_child == iv_child; }
 
-    bool operator<(const NotRegister & r) const
+    bool operator<(const NotRegister& r) const
     { return iv_child < r.iv_child; }
 
-    bool operator>=(const NotRegister & r) const
+    bool operator>=(const NotRegister& r) const
     { return iv_child >= r.iv_child; }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:
@@ -71,17 +71,17 @@ class LeftShiftRegister : public Register
     LeftShiftRegister() :
         Register( ), iv_child(nullptr), iv_amount(0), iv_iBS(0)
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    LeftShiftRegister(Register & i_arg, uint16_t i_amount) :
+    LeftShiftRegister(Register& i_arg, uint16_t i_amount) :
         Register( ), iv_child(&i_arg), iv_amount(i_amount),
         iv_iBS(i_arg.GetBitLength())
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    LeftShiftRegister & operator=(const LeftShiftRegister & r)
+    LeftShiftRegister& operator=(const LeftShiftRegister& r)
     {
         iv_child = r.iv_child;
         iv_amount = r.iv_amount;
@@ -93,7 +93,7 @@ class LeftShiftRegister : public Register
     virtual uint32_t Read() const { return iv_child->Read();  }
     virtual uint32_t Write()      { return iv_child->Write(); }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
         (*iv_bs) = (*iv_child->getBitString(i_chip)) << iv_amount;
         return iv_bs;
@@ -102,17 +102,17 @@ class LeftShiftRegister : public Register
     virtual uint16_t GetId() const { return iv_child->GetId(); }
     virtual void SetId(uint16_t i_id) {}
 
-    bool operator==(const LeftShiftRegister & r) const
-    { return (r.iv_child == iv_child) && (r.iv_amount == iv_amount); }
+    bool operator==(const LeftShiftRegister& r) const
+    { return (r.iv_child == iv_child)&& (r.iv_amount == iv_amount); }
 
-    bool operator<(const LeftShiftRegister & r) const
+    bool operator<(const LeftShiftRegister& r) const
     {
         if (iv_child == r.iv_child)
             return iv_amount < r.iv_amount;
         return iv_child < r.iv_child;
     }
 
-    bool operator>=(const LeftShiftRegister & r) const
+    bool operator>=(const LeftShiftRegister& r) const
     {
         if (iv_child == r.iv_child)
             return iv_amount >= r.iv_amount;
@@ -120,7 +120,7 @@ class LeftShiftRegister : public Register
     }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:
@@ -137,17 +137,17 @@ class RightShiftRegister : public Register
     RightShiftRegister() :
         Register( ), iv_child(nullptr), iv_amount(0), iv_iBS(0)
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    RightShiftRegister(Register & i_arg, uint16_t i_amount) :
+    RightShiftRegister(Register& i_arg, uint16_t i_amount) :
         Register( ), iv_child(&i_arg), iv_amount(i_amount),
         iv_iBS(i_arg.GetBitLength())
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    RightShiftRegister & operator=(const RightShiftRegister & r)
+    RightShiftRegister& operator=(const RightShiftRegister& r)
     {
         iv_child = r.iv_child;
         iv_amount = r.iv_amount;
@@ -159,7 +159,7 @@ class RightShiftRegister : public Register
     virtual uint32_t Read() const { return iv_child->Read();  }
     virtual uint32_t Write()      { return iv_child->Write(); }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
         (*iv_bs) = (*iv_child->getBitString(i_chip)) >> iv_amount;
         return iv_bs;
@@ -168,17 +168,17 @@ class RightShiftRegister : public Register
     virtual uint16_t GetId() const { return iv_child->GetId(); }
     virtual void SetId(uint16_t i_id) {}
 
-    bool operator==(const RightShiftRegister & r) const
-    { return (r.iv_child == iv_child) && (r.iv_amount == iv_amount); }
+    bool operator==(const RightShiftRegister& r) const
+    { return (r.iv_child == iv_child)&& (r.iv_amount == iv_amount); }
 
-    bool operator<(const RightShiftRegister & r) const
+    bool operator<(const RightShiftRegister& r) const
     {
         if (iv_child == r.iv_child)
             return iv_amount < r.iv_amount;
         return iv_child < r.iv_child;
     }
 
-    bool operator>=(const RightShiftRegister & r) const
+    bool operator>=(const RightShiftRegister& r) const
     {
         if (iv_child == r.iv_child)
             return iv_amount >= r.iv_amount;
@@ -186,7 +186,7 @@ class RightShiftRegister : public Register
     }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:
@@ -204,19 +204,19 @@ class AndRegister : public Register
     AndRegister() :
         Register( ), iv_left(nullptr), iv_right(nullptr), iv_iBS(0)
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    AndRegister( Register & i_left,
-                 Register & i_right ) :
+    AndRegister( Register& i_left,
+                 Register& i_right ) :
         Register( ), iv_left(&i_left), iv_right(&i_right),
         iv_iBS(std::min(i_left.GetBitLength(),
                         i_right.GetBitLength()))
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    AndRegister & operator=(const AndRegister & r)
+    AndRegister& operator=(const AndRegister& r)
     {
         iv_left = r.iv_left;
         iv_right = r.iv_right;
@@ -234,10 +234,10 @@ class AndRegister : public Register
         return iv_left->Write() | iv_right->Write();
     }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
         (*iv_bs) = *iv_left->getBitString(i_chip);
-        (*iv_bs) = (*iv_bs) & (*iv_right->getBitString(i_chip));
+        (*iv_bs) = (*iv_bs)& (*iv_right->getBitString(i_chip));
         return iv_bs;
     }
 
@@ -249,17 +249,17 @@ class AndRegister : public Register
 
     virtual void SetId(uint16_t i_id) {}
 
-    bool operator==(const AndRegister & r) const
-    { return (r.iv_left == iv_left) && (r.iv_right == iv_right); }
+    bool operator==(const AndRegister& r) const
+    { return (r.iv_left == iv_left)&& (r.iv_right == iv_right); }
 
-    bool operator<(const AndRegister & r) const
+    bool operator<(const AndRegister& r) const
     {
         if (iv_left == r.iv_left)
             return iv_right < r.iv_right;
         return iv_left < r.iv_left;
     }
 
-    bool operator>=(const AndRegister & r) const
+    bool operator>=(const AndRegister& r) const
     {
         if (iv_left == r.iv_left)
             return iv_right >= r.iv_right;
@@ -267,7 +267,7 @@ class AndRegister : public Register
     }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:
@@ -285,19 +285,19 @@ class OrRegister : public Register
     OrRegister() :
         Register( ), iv_left(nullptr), iv_right(nullptr), iv_iBS(0)
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    OrRegister( Register & i_left,
-                Register & i_right ) :
+    OrRegister( Register& i_left,
+                Register& i_right ) :
         Register( ), iv_left(&i_left), iv_right(&i_right),
         iv_iBS(std::min(i_left.GetBitLength(),
                         i_right.GetBitLength()))
     {
-        iv_bs = &iv_iBS;
+        iv_bs =&iv_iBS;
     }
 
-    OrRegister & operator=(const OrRegister & r)
+    OrRegister& operator=(const OrRegister& r)
     {
         iv_left = r.iv_left;
         iv_right = r.iv_right;
@@ -316,7 +316,7 @@ class OrRegister : public Register
         return iv_left->Write() | iv_right->Write();
     }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
         (*iv_bs) = *iv_left->getBitString(i_chip);
         (*iv_bs) = (*iv_bs) | (*iv_right->getBitString(i_chip));
@@ -331,17 +331,17 @@ class OrRegister : public Register
 
     virtual void SetId(uint16_t i_id) {}
 
-    bool operator==(const OrRegister & r) const
-    { return (r.iv_left == iv_left) && (r.iv_right == iv_right); }
+    bool operator==(const OrRegister& r) const
+    { return (r.iv_left == iv_left)&& (r.iv_right == iv_right); }
 
-    bool operator<(const OrRegister & r) const
+    bool operator<(const OrRegister& r) const
     {
         if (iv_left == r.iv_left)
             return iv_right < r.iv_right;
         return iv_left < r.iv_left;
     }
 
-    bool operator>=(const OrRegister & r) const
+    bool operator>=(const OrRegister& r) const
     {
         if (iv_left == r.iv_left)
             return iv_right >= r.iv_right;
@@ -349,7 +349,7 @@ class OrRegister : public Register
     }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:
@@ -367,7 +367,7 @@ class NullRegister : public Register
         Register( ), iv_iBS(size)
     {}
 
-    NullRegister & operator=(const NullRegister & r)
+    NullRegister& operator=(const NullRegister& r)
     {
         iv_iBS = r.iv_iBS;
         return *this;
@@ -376,13 +376,13 @@ class NullRegister : public Register
     virtual uint32_t Read() const { return 0; }
     virtual uint32_t Write()      { return 0; }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
-        return &iv_iBS;
+        return&iv_iBS;
     }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:
@@ -402,11 +402,11 @@ class ConstantRegister : public Register
         Register( ), iv_iBS(0)
     {}
 
-    ConstantRegister( const BitStringBuffer & i_arg ) :
+    ConstantRegister( const BitStringBuffer& i_arg ) :
         Register( ), iv_iBS(i_arg)
     {}
 
-    ConstantRegister & operator=(const ConstantRegister & r)
+    ConstantRegister& operator=(const ConstantRegister& r)
     {
         iv_iBS = r.iv_iBS;
         return *this;
@@ -415,9 +415,9 @@ class ConstantRegister : public Register
     virtual uint32_t Read() const { return SUCCESS; }
     virtual uint32_t Write()      { return SUCCESS; }
 
-    const BitString * getBitString( const Chip & i_chip ) const
+    const BitString * getBitString( const Chip& i_chip ) const
     {
-        return &iv_iBS;
+        return&iv_iBS;
     }
 
     virtual uint16_t GetId() const
@@ -425,11 +425,11 @@ class ConstantRegister : public Register
 
     virtual void SetId(uint16_t i_id) {}
 
-    bool operator==(const ConstantRegister & r) const
+    bool operator==(const ConstantRegister& r) const
     { return r.iv_iBS == iv_iBS; }
 
   protected:
-    BitString & AccessBitString(void) { return iv_iBS; }
+    BitString& AccessBitString(void) { return iv_iBS; }
     void SetBitString(const BitString *) {}
 
   private:

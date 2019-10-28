@@ -59,7 +59,7 @@
 //
 // BIT8 data[BUFFER_SIZE];
 //
-// void foo(TARGETING::TargetHandle_t chipId, ScanCommRegisterAccess & scr)
+// void foo(TARGETING::TargetHandle_t chipId, ScanCommRegisterAccess& scr)
 //   {
 //   CaptureData captureData;
 //
@@ -156,12 +156,12 @@ public:
   /*
    Copy constructor - default is ok
    */
-//  CaptureData(const CaptureData & c);
+//  CaptureData(const CaptureData& c);
 
   /*
    Assignment operator - default is ok
    */
-//  CaptureData & operator=(const CaptureData & c);
+//  CaptureData& operator=(const CaptureData& c);
 
   /**
    Destructor
@@ -181,7 +181,7 @@ public:
 
   // dg00 start
   /**
-   Add scr & data to capture log
+   Add scr& data to capture log
    <ul>
    <br><b>Parameter:  chipHandle     target handle of chip object
    <br><b>Parameter:  scan comm id (unique one btye code representing scan comm address)
@@ -194,12 +194,12 @@ public:
    </ul><br>
    */
   void Add( TARGETING::TargetHandle_t i_pchipHandle, int scomId,
-            Register & scr, Place place = BACK,
+            Register& scr, Place place = BACK,
             RegType type = PRIMARY);  // @jl04 c. Changed this to add the type to the end of the parms.
   // dg00 end
 
   /*  REMOVE for FSP
-   Add scr & data to capture log
+   Add scr& data to capture log
    <ul>
    <br><b>Parameter:  chipHandle     target handle of chip object
    <br><b>Parameter:  Scan comm register object
@@ -210,13 +210,13 @@ public:
    <br><b>Notes:     This is the required Add() method for pre-Regatta
    </ul><br>
 
-  void Add(TARGETING::TargetHandle_t chipId, Register & scr,
+  void Add(TARGETING::TargetHandle_t chipId, Register& scr,
       Place place = BACK);
 */
 
   // dg02 start
   /**
-   Add scr & data to capture log
+   Add scr& data to capture log
    <ul>
    <br><b>Parameter:  i_pchipHandle Handle of chip object
    <br><b>Parameter:  scan comm id (unique one btye code representing scan comm address)
@@ -229,13 +229,13 @@ public:
    </ul><br>
    */
   void Add( TARGETING::TargetHandle_t i_pchipHandle, int scomId,
-            const BitString & bs, Place place = BACK);
+            const BitString& bs, Place place = BACK);
 
   // dg02 end
 
 // start @jl04a
   /**
-   Drop scr & data from capture log
+   Drop scr& data from capture log
    <ul>
    <br><b>Parameter:  Type of capture vector [PRIMARY | SECONDARY] def = PRIMARY. SECONDARIES dropped on connected.
    <br><b>Returns:   Nothing
@@ -271,7 +271,7 @@ void Drop(RegType type);  //@jl04a
                  data is network ordered bytes.
    <ul><br>
    */
-  CaptureData & operator=(const uint8_t *i_flatdata);
+  CaptureData& operator=(const uint8_t *i_flatdata);
   // <-- dg08a
 
 private:
@@ -325,8 +325,8 @@ private:
 
     RegType registerType;          // @jl04a
 
-    Data(const Data & d);
-    Data & operator=(const Data & d);
+    Data(const Data& d);
+    Data& operator=(const Data& d);
   };
 
 // We should probably use a link list instead of a vector
@@ -343,11 +343,11 @@ private:
                          RegType i_type = PRIMARY );
 
   // Predicate for deciding to delete an element of data from a Capture Data list.
-  class prdfCompareCaptureDataType : public std::unary_function<Data &, bool>
+  class prdfCompareCaptureDataType : public std::unary_function<Data&, bool>
   {
     public:
       prdfCompareCaptureDataType(RegType i_ctor_input) : __private_storage(i_ctor_input){};
-      bool operator() (Data &i)
+      bool operator() (Data&i)
       {
         return (i.registerType == __private_storage);
       };
@@ -362,7 +362,7 @@ private:
   // Predicate for deciding whether to delete an
   // element of data from a Capture Data list.
   class prdfCompareCaptureDataEntry :
-      public std::unary_function<Data &, bool>
+      public std::unary_function<Data&, bool>
   {
     public:
       prdfCompareCaptureDataEntry(
@@ -370,9 +370,9 @@ private:
                     uint16_t address) :
                     __chipHandle(chipHandle),
                     __address(address) {};
-      bool operator() (Data &i)
+      bool operator() (Data&i)
       {
-        return ((i.chipHandle == __chipHandle) &&
+        return ((i.chipHandle == __chipHandle)&&
                 (i.address    == __address));
       };
 
@@ -387,13 +387,13 @@ public:
    * @brief   Merge scom register data from two captures
    * @param   i_cd  secondary capture data to merge
    */
-  void mergeData(CaptureData & i_cd);
+  void mergeData(CaptureData& i_cd);
 
   /**
    * @brief   Get the Scom data pointer
    * @return  the Scom data pointer
    */
-  DataContainerType * getData() { return &data; }
+  DataContainerType * getData() { return&data; }
 
 
 
