@@ -43,8 +43,8 @@ class SimulatorData
      *  isolation. */
     std::map<Chip, std::map<uint32_t, uint64_t>> iv_scomRegData;
 
-    /** The contents of all the Indirect SCOM registers used for an iteration of
-     *  isolation. */
+    /** The contents of all the Indirect SCOM registers used for an
+     *  iteration of isolation. */
     std::map<Chip, std::map<uint64_t, uint64_t>> iv_idScomRegData;
 
     /** The list of expected signatures during an iteration of isolation. */
@@ -52,11 +52,32 @@ class SimulatorData
 
   public:
     /**
-     * @brief Adds a chip to the list of configured chips. Also, calls the main
-     *        initialize() API which will initialize the isolator with the Chip
-     *        Data File associated with this chip.
-     */
+     * @brief Adds a chip to the list of configured chips. Also, calls
+     *        the main initialize() API which will initialize the isolator
+     *        with the Chip Data File associated with this chip. */
     void addChip(const Chip& i_chip);
+
+    /**
+     *
+     * @brief Retrieves all ScomReg
+     *
+     */
+    // void getScomReg(void* o_buffer)
+    void getScomReg()
+    {
+        printf("\nWow!\n");
+    }
+
+    /**
+     *
+     * @breif Retrieves all idScomReg
+     *
+     */
+    // void getIdScomReg(void* o_buffer)
+    void getIdScomReg()
+    {
+        printf("\nNow Signal!\n");
+    }
 
     /** @brief Adds a SCOM register to iv_scomRegData. */
     void addScomReg(const Chip& i_chip, uint32_t i_address, uint64_t i_value)
@@ -101,8 +122,8 @@ class SimulatorData
     }
 
     /**
-     * @brief Flushes register and expected signature lists used for a single
-     *        isolation.
+     * @brief Flushes register and expected signature lists used for a
+     *        single isolation.
      */
     void flushIterationData()
     {
@@ -120,8 +141,8 @@ class SimulatorData
 
     /**
      * @brief After an iteration is set up with registers and expected
-     *        signatures, this is called to run the simulation and verify the
-     *        expected signatures.
+     *        signatures, this is called to run the simulation and verify
+     *        the expected signatures.
      */
     void endIteration();
 };
