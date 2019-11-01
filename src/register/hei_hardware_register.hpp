@@ -145,15 +145,6 @@ class HardwareRegister : public Register
     /** Function overloaded from parent Register class. */
     const BitString* getBitString(const Chip& i_chip) const;
 
-#if 0
-    /**
-     * @brief     Updates bit string contents associated with register
-     * @param     i_bs               poiner to bit string
-     * @return    Nil
-     */
-    virtual void setBitString(const BitString * i_bs) ;
-#endif
-
     /**
      * @brief  Reads a register from hardware via the user interface APIs.
      * @param  i_chip  The target chip in which this register belongs.
@@ -177,18 +168,6 @@ class HardwareRegister : public Register
     ReturnCode write(const Chip& i_chip) const;
 
 #endif // __HEI_READ_ONLY
-
-  protected:
-    /**
-     * @brief  Provides access to this register's BitString.
-     *
-     * WARNING: Allowing public access to this function may be dangerous. For
-     *          now it should be left as protected.
-     *
-     * @param  i_chip  The target chip in which this register belongs.
-     * @return A reference to the BitString.
-     */
-    BitString& accessBitString(const Chip& i_chip);
 
   private: // Hardware accessor management functions.
     /** @brief Asserts this register belongs on the target accessor chip. */
