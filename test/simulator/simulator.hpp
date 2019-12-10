@@ -4,6 +4,7 @@
 
 #include "gtest/gtest.h"
 
+using namespace std;
 namespace libhei
 {
 
@@ -57,26 +58,16 @@ class SimulatorData
      *        with the Chip Data File associated with this chip. */
     void addChip(const Chip& i_chip);
 
-    /**
-     *
-     * @brief Retrieves all ScomReg
-     *
-     */
-    // void getScomReg(void* o_buffer)
-    void getScomReg()
+    /** @brief Retrieve ScomReg from map and return its value */
+    uint64_t getScomReg(const Chip& i_chip, uint32_t i_address)
     {
-        printf("\nWow!\n");
+        return iv_scomRegData[i_chip][i_address];
     }
 
-    /**
-     *
-     * @breif Retrieves all idScomReg
-     *
-     */
-    // void getIdScomReg(void* o_buffer)
-    void getIdScomReg()
+    /** @breif Retrieve idScomReg from map and return its value */
+    uint64_t getIdScomReg(const Chip& i_chip, uint64_t i_address)
     {
-        printf("\nNow Signal!\n");
+        return iv_idScomRegData[i_chip][i_address];
     }
 
     /** @brief Adds a SCOM register to iv_scomRegData. */
