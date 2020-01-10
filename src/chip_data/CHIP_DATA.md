@@ -30,7 +30,9 @@ The following data will be defined at the very beginning of each Chip Data File:
 |     4 | chip model/level     | Unique ID defined by data file owner [^1]  |
 |     1 | file version         | Version 1 => 0x01, Version 2 => 0x02, etc. |
 |     1 | # of register types  | 1-255 (0 is invalid) [^2]                  |
-|     2 | # of isolation nodes | 1-65535 (0 is invalid) [^3]                |
+|     1 | # of isolation trees | 1-255 (0 is invalid) [^3]                  |
+|     1 | reserved             | Initialized to 0                           |
+
 
 [^1]: The user application will use this field to determine which Chip Data
       File(s) should be used for the chip(s) that exist in the user
@@ -40,7 +42,7 @@ The following data will be defined at the very beginning of each Chip Data File:
       type could vary. Therefore, all of the registers described by this file
       will be grouped by type. See section 2) Register Type Lists for details.
 
-[^3]: See section 3) Isolation Nodes for details.
+[^3]: See section 3) Isolation Trees for details.
 
 ### 2) Register Type Lists
 
@@ -112,39 +114,25 @@ register.
 
 [^7]: This will be used as part of the error signature for each reported error.
 
-### 3) Isolation Nodes
+### 3) Isolation Trees
 
 Hardware errors will be reported via registers organized in a tree-like
 structure. Isolation of these errors will traverse the tree from the root down
 to the actual bit that raise the attention. Each node in the tree will represent
-a register. Each bit in that register will either indicate an active attention
-or that the attention originated from another register.
+a register for a specific attention type. Each bit in that register will either
+indicate an active attention or that the attention originated from another
+register.
 
-The number of nodes that exist in this file is stored in the file metadata (see
-section 1).
+Each isolation tree will report attentions for a single attention type. The
+number of trees that exist in this file is stored in the file metadata (see
+section 1). Note that there can only be one tree per attention type.
 
-#### 3.1) Isolation Node metadata
+#### 3.1) Isolation Tree metadata
 
-| Bytes |            Desc           |            Value/Example                 |
-|:-----:|:-------------------------:|:----------------------------------------:|
-|     2 | ID of this register       | See 2.2.1 Register metadata              |
-|     1 | Instance of this register | See 2.2.2 Register Instance metadata     |
-|     1 | # of isolation rules      | 1-5, See 3.1.1 Isolation Rules           |
-|     1 | # of child nodes          | 0-255, cannot exceed register bit length |
-
-##### 3.1.1) Isolation Rules
-
-It is possible for a register to report more than one attention type. Therefore,
-there will be a set of rules that will define how to determine a bit is of a
-certain type (e.g. recoverable => REG & ~MASK & CONFIG1 & ~CONFIG2). Each rule
-will have the following format:
-
-| Bytes |      Desc      |               Value/Example                |
-|:-----:|:--------------:|:------------------------------------------:|
-|     1 | attention type | See foot note for supported types. [^8]    |
-|     * | an expression  | See definition of expressions in appendix. |
-
-The number of attention types is indicated in the Isolation Node metadata.
+| Bytes |      Desc      |            Value/Example                 |
+|:-----:|:--------------:|:----------------------------------------:|
+|     1 | Attention type | See foot note for supported types. [^8]  |
+|     * | Root node      | See 3.2 Isolation Nodes. [^9]            |
 
 [^8]: Supported attention types:
       1: System checkstop hardware attention.
@@ -154,19 +142,38 @@ The number of attention types is indicated in the Isolation Node metadata.
          firmware.
       5: Software or hardware event requiring action by the host firmware.
 
-##### 3.1.2) Children Node list
+[^9]: The root node is the top of the tree and will contain a list child nodes.
+      Each of those child nodes could contain more child nodes. Therefore, the
+      code parsing this file can iterate through the data recursively.
+
+#### 3.2) Isolation Nodes
+
+##### 3.2.1) Isolation Node metadata
+
+It is possible for a register to report more than one attention type. However,
+each tree will only be scoped to a single attention type. Therefore, a register
+will have a new node for each attention type reported by that register. Each
+node will then contain a rule to define how to determine which bits are
+configured for the attention type (e.g. recoverable => REG & ~CONFIG1).
+
+| Bytes |            Desc           |            Value/Example                 |
+|:-----:|:-------------------------:|:----------------------------------------:|
+|     2 | ID of this register       | See 2.2.1 Register metadata              |
+|     1 | Instance of this register | See 2.2.2 Register Instance metadata     |
+|     1 | # of child nodes          | 0-255, cannot exceed register bit length |
+|     * | Attention rule expression | See expression definition in appendix    |
+
+##### 3.2.2) Children Node list
 
 This list indicates which register to analyze if a bit in this register
-indicates the attention originated from another register. Each entry in the list
-will have the following format:
+indicates the attention originated from another register. The number of child
+nodes is indicated in the Isolation Node metadata. Each entry in the list will
+have the following format:
 
 | Bytes |              Desc          |             Value/Example               |
 |:-----:|:--------------------------:|:---------------------------------------:|
 |     1 | This register's bit number | 0-255, cannot exceed register bit length|
-|     2 | ID of child register       | See 2.2.1 Register metadata             |
-|     1 | Instance of child register | See 2.2.2 Register Instance metadata    |
-
-The number of child nodes is indicated in the Isolation Node metadata.
+|     * | Child node                 | See 3.2 Isolation Nodes                 |
 
 ## Appendix
 

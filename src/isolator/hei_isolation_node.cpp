@@ -5,20 +5,15 @@ namespace libhei
 
 //------------------------------------------------------------------------------
 
-bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
-                            IsolationData& io_isoData) const
+bool IsolationNode::analyze(const Chip& i_chip, IsolationData& io_isoData) const
 {
     bool o_activeAttn = false; // Initially, assume no active attentions.
 
     // Keep track of nodes that have been analyzed to avoid cyclic isolation.
     pushIsolationStack();
 
-    // A rule for i_attnType must exist.
-    auto rule_itr = iv_rules.find(i_attnType);
-    HEI_ASSERT(iv_rules.end() != rule_itr);
-
     // Get the returned BitString for this rule.
-    const BitString* bs = rule_itr->second->getBitString(i_chip);
+    const BitString* bs = iv_rule->getBitString(i_chip);
 
     // Ensure this BitString is not longer than the maximum bit field.
     HEI_ASSERT(bs->getBitLen() <= (1 << (sizeof(RegisterBit_t) * 8)));
@@ -40,8 +35,7 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
         {
             // This bit was driven from an attention from another register.
             // Continue down the isolation tree to look for more attentions.
-            bool attnFound =
-                child_itr->second->analyze(i_chip, i_attnType, io_isoData);
+            bool attnFound = child_itr->second->analyze(i_chip, io_isoData);
             if (!attnFound)
             {
                 // Something went wrong. There should have been an active
@@ -56,7 +50,7 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
                 // circumvent, the isolation problem.
                 io_isoData.addSignature(Signature{i_chip, iv_hwReg.getId(),
                                                   iv_hwReg.getInstance(), bit,
-                                                  i_attnType});
+                                                  iv_attnType});
             }
         }
         else
@@ -65,7 +59,7 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
             // signature to io_isoData.
             io_isoData.addSignature(Signature{i_chip, iv_hwReg.getId(),
                                               iv_hwReg.getInstance(), bit,
-                                              i_attnType});
+                                              iv_attnType});
         }
     }
 
@@ -73,20 +67,6 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
     popIsolationStack();
 
     return o_activeAttn;
-}
-
-//------------------------------------------------------------------------------
-
-void IsolationNode::addRule(AttentionType_t i_attnType, const Register* i_rule)
-{
-    // A rule for this attention type should not already exist.
-    HEI_ASSERT(iv_rules.end() == iv_rules.find(i_attnType));
-
-    // The rule should not be null.
-    HEI_ASSERT(nullptr != i_rule);
-
-    // Add the new rule.
-    iv_rules[i_attnType] = i_rule;
 }
 
 //------------------------------------------------------------------------------
