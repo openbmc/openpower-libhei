@@ -11,7 +11,7 @@ namespace libhei
 {
 
 /**
- * @brief This class contains the isolation rules and bit definition of a
+ * @brief This class contains the isolation rule and bit definition of a
  *        HardwareRegister used for error isolation.
  *
  * These objects are linked together as a tree. Any active bits in the
@@ -27,22 +27,29 @@ namespace libhei
  * be bug in the Chip Data Files. This class will keep track of all nodes that
  * have been analyzed to prevent cyclic isolation (an infinite loop).
  *
- * Each isolation register will have a rule for each supported attention type.
- * These rules are a combination of HardwareRegisters and operator registers to
- * define rules like "REG & ~MASK & CNFG", which reads "return all bits in REG
- * that are not in MASK and set in CNFG". See the definition of the Register
- * class for details on how this works.
+ * Each node will have a rule for its target attention type. These rules are a
+ * combination of HardwareRegisters and operator registers to define rules like
+ * "REG & ~MASK & CNFG", which reads "return all bits in REG that are not in
+ * MASK and set in CNFG". See the definition of the Register class for details
+ * on how this works.
  */
 class IsolationNode
 {
   public: // Constructors, destructor, assignment
     /**
      * @brief Constructor from components.
-     * @param i_hwReg A reference to the HardwareRegister targeted for
-     *                isolation.
+     * @param i_hwReg    A reference to the HardwareRegister targeted for
+     *                   isolation.
+     * @param i_attnType The target attention type to analyze on this register.
+     * @param i_rule     The rule for this attention type.
      */
-    explicit IsolationNode(const HardwareRegister& i_hwReg) : iv_hwReg(i_hwReg)
-    {}
+    explicit IsolationNode(const HardwareRegister& i_hwReg,
+                           AttentionType_t i_attnType, const Register* i_rule) :
+        iv_hwReg(i_hwReg),
+        iv_attnType(i_attnType), iv_rule(i_rule)
+    {
+        HEI_ASSERT(nullptr != i_rule);
+    }
 
     /** @brief Destructor. */
     ~IsolationNode() = default;
@@ -77,13 +84,17 @@ class IsolationNode
     const HardwareRegister& iv_hwReg;
 
     /**
-     * This register could report multiple types of attentions. We can use a
-     * register 'rule' (value) to find any active attentions for each attention
-     * type (key). A 'rule', like "register & ~mask", is a combination of
+     * The attention type associated with this node.
+     */
+    AttentionType_t iv_attnType;
+
+    /**
+     * The 'rule' that allows us to find all active attentions for this
+     * attention type. A 'rule', like "register & ~mask", is a combination of
      * HardwareRegister objects and virtual operator registers (all children
      * of the Register class).
      */
-    std::map<AttentionType_t, const Register*> iv_rules;
+    const Register* iv_rule;
 
     /**
      * Each bit (key) in this map indicates that an attention was driven from
@@ -99,32 +110,17 @@ class IsolationNode
      *         to analyze the child register that is driving the attention in
      *         this register.
      * @param  i_chip     The target chip for isolation.
-     * @param  i_attnType The target attention type to analyze on this register.
-     *                    Will assert a rule must exist for this attention type.
      * @param  io_isoData The isolation data returned back to the user
      *                    application.
      * @return True, if any active attentions found on this register.
      *         False, otherwise.
      */
-    bool analyze(const Chip& i_chip, AttentionType_t i_attnType,
-                 IsolationData& io_isoData) const;
+    bool analyze(const Chip& i_chip, IsolationData& io_isoData) const;
 
-    // TODO: The next two functions are only intended to be used during
-    //       initialization of the isolator. Consider, making them private and
-    //       make the Chip Data File code friends of this class. So that it has
-    //       access to these init functions.
-
-    /**
-     * @brief Adds a register rule for the given attention type. See iv_rules
-     *        for details.
-     *
-     * This is only intended to be used during initialization of the isolator.
-     * Will assert that nothing has already been defined for this rule.
-     *
-     * @param The target attention type.
-     * @param The rule for this attention type.
-     */
-    void addRule(AttentionType_t i_attnType, const Register* i_rule);
+    // TODO: This function is only intended to be used during initialization of
+    //       the isolator. Consider, making it private and make the Chip Data
+    //       File code friends of this class so that it has access to this init
+    //       function.
 
     /**
      * @brief Adds a child register to analyze for the given bit in this
@@ -133,8 +129,8 @@ class IsolationNode
      * This is only intended to be used during initialization of the isolator.
      * Will assert that nothing has already been defined for this bit.
      *
-     * @param The target bit on this register.
-     * @param The child register to analyze for the given bit.
+     * @param i_bit   The target bit on this register.
+     * @param i_child The child register to analyze for the given bit.
      */
     void addChild(RegisterBit_t i_bit, const IsolationNode* i_child);
 
@@ -143,14 +139,15 @@ class IsolationNode
     bool operator==(const IsolationNode& i_r) const
     {
         // iv_hwReg should be unique per IsolationNode.
-        return (iv_hwReg == i_r.iv_hwReg);
+        return (iv_hwReg == i_r.iv_hwReg) && (iv_attnType == i_r.iv_attnType);
     }
 
     /** @brief Less than operator. */
     bool operator<(const IsolationNode& i_r) const
     {
         // iv_hwReg should be unique per IsolationNode.
-        return (iv_hwReg < i_r.iv_hwReg);
+        return (iv_hwReg < i_r.iv_hwReg) ||
+               ((iv_hwReg == i_r.iv_hwReg) && (iv_attnType < i_r.iv_attnType));
     }
 
   private: // Isolation stack and supporting functions.

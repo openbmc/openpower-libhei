@@ -34,13 +34,11 @@ ReturnCode Isolator::initialize(void* i_buffer, size_t i_bufferSize,
         static_cast<ChipType_t>(0xdeadbeef), static_cast<RegisterId_t>(0x2222),
         REG_INST_DEFAULT, REG_ACCESS_RW, 0x00FF0000});
 
-    auto& node0 = isoNode_fw.get(IsolationNode{idScom0});
-    auto& node1 = isoNode_fw.get(IsolationNode{scom0});
-
-    node0.addRule(ATTN_TYPE_CHECKSTOP, &idScom0);
+    auto& node0 =
+        isoNode_fw.get(IsolationNode{idScom0, ATTN_TYPE_CHECKSTOP, &idScom0});
+    auto& node1 =
+        isoNode_fw.get(IsolationNode{scom0, ATTN_TYPE_CHECKSTOP, &scom0});
     node0.addChild(48, &node1);
-
-    node1.addRule(ATTN_TYPE_CHECKSTOP, &scom0);
 
     iv_isoStart[static_cast<ChipType_t>(0xdeadbeef)].push_back(
         {&node0, ATTN_TYPE_CHECKSTOP});
@@ -87,7 +85,7 @@ ReturnCode Isolator::isolate(const std::vector<Chip>& i_chipList,
 
         for (const auto& pair : chip_itr->second)
         {
-            if (pair.first->analyze(chip, pair.second, o_isoData))
+            if (pair.first->analyze(chip, o_isoData))
             {
                 for (const auto& sig : o_isoData.getSignatureList())
                 {
