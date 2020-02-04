@@ -2,6 +2,11 @@
 
 #include <stdint.h>
 
+// number of bits in a uint64_t
+constexpr uint64_t UINT64_BIT_LEN = (sizeof(uint64_t) * 8);
+// number of bits in a uint8_t
+constexpr uint64_t UINT8_BIT_LEN = (sizeof(uint8_t) * 8);
+
 namespace libhei
 {
 
@@ -58,9 +63,6 @@ class BitStringBuffer;
  */
 class BitString
 {
-  private: // constants
-    static const uint64_t UINT64_BIT_LEN;
-    static const uint64_t UINT8_BIT_LEN;
 
   public: // functions
     /**

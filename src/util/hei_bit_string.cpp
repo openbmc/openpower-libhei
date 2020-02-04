@@ -14,11 +14,6 @@ namespace libhei
 //                             BitString class
 //##############################################################################
 
-// number of bits in a uint64_t
-constexpr uint64_t BitString::UINT64_BIT_LEN = sizeof(uint64_t) * 8;
-// number of bits in a uint8_t
-constexpr uint64_t BitString::UINT8_BIT_LEN = sizeof(uint8_t) * 8;
-
 //------------------------------------------------------------------------------
 
 uint64_t BitString::getFieldRight(uint64_t i_pos, uint64_t i_len) const
