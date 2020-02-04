@@ -378,6 +378,9 @@ class ConstantRegister : public OperatorRegister
     /** @brief Overloaded from parent class. */
     const BitString* getBitString(const Chip& i_chip) const
     {
+        if (i_chip.getType() == CHIP_TYPE_INVALID)
+        {
+        } // fix - unused variable
         return &iv_result;
     }
 

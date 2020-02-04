@@ -5,6 +5,8 @@
 #include <util/hei_flyweight.hpp>
 
 // BEGIN temporary code
+#include <inttypes.h>
+
 #include <isolator/hei_isolation_node.hpp>
 #include <register/hei_operator_register.hpp>
 #include <register/hei_scom_register.hpp>
@@ -19,8 +21,8 @@ ReturnCode Isolator::initialize(void* i_buffer, size_t i_bufferSize,
     ReturnCode rc;
 
     // BEGIN temporary code
-    HEI_INF("Isolator::initialize(%p,%lu,%d)", i_buffer, i_bufferSize,
-            i_forceInit);
+    HEI_INF("Isolator::initialize(%p,%" PRIu64 ",%d)", i_buffer,
+            (uint64_t)i_bufferSize, i_forceInit);
 
     auto& scom_fw    = Flyweight<ScomRegister>::getSingleton();
     auto& idScom_fw  = Flyweight<IdScomRegister>::getSingleton();
