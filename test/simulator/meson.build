@@ -17,6 +17,17 @@ test_src = [
     'sample_test_case.cpp',
 ]
 
+data_files = [
+    'chip_data/chip_data_sample.cdb'
+]
+
+# Copy the Chip Data Files needed for the simulator. Note that the tests
+# executables are run out the base build directory and not from the directory
+# in which the executable is built.
+foreach f : data_files
+    run_command( 'cp', f, '../../build/' )
+endforeach
+
 gtest = dependency('gtest', main : true, required : false, method : 'system')
 
 if gtest.found()
