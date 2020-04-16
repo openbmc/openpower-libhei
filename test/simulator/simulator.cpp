@@ -1,17 +1,59 @@
 #include "simulator.hpp"
 
-using namespace libhei;
+#include <fstream> // std::ifstream
+
+namespace libhei
+{
+
+//------------------------------------------------------------------------------
+
+const std::map<SimulatorData::ChipType, const char*>
+    SimulatorData::cv_chipPath = {
+        {SAMPLE, "chip_data_sample.cdb"},
+};
 
 //------------------------------------------------------------------------------
 
 void SimulatorData::addChip(const Chip& i_chip)
 {
     // First check if this entry already exists.
-    auto itr = std::find(iv_chipList.begin(), iv_chipList.end(), i_chip);
-    ASSERT_EQ(iv_chipList.end(), itr);
+    auto itr1 = std::find(iv_chipList.begin(), iv_chipList.end(), i_chip);
+    ASSERT_EQ(iv_chipList.end(), itr1);
 
     // Add the new entry.
     iv_chipList.push_back(i_chip);
+
+    // Look for the file path
+    auto itr2 = cv_chipPath.find(static_cast<ChipType>(i_chip.getType()));
+    ASSERT_NE(cv_chipPath.end(), itr2);
+    const char* path = itr2->second;
+
+    // Open the Chip Data File
+    std::ifstream ifs{path, std::ifstream::binary};
+    ASSERT_TRUE(ifs.good());
+
+    ifs.close();
+    /*
+    if (ifs.is_open()) {
+        // get length of file:
+        is.seekg (0, is.end);
+        int length = is.tellg();
+        is.seekg (0, is.beg);
+
+        // allocate memory:
+        char * buffer = new char [length];
+
+        // read data as a block:
+        is.read (buffer,length);
+
+        is.close();
+
+        // print content:
+        std::cout.write (buffer,length);
+
+        delete[] buffer;
+      }
+    */
 
     // TODO: Find the chip data file based on the chip type from i_chip. Read
     //       that file in to memory and call initialize.
@@ -52,3 +94,5 @@ void SimulatorData::endIteration()
     // The iteration is complete so we can flush the data.
     flushIterationData();
 }
+
+} // end namespace libhei
