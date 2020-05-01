@@ -13,14 +13,13 @@
 namespace libhei
 {
 
-ReturnCode Isolator::initialize(void* i_buffer, size_t i_bufferSize,
-                                bool i_forceInit)
+ReturnCode Isolator::initialize(void* i_buffer, size_t i_bufferSize)
 {
     ReturnCode rc;
 
     // BEGIN temporary code
-    HEI_INF("Isolator::initialize(%p,%" PRIu64 ",%d)", i_buffer,
-            (uint64_t)i_bufferSize, i_forceInit);
+    HEI_INF("Isolator::initialize(%p,%" PRIu64 ")", i_buffer,
+            (uint64_t)i_bufferSize);
 
     auto& scom_fw    = Flyweight<ScomRegister>::getSingleton();
     auto& idScom_fw  = Flyweight<IdScomRegister>::getSingleton();
