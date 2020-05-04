@@ -18,8 +18,8 @@
 
 #define HEI_ERR(...)                                                           \
     {                                                                          \
-        printf("E> " __VA_ARGS__);                                             \
-        printf("\n");                                                          \
+        fprintf(stderr, "E> " __VA_ARGS__);                                    \
+        fprintf(stderr, "\n");                                                 \
     }
 
 #define HEI_ASSERT(expression) assert(expression);
