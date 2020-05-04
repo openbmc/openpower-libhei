@@ -6,6 +6,7 @@ sim_src = [
 
 # Isolator sources
 iso_src = [
+    '../../src/chip_data/hei_chip_data.cpp',
     '../../src/isolator/hei_isolator.cpp',
     '../../src/isolator/hei_isolation_node.cpp',
     '../../src/register/hei_hardware_register.cpp',
