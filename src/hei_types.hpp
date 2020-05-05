@@ -29,10 +29,7 @@ namespace libhei
  * Range:
  *   A 4-byte field should be sufficient.
  */
-enum ChipType_t : uint32_t
-{
-    CHIP_TYPE_INVALID = 0, ///< invalid/unsupported type
-};
+using ChipType_t = uint32_t;
 
 /**
  * Different chips will contain different types of registers. Also, a single
