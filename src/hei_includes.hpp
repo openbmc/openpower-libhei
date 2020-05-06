@@ -11,6 +11,7 @@
 #include <stdlib.h>
 
 #include <map>
+#include <memory>
 #include <vector>
 
 // The user application must define "hei_user_defines.hpp" with the following
