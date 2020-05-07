@@ -2,7 +2,8 @@
 subdir('simulator')
 
 # supporting files that need compiled/linked
-test_src = ['../src/util/hei_bit_string.cpp']
+test_libhei = ['../src/util/hei_bit_string.cpp',
+               'hei_user_defines.cpp']
 
 # build g-test framework unit tests
 gtests = [
@@ -14,7 +15,7 @@ gtest = dependency('gtest', main : true, required : false, method : 'system')
 
 if gtest.found()
     foreach g : gtests
-        test(g, executable(g.underscorify(), g + '.cpp', test_src, \
+        test(g, executable(g.underscorify(), g + '.cpp', test_libhei, \
                             dependencies : gtest, \
                             include_directories : incdir))
   endforeach
@@ -24,6 +25,6 @@ endif
 tests = ['hei_operator_register_testcase']
 
 foreach t : tests
-        test(t, executable(t.underscorify(), t + '.cpp', test_src, \
+        test(t, executable(t.underscorify(), t + '.cpp', test_libhei, \
                             include_directories : incdir))
 endforeach
