@@ -158,7 +158,7 @@ class HardwareRegister : public Register
      */
     bool read(const Chip& i_chip, bool i_force = false) const;
 
-#ifndef __HEI_READ_ONLY
+#ifdef __HEI_ENABLE_HW_WRITE
 
     /**
      * @brief  Writes the value stored in the register cache to hardware via the
@@ -168,7 +168,7 @@ class HardwareRegister : public Register
      */
     bool write(const Chip& i_chip) const;
 
-#endif // __HEI_READ_ONLY
+#endif // __HEI_ENABLE_HW_WRITE
 
   protected:
     /**
