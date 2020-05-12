@@ -114,6 +114,22 @@ void parseChipDataFile(void* i_buffer, size_t i_bufferSize,
         __readRegister(stream, isoChip);
     }
 
+    // Read the node list metadata.
+    SectionKeyword_t nodeKeyword;
+    NodeId_t numNodes;
+    stream >> nodeKeyword >> numNodes;
+
+    // Check the node keyword.
+    HEI_ASSERT(KW_NODE == nodeKeyword);
+
+    // There must be at least one node defined.
+    HEI_ASSERT(0 != numNodes);
+
+    for (NodeId_t n = 0; n < numNodes; n++)
+    {
+        // TODO
+    }
+
     // Add this isolation chip to the collective list of isolation chips.
     auto ret = io_isoChips.emplace(chipType, std::move(isoChip));
     HEI_ASSERT(ret.second); // Just in case.
