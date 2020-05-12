@@ -293,4 +293,6 @@ class HardwareRegister : public Register
     }
 };
 
+using HardwareRegisterPtr = std::shared_ptr<const HardwareRegister>;
+
 } // end namespace libhei

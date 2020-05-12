@@ -46,6 +46,9 @@ class IsolationChip
     /** This chip's type. */
     const ChipType_t iv_chipType;
 
+    /** All hardware registers for this chip type. */
+    std::map<std::pair<RegisterId_t, Instance_t>, HardwareRegisterPtr> iv_regs;
+
     /** Root nodes for this chip type. */
     RootNodeMap iv_rootNodes;
 
@@ -68,6 +71,22 @@ class IsolationChip
     }
 
     /**
+     * @brief Adds a hardware register to this chip.
+     * @param i_hwReg The target hardware register. Will assert that a different
+     *                register with the same ID and instance does not exist.
+     */
+    void addHardwareRegister(HardwareRegisterPtr i_hwReg)
+    {
+        std::pair<RegisterId_t, Instance_t> key = {i_hwReg->getId(),
+                                                   i_hwReg->getInstance()};
+
+        auto ret = iv_regs.emplace(key, i_hwReg);
+
+        // If an entry already exists, ensure they point to the same thing.
+        HEI_ASSERT(ret.second || (ret.first->second == i_hwReg));
+    }
+
+    /**
      * @brief Adds a root node to this chip.
      * @param i_attnType The target attention type. Will assert this type does
      *                   not already exist in iv_rootNodes.
@@ -78,7 +97,27 @@ class IsolationChip
         auto ret = iv_rootNodes.emplace(i_attnType, i_node);
         HEI_ASSERT(ret.second); // Should have not already existed.
     }
+
+    /**
+     * @brief  Retrieves a hardware register from this chip, if it exists.
+     * @param  i_regId   The register ID.
+     * @param  i_regInst The register instance.
+     * @return The target hardware register. Will assert that the target
+     *         register exists in iv_regs.
+     */
+    HardwareRegisterPtr getHardwareRegister(RegisterId_t i_regId,
+                                            Instance_t i_regInst)
+    {
+        std::pair<RegisterId_t, Instance_t> key = {i_regId, i_regInst};
+
+        auto itr = iv_regs.find(key);
+        HEI_ASSERT(iv_regs.end() != itr); // The register should exist.
+
+        return itr->second;
+    }
 };
+
+using IsolationChipPtr = std::unique_ptr<IsolationChip>;
 
 /** A simple map to ensure only one IsolationChip exists per chip type. */
 using IsolationChipMap =
