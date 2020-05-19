@@ -76,6 +76,12 @@ void SimulatorData::endIteration()
     // Get the list of signatures found in isolation.
     std::vector<Signature> givenSigList = isoData.getSignatureList();
 
+    for (const auto& sig : givenSigList)
+    {
+        printf("Signature: 0x%08x 0x%04x %d %d %d\n", sig.getChip().getType(),
+               sig.getId(), sig.getInstance(), sig.getBit(), sig.getAttnType());
+    }
+
     // Verify the expected list and given list are the same.
     ASSERT_EQ(iv_expSigList.size(), givenSigList.size());
 
