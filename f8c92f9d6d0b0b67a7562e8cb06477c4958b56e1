@@ -1,0 +1,10 @@
+Ok-To-Test+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+1: Caleb N. Palmer <cnpalmer@linux.ibm.com>
+Code-Review+1: <ben.tyner@ibm.com>
+Verified+1: Jenkins <openbmc-ci-admin@ozlabs.org>
+Code-Review+2: Zane Shelley <zshelle@us.ibm.com>
+Submitted-by: Zane Shelley <zshelle@us.ibm.com>
+Submitted-at: Wed, 20 May 2020 21:12:53 +0000
+Reviewed-on: https://gerrit.openbmc-project.xyz/c/openbmc/openpower-libhei/+/32496
+Project: openbmc/openpower-libhei
+Branch: refs/heads/master
