@@ -193,7 +193,7 @@ class SimulatorData
  */
 #define CHIP(CHIP, TYPE)                                                       \
     chipType = static_cast<libhei::ChipType_t>(libhei::SimulatorData::TYPE);   \
-    libhei::Chip CHIP{#CHIP, chipType};                                        \
+    libhei::Chip CHIP{const_cast<char*>(#CHIP), chipType};                     \
     simData.addChip(CHIP);
 
 /**

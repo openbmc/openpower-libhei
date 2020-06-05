@@ -17,9 +17,7 @@ class Chip
      * @param i_chip See description for iv_chip.
      * @param i_type See description for iv_type.
      */
-    Chip(const void* i_chip, ChipType_t i_type) :
-        iv_chip(i_chip), iv_type(i_type)
-    {}
+    Chip(void* i_chip, ChipType_t i_type) : iv_chip(i_chip), iv_type(i_type) {}
 
     ~Chip() = default;
 
@@ -28,7 +26,7 @@ class Chip
     Chip& operator=(const Chip&) = default;
 
   public: // Accessors
-    const void* getChip() const
+    void* getChip() const
     {
         return iv_chip;
     }
@@ -58,7 +56,7 @@ class Chip
      * purpose is to eventually get passed back to the user application with
      * information associated with each chip.
      */
-    const void* iv_chip;
+    void* iv_chip;
 
     /**
      * When doing analysis on a chip, the isolator will need to know the chip
