@@ -28,8 +28,9 @@ my $FILE_VERSION =
 # This is a map of all currently supported models/ECs and their IDs.
 my $SUPPORTED_MODEL_EC =
 {
-    EXPLORER_10 => 0x160D2000, # Explorer Chip DD1.0
-    P10_10      => 0x120DA049, # P10 Chip DD1.0
+    EXPLORER_11 => 0x60D20011, # Explorer Chip DD1.0
+    EXPLORER_20 => 0x60D20020, # Explorer Chip DD1.0
+    P10_10      => 0x20DA0010, # P10 Chip DD1.0
 };
 
 # All models/ECs that may exist in the XML, but no longer needs to be built.
@@ -324,6 +325,7 @@ sub __normalizeLocalFir($)
         }
     }
 
+    # Clean up the local fir data since it is no longer needed.
     delete $node->{local_fir};
 }
 
@@ -376,9 +378,6 @@ sub __normalizeRegister($$)
             $regs->{$r->{name}} = $r;
         }
     }
-
-    # Clean up this node's register data.
-    delete $node->{register};
 }
 
 #-------------------------------------------------------------------------------
@@ -421,9 +420,6 @@ sub __normalizeCaptureGroup($$)
             }
         }
     }
-
-    # Clean up this node's capture group data.
-    delete $node->{capture_group};
 }
 
 #-------------------------------------------------------------------------------
@@ -572,9 +568,6 @@ sub __normalizeRule($$)
                    expr      => __normalizeExpr($expr, $ni, $idx, $sz_insts) };
         }
     }
-
-    # Clean up this node's rule data.
-    delete $node->{rule};
 }
 
 #-------------------------------------------------------------------------------
@@ -664,9 +657,6 @@ sub __normalizeBit($$$)
             }
         }
     }
-
-    # Clean up this node's bit data.
-    delete $node->{bit};
 }
 
 #-------------------------------------------------------------------------------
@@ -682,9 +672,6 @@ sub __normalizeNode($$$)
     }
 
     my $insts_data = {}; # Collect data for each instance of this node.
-
-    # First, expand the <local_fir> data if it exists.
-    __normalizeLocalFir($node);
 
     # All registers will be put in a master register list for the chip.
     __normalizeRegister($node, $regs);
@@ -740,6 +727,12 @@ sub normalizeXML($)
     my ( $regs, $sigs, $node_dups ) = ( {}, {}, {} );
     for my $node ( sort { $a->{name} cmp $b->{name} } @{$xml->{node}} )
     {
+        # First, expand the <local_fir> data if it exists. This will update the
+        # contents of $node with registers and rules. Then, the local fir data
+        # will be removed from the node. This should only be done once per node
+        # and not for each model/ec.
+        __normalizeLocalFir($node);
+
         # A node may be defined for more than one model/EC.
         for my $model_ec ( __expandModelEc($node->{model_ec}) )
         {
