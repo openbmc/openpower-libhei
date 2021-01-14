@@ -38,6 +38,7 @@ install_headers(
     'src/hei_signature.hpp',
     'src/hei_types.hpp',
     'src/hei_user_interface.hpp',
+    'src/util/hei_bit_string.hpp',
     subdir : 'libhei'
 )
 
