@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e69bab6_7f37bd96",
+        "filename": "src/hei_isolation_data.hpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2021-01-14T19:57:18Z",
+      "side": 1,
+      "message": "This may seem unnecessary, but it avoids a warning from the clang static analyzer that says the struct variables are unused.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 42,
+        "endChar": 10
+      },
+      "revId": "dae1af64b042a52b3114bd2b0f87302833cee2e5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
