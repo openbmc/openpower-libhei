@@ -92,13 +92,14 @@ EOF
 help() unless @ARGV; # print help if no arguments
 
 # Get options
-my ( $help, $src_dir, $dest_dir, $gen_cdb, $gen_json );
+my ( $help, $src_dir, $dest_dir, $gen_cdb, $gen_json, $gen_ras_data_files );
 help() unless GetOptions(
     'h|help'     => \$help,
     'i|input=s'  => \$src_dir,
     'o|output=s' => \$dest_dir,
     'cdb'        => \$gen_cdb,
     'json'       => \$gen_json,
+    'ras'        => \$gen_ras_data_files,
 );
 
 help() if @ARGV; # print usage if there are extra arguments
@@ -120,7 +121,7 @@ if ( @{$err} )
 }
 
 # --cdb, --json
-unless ( $gen_cdb or $gen_json )
+unless ( $gen_cdb or $gen_json or $gen_ras_data_files)
 {
     die "ERROR> Must specify at least one data file option.";
 }
@@ -1244,6 +1245,45 @@ sub __printParserData($$$$)
 
 #-------------------------------------------------------------------------------
 
+sub __printRasData($$$)
+{
+    my ( $fh, $model_ec, $sig_list ) = @_;
+
+    # IMPORTANT: All hash keys with hex values must be lowercase.
+
+    my $sigs  = {};
+
+    # Get the signature data.
+    for my $s ( @{$sig_list} )
+    {
+        # Format is:
+        #   { id : { bit : { inst : action, ... }, ... }, ... }
+
+        # The ID is a 2-byte hash of the node name (lowercase).
+        my $id   = sprintf('%04x', __hash(2, $s->{name}));
+        my $bit  = sprintf('%02x', $s->{bit});
+        my $inst = sprintf('%02x', $s->{inst});
+
+        my $action = "masked"; # default action that will be filled in later
+
+        $sigs->{$id}->{$bit}->{$inst} = $action;
+    }
+
+    my $data =
+    {
+        'model_ec' => sprintf('%08x', $SUPPORTED_MODEL_EC->{$model_ec}->{'id'}),
+        'version'  => 1,
+        'units'    => {},
+        'buses'    => {},
+        'actions'  => {},
+        'signatures' => $sigs,
+    };
+
+    print $fh to_json( $data, {utf8 => 1, pretty => 1, canonical => 1} );
+}
+
+#-------------------------------------------------------------------------------
+
 sub buildDataFiles($$)
 {
     my ( $dir, $data ) = @_;
@@ -1296,6 +1336,21 @@ sub buildDataFiles($$)
 
             __printParserData( $fh, $model_ec, $chip->{signature},
                                $chip->{register} );
+
+            close $fh;
+        }
+
+        # eBMC RAS data files ##################################################
+
+        if ( $gen_ras_data_files )
+        {
+            my $tmp = $model_ec;
+            $tmp =~ s/_/-/g;
+
+            my $file = "$dir/ras-data-" . lc $tmp . ".json";
+            open my $fh, '>', $file or die "Cannot open $file: $!";
+
+            __printRasData( $fh, $model_ec, $chip->{signature} );
 
             close $fh;
         }
