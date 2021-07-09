@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9dd40c9_3cbf2b22",
+        "filename": "xml/explorer/node_omi_dl0_err_hold.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2021-07-09T20:05:24Z",
+      "side": 1,
+      "message": "This is what is in the DD1.0 SCOM def. I am assuming it is no longer a spare now.",
+      "range": {
+        "startLine": 16,
+        "startChar": 18,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "533817bebbdc2112501e222215f5afe3f899ef78",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
