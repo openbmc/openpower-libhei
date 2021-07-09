@@ -24,6 +24,6 @@
     <bit pos="5" child_node="MCBISTFIR">Attention from MCBISTFIR</bit>
     <bit pos="6" child_node="RDFFIR"   >Attention from RDFFIR</bit>
     <bit pos="8" child_node="TLXFIR"   >Attention from TLXFIR</bit>
-    <bit pos="9" child_node="OMIDLFIR" >Attention from OMIDLFIR</bit>
+    <bit pos="9" child_node="OCMB_OMI_DL_FIR">Attention from OCMB_OMI_DL_FIR</bit>
 
 </attn_node>
