@@ -79,8 +79,8 @@ void SimulatorData::endIteration()
     IsolationData isoData{};
     isolate(iv_chipList, isoData);
 
-    /* TODO: Currently used for debug. Eventually, we want this and the
-     *       signature list written to file.
+    //    /* TODO: Currently used for debug. Eventually, we want this and the
+    //     *       signature list written to file.
     for (const auto& e : isoData.getRegisterDump())
     {
         HEI_INF("Chip: %s", (const char*)e.first.getChip());
@@ -91,10 +91,21 @@ void SimulatorData::endIteration()
                     r.data->getFieldRight(0, 64));
         }
     }
-    */
+    //    */
 
     // Get the list of signatures found in isolation.
     std::vector<Signature> givenSigList = isoData.getSignatureList();
+
+    for (const auto& e : givenSigList)
+    {
+        HEI_INF("G: %04x %d %d %d", e.getId(), e.getInstance(), e.getBit(),
+                e.getAttnType());
+    }
+    for (const auto& e : iv_expSigList)
+    {
+        HEI_INF("E: %04x %d %d %d", e.getId(), e.getInstance(), e.getBit(),
+                e.getAttnType());
+    }
 
     // Verify the expected list and given list are the same.
     ASSERT_EQ(iv_expSigList.size(), givenSigList.size());
