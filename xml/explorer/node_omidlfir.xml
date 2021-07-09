@@ -8,7 +8,85 @@
         <action attn_type="HA"  config="10" />
     </local_fir>
 
-    <bit pos= "0"   >OMI-DL0 fatal error</bit>
+    <register name="CMN_CONFIG">
+        <instance reg_inst="0" addr="0x0801280E" />
+    </register>
+
+    <register name="PMU_CNTR">
+        <instance reg_inst="0" addr="0x0801280F" />
+    </register>
+
+    <register name="DL_CONFIG0">
+        <instance reg_inst="0" addr="0x08012810" />
+    </register>
+
+    <register name="DL_CONFIG1">
+        <instance reg_inst="0" addr="0x08012811" />
+    </register>
+
+    <register name="DL_ERROR_MASK">
+        <instance reg_inst="0" addr="0x08012812" />
+    </register>
+
+    <register name="DL_ERR_HOLD">
+        <instance reg_inst="0" addr="0x08012813" />
+    </register>
+
+    <register name="DL_ERROR_CAPTURE">
+        <instance reg_inst="0" addr="0x08012814" />
+    </register>
+
+    <register name="DL_EDPL_MAX_COUNT">
+        <instance reg_inst="0" addr="0x08012815" />
+    </register>
+
+    <register name="DL_STATUS">
+        <instance reg_inst="0" addr="0x08012816" />
+    </register>
+
+    <register name="DL_TRAINING_STATUS">
+        <instance reg_inst="0" addr="0x08012817" />
+    </register>
+
+    <register name="DL_DLX_CONFIG">
+        <instance reg_inst="0" addr="0x08012818" />
+    </register>
+
+    <register name="DL_DLX_INFO">
+        <instance reg_inst="0" addr="0x08012819" />
+    </register>
+
+    <register name="DL_ERROR_ACTION">
+        <instance reg_inst="0" addr="0x0801281D" />
+    </register>
+
+    <register name="DL_DEBUG_AID">
+        <instance reg_inst="0" addr="0x0801281E" />
+    </register>
+
+    <register name="DL_CYA_BITS">
+        <instance reg_inst="0" addr="0x0801281F" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="CMN_CONFIG"         reg_inst="0" />
+        <capture_register reg_name="PMU_CNTR"           reg_inst="0" />
+        <capture_register reg_name="DL_CONFIG0"         reg_inst="0" />
+        <capture_register reg_name="DL_CONFIG1"         reg_inst="0" />
+        <capture_register reg_name="DL_ERROR_MASK"      reg_inst="0" />
+        <capture_register reg_name="DL_ERR_HOLD"        reg_inst="0" />
+        <capture_register reg_name="DL_ERROR_CAPTURE"   reg_inst="0" />
+        <capture_register reg_name="DL_EDPL_MAX_COUNT"  reg_inst="0" />
+        <capture_register reg_name="DL_STATUS"          reg_inst="0" />
+        <capture_register reg_name="DL_TRAINING_STATUS" reg_inst="0" />
+        <capture_register reg_name="DL_DLX_CONFIG"      reg_inst="0" />
+        <capture_register reg_name="DL_DLX_INFO"        reg_inst="0" />
+        <capture_register reg_name="DL_ERROR_ACTION"    reg_inst="0" />
+        <capture_register reg_name="DL_DEBUG_AID"       reg_inst="0" />
+        <capture_register reg_name="DL_CYA_BITS"        reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0" child_node="OMI_DL_ERR_HOLD">OMI-DL0 fatal error</bit>
     <bit pos= "1"   >OMI-DL0 UE on data flit</bit>
     <bit pos= "2"   >OMI-DL0 CE on TL flit</bit>
     <bit pos= "3"   >OMI-DL0 detected a CRC error</bit>
