@@ -8,7 +8,15 @@
         <action attn_type="HA"  config="10" />
     </local_fir>
 
-    <bit pos= "0"   >OMI-DL0 fatal error</bit>
+    <register name="OMI_DL0_ERROR_HOLD">
+        <instance reg_inst="0" addr="0x08012813" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="OMI_DL0_ERROR_HOLD" reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0" child_node="OMI_DL0_ERROR_HOLD">OMI-DL0 fatal error</bit>
     <bit pos= "1"   >OMI-DL0 UE on data flit</bit>
     <bit pos= "2"   >OMI-DL0 CE on TL flit</bit>
     <bit pos= "3"   >OMI-DL0 detected a CRC error</bit>
