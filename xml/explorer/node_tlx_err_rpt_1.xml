@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<attn_node name="TLX_ERR1_REPORT" model_ec="EXPLORER_11,EXPLORER_20" reg_type="SCOM">
-
-    <register name="TLX_ERR1_REPORT">
-        <instance reg_inst="0" addr="0x0801241D" />
-    </register>
-
-    <register name="TLX_ERR1_REPORT_MASK">
-        <instance reg_inst="0" addr="0x08012415" />
-    </register>
+<attn_node name="TLX_ERR_RPT_1" model_ec="EXPLORER_11,EXPLORER_20" reg_type="SCOM">
 
     <rule attn_type="RE" node_inst="0">
         <!-- REG & ~MASK & 0x0000000005C00000 -->
         <expr type="and">
-            <expr type="reg" value1="TLX_ERR1_REPORT" />
+            <expr type="reg" value1="TLX_ERR_RPT_1" />
             <expr type="not">
-                <expr type="reg" value1="TLX_ERR1_REPORT_MASK" />
+                <expr type="reg" value1="TLX_ERR_RPT_1_MASK" />
             </expr>
             <expr type="int" value1="0x0000000005C00000" />
         </expr>
