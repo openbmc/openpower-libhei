@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "353c785f_cee5cb43",
+        "filename": "xml/explorer/node_tlx_err1_report.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2021-07-13T20:14:52Z",
+      "side": 1,
+      "message": "should we define all other possible attention types?",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 23
+      },
+      "revId": "88d99bd3081685c7fdec4e2265b7c344f2e214c3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4",
+      "unresolved": true
+    }
+  ]
+}
