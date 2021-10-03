@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<attn_node model_ec="P10_10,P10_20" name="IOHS_DLP_FIR" reg_type="SCOM">
+<attn_node model_ec="P10_10,P10_20" name="IOHS_DLP_FIR_SMP" reg_type="SCOM">
     <local_fir config="W" name="IOHS_DLP_FIR">
         <instance addr="0x18011000" reg_inst="0"/>
         <instance addr="0x19011000" reg_inst="1"/>
@@ -61,8 +61,8 @@
     <bit pos="45">link1 spare done</bit>
     <bit pos="46">link0 too many crc errors</bit>
     <bit pos="47">link1 too many crc errors</bit>
-    <bit pos="48">link0 npu/dlx error</bit>
-    <bit pos="49">link1 npu/dlx error</bit>
+    <bit pos="48">unused</bit>
+    <bit pos="49">unused</bit>
     <bit pos="50">link0 osc switch</bit>
     <bit pos="51">link1 osc switch</bit>
     <bit pos="52">link0 correctable array error</bit>
