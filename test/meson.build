@@ -32,6 +32,7 @@ gtests = [
     'bit_string_test',
     'flyweight_test',
     'operator_register_test',
+    'test_util_hash',
 ]
 
 foreach g : gtests
