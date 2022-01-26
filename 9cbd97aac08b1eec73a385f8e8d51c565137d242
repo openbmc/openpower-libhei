@@ -41,6 +41,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf1b4cd_3384fca3",
+        "filename": "xml/p10/node_tod_err_reg.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2022-01-26T15:40:16Z",
+      "side": 1,
+      "message": "Will change to TOD_ERROR to be consistent with SCOM definition.",
+      "parentUuid": "08d5ffe0_4cedbfb3",
+      "range": {
+        "startLine": 2,
+        "startChar": 42,
+        "endLine": 2,
+        "endChar": 53
+      },
+      "revId": "9cbd97aac08b1eec73a385f8e8d51c565137d242",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cbabee2_4e9afeee",
@@ -64,6 +88,30 @@
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d282847e_5b095930",
+        "filename": "xml/p10/node_tp_local_fir.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2022-01-26T15:40:16Z",
+      "side": 1,
+      "message": "Still not sure if this is needed for TOD errors. Will follow up in another commit.",
+      "parentUuid": "4cbabee2_4e9afeee",
+      "range": {
+        "startLine": 33,
+        "startChar": 37,
+        "endLine": 33,
+        "endChar": 47
+      },
+      "revId": "9cbd97aac08b1eec73a385f8e8d51c565137d242",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "483fe8aa_515c2f22",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-25T21:02:43Z",
       "side": 1,
       "message": "sorted out of order",
+      "range": {
+        "startLine": 155,
+        "startChar": 37,
+        "endLine": 155,
+        "endChar": 47
+      },
+      "revId": "9cbd97aac08b1eec73a385f8e8d51c565137d242",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "476671a6_52a2b6a7",
+        "filename": "xml/p10/node_tp_local_fir.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2022-01-26T15:40:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "483fe8aa_515c2f22",
       "range": {
         "startLine": 155,
         "startChar": 37,
