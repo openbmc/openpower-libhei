@@ -44,7 +44,7 @@ class my_build_py(build_py):
             #       configurable via the package config in the bitbake recipes.
             for chip in ('p10', 'explorer'):
                 subprocess.run([ './parse_chip_data_xml', '--json',
-                                 '-i', chip, '-o', data_dir ])
+                                 '-i', chip, '-o', data_dir ], check=True)
 
         # Call the superclass run() to ensure everything else builds.
         super().run()
