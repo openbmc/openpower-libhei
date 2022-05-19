@@ -52,7 +52,7 @@ class my_build_py(build_py):
 
 setup(
     name         = 'openpower-hw-diags-pel-parser-data',
-    version      = '0.1',
+    version      = os.getenv('PELTOOL_VERSION', '1.0'),
     classifiers  = [ 'License :: OSI Approved :: Apache Software License' ],
     cmdclass     = { 'build_py': my_build_py }, # register custom build class
     packages     = [ package_name ],
