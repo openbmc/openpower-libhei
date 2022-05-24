@@ -1111,9 +1111,12 @@
         </expr>
     </rule>
     <rule attn_type="UCS" node_inst="0:31">
-        <!-- FIR & ~MASK & ACT0 & ACT1 -->
+        <!-- (FIR | WOF) & ~MASK & ACT0 & ACT1 -->
         <expr type="and">
-            <expr type="reg" value1="EQ_CORE_FIR"/>
+            <expr type="or">
+                <expr type="reg" value1="EQ_CORE_FIR"/>
+                <expr type="reg" value1="EQ_CORE_FIR_WOF"/>
+            </expr>
             <expr type="not">
                 <expr type="reg" value1="EQ_CORE_FIR_MASK"/>
             </expr>
