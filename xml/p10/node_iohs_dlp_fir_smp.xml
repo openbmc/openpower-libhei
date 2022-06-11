@@ -13,7 +13,27 @@
         <action attn_type="RE" config="01"/>
         <action attn_type="SPA" config="10"/>
     </local_fir>
-    <register name="IOHS_DLP_OPTICAL_CONFIG">
+    <register name="IOHS_DLP_CONFIG">
+        <instance addr="0x1801100A" reg_inst="0"/>
+        <instance addr="0x1901100A" reg_inst="1"/>
+        <instance addr="0x1A01100A" reg_inst="2"/>
+        <instance addr="0x1B01100A" reg_inst="3"/>
+        <instance addr="0x1C01100A" reg_inst="4"/>
+        <instance addr="0x1D01100A" reg_inst="5"/>
+        <instance addr="0x1E01100A" reg_inst="6"/>
+        <instance addr="0x1F01100A" reg_inst="7"/>
+    </register>
+    <register name="IOHS_DLP_CONTROL">
+        <instance addr="0x1801100B" reg_inst="0"/>
+        <instance addr="0x1901100B" reg_inst="1"/>
+        <instance addr="0x1A01100B" reg_inst="2"/>
+        <instance addr="0x1B01100B" reg_inst="3"/>
+        <instance addr="0x1C01100B" reg_inst="4"/>
+        <instance addr="0x1D01100B" reg_inst="5"/>
+        <instance addr="0x1E01100B" reg_inst="6"/>
+        <instance addr="0x1F01100B" reg_inst="7"/>
+    </register>
+    <register name="IOHS_DLP_PHY_CONFIG">
         <instance addr="0x1801100C" reg_inst="0"/>
         <instance addr="0x1901100C" reg_inst="1"/>
         <instance addr="0x1A01100C" reg_inst="2"/>
@@ -22,6 +42,26 @@
         <instance addr="0x1D01100C" reg_inst="5"/>
         <instance addr="0x1E01100C" reg_inst="6"/>
         <instance addr="0x1F01100C" reg_inst="7"/>
+    </register>
+    <register name="IOHS_DLP_SEC_CONFIG">
+        <instance addr="0x1801100D" reg_inst="0"/>
+        <instance addr="0x1901100D" reg_inst="1"/>
+        <instance addr="0x1A01100D" reg_inst="2"/>
+        <instance addr="0x1B01100D" reg_inst="3"/>
+        <instance addr="0x1C01100D" reg_inst="4"/>
+        <instance addr="0x1D01100D" reg_inst="5"/>
+        <instance addr="0x1E01100D" reg_inst="6"/>
+        <instance addr="0x1F01100D" reg_inst="7"/>
+    </register>
+    <register name="IOHS_DLP_OPTICAL_CONFIG">
+        <instance addr="0x1801100F" reg_inst="0"/>
+        <instance addr="0x1901100F" reg_inst="1"/>
+        <instance addr="0x1A01100F" reg_inst="2"/>
+        <instance addr="0x1B01100F" reg_inst="3"/>
+        <instance addr="0x1C01100F" reg_inst="4"/>
+        <instance addr="0x1D01100F" reg_inst="5"/>
+        <instance addr="0x1E01100F" reg_inst="6"/>
+        <instance addr="0x1F01100F" reg_inst="7"/>
     </register>
     <register name="IOHS_DLP_LINK0_TX_LANE_CONTROL">
         <instance addr="0x18011010" reg_inst="0"/>
@@ -204,6 +244,10 @@
         <instance addr="0x1F011029" reg_inst="7"/>
     </register>
     <capture_group node_inst="0:7">
+        <capture_register reg_inst="0:7" reg_name="IOHS_DLP_CONFIG" />
+        <capture_register reg_inst="0:7" reg_name="IOHS_DLP_CONTROL" />
+        <capture_register reg_inst="0:7" reg_name="IOHS_DLP_PHY_CONFIG" />
+        <capture_register reg_inst="0:7" reg_name="IOHS_DLP_SEC_CONFIG" />
         <capture_register reg_inst="0:7" reg_name="IOHS_DLP_OPTICAL_CONFIG" />
         <capture_register reg_inst="0:7" reg_name="IOHS_DLP_LINK0_TX_LANE_CONTROL" />
         <capture_register reg_inst="0:7" reg_name="IOHS_DLP_LINK1_TX_LANE_CONTROL" />
