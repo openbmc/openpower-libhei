@@ -69,7 +69,7 @@
     <bit pos="58">Firmware signaled deadman timer tigger occurred</bit>
     <bit pos="59">Fimware signaled power bus chip quiesce failed</bit>
     <bit pos="60">Hypervisor / Hostboot / OPAL initiated Terminate Immediate</bit>
-    <bit pos="61">reserved for software use</bit>
+    <bit pos="61">Host detected LPC timeout</bit>
     <bit pos="62">reserved for software use</bit>
     <bit pos="63">ext_local_xstop</bit>
 </attn_node>
