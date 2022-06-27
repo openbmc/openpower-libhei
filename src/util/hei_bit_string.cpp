@@ -126,7 +126,6 @@ void BitString::setFieldLeft(uint64_t i_pos, uint64_t i_len, uint64_t i_val)
 void BitString::setPattern(uint64_t i_sPos, uint64_t i_sLen, uint64_t i_pattern,
                            uint64_t i_pLen)
 {
-
     HEI_ASSERT(nullptr != getBufAddr());        // must to have a valid address
     HEI_ASSERT(0 < i_sLen);                     // must have at least one bit
     HEI_ASSERT(i_sPos + i_sLen <= getBitLen()); // field must be within range
