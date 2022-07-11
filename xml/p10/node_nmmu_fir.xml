@@ -48,8 +48,8 @@
     <bit pos="38">Check-in sm timeout error detected</bit>
     <bit pos="39">Invalidate sm timeout error detected</bit>
     <bit pos="40">NX local checkstop error detected</bit>
-    <bit pos="41">CP0 local checkstop error detected</bit>
-    <bit pos="42">CP1 local checkstop error detected</bit>
+    <bit pos="41">fbc snoop invalidate filter parity error</bit>
+    <bit pos="42">fabric purge threshold exceeded</bit>
     <bit pos="43">NPU local checkstop error detected</bit>
     <bit pos="44">FBC local checkstop error detected</bit>
     <bit pos="45">FBC local checkstop error detected</bit>
