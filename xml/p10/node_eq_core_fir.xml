@@ -170,6 +170,40 @@
         <instance addr="0x27022448" reg_inst="30"/>
         <instance addr="0x27021448" reg_inst="31"/>
     </register>
+    <register name="HV_PR_STATE">
+        <instance addr="0x2002840D" reg_inst="0"/>
+        <instance addr="0x2002440D" reg_inst="1"/>
+        <instance addr="0x2002240D" reg_inst="2"/>
+        <instance addr="0x2002140D" reg_inst="3"/>
+        <instance addr="0x2102840D" reg_inst="4"/>
+        <instance addr="0x2102440D" reg_inst="5"/>
+        <instance addr="0x2102240D" reg_inst="6"/>
+        <instance addr="0x2102140D" reg_inst="7"/>
+        <instance addr="0x2202840D" reg_inst="8"/>
+        <instance addr="0x2202440D" reg_inst="9"/>
+        <instance addr="0x2202240D" reg_inst="10"/>
+        <instance addr="0x2202140D" reg_inst="11"/>
+        <instance addr="0x2302840D" reg_inst="12"/>
+        <instance addr="0x2302440D" reg_inst="13"/>
+        <instance addr="0x2302240D" reg_inst="14"/>
+        <instance addr="0x2302140D" reg_inst="15"/>
+        <instance addr="0x2402840D" reg_inst="16"/>
+        <instance addr="0x2402440D" reg_inst="17"/>
+        <instance addr="0x2402240D" reg_inst="18"/>
+        <instance addr="0x2402140D" reg_inst="19"/>
+        <instance addr="0x2502840D" reg_inst="20"/>
+        <instance addr="0x2502440D" reg_inst="21"/>
+        <instance addr="0x2502240D" reg_inst="22"/>
+        <instance addr="0x2502140D" reg_inst="23"/>
+        <instance addr="0x2602840D" reg_inst="24"/>
+        <instance addr="0x2602440D" reg_inst="25"/>
+        <instance addr="0x2602240D" reg_inst="26"/>
+        <instance addr="0x2602140D" reg_inst="27"/>
+        <instance addr="0x2702840D" reg_inst="28"/>
+        <instance addr="0x2702440D" reg_inst="29"/>
+        <instance addr="0x2702240D" reg_inst="30"/>
+        <instance addr="0x2702140D" reg_inst="31"/>
+    </register>
     <register name="PC_FIR_HOLD_OUT">
         <instance addr="0x20028451" reg_inst="0"/>
         <instance addr="0x20024451" reg_inst="1"/>
@@ -577,6 +611,210 @@
         <instance addr="0x27024643" reg_inst="29"/>
         <instance addr="0x27022643" reg_inst="30"/>
         <instance addr="0x27021643" reg_inst="31"/>
+    </register>
+    <register name="MMU_HOLD_OUT0">
+        <instance addr="0x20028680" reg_inst="0"/>
+        <instance addr="0x20024680" reg_inst="1"/>
+        <instance addr="0x20022680" reg_inst="2"/>
+        <instance addr="0x20021680" reg_inst="3"/>
+        <instance addr="0x21028680" reg_inst="4"/>
+        <instance addr="0x21024680" reg_inst="5"/>
+        <instance addr="0x21022680" reg_inst="6"/>
+        <instance addr="0x21021680" reg_inst="7"/>
+        <instance addr="0x22028680" reg_inst="8"/>
+        <instance addr="0x22024680" reg_inst="9"/>
+        <instance addr="0x22022680" reg_inst="10"/>
+        <instance addr="0x22021680" reg_inst="11"/>
+        <instance addr="0x23028680" reg_inst="12"/>
+        <instance addr="0x23024680" reg_inst="13"/>
+        <instance addr="0x23022680" reg_inst="14"/>
+        <instance addr="0x23021680" reg_inst="15"/>
+        <instance addr="0x24028680" reg_inst="16"/>
+        <instance addr="0x24024680" reg_inst="17"/>
+        <instance addr="0x24022680" reg_inst="18"/>
+        <instance addr="0x24021680" reg_inst="19"/>
+        <instance addr="0x25028680" reg_inst="20"/>
+        <instance addr="0x25024680" reg_inst="21"/>
+        <instance addr="0x25022680" reg_inst="22"/>
+        <instance addr="0x25021680" reg_inst="23"/>
+        <instance addr="0x26028680" reg_inst="24"/>
+        <instance addr="0x26024680" reg_inst="25"/>
+        <instance addr="0x26022680" reg_inst="26"/>
+        <instance addr="0x26021680" reg_inst="27"/>
+        <instance addr="0x27028680" reg_inst="28"/>
+        <instance addr="0x27024680" reg_inst="29"/>
+        <instance addr="0x27022680" reg_inst="30"/>
+        <instance addr="0x27021680" reg_inst="31"/>
+    </register>
+    <register name="MMU_HOLD_OUT1">
+        <instance addr="0x20028681" reg_inst="0"/>
+        <instance addr="0x20024681" reg_inst="1"/>
+        <instance addr="0x20022681" reg_inst="2"/>
+        <instance addr="0x20021681" reg_inst="3"/>
+        <instance addr="0x21028681" reg_inst="4"/>
+        <instance addr="0x21024681" reg_inst="5"/>
+        <instance addr="0x21022681" reg_inst="6"/>
+        <instance addr="0x21021681" reg_inst="7"/>
+        <instance addr="0x22028681" reg_inst="8"/>
+        <instance addr="0x22024681" reg_inst="9"/>
+        <instance addr="0x22022681" reg_inst="10"/>
+        <instance addr="0x22021681" reg_inst="11"/>
+        <instance addr="0x23028681" reg_inst="12"/>
+        <instance addr="0x23024681" reg_inst="13"/>
+        <instance addr="0x23022681" reg_inst="14"/>
+        <instance addr="0x23021681" reg_inst="15"/>
+        <instance addr="0x24028681" reg_inst="16"/>
+        <instance addr="0x24024681" reg_inst="17"/>
+        <instance addr="0x24022681" reg_inst="18"/>
+        <instance addr="0x24021681" reg_inst="19"/>
+        <instance addr="0x25028681" reg_inst="20"/>
+        <instance addr="0x25024681" reg_inst="21"/>
+        <instance addr="0x25022681" reg_inst="22"/>
+        <instance addr="0x25021681" reg_inst="23"/>
+        <instance addr="0x26028681" reg_inst="24"/>
+        <instance addr="0x26024681" reg_inst="25"/>
+        <instance addr="0x26022681" reg_inst="26"/>
+        <instance addr="0x26021681" reg_inst="27"/>
+        <instance addr="0x27028681" reg_inst="28"/>
+        <instance addr="0x27024681" reg_inst="29"/>
+        <instance addr="0x27022681" reg_inst="30"/>
+        <instance addr="0x27021681" reg_inst="31"/>
+    </register>
+    <register name="MMU_HOLD_OUT2">
+        <instance addr="0x20028682" reg_inst="0"/>
+        <instance addr="0x20024682" reg_inst="1"/>
+        <instance addr="0x20022682" reg_inst="2"/>
+        <instance addr="0x20021682" reg_inst="3"/>
+        <instance addr="0x21028682" reg_inst="4"/>
+        <instance addr="0x21024682" reg_inst="5"/>
+        <instance addr="0x21022682" reg_inst="6"/>
+        <instance addr="0x21021682" reg_inst="7"/>
+        <instance addr="0x22028682" reg_inst="8"/>
+        <instance addr="0x22024682" reg_inst="9"/>
+        <instance addr="0x22022682" reg_inst="10"/>
+        <instance addr="0x22021682" reg_inst="11"/>
+        <instance addr="0x23028682" reg_inst="12"/>
+        <instance addr="0x23024682" reg_inst="13"/>
+        <instance addr="0x23022682" reg_inst="14"/>
+        <instance addr="0x23021682" reg_inst="15"/>
+        <instance addr="0x24028682" reg_inst="16"/>
+        <instance addr="0x24024682" reg_inst="17"/>
+        <instance addr="0x24022682" reg_inst="18"/>
+        <instance addr="0x24021682" reg_inst="19"/>
+        <instance addr="0x25028682" reg_inst="20"/>
+        <instance addr="0x25024682" reg_inst="21"/>
+        <instance addr="0x25022682" reg_inst="22"/>
+        <instance addr="0x25021682" reg_inst="23"/>
+        <instance addr="0x26028682" reg_inst="24"/>
+        <instance addr="0x26024682" reg_inst="25"/>
+        <instance addr="0x26022682" reg_inst="26"/>
+        <instance addr="0x26021682" reg_inst="27"/>
+        <instance addr="0x27028682" reg_inst="28"/>
+        <instance addr="0x27024682" reg_inst="29"/>
+        <instance addr="0x27022682" reg_inst="30"/>
+        <instance addr="0x27021682" reg_inst="31"/>
+    </register>
+    <register name="MMU_HOLD_OUT3">
+        <instance addr="0x20028683" reg_inst="0"/>
+        <instance addr="0x20024683" reg_inst="1"/>
+        <instance addr="0x20022683" reg_inst="2"/>
+        <instance addr="0x20021683" reg_inst="3"/>
+        <instance addr="0x21028683" reg_inst="4"/>
+        <instance addr="0x21024683" reg_inst="5"/>
+        <instance addr="0x21022683" reg_inst="6"/>
+        <instance addr="0x21021683" reg_inst="7"/>
+        <instance addr="0x22028683" reg_inst="8"/>
+        <instance addr="0x22024683" reg_inst="9"/>
+        <instance addr="0x22022683" reg_inst="10"/>
+        <instance addr="0x22021683" reg_inst="11"/>
+        <instance addr="0x23028683" reg_inst="12"/>
+        <instance addr="0x23024683" reg_inst="13"/>
+        <instance addr="0x23022683" reg_inst="14"/>
+        <instance addr="0x23021683" reg_inst="15"/>
+        <instance addr="0x24028683" reg_inst="16"/>
+        <instance addr="0x24024683" reg_inst="17"/>
+        <instance addr="0x24022683" reg_inst="18"/>
+        <instance addr="0x24021683" reg_inst="19"/>
+        <instance addr="0x25028683" reg_inst="20"/>
+        <instance addr="0x25024683" reg_inst="21"/>
+        <instance addr="0x25022683" reg_inst="22"/>
+        <instance addr="0x25021683" reg_inst="23"/>
+        <instance addr="0x26028683" reg_inst="24"/>
+        <instance addr="0x26024683" reg_inst="25"/>
+        <instance addr="0x26022683" reg_inst="26"/>
+        <instance addr="0x26021683" reg_inst="27"/>
+        <instance addr="0x27028683" reg_inst="28"/>
+        <instance addr="0x27024683" reg_inst="29"/>
+        <instance addr="0x27022683" reg_inst="30"/>
+        <instance addr="0x27021683" reg_inst="31"/>
+    </register>
+    <register name="MMU_HOLD_OUT4">
+        <instance addr="0x20028684" reg_inst="0"/>
+        <instance addr="0x20024684" reg_inst="1"/>
+        <instance addr="0x20022684" reg_inst="2"/>
+        <instance addr="0x20021684" reg_inst="3"/>
+        <instance addr="0x21028684" reg_inst="4"/>
+        <instance addr="0x21024684" reg_inst="5"/>
+        <instance addr="0x21022684" reg_inst="6"/>
+        <instance addr="0x21021684" reg_inst="7"/>
+        <instance addr="0x22028684" reg_inst="8"/>
+        <instance addr="0x22024684" reg_inst="9"/>
+        <instance addr="0x22022684" reg_inst="10"/>
+        <instance addr="0x22021684" reg_inst="11"/>
+        <instance addr="0x23028684" reg_inst="12"/>
+        <instance addr="0x23024684" reg_inst="13"/>
+        <instance addr="0x23022684" reg_inst="14"/>
+        <instance addr="0x23021684" reg_inst="15"/>
+        <instance addr="0x24028684" reg_inst="16"/>
+        <instance addr="0x24024684" reg_inst="17"/>
+        <instance addr="0x24022684" reg_inst="18"/>
+        <instance addr="0x24021684" reg_inst="19"/>
+        <instance addr="0x25028684" reg_inst="20"/>
+        <instance addr="0x25024684" reg_inst="21"/>
+        <instance addr="0x25022684" reg_inst="22"/>
+        <instance addr="0x25021684" reg_inst="23"/>
+        <instance addr="0x26028684" reg_inst="24"/>
+        <instance addr="0x26024684" reg_inst="25"/>
+        <instance addr="0x26022684" reg_inst="26"/>
+        <instance addr="0x26021684" reg_inst="27"/>
+        <instance addr="0x27028684" reg_inst="28"/>
+        <instance addr="0x27024684" reg_inst="29"/>
+        <instance addr="0x27022684" reg_inst="30"/>
+        <instance addr="0x27021684" reg_inst="31"/>
+    </register>
+    <register name="MMU_HOLD_OUT5">
+        <instance addr="0x20028685" reg_inst="0"/>
+        <instance addr="0x20024685" reg_inst="1"/>
+        <instance addr="0x20022685" reg_inst="2"/>
+        <instance addr="0x20021685" reg_inst="3"/>
+        <instance addr="0x21028685" reg_inst="4"/>
+        <instance addr="0x21024685" reg_inst="5"/>
+        <instance addr="0x21022685" reg_inst="6"/>
+        <instance addr="0x21021685" reg_inst="7"/>
+        <instance addr="0x22028685" reg_inst="8"/>
+        <instance addr="0x22024685" reg_inst="9"/>
+        <instance addr="0x22022685" reg_inst="10"/>
+        <instance addr="0x22021685" reg_inst="11"/>
+        <instance addr="0x23028685" reg_inst="12"/>
+        <instance addr="0x23024685" reg_inst="13"/>
+        <instance addr="0x23022685" reg_inst="14"/>
+        <instance addr="0x23021685" reg_inst="15"/>
+        <instance addr="0x24028685" reg_inst="16"/>
+        <instance addr="0x24024685" reg_inst="17"/>
+        <instance addr="0x24022685" reg_inst="18"/>
+        <instance addr="0x24021685" reg_inst="19"/>
+        <instance addr="0x25028685" reg_inst="20"/>
+        <instance addr="0x25024685" reg_inst="21"/>
+        <instance addr="0x25022685" reg_inst="22"/>
+        <instance addr="0x25021685" reg_inst="23"/>
+        <instance addr="0x26028685" reg_inst="24"/>
+        <instance addr="0x26024685" reg_inst="25"/>
+        <instance addr="0x26022685" reg_inst="26"/>
+        <instance addr="0x26021685" reg_inst="27"/>
+        <instance addr="0x27028685" reg_inst="28"/>
+        <instance addr="0x27024685" reg_inst="29"/>
+        <instance addr="0x27022685" reg_inst="30"/>
+        <instance addr="0x27021685" reg_inst="31"/>
     </register>
     <register name="LSU_HOLD_OUT_REG0">
         <instance addr="0x200286C0" reg_inst="0"/>
@@ -1055,6 +1293,7 @@
         <instance addr="0x270216CD" reg_inst="31"/>
     </register>
     <capture_group node_inst="0:31">
+        <capture_register reg_name="HV_PR_STATE"        reg_inst= "0:31" />
         <capture_register reg_name="PC_FIR_HOLD_OUT"    reg_inst= "0:31" />
         <capture_register reg_name="THRCTL_HOLD_OUT"    reg_inst= "0:31" />
         <capture_register reg_name="VSU_HOLD_OUT"       reg_inst= "0:31" />
@@ -1067,6 +1306,12 @@
         <capture_register reg_name="ISU_HOLD_OUT1"      reg_inst= "0:31" />
         <capture_register reg_name="ISU_HOLD_OUT2"      reg_inst= "0:31" />
         <capture_register reg_name="ISU_HOLD_OUT3"      reg_inst= "0:31" />
+        <capture_register reg_name="MMU_HOLD_OUT0"      reg_inst= "0:31" />
+        <capture_register reg_name="MMU_HOLD_OUT1"      reg_inst= "0:31" />
+        <capture_register reg_name="MMU_HOLD_OUT2"      reg_inst= "0:31" />
+        <capture_register reg_name="MMU_HOLD_OUT3"      reg_inst= "0:31" />
+        <capture_register reg_name="MMU_HOLD_OUT4"      reg_inst= "0:31" />
+        <capture_register reg_name="MMU_HOLD_OUT5"      reg_inst= "0:31" />
         <capture_register reg_name="LSU_HOLD_OUT_REG0"  reg_inst= "0:31" />
         <capture_register reg_name="LSU_HOLD_OUT_REG1"  reg_inst= "0:31" />
         <capture_register reg_name="LSU_HOLD_OUT_REG2"  reg_inst= "0:31" />
