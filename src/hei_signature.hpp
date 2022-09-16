@@ -50,11 +50,13 @@ class Signature
     Signature& operator=(const Signature&) = default;
 
   private:
-    Chip iv_chip;                ///< Chip containing this register.
-    NodeId_t iv_id;              ///< Node ID.
-    Instance_t iv_instance;      ///< Instance of this register.
-    BitPosition_t iv_bit;        ///< Target bit within this register.
-    AttentionType_t iv_attnType; ///< Attention type reported by this bit.
+    Chip iv_chip;               ///< Chip containing this register.
+    NodeId_t iv_id         = 0; ///< Node ID.
+    Instance_t iv_instance = 0; ///< Instance of this register.
+    BitPosition_t iv_bit   = 0; ///< Target bit within this register.
+
+    /** Attention type reported by this bit. */
+    AttentionType_t iv_attnType = ATTN_TYPE_CHECKSTOP;
 
   public: // Member functions
     /** @return The chip containing this register. */

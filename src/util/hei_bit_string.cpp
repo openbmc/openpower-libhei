@@ -422,7 +422,7 @@ uint8_t* BitString::getRelativePosition(uint64_t& o_relPos,
 
     o_relPos = (i_absPos + iv_offset) % UINT8_BIT_LEN;
 
-    return ((uint8_t*)iv_bufAddr + ((i_absPos + iv_offset) / UINT8_BIT_LEN));
+    return (iv_bufAddr + ((i_absPos + iv_offset) / UINT8_BIT_LEN));
 }
 
 //##############################################################################
@@ -439,7 +439,7 @@ BitStringBuffer::BitStringBuffer(uint64_t i_bitLen) :
 
 BitStringBuffer::~BitStringBuffer()
 {
-    delete[](uint8_t*) getBufAddr();
+    delete[] getBufAddr();
 }
 
 //------------------------------------------------------------------------------
@@ -472,7 +472,7 @@ BitStringBuffer& BitStringBuffer::operator=(const BitString& i_bs)
 {
     // The initBuffer() function will deallocate the buffer as well, however we
     // also need to deallocate the buffer here before we set the length.
-    delete[](uint8_t*) getBufAddr();
+    delete[] getBufAddr();
     setBufAddr(nullptr);
 
     setBitLen(i_bs.getBitLen());
@@ -493,7 +493,7 @@ BitStringBuffer& BitStringBuffer::operator=(const BitStringBuffer& i_bsb)
     {
         // The initBuffer() function will deallocate the buffer as well, however
         // we also need to deallocate the buffer here before we set the length.
-        delete[](uint8_t*) getBufAddr();
+        delete[] getBufAddr();
         setBufAddr(nullptr);
 
         setBitLen(i_bsb.getBitLen());
@@ -512,7 +512,7 @@ BitStringBuffer& BitStringBuffer::operator=(const BitStringBuffer& i_bsb)
 void BitStringBuffer::initBuffer()
 {
     // Deallocate the current buffer.
-    delete[](uint8_t*) getBufAddr();
+    delete[] getBufAddr();
 
     // create new buffer, initialized to 0's
     setBufAddr(new uint8_t[getMinBytes(getBitLen())]());

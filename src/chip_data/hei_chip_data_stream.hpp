@@ -71,7 +71,8 @@ class ChipDataStream
         HEI_ASSERT((iv_currentIndex + i_size) <= iv_bufferSize);
 
         // Copy the buffer.
-        memcpy(o_buf, (char*)iv_buffer + iv_currentIndex, i_size);
+        memcpy(o_buf, static_cast<const char*>(iv_buffer) + iv_currentIndex,
+               i_size);
 
         // Increment the curent index for the next piece of data.
         iv_currentIndex += i_size;

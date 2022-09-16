@@ -105,9 +105,6 @@ class HardwareRegister : public Register
     /** @return The address of this register. */
     virtual RegisterAddress_t getAddress() const = 0;
 
-    /** @return The size (in bytes) of this register. */
-    virtual size_t getSize() const = 0;
-
   public: // Operators
     /** @brief Equals operator. */
     bool operator==(const HardwareRegister& i_r) const
@@ -165,7 +162,7 @@ class HardwareRegister : public Register
 
   public:
     /** Function overloaded from parent Register class. */
-    const BitString* getBitString(const Chip& i_chip) const;
+    const BitString* getBitString(const Chip& i_chip) const override;
 
     /**
      * @brief  Reads a register from hardware via the user interface APIs.

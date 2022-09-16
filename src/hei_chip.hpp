@@ -66,14 +66,14 @@ class Chip
      * purpose is to eventually get passed back to the user application with
      * information associated with each chip.
      */
-    const void* iv_chip;
+    const void* iv_chip = nullptr;
 
     /**
      * When doing analysis on a chip, the isolator will need to know the chip
      * type in order to look up the correct information from the Chip Data
      * Files.
      */
-    ChipType_t iv_type;
+    ChipType_t iv_type = 0;
 
 }; // end class Chip
 

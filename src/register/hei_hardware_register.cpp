@@ -147,9 +147,9 @@ BitString& HardwareRegister::Cache::access(const Chip& i_chip,
 void HardwareRegister::Cache::flush()
 {
     // Delete all of the BitStrings.
-    for (auto& chipPair : iv_cache)
+    for (const auto& chipPair : iv_cache)
     {
-        for (auto& hwRegPair : chipPair.second)
+        for (const auto& hwRegPair : chipPair.second)
         {
             delete hwRegPair.second;
         }

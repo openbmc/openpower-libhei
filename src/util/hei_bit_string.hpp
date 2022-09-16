@@ -75,7 +75,8 @@ class BitString
      *        to allocate sufficient memory space for this bit string.
      */
     BitString(uint64_t i_bitLen, void* i_bufAddr, uint64_t i_offset = 0) :
-        iv_bitLen(i_bitLen), iv_bufAddr(i_bufAddr), iv_offset(i_offset)
+        iv_bitLen(i_bitLen), iv_bufAddr(static_cast<uint8_t*>(i_bufAddr)),
+        iv_offset(i_offset)
     {}
 
     /** @brief Destructor */
@@ -89,7 +90,7 @@ class BitString
 
     /** @return The address of the bit string buffer. Note that this may
      *          return nullptr. */
-    void* getBufAddr() const
+    uint8_t* getBufAddr() const
     {
         return iv_bufAddr;
     }
@@ -391,7 +392,7 @@ class BitString
      */
     void setBufAddr(void* i_newBufAddr)
     {
-        iv_bufAddr = i_newBufAddr;
+        iv_bufAddr = static_cast<uint8_t*>(i_newBufAddr);
     }
 
     /** @param i_newBitLen The new bit length of this bit string buffer. */
@@ -414,9 +415,9 @@ class BitString
     uint8_t* getRelativePosition(uint64_t& o_relPos, uint64_t i_absPos) const;
 
   private:
-    uint64_t iv_bitLen; ///< The bit length of this buffer.
-    void* iv_bufAddr;   ///< The beginning address of this buffer.
-    uint64_t iv_offset; ///< Start position offset
+    uint64_t iv_bitLen;  ///< The bit length of this buffer.
+    uint8_t* iv_bufAddr; ///< The beginning address of this buffer.
+    uint64_t iv_offset;  ///< Start position offset
 };
 
 //##############################################################################

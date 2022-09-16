@@ -41,19 +41,19 @@ class ScomRegister : public HardwareRegister
 
   public: // Accessor functions
     /** Function overloaded from parent HardwareRegister class. */
-    RegisterType_t getType() const
+    RegisterType_t getType() const override
     {
         return REG_TYPE_SCOM;
     }
 
     /** Function overloaded from parent HardwareRegister class. */
-    RegisterAddress_t getAddress() const
+    RegisterAddress_t getAddress() const override
     {
         return static_cast<RegisterAddress_t>(iv_address);
     }
 
     /** Function overloaded from parent HardwareRegister class. */
-    size_t getSize() const
+    size_t getSize() const override
     {
         return 8;
     }
@@ -106,19 +106,19 @@ class IdScomRegister : public HardwareRegister
 
   public: // Accessor functions
     /** Function overloaded from parent HardwareRegister class. */
-    RegisterType_t getType() const
+    RegisterType_t getType() const override
     {
         return REG_TYPE_ID_SCOM;
     }
 
     /** Function overloaded from parent HardwareRegister class. */
-    RegisterAddress_t getAddress() const
+    RegisterAddress_t getAddress() const override
     {
         return static_cast<RegisterAddress_t>(iv_address);
     }
 
     /** Function overloaded from parent HardwareRegister class. */
-    size_t getSize() const
+    size_t getSize() const override
     {
         return 8; // See note in class documentation.
     }
