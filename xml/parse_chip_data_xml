@@ -237,7 +237,7 @@ sub __getInstRange($)
     my $list = [];
     for ( @{$insts} ) { push @{$list}, $_->{reg_inst}; }
 
-    @{$list} = sort @{$list}; # Sort the list just in case.
+    @{$list} = sort {$a <=> $b} @{$list}; # Sort the list just in case.
 
     return BitRange::compress($list);
 }
@@ -598,7 +598,7 @@ sub __normalizeBit($$$)
 {
     my ( $node, $sigs, $insts_data ) = @_;
 
-    my @node_insts = sort keys %{$insts_data};
+    my @node_insts = sort {$a <=> $b} keys %{$insts_data};
     my $sz_insts = scalar @node_insts;
 
     # There should be only one child node per node instance bit position.
@@ -728,7 +728,7 @@ sub __normalizeNode($$$)
     }
 
     # Now that we have all of the node data, collapse the instance data into
-    # a list.
+    # a list. Note that sort order doesn't matter. Only used for consistency.
     for ( sort keys %{$insts_data} )
     {
         $insts_data->{$_}->{node_inst} = $_;
