@@ -7,9 +7,9 @@ namespace libhei
 
 class BitStringBuffer;
 
-//##############################################################################
-//                             BitString class
-//##############################################################################
+// ##############################################################################
+//                              BitString class
+// ##############################################################################
 
 /**
  * A BitString is general purpose class providing the ability to manipulate
@@ -420,9 +420,9 @@ class BitString
     uint64_t iv_offset;  ///< Start position offset
 };
 
-//##############################################################################
-//                          BitStringBuffer class
-//##############################################################################
+// ##############################################################################
+//                           BitStringBuffer class
+// ##############################################################################
 
 /** A BitStringBuffer is a BitString that maintains its own buffer in memory. It
  *  guarantees that sufficient memory is allocated and deallocated in the

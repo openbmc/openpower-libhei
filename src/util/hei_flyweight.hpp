@@ -18,7 +18,10 @@ class Flyweight
     Flyweight() = default;
 
     /** @brief Destructor. */
-    ~Flyweight() = default;
+    ~Flyweight()
+    {
+        clear();
+    }
 
     /** @brief Default copy constructor. */
     Flyweight(const Flyweight&) = delete;
