@@ -14,30 +14,8 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
     // Keep track of nodes that have been analyzed to avoid cyclic isolation.
     pushIsolationStack();
 
-    // Capture all registers for this node.
-    for (const auto& hwReg : iv_capRegs)
-    {
-        // Read the register (adds BitString to register cache).
-        if (hwReg->read(i_chip))
-        {
-            // The register read failed.
-            // TODO: Would be nice to add SCOM errors to the log just in case
-            //       traces are not available.
-            // TODO: This trace could be redundant with the user application,
-            //       which will have more information on the actual chip that
-            //       failed anyway. Leaving it commented out for now until the
-            //       SCOM errors are added to the log.
-            // HEI_ERR("register read failed on chip type=0x%0" PRIx32
-            //         "address=0x%0" PRIx64,
-            //         i_chip.getType(), hwReg->getAddress());
-        }
-        else
-        {
-            // Add to the FFDC.
-            io_isoData.addRegister(i_chip, hwReg->getId(), hwReg->getInstance(),
-                                   hwReg->getBitString(i_chip));
-        }
-    }
+    // Capture default set of registers for this node.
+    captureRegisters(i_chip, io_isoData);
 
     // Get the rule for this attention type.
     auto rule_itr = iv_rules.find(i_attnType);
@@ -62,6 +40,9 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
 
             // At least one active bit was found.
             o_activeAttn = true;
+
+            // Capture registers specific to this isolation bit.
+            captureRegisters(i_chip, io_isoData, bit);
 
             // Determine if this attention originated from another register or
             // if it is a leaf in the isolation tree.
@@ -109,15 +90,31 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
 
 //------------------------------------------------------------------------------
 
-void IsolationNode::addCaptureRegister(HardwareRegister::ConstPtr i_hwReg)
+void IsolationNode::addCaptureRegister(HardwareRegister::ConstPtr i_hwReg,
+                                       BitPosition_t i_bit)
 {
     HEI_ASSERT(i_hwReg); // should not be null
 
-    // If the register already exists, ignore it. Otherwise, add it to the list.
-    auto itr = std::find(iv_capRegs.begin(), iv_capRegs.end(), i_hwReg);
-    if (iv_capRegs.end() == itr)
+    // Check the bit range.
+    if (MAX_BIT_POSITION != i_bit)
     {
-        iv_capRegs.push_back(i_hwReg);
+        if (REG_TYPE_SCOM == iv_regType || REG_TYPE_ID_SCOM == iv_regType)
+        {
+            HEI_ASSERT(i_bit <= 64);
+        }
+        else
+        {
+            HEI_ASSERT(false); // register type unsupported
+        }
+    }
+
+    // Add this capture register only if it does not already exist in the list.
+    auto itr = iv_capRegs.find(i_bit);
+    if (iv_capRegs.end() == itr ||
+        itr->second.end() ==
+            std::find(itr->second.begin(), itr->second.end(), i_hwReg))
+    {
+        iv_capRegs[i_bit].push_back(i_hwReg);
     }
 }
 
@@ -161,6 +158,45 @@ void IsolationNode::pushIsolationStack() const
 
     // Push to node to the stack.
     cv_isolationStack.push_back(this);
+}
+
+//------------------------------------------------------------------------------
+
+void IsolationNode::captureRegisters(const Chip& i_chip,
+                                     IsolationData& io_isoData,
+                                     BitPosition_t i_bit) const
+{
+    auto itr = iv_capRegs.find(i_bit);
+    if (iv_capRegs.end() != itr)
+    {
+        // Capture all registers for this node.
+        for (const auto& hwReg : itr->second)
+        {
+            // Read the register (adds BitString to register cache).
+            if (hwReg->read(i_chip))
+            {
+                // The register read failed.
+                // TODO: Would be nice to add SCOM errors to the log just in
+                // case
+                //       traces are not available.
+                // TODO: This trace could be redundant with the user
+                // application,
+                //       which will have more information on the actual chip
+                //       that failed anyway. Leaving it commented out for now
+                //       until the SCOM errors are added to the log.
+                // HEI_ERR("register read failed on chip type=0x%0" PRIx32
+                //         "address=0x%0" PRIx64,
+                //         i_chip.getType(), hwReg->getAddress());
+            }
+            else
+            {
+                // Add to the FFDC.
+                io_isoData.addRegister(i_chip, hwReg->getId(),
+                                       hwReg->getInstance(),
+                                       hwReg->getBitString(i_chip));
+            }
+        }
+    }
 }
 
 //------------------------------------------------------------------------------

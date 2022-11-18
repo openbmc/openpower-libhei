@@ -9,6 +9,8 @@
 
 #include <stdint.h>
 
+#include <limits>
+
 namespace libhei
 {
 
@@ -112,6 +114,13 @@ using Instance_t = uint8_t;
  *   This is defined as a 1-byte field in the Chip Data Files.
  */
 using BitPosition_t = uint8_t;
+
+/**
+ * The maximum bit position supported by the BitPosition_t type. Note that this
+ * value does not represent the maximum bit position for a specific register
+ * type. That will need to be calculated seperately.
+ */
+constexpr auto MAX_BIT_POSITION = std::numeric_limits<BitPosition_t>::max();
 
 /**
  * The hardware address of a register (right justified).

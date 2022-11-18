@@ -85,10 +85,14 @@ class IsolationNode
     const RegisterType_t iv_regType;
 
     /**
-     * The list of register to capture and add to the log for additional
-     * debugging.
+     * The lists of register to capture and add to the log for additional
+     * debugging. The lists are indexed in a map where the key is a bit
+     * position. All registers that should be captured by default when
+     * isolating to this node will have a bit position of `MAX_BIT_POSITION`.
+     * Otherwise, any other list targeted for a specific bit will only be
+     * captured if there is an active attention on that bit.
      */
-    std::vector<HardwareRegister::ConstPtr> iv_capRegs;
+    std::map<BitPosition_t, std::vector<HardwareRegister::ConstPtr>> iv_capRegs;
 
     /**
      * This register could report multiple types of attentions. We can use a
@@ -131,9 +135,14 @@ class IsolationNode
      * This is only intended to be used during initialization of the isolator.
      * Duplicate registers will be ignored.
      *
-     * @param The target hardware register.
+     * @param i_hwReg The target hardware register.
+     * @param i_bit   If specified, the given register should only be captured
+     *                when there is an active attention on the given bit. If
+     *                omitted, the given register will be captured any time
+     *                this isolation node is analyzed.
      */
-    void addCaptureRegister(HardwareRegister::ConstPtr i_hwReg);
+    void addCaptureRegister(HardwareRegister::ConstPtr i_hwReg,
+                            BitPosition_t i_bit = MAX_BIT_POSITION);
 
     /**
      * @brief Adds a register rule for the given attention type. See iv_rules
@@ -182,6 +191,19 @@ class IsolationNode
     {
         return iv_regType;
     }
+
+  private: // Member functions
+    /**
+     * @param  i_chip     The target chip for isolation.
+     * @param  io_isoData The isolation data returned back to the user
+     *                    application.
+     * @param  i_bit      If specified, only the registers specifically
+     *                    targeted for the given bit are captured. If omitted,
+     *                    the default list of registers for this isolation node
+     *                    will be captured.
+     */
+    void captureRegisters(const Chip& i_chip, IsolationData& io_isoData,
+                          BitPosition_t i_bit = MAX_BIT_POSITION) const;
 
   private: // Isolation stack and supporting functions.
     /** When analyze() is called at the tree root, all recursive calls to

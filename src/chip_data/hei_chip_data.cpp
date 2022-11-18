@@ -17,6 +17,7 @@ constexpr SectionKeyword_t KW_ROOT = 0x524f4f54; // "ROOT" ASCII
 using Version_t = uint8_t;
 
 constexpr Version_t VERSION_1 = 0x01;
+constexpr Version_t VERSION_2 = 0x02;
 
 //------------------------------------------------------------------------------
 
@@ -242,7 +243,7 @@ using TmpNodeData     = std::pair<IsolationNode::Ptr, TmpChildNodeMap>;
 using TmpNodeMap      = std::map<IsolationNode::Key, TmpNodeData>;
 
 void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
-                TmpNodeMap& io_tmpNodeMap)
+                TmpNodeMap& io_tmpNodeMap, Version_t i_version)
 {
     // Read the node metadata.
     NodeId_t nodeId;
@@ -274,13 +275,19 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
             Instance_t regInst;
             io_stream >> regId >> regInst;
 
+            BitPosition_t bit = MAX_BIT_POSITION; // default all bits
+            if (VERSION_2 <= i_version)
+            {
+                io_stream >> bit;
+            }
+
             // Find the hardware register that is stored in this isolation chip
             // and add it to the list of capture registers. Note that this will
             // assert that the target register must exist in the isolation chip.
             auto hwReg = i_isoChip->getHardwareRegister({regId, regInst});
 
             // Add the register to the isolation node.
-            isoNode->addCaptureRegister(hwReg);
+            isoNode->addCaptureRegister(hwReg, bit);
         }
 
         // Add isolation rules.
@@ -389,8 +396,8 @@ void parseChipDataFile(void* i_buffer, size_t i_bufferSize,
     // This chip type should not already exist.
     HEI_ASSERT(io_isoChips.end() == io_isoChips.find(chipType));
 
-    // So far there is only one supported version type so check it here.
-    HEI_ASSERT(VERSION_1 == version);
+    // Check supported versions.
+    HEI_ASSERT(VERSION_1 <= version && version <= VERSION_2);
 
     // Allocate memory for the new isolation chip.
     auto isoChip = std::make_unique<IsolationChip>(chipType);
@@ -425,7 +432,7 @@ void parseChipDataFile(void* i_buffer, size_t i_bufferSize,
     TmpNodeMap tmpNodeMap; // Stores all nodes with child node map.
     for (unsigned int i = 0; i < numNodes; i++)
     {
-        __readNode(stream, isoChip, tmpNodeMap);
+        __readNode(stream, isoChip, tmpNodeMap, version);
     }
     // Link all nodes with their child nodes. Then add them to isoChip.
     __insertNodes(isoChip, tmpNodeMap);
