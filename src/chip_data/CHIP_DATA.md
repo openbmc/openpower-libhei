@@ -117,9 +117,8 @@ have the following:
 ##### 3.1.1) Capture Registers
 
 This list specifies which registers to capture and store for debugging purposes.
-It is suggested to at least capture all registers referenced in a node's rules,
-but it is not required and it is left up to the user application to decide which
-registers to capture, if any.
+Note that any register referenced in the isolation rules will be automatically
+captured and do not need to be duplicated in this list.
 
 Each capture register will have the following metadata, if any exist, and will
 immediately following the metadata for each node instance.
@@ -128,6 +127,26 @@ immediately following the metadata for each node instance.
 |:-----:|:------------------|:--------------------------|
 |     3 | register ID       | See section 2 for details |
 |     1 | register instance | See section 2 for details |
+
+**Version 2 and newer:**
+
+The user application can now specify registers to be captured when isolating to
+a specific bit in an isolation node as opposed to any bit in the isolation
+node. This can reduce the amount of default data captured if a particular bit
+requires capturing registers that are uninteresting to the other bits.
+
+Beginning with **version 2**, the following will be appended to the above
+capture register metadata:
+
+| Bytes | Desc                                   | Value/Example   |
+|:-----:|:---------------------------------------|:----------------|
+|     1 | bit position within the isolation node | see notes below |
+
+Notes:
+* The bit position will not exceed number of bits defined by the register type.
+* The order of the bit position is dependent on the register type.
+* A value of **255** indicates the register will be captured for all bit
+  positions within the isolation node.
 
 ##### 3.1.2) Isolation Rules
 
