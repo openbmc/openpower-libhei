@@ -7,6 +7,52 @@
         <action attn_type="RE"  config="01" />
     </local_fir>
 
+    <!--
+        These registers are on the MicroChip side of Explorer and are not in
+        the SCOM def.
+    -->
+
+    <register name="ADSP_PCBI">
+        <instance reg_inst="0" addr="0x00200860" />
+        <instance reg_inst="1" addr="0x00201860" />
+        <instance reg_inst="2" addr="0x00202860" />
+        <instance reg_inst="3" addr="0x00203860" />
+        <instance reg_inst="4" addr="0x00204860" />
+        <instance reg_inst="5" addr="0x00205860" />
+        <instance reg_inst="6" addr="0x00206860" />
+        <instance reg_inst="7" addr="0x00207860" />
+    </register>
+
+    <register name="CSU_PCBI">
+        <instance reg_inst="0" addr="0x002000B0" />
+        <instance reg_inst="1" addr="0x002010B0" />
+        <instance reg_inst="2" addr="0x002020B0" />
+        <instance reg_inst="3" addr="0x002030B0" />
+        <instance reg_inst="4" addr="0x002040B0" />
+        <instance reg_inst="5" addr="0x002050B0" />
+        <instance reg_inst="6" addr="0x002060B0" />
+        <instance reg_inst="7" addr="0x002070B0" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="ADSP_PCBI" reg_inst="0" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="1" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="2" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="3" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="4" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="5" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="6" />
+        <capture_register reg_name="ADSP_PCBI" reg_inst="7" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="0" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="1" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="2" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="3" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="4" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="5" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="6" />
+        <capture_register reg_name="CSU_PCBI"  reg_inst="7" />
+    </capture_group>
+
     <bit pos= "0"   >CFIR access PCB error</bit>
     <bit pos= "1"   >CFIR internal parity error</bit>
     <bit pos= "2"   >LFIR internal parity error</bit>
@@ -26,19 +72,23 @@
     <bit pos="24"   >early power off warning</bit>
     <bit pos="25"   >TOP fatal interrupts</bit>
     <bit pos="26"   >TOP non fatal interrupts</bit>
-    <bit pos="27:34">Interrupt from OPSe to OCMB</bit>
+    <bit pos="27:30">Interrupt from OPSe to OCMB</bit>
+    <bit pos="31"   >SerDes continuous calibration failure</bit>
+    <bit pos="32"   >Firmware Assert or CPU Exception</bit>
+    <bit pos="33"   >Extended error information ready</bit>
+    <bit pos="34"   >Interrupt from OPSe to OCMB</bit>
     <bit pos="35"   >DDR thermal event</bit>
     <bit pos="36"   >DDR4 PHY fatal</bit>
     <bit pos="37"   >DDR4 PHY non fatal</bit>
     <bit pos="38"   >DDR4 PHY interrupt</bit>
-    <bit pos="39" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="7">foxhound fatal lane 7</bit>
-    <bit pos="40" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="6">foxhound fatal lane 6</bit>
-    <bit pos="41" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="5">foxhound fatal lane 5</bit>
-    <bit pos="42" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="4">foxhound fatal lane 4</bit>
-    <bit pos="43" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="3">foxhound fatal lane 3</bit>
-    <bit pos="44" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="2">foxhound fatal lane 2</bit>
-    <bit pos="45" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="1">foxhound fatal lane 1</bit>
-    <bit pos="46" child_node="OCMB_LFIR_FFDC_FOXHOUND" node_inst="0">foxhound fatal lane 0</bit>
+    <bit pos="39"   >foxhound fatal lane 7</bit>
+    <bit pos="40"   >foxhound fatal lane 6</bit>
+    <bit pos="41"   >foxhound fatal lane 5</bit>
+    <bit pos="42"   >foxhound fatal lane 4</bit>
+    <bit pos="43"   >foxhound fatal lane 3</bit>
+    <bit pos="44"   >foxhound fatal lane 2</bit>
+    <bit pos="45"   >foxhound fatal lane 1</bit>
+    <bit pos="46"   >foxhound fatal lane 0</bit>
     <bit pos="47:54">foxhound non fatal</bit>
     <bit pos="55:62">foxhound serdes interrupt</bit>
     <bit pos="63"   >GIF2PCB parity error on FSM or Registers</bit>
