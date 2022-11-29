@@ -22,6 +22,30 @@
       },
       "revId": "ad94638345311e37a09bf8fdcbad2fc8c6fc65ac",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ed93c85_d97f17d1",
+        "filename": "src/isolator/hei_isolation_node.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2022-11-29T17:48:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab115708_fb7b54f5",
+      "range": {
+        "startLine": 103,
+        "startChar": 29,
+        "endLine": 103,
+        "endChar": 32
+      },
+      "revId": "ad94638345311e37a09bf8fdcbad2fc8c6fc65ac",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
