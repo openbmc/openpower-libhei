@@ -11,8 +11,8 @@ project('openpower-libhei', 'cpp',
 # Versioning
 #-------------------------------------------------------------------------------
 buildinfo = vcs_tag(command: ['git', 'describe', '--always', '--long'],
-                  input: 'buildinfo.hpp.in',
-                  output: 'buildinfo.hpp',
+                  input: 'hei_build_info.hpp.in',
+                  output: 'hei_build_info.hpp',
                   replace_string:'@BUILDINFO@',
                   fallback: '0')
 
