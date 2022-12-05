@@ -1,5 +1,4 @@
 
-#include <buildinfo.hpp>
 #include <isolator/hei_isolation_node.hpp>
 #include <isolator/hei_isolator.hpp>
 #include <register/hei_operator_register.hpp>
@@ -72,11 +71,6 @@ void Isolator::isolate(const std::vector<Chip>& i_chipList,
         // Analyze this chip.
         itr->second->analyze(chip, o_isoData);
     }
-}
-
-const char* getBuildInfo()
-{
-    return BUILDINFO;
 }
 
 } // end namespace libhei
