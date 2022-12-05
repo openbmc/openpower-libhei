@@ -11,8 +11,8 @@ project('openpower-libhei', 'cpp',
 # Versioning
 #-------------------------------------------------------------------------------
 buildinfo = vcs_tag(command: ['git', 'describe', '--always', '--long'],
-                  input: 'buildinfo.hpp.in',
-                  output: 'buildinfo.hpp',
+                  input: 'hei_build_info.hpp.in',
+                  output: 'hei_build_info.hpp',
                   replace_string:'@BUILDINFO@',
                   fallback: '0')
 
@@ -41,6 +41,7 @@ libhei_static = static_library('hei',
                                 install: true)
 
 install_headers(
+    'hei_build_info.hpp',
     'src/hei_chip.hpp',
     'src/hei_isolation_data.hpp',
     'src/hei_main.hpp',
