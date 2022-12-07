@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef27736_d286ce27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2022-12-07T17:50:33Z",
+      "side": 1,
+      "message": "TODO changes to fix the CI fail",
+      "revId": "31fdab28f4acd5a4bdb4f480a5e71bf89b9a81dc",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
