@@ -1,9 +1,8 @@
+import os
+import subprocess
 
 from setuptools import setup
 from setuptools.command.build_py import build_py
-
-import os
-import subprocess
 
 # Typically in files like this we'd use find_packages() to traverse directories
 # for any static packages. However, we are trying to add data to a package that
@@ -11,25 +10,25 @@ import subprocess
 # list out the package name, directory, and data information.
 
 # We are building data for the following module:
-package_name = 'pel.hwdiags'
+package_name = "pel.hwdiags"
 
 # Since we are not using find_packages() we have to provide a package directory,
 # but in this case nothing exists because there are no static package
 # directories. Therefore, we will just use the empty string.
-package_dir = ''
+package_dir = ""
 
 # Split the package data directory into its components.
-data_dir_components = [ *package_name.split('.'), 'data' ]
+data_dir_components = [*package_name.split("."), "data"]
 
 # It is important to note that '/' must be used as the path separator, even on
 # Windows. Setuptools will automatically convert the slashes where appropriate.
-package_data_glob = '/'.join( data_dir_components )
+package_data_glob = "/".join(data_dir_components)
+
 
 # This is a custom build class that is used to dynamically build the data files.
 class my_build_py(build_py):
     def run(self):
-        if not self.dry_run: # honor --dry-run flag
-
+        if not self.dry_run:  # honor --dry-run flag
             # Make sure the build directory for the data exists.
             # Yes, os.path.join() is necessary in this case, which is different
             # that what is stated above regarding package_data_glob.
@@ -42,20 +41,29 @@ class my_build_py(build_py):
             #       module.
             # TODO: The list of data file directories will need to be
             #       configurable via the package config in the bitbake recipes.
-            for chip in ('p10', 'explorer'):
-                subprocess.run([ './parse_chip_data_xml', '--json',
-                                 '-i', chip, '-o', data_dir ], check=True)
+            for chip in ("p10", "explorer"):
+                subprocess.run(
+                    [
+                        "./parse_chip_data_xml",
+                        "--json",
+                        "-i",
+                        chip,
+                        "-o",
+                        data_dir,
+                    ],
+                    check=True,
+                )
 
         # Call the superclass run() to ensure everything else builds.
         super().run()
 
 
 setup(
-    name         = 'openpower-hw-diags-pel-parser-data',
-    version      = os.getenv('PELTOOL_VERSION', '1.0'),
-    classifiers  = [ 'License :: OSI Approved :: Apache Software License' ],
-    cmdclass     = { 'build_py': my_build_py }, # register custom build class
-    packages     = [ package_name ],
-    package_dir  = { package_name: package_dir },
-    package_data = { package_name: [ package_data_glob ] },
+    name="openpower-hw-diags-pel-parser-data",
+    version=os.getenv("PELTOOL_VERSION", "1.0"),
+    classifiers=["License :: OSI Approved :: Apache Software License"],
+    cmdclass={"build_py": my_build_py},  # register custom build class
+    packages=[package_name],
+    package_dir={package_name: package_dir},
+    package_data={package_name: [package_data_glob]},
 )
