@@ -31,8 +31,8 @@ namespace libhei
 class IsolationChip
 {
   public: // Aliases
-    using Ptr      = std::unique_ptr<IsolationChip>;
-    using ConstPtr = std::unique_ptr<const IsolationChip>;
+    using Ptr      = std::shared_ptr<IsolationChip>;
+    using ConstPtr = std::shared_ptr<const IsolationChip>;
 
     using Map = std::map<ChipType_t, const ConstPtr>;
 

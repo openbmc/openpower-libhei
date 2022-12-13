@@ -400,7 +400,7 @@ void parseChipDataFile(void* i_buffer, size_t i_bufferSize,
     HEI_ASSERT(VERSION_1 <= version && version <= VERSION_2);
 
     // Allocate memory for the new isolation chip.
-    auto isoChip = std::make_unique<IsolationChip>(chipType);
+    auto isoChip = std::make_shared<IsolationChip>(chipType);
 
     // Read the register list metadata.
     SectionKeyword_t regsKeyword;
@@ -458,7 +458,7 @@ void parseChipDataFile(void* i_buffer, size_t i_bufferSize,
     HEI_ASSERT(stream.eof());
 
     // Add this isolation chip to the collective list of isolation chips.
-    auto ret = io_isoChips.emplace(chipType, std::move(isoChip));
+    auto ret = io_isoChips.emplace(chipType, isoChip);
     HEI_ASSERT(ret.second); // Just in case.
 }
 
