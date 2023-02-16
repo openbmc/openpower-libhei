@@ -46,8 +46,8 @@ void __readRegister(ChipDataStream& io_stream, IsolationChip::Ptr& io_isoChip)
             io_stream >> addr;
 
             // Get this register from the flyweight factory.
-            auto& factory = Flyweight<const ScomRegister>::getSingleton();
-            auto hwReg    = factory.get(id, inst, attr, addr);
+            auto hwReg =
+                Flyweight<const ScomRegister>::get(id, inst, attr, addr);
 
             // Add this register to the isolation chip.
             io_isoChip->addHardwareRegister(hwReg);
@@ -58,8 +58,8 @@ void __readRegister(ChipDataStream& io_stream, IsolationChip::Ptr& io_isoChip)
             io_stream >> addr;
 
             // Get this register from the flyweight factory.
-            auto& factory = Flyweight<const IdScomRegister>::getSingleton();
-            auto hwReg    = factory.get(id, inst, attr, addr);
+            auto hwReg =
+                Flyweight<const IdScomRegister>::get(id, inst, attr, addr);
 
             // Add this register to the isolation chip.
             io_isoChip->addHardwareRegister(hwReg);
@@ -106,8 +106,6 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
         }
         case 0x02: // integer constant
         {
-            auto& factory = Flyweight<const ConstantRegister>::getSingleton();
-
             if (REG_TYPE_SCOM == io_isoNode->getRegisterType() ||
                 REG_TYPE_ID_SCOM == io_isoNode->getRegisterType())
             {
@@ -115,7 +113,7 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
                 io_stream >> constant;
 
                 // Create the constant register and put it in the flyweights.
-                expr = factory.get(constant);
+                expr = Flyweight<const ConstantRegister>::get(constant);
             }
             else
             {
@@ -126,8 +124,6 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
         }
         case 0x10: // AND operation
         {
-            auto& factory = Flyweight<const AndRegister>::getSingleton();
-
             uint8_t numSubExpr;
             io_stream >> numSubExpr;
 
@@ -139,7 +135,7 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
             HEI_ASSERT(e1 && e2); // Cannot be null
 
             // Create the AND register and put it in the flyweights.
-            expr = factory.get(e1, e2);
+            expr = Flyweight<const AndRegister>::get(e1, e2);
 
             // Iterate any remaining expressions.
             for (uint8_t i = 2; i < numSubExpr; i++)
@@ -149,15 +145,13 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
                 HEI_ASSERT(e2); // Cannot be null
 
                 // Create the AND register and put it in the flyweights.
-                expr = factory.get(expr, e2);
+                expr = Flyweight<const AndRegister>::get(expr, e2);
             }
 
             break;
         }
         case 0x11: // OR operation
         {
-            auto& factory = Flyweight<const OrRegister>::getSingleton();
-
             uint8_t numSubExpr;
             io_stream >> numSubExpr;
 
@@ -169,7 +163,7 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
             HEI_ASSERT(e1 && e2); // Cannot be null
 
             // Create the OR register and put it in the flyweights.
-            expr = factory.get(e1, e2);
+            expr = Flyweight<const OrRegister>::get(e1, e2);
 
             // Iterate any remaining expressions.
             for (uint8_t i = 2; i < numSubExpr; i++)
@@ -179,28 +173,24 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
                 HEI_ASSERT(e2); // Cannot be null
 
                 // Create the OR register and put it in the flyweights.
-                expr = factory.get(expr, e2);
+                expr = Flyweight<const OrRegister>::get(expr, e2);
             }
 
             break;
         }
         case 0x12: // NOT operation
         {
-            auto& factory = Flyweight<const NotRegister>::getSingleton();
-
             // Read the sub-expression
             auto e = __readExpr(io_stream, i_isoChip, io_isoNode);
             HEI_ASSERT(e); // Cannot be null
 
             // Create the NOT register and put it in the flyweights.
-            expr = factory.get(e);
+            expr = Flyweight<const NotRegister>::get(e);
 
             break;
         }
         case 0x13: // left shift operation
         {
-            auto& factory = Flyweight<const LeftShiftRegister>::getSingleton();
-
             uint8_t shiftValue;
             io_stream >> shiftValue;
 
@@ -209,14 +199,12 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
             HEI_ASSERT(e); // Cannot be null
 
             // Create the left shift register and put it in the flyweights.
-            expr = factory.get(e, shiftValue);
+            expr = Flyweight<const LeftShiftRegister>::get(e, shiftValue);
 
             break;
         }
         case 0x14: // right shift operation
         {
-            auto& factory = Flyweight<const RightShiftRegister>::getSingleton();
-
             uint8_t shiftValue;
             io_stream >> shiftValue;
 
@@ -225,7 +213,7 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
             HEI_ASSERT(e); // Cannot be null
 
             // Create the right shift register and put it in the flyweights.
-            expr = factory.get(e, shiftValue);
+            expr = Flyweight<const RightShiftRegister>::get(e, shiftValue);
 
             break;
         }

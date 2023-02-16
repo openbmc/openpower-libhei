@@ -25,15 +25,13 @@ class Foo
 
 TEST(FlyweightTest, TestSet1)
 {
-    auto& foo_factory = Flyweight<Foo>::getSingleton();
-
-    auto f1 = foo_factory.get(1);
-    auto f2 = foo_factory.get(2);
-    auto f3 = foo_factory.get(1); // same as f1
+    auto f1 = Flyweight<Foo>::get(1);
+    auto f2 = Flyweight<Foo>::get(2);
+    auto f3 = Flyweight<Foo>::get(1); // same as f1
 
     ASSERT_NE(f1, f2); // Pointing to different objects
     ASSERT_EQ(f1, f3); // Pointing to the same object
 
     ASSERT_EQ(size_t(2),
-              foo_factory.size()); // Only two entries in the flyweight
+              Flyweight<Foo>::size()); // Only two entries in the flyweight
 }

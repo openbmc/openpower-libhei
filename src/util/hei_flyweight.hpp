@@ -9,34 +9,24 @@
 namespace libhei
 {
 
-/** @brief A generic flyweight factory for objects of type T. */
+/**
+ * @brief A generic flyweight factory for objects of type T.
+ *
+ * This is a static container class and cannot be instantiated. Instead, use
+ * the static functions to modify the singleton flyweight object.
+ */
 template <class T>
 class Flyweight
 {
-  private: // This class cannot be instantiated. Use getSingleton() instead.
-    /** @brief Default constructor. */
-    Flyweight() = default;
-
-    /** @brief Destructor. */
-    ~Flyweight()
-    {
-        clear();
-    }
-
-    /** @brief Default copy constructor. */
-    Flyweight(const Flyweight&) = delete;
-
-    /** @brief Default assignment operator. */
+  private:
+    // Ensure all constructors and assigment operators are deleted.
+    Flyweight()                            = delete;
+    Flyweight(const Flyweight&)            = delete;
     Flyweight& operator=(const Flyweight&) = delete;
+    Flyweight(Flyweight&&)                 = delete;
+    Flyweight& operator=(Flyweight&&)      = delete;
 
   public:
-    /** @brief Provides access to a singleton instance of this object. */
-    static Flyweight& getSingleton()
-    {
-        static Flyweight theFlyweight;
-        return theFlyweight;
-    }
-
     /**
      * @brief  Does an emplace add of a new entry to the factory, if the entry
      *         does not already exist, and returns a pointer to the entry in the
@@ -46,7 +36,7 @@ class Flyweight
      * @return A pointer to this entry in the factory.
      */
     template <class... Args>
-    std::shared_ptr<T> get(Args&&... i_args)
+    static std::shared_ptr<T> get(Args&&... i_args)
     {
         // Create a new instance with the given arguments.
         std::shared_ptr<T> newEntry = std::make_shared<T>(i_args...);
@@ -54,7 +44,7 @@ class Flyweight
         // The index is sorted by the value of the T objects. Check to see if
         // newEntry already exists in the factory.
         auto itr = std::lower_bound(
-            iv_index.begin(), iv_index.end(), newEntry,
+            cv_index.begin(), cv_index.end(), newEntry,
             [](const std::shared_ptr<T> a, const std::shared_ptr<T> b) {
                 return *a < *b;
             });
@@ -62,10 +52,10 @@ class Flyweight
         // std::lower_bound() will return the first element that does not
         // compare less than newEntry. So if an element is found, we must make
         // sure it does not have the same value as newEntry.
-        if (iv_index.end() == itr || !(*newEntry == *(*itr)))
+        if (cv_index.end() == itr || !(*newEntry == *(*itr)))
         {
             // Store the new enty in the sorted index.
-            itr = iv_index.insert(itr, newEntry);
+            itr = cv_index.insert(itr, newEntry);
         }
 
         // It is important to note that if newEntry was not inserted into the
@@ -81,9 +71,9 @@ class Flyweight
      *
      * This is called in the destructor. So it cannot throw an exception.
      */
-    void clear()
+    static void clear()
     {
-        iv_index.clear();
+        cv_index.clear();
     }
 
     /**
@@ -96,15 +86,15 @@ class Flyweight
      * initialization. Afterwards, the extra capacity is not needed. So this
      * function will shrink the capacity to the size of the vector.
      */
-    void compact()
+    static void compact()
     {
-        iv_index.shrink_to_fit();
+        cv_index.shrink_to_fit();
     }
 
     /** @return The number of entries in this flyweight factory. */
-    size_t size()
+    static size_t size()
     {
-        return iv_index.size();
+        return cv_index.size();
     }
 
   private:
@@ -124,7 +114,7 @@ class Flyweight
      * the structure. Also, the Hostboot user application does not support
      * std::set at this time.
      */
-    std::vector<std::shared_ptr<T>> iv_index;
+    static std::vector<std::shared_ptr<T>> cv_index;
 };
 
 } // end namespace libhei

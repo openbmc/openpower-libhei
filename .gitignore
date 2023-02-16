@@ -1,4 +1,5 @@
 *.sw*
+/.cache
 /build
 /subprojects/googletest
 /cppcheck-temp

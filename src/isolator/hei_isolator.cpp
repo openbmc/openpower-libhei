@@ -40,16 +40,16 @@ void Isolator::uninitialize()
     HardwareRegister::flushAll();
 
     // Clear the operator register flyweights.
-    Flyweight<const ConstantRegister>::getSingleton().clear();
-    Flyweight<const AndRegister>::getSingleton().clear();
-    Flyweight<const OrRegister>::getSingleton().clear();
-    Flyweight<const NotRegister>::getSingleton().clear();
-    Flyweight<const LeftShiftRegister>::getSingleton().clear();
-    Flyweight<const RightShiftRegister>::getSingleton().clear();
+    Flyweight<const ConstantRegister>::clear();
+    Flyweight<const AndRegister>::clear();
+    Flyweight<const OrRegister>::clear();
+    Flyweight<const NotRegister>::clear();
+    Flyweight<const LeftShiftRegister>::clear();
+    Flyweight<const RightShiftRegister>::clear();
 
     // Remove all of the HardwareRegister objects stored in the flyweights.
-    Flyweight<const ScomRegister>::getSingleton().clear();
-    Flyweight<const IdScomRegister>::getSingleton().clear();
+    Flyweight<const ScomRegister>::clear();
+    Flyweight<const IdScomRegister>::clear();
 }
 
 void Isolator::isolate(const std::vector<Chip>& i_chipList,
