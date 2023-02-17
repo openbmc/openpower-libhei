@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f021f074_b0adc6f6",
+        "filename": "src/util/hei_flyweight.hpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2023-02-17T16:13:55Z",
+      "side": 1,
+      "message": "This needs to be initialized in a .cpp file. Not preferred for a template class.",
+      "revId": "01dea9b6baffdef548286c416f89fd02104156f3",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
