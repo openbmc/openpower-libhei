@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node model_ec="ODYSSEY_10" name="GFIR" reg_type="SCOM" version="2">
+
+    <register name="GFIR_CS">
+        <instance addr="0x570F001C" reg_inst="0"/>
+    </register>
+
+    <register name="GFIR_RE">
+        <instance addr="0x570F001B" reg_inst="0"/>
+    </register>
+
+    <register name="GFIR_SPA">
+        <instance addr="0x570F001A" reg_inst="0"/>
+    </register>
+
+    <register name="GFIR_UCS">
+        <instance addr="0x570F002A" reg_inst="0"/>
+    </register>
+
+    <rule attn_type="CS" node_inst="0">
+        <expr type="reg" value1="GFIR_CS"/>
+    </rule>
+
+    <rule attn_type="RE" node_inst="0">
+        <expr type="reg" value1="GFIR_RE"/>
+    </rule>
+
+    <rule attn_type="SPA" node_inst="0">
+        <expr type="reg" value1="GFIR_SPA"/>
+    </rule>
+
+    <rule attn_type="UCS" node_inst="0">
+        <expr type="reg" value1="GFIR_UCS"/>
+    </rule>
+
+    <bit child_node="CFIR_TP" node_inst="0" pos="1">Attention from TP chiplet</bit>
+    <bit child_node="CFIR_MEM" node_inst="0" pos="8">Attention from MEM chiplet</bit>
+
+</attn_node>

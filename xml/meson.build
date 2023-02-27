@@ -23,6 +23,10 @@ cdb_files = {
         'chip_data_explorer_11.cdb',
         'chip_data_explorer_20.cdb',
     ],
+    'odyssey' :
+    [
+        'chip_data_odyssey_10.cdb',
+    ],
 }
 
 foreach chip_dir, out_files : cdb_files

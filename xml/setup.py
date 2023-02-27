@@ -41,7 +41,7 @@ class my_build_py(build_py):
             #       module.
             # TODO: The list of data file directories will need to be
             #       configurable via the package config in the bitbake recipes.
-            for chip in ("p10", "explorer"):
+            for chip in ("p10", "explorer", "odyssey"):
                 subprocess.run(
                     [
                         "./parse_chip_data_xml",

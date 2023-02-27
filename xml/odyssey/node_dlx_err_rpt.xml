@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node model_ec="ODYSSEY_10" name="DLX_ERR_RPT" reg_type="SCOM" version="2">
+
+    <rule attn_type="CS" node_inst="0">
+        <!-- REG & 0x0000000000003fff -->
+        <expr type="and">
+            <expr type="reg" value1="DLX_ERR_RPT" />
+            <expr type="int" value1="0x0000000000003fff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="RE" node_inst="0">
+        <!-- REG & 0x0000000000003fff -->
+        <expr type="and">
+            <expr type="reg" value1="DLX_ERR_RPT" />
+            <expr type="int" value1="0x0000000000003fff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="SPA" node_inst="0">
+        <!-- REG & 0x0000000000003fff -->
+        <expr type="and">
+            <expr type="reg" value1="DLX_ERR_RPT" />
+            <expr type="int" value1="0x0000000000003fff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="UCS" node_inst="0">
+        <!-- REG & 0x0000000000003fff -->
+        <expr type="and">
+            <expr type="reg" value1="DLX_ERR_RPT" />
+            <expr type="int" value1="0x0000000000003fff" />
+        </expr>
+    </rule>
+
+    <bit pos="50">buffer UE</bit>
+    <bit pos="51">insufficient working lanes</bit>
+    <bit pos="52">bad CRC from TLXT</bit>
+    <bit pos="53">flit hammer</bit>
+    <bit pos="54">TX lane reversal</bit>
+    <bit pos="55">RX receiving slow A</bit>
+    <bit pos="56">RX receiving illegal run length</bit>
+    <bit pos="57">control parity error</bit>
+    <bit pos="58">scom register parity error</bit>
+    <bit pos="59">truncated flit from TL</bit>
+    <bit pos="60">illegal run length from TL</bit>
+    <bit pos="61">ack pointer overflow</bit>
+    <bit pos="62">UE on bus from TLXT</bit>
+    <bit pos="63">ECC UE on dword containing run length</bit>
+
+</attn_node>

@@ -426,6 +426,7 @@ are:
 | ------------- | -------------------- |
 | `EXPLORER_11` | Explorer chip EC 1.1 |
 | `EXPLORER_20` | Explorer chip EC 2.0 |
+| `ODYSSEY_10`  | Odyssey chip EC 1.0  |
 | `P10_10`      | P10 chip EC 1.0      |
 | `P10_20`      | P10 chip EC 2.0      |
 

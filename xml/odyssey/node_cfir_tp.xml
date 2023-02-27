@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="CFIR_TP" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <register name="CFIR_TP_CS">
+        <instance reg_inst="0" addr="0x01040000" />
+    </register>
+
+    <register name="CFIR_TP_RE">
+        <instance reg_inst="0" addr="0x01040001" />
+    </register>
+
+    <register name="CFIR_TP_SPA">
+        <instance reg_inst="0" addr="0x01040002" />
+    </register>
+
+    <register name="CFIR_TP_UCS">
+        <instance reg_inst="0" addr="0x01040003" />
+    </register>
+
+    <register name="CFIR_TP_CS_MASK">
+        <instance reg_inst="0" addr="0x01040040" />
+    </register>
+
+    <register name="CFIR_TP_RE_MASK">
+        <instance reg_inst="0" addr="0x01040041" />
+    </register>
+
+    <register name="CFIR_TP_SPA_MASK">
+        <instance reg_inst="0" addr="0x01040042" />
+    </register>
+
+    <register name="CFIR_TP_UCS_MASK">
+        <instance reg_inst="0" addr="0x01040043" />
+    </register>
+
+    <rule attn_type="CS" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_TP_CS" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_TP_CS_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="RE" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_TP_RE" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_TP_RE_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="SPA" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_TP_SPA" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_TP_SPA_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="UCS" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_TP_UCS" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_TP_UCS_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <bit pos= "4" child_node="TP_LOCAL_FIR">Attention from TP_LOCAL_FIR</bit>
+
+</attn_node>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="DLX_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="DLX_FIR">
+        <instance reg_inst="0" addr="0x08012400" />
+    </local_fir>
+
+    <register name="CMN_CONFIG">
+        <instance reg_inst="0" addr="0x0801240E" />
+    </register>
+
+    <register name="PMU_CNTR">
+        <instance reg_inst="0" addr="0x0801240F" />
+    </register>
+
+    <register name="DLX_CONFIG0">
+        <instance reg_inst="0" addr="0x08012410" />
+    </register>
+
+    <register name="DLX_CONFIG1">
+        <instance reg_inst="0" addr="0x08012411" />
+    </register>
+
+    <register name="DLX_ERR_MASK">
+        <instance reg_inst="0" addr="0x08012412" />
+    </register>
+
+    <register name="DLX_ERR_RPT">
+        <instance reg_inst="0" addr="0x08012413" />
+    </register>
+
+    <register name="DLX_EDPL_MAX_COUNT">
+        <instance reg_inst="0" addr="0x08012415" />
+    </register>
+
+    <register name="DLX_STATUS">
+        <instance reg_inst="0" addr="0x08012416" />
+    </register>
+
+    <register name="DLX_TRAINING_STATUS">
+        <instance reg_inst="0" addr="0x08012417" />
+    </register>
+
+    <register name="DLX_RMT_CONFIG">
+        <instance reg_inst="0" addr="0x08012418" />
+    </register>
+
+    <register name="DLX_RMT_INFO">
+        <instance reg_inst="0" addr="0x08012419" />
+    </register>
+
+    <register name="DLX_SKIT_CTL">
+        <instance reg_inst="0" addr="0x0801241A" />
+    </register>
+
+    <register name="DLX_SKIT_STATUS">
+        <instance reg_inst="0" addr="0x0801241B" />
+    </register>
+
+    <register name="DLX_CYA2">
+        <instance reg_inst="0" addr="0x0801241C" />
+    </register>
+
+    <register name="DLX_ERR_ACTION">
+        <instance reg_inst="0" addr="0x0801241D" />
+    </register>
+
+    <register name="DLX_DEBUG_AID">
+        <instance reg_inst="0" addr="0x0801241E" />
+    </register>
+
+    <register name="DLX_CYA_BITS">
+        <instance reg_inst="0" addr="0x0801241F" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="CMN_CONFIG"          reg_inst="0" />
+        <capture_register reg_name="PMU_CNTR"            reg_inst="0" />
+        <capture_register reg_name="DLX_CONFIG0"         reg_inst="0" />
+        <capture_register reg_name="DLX_CONFIG1"         reg_inst="0" />
+        <capture_register reg_name="DLX_ERR_MASK"        reg_inst="0" />
+        <capture_register reg_name="DLX_ERR_RPT"         reg_inst="0" />
+        <capture_register reg_name="DLX_EDPL_MAX_COUNT"  reg_inst="0" />
+        <capture_register reg_name="DLX_STATUS"          reg_inst="0" />
+        <capture_register reg_name="DLX_TRAINING_STATUS" reg_inst="0" />
+        <capture_register reg_name="DLX_RMT_CONFIG"      reg_inst="0" />
+        <capture_register reg_name="DLX_RMT_INFO"        reg_inst="0" />
+        <capture_register reg_name="DLX_SKIT_CTL"        reg_inst="0" />
+        <capture_register reg_name="DLX_SKIT_STATUS"     reg_inst="0" />
+        <capture_register reg_name="DLX_CYA2"            reg_inst="0" />
+        <capture_register reg_name="DLX_ERR_ACTION"      reg_inst="0" />
+        <capture_register reg_name="DLX_DEBUG_AID"       reg_inst="0" />
+        <capture_register reg_name="DLX_CYA_BITS"        reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0">Internal parity error in SCOM component</bit>
+    <bit pos= "1" child_node="DLX_ERR_RPT" node_inst="0">DL0 fatal error</bit>
+    <bit pos= "2" child_node="DLX_ERR_RPT" node_inst="0">DL0 buffer UE / insufficient working lanes</bit>
+    <bit pos= "3">DL0 CE on TL flit</bit>
+    <bit pos= "4">DL0 detected a CRC error</bit>
+    <bit pos= "5">DL0 received a nack</bit>
+    <bit pos= "6">DL0 running in degraded mode</bit>
+    <bit pos= "7">DL0 parity error detection on a lane</bit>
+    <bit pos= "8">DL0 retrained due to no forward progress</bit>
+    <bit pos= "9">DL0 remote side initiated a retrain</bit>
+    <bit pos="10">DL0 retrain due to internal error or software</bit>
+    <bit pos="11">DL0 threshold reached</bit>
+    <bit pos="12">DL0 trained</bit>
+    <bit pos="13">DL0 received replay flit with link_errors bit 0</bit>
+    <bit pos="14">DL0 received replay flit with link_errors bit 1</bit>
+    <bit pos="15">DL0 received replay flit with link_errors bit 2</bit>
+    <bit pos="16">DL0 received replay flit with link_errors bit 3</bit>
+    <bit pos="17">DL0 received replay flit with link_errors bit 4</bit>
+    <bit pos="18">DL0 received replay flit with link_errors bit 5</bit>
+    <bit pos="19">DL0 received replay flit with link_errors bit 6</bit>
+    <bit pos="20">DL0 received replay flit with link_errors bit 7</bit>
+    <bit pos="21">DL0 skitter error</bit>
+    <bit pos="22">DL0 skitter drift detected</bit>
+    <bit pos="23:63">reserved</bit>
+
+</attn_node>

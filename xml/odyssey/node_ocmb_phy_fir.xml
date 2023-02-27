@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="OCMB_PHY_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+    <local_fir name="OCMB_PHY_FIR">
+        <instance reg_inst="0" addr="0x08010C00" />
+    </local_fir>
+    <bit pos="0">SCOM FSM or FIR register parity error</bit>
+    <bit pos="1">RX state machine parity or mode register parity error (IOO0)</bit>
+    <bit pos="2">reserved</bit>
+    <bit pos="3">reserved</bit>
+    <bit pos="4">reserved</bit>
+    <bit pos="5">TX state machine parity or mode register parity error (IOO0)</bit>
+    <bit pos="6">reserved</bit>
+    <bit pos="7">reserved</bit>
+    <bit pos="8">reserved</bit>
+    <bit pos="9">reserved</bit>
+    <bit pos="10">reserved</bit>
+    <bit pos="11">reserved</bit>
+    <bit pos="12">reserved</bit>
+    <bit pos="13">PPE internal error</bit>
+    <bit pos="14">PPE external error</bit>
+    <bit pos="15">PPE Halt due to Watchdog or Interrupt</bit>
+    <bit pos="16">PPE Halt due to Debug</bit>
+    <bit pos="17">PPE Halted</bit>
+    <bit pos="18">PPE Watchdog Timeout</bit>
+    <bit pos="19">PPE Array Scrub was missed</bit>
+    <bit pos="20">PPE Array uncorrectable error</bit>
+    <bit pos="21">PPE Array correctable error</bit>
+    <bit pos="22">PPE Code Recal Abort</bit>
+    <bit pos="23">PPE Code Fatal Error</bit>
+    <bit pos="24">PPE Code Bad Lane Warning</bit>
+    <bit pos="25">PPE Code DFT Error</bit>
+    <bit pos="26">PPE Code Recal Not Run</bit>
+    <bit pos="27">PPE Code Thread Locked</bit>
+    <bit pos="28">PPE Code Thread Active Time Exceeded</bit>
+    <bit pos="29">reserved</bit>
+</attn_node>

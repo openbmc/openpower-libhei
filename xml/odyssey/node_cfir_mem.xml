@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="CFIR_MEM" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <register name="CFIR_MEM_CS">
+        <instance reg_inst="0" addr="0x08040000" />
+    </register>
+
+    <register name="CFIR_MEM_RE">
+        <instance reg_inst="0" addr="0x08040001" />
+    </register>
+
+    <register name="CFIR_MEM_SPA">
+        <instance reg_inst="0" addr="0x08040002" />
+    </register>
+
+    <register name="CFIR_MEM_UCS">
+        <instance reg_inst="0" addr="0x08040003" />
+    </register>
+
+    <register name="CFIR_MEM_CS_MASK">
+        <instance reg_inst="0" addr="0x08040040" />
+    </register>
+
+    <register name="CFIR_MEM_RE_MASK">
+        <instance reg_inst="0" addr="0x08040041" />
+    </register>
+
+    <register name="CFIR_MEM_SPA_MASK">
+        <instance reg_inst="0" addr="0x08040042" />
+    </register>
+
+    <register name="CFIR_MEM_UCS_MASK">
+        <instance reg_inst="0" addr="0x08040043" />
+    </register>
+
+    <rule attn_type="CS" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_MEM_CS" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_MEM_CS_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="RE" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_MEM_RE" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_MEM_RE_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="SPA" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_MEM_SPA" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_MEM_SPA_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <rule attn_type="UCS" node_inst="0">
+        <!-- FIR & ~MASK & 0x0fffffffffffffff -->
+        <expr type="and">
+            <expr type="reg" value1="CFIR_MEM_UCS" />
+            <expr type="not">
+                <expr type="reg" value1="CFIR_MEM_UCS_MASK" />
+            </expr>
+            <expr type="int" value1="0x0fffffffffffffff" />
+        </expr>
+    </rule>
+
+    <bit pos= "4" child_node="MEM_LOCAL_FIR" >Attention from MEM_LOCAL_FIR</bit>
+    <bit pos= "5" child_node="DLX_FIR"       >Attention from DLX_FIR</bit>
+    <bit pos= "6" child_node="MCBIST_FIR"    >Attention from MCBIST_FIR</bit>
+    <bit pos= "7" child_node="MMIO_FIR"      >Attention from MMIO_FIR</bit>
+    <bit pos= "8" child_node="RDF_FIR"       node_inst="0">Attention from RDF_FIR 0</bit>
+    <bit pos= "9" child_node="RDF_FIR"       node_inst="1">Attention from RDF_FIR 1</bit>
+    <bit pos="10" child_node="SRQ_FIR"       >Attention from SRQ_FIR</bit>
+    <bit pos="11" child_node="TLX_FIR"       >Attention from TLX_FIR</bit>
+    <bit pos="12" child_node="ODP_FIR"       node_inst="0">Attention from ODP_FIR 0</bit>
+    <bit pos="13" child_node="ODP_FIR"       node_inst="1">Attention from ODP_FIR 1</bit>
+    <bit pos="14" child_node="OCMB_PHY_FIR"  >Attention from OCMB_PHY_FIR</bit>
+
+</attn_node>

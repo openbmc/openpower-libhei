@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="ODP_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="ODP_FIR">
+        <instance reg_inst="0" addr="0x08013000" />
+        <instance reg_inst="1" addr="0x08013400" />
+    </local_fir>
+
+    <bit pos="0">Internal parity error</bit>
+    <bit pos="1">SCOM2APB state machine parity error</bit>
+    <bit pos="2">Write data parity error</bit>
+    <bit pos="3">APB responder error</bit>
+    <bit pos="4">ODPCTRL register parity error</bit>
+    <bit pos="5">PHY error</bit>
+    <bit pos="6">PHY Sticky Unlock Error</bit>
+    <bit pos="7">Bsi Interrupt occurred</bit>
+    <bit pos="8">ANIB Receive Error</bit>
+    <bit pos="9">Parity Error (even parity) for D5ACSM Channel 1 Parity Error</bit>
+    <bit pos="10">Parity Error (even parity) for D5ACSM Channel 0 Parity Error</bit>
+    <bit pos="11">PHY RX FIFO Check Error</bit>
+    <bit pos="12">PHY RX TX PPT Error</bit>
+    <bit pos="13">PHY ECC Error ARC ECC Interrupt</bit>
+    <bit pos="14:18">Reserved Firmware Interrupt</bit>
+    <bit pos="19">PHY Training Failure Interrupt</bit>
+    <bit pos="20">PHY Initialization Complete Interrupt</bit>
+    <bit pos="21">PHY Training Complete Interrupt</bit>
+
+</attn_node>

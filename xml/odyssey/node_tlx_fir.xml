@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="TLX_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="TLX_FIR">
+        <instance reg_inst="0" addr="0x08012000" />
+    </local_fir>
+
+    <register name="SRQ_ROQ_CTL_0">
+        <instance reg_inst="0" addr="0x0801100F" />
+    </register>
+
+    <register name="TLX_CFG_0">
+        <instance reg_inst="0" addr="0x0801200C" />
+    </register>
+
+    <register name="TLX_CFG_1">
+        <instance reg_inst="0" addr="0x0801200D" />
+    </register>
+
+    <register name="TLX_CFG_2">
+        <instance reg_inst="0" addr="0x0801200E" />
+    </register>
+
+    <register name="TLX_CFG_3">
+        <instance reg_inst="0" addr="0x0801200F" />
+    </register>
+
+    <register name="TLX_ERR_RPT_0">
+        <instance reg_inst="0" addr="0x0801201C" />
+    </register>
+
+    <register name="TLX_ERR_RPT_1">
+        <instance reg_inst="0" addr="0x0801201D" />
+    </register>
+
+    <register name="TLX_ERR_RPT_2">
+        <instance reg_inst="0" addr="0x0801201E" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="SRQ_ROQ_CTL_0" reg_inst="0" />
+        <capture_register reg_name="TLX_CFG_0"     reg_inst="0" />
+        <capture_register reg_name="TLX_CFG_1"     reg_inst="0" />
+        <capture_register reg_name="TLX_CFG_2"     reg_inst="0" />
+        <capture_register reg_name="TLX_CFG_3"     reg_inst="0" />
+        <capture_register reg_name="TLX_ERR_RPT_0" reg_inst="0" />
+        <capture_register reg_name="TLX_ERR_RPT_1" reg_inst="0" />
+        <capture_register reg_name="TLX_ERR_RPT_2" reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0">Internal parity error</bit>
+    <bit pos= "1">TLXT control register parity error</bit>
+    <bit pos= "2">TLX VC0 return credit overflow</bit>
+    <bit pos= "3">TLX VC3 return credit overflow</bit>
+    <bit pos= "4">TLX DCP0 return credit overflow</bit>
+    <bit pos= "5">TLX DCP3 return credit overflow</bit>
+    <bit pos= "6">TLXC error</bit>
+    <bit pos= "7">TLXC parity error</bit>
+    <bit pos= "8">TLXT config parity error</bit>
+    <bit pos= "9">TLXT response parity error</bit>
+    <bit pos="10">TLXT framer control parity error</bit>
+    <bit pos="11">TLXT Xarb control error</bit>
+    <bit pos="12">TLXT DLX interface error</bit>
+    <bit pos="13">TLX info register parity error</bit>
+    <bit pos="14">TLX reorder queue error</bit>
+    <bit pos="15">TLXT invalid configuration</bit>
+    <bit pos="16">TLXR is dropping commands after a fatal error</bit>
+    <bit pos="17">Malformed OC packet received</bit>
+    <bit pos="18">Protocol error detected in OC downstream sequence</bit>
+    <bit pos="19">Legal OC command not supported</bit>
+    <bit pos="20">Legal OC command length not supported</bit>
+    <bit pos="21">TLXR OC Misaligned</bit>
+    <bit pos="22">MMIO returned non-zero response to a write</bit>
+    <bit pos="23">Hardware error in TLXR control logic</bit>
+    <bit pos="24">TLXR Info Event</bit>
+    <bit pos="25">TLXR detected internal error</bit>
+    <bit pos="26">TLXR Threshold errors</bit>
+    <bit pos="27">Trace_Stop from TLXR</bit>
+
+</attn_node>

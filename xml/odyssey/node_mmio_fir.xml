@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="MMIO_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="MMIO_FIR">
+        <instance reg_inst="0" addr="0x08010870" />
+    </local_fir>
+
+    <register name="MMIO_ERR_RPT_0">
+        <instance reg_inst="0" addr="0x0801087C" />
+    </register>
+
+    <register name="MMIO_ERR_RPT_1">
+        <instance reg_inst="0" addr="0x0801087E" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="MMIO_ERR_RPT_0" reg_inst="0" />
+        <capture_register reg_name="MMIO_ERR_RPT_1" reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0">Interal SCOM logic parity error</bit>
+    <bit pos= "1">Attempt to access an unimplemented address in the AFU descriptor</bit>
+    <bit pos= "2">Error detected during MMIO inband or senor cache access</bit>
+    <bit pos= "3">Parity error in SCOM satellite component FSM</bit>
+    <bit pos= "4">Parity error in MMIO/CFG logic FSM</bit>
+    <bit pos= "5">Overflow detected in internal MMIO/CFG logic FIFO</bit>
+    <bit pos= "6">Fatal parity error detected in control register</bit>
+    <bit pos= "7">Parity error detected in informational register</bit>
+    <bit pos= "8">Both start signals asserted to Sensor cache logic</bit>
+    <bit pos= "9">Multiple parity errors on data from sequencer to sensor cache logic</bit>
+    <bit pos="10">State machine parity error in sensor cache logic</bit>
+    <bit pos="11">Sensor cache register parity error</bit>
+    <bit pos="12">acTAG PASID config error</bit>
+
+</attn_node>

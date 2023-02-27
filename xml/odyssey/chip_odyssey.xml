@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chip name="Odyssey" model_ec="ODYSSEY_10">
+    <attn_tree attn_type="CS"  root_node="GFIR" node_inst="0" />
+    <attn_tree attn_type="RE"  root_node="GFIR" node_inst="0" />
+    <attn_tree attn_type="SPA" root_node="GFIR" node_inst="0" />
+    <attn_tree attn_type="UCS" root_node="GFIR" node_inst="0" />
+</chip>

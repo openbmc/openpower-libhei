@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="MEM_LOCAL_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="MEM_LOCAL_FIR">
+        <instance reg_inst="0" addr="0x08040100" />
+    </local_fir>
+
+    <bit pos= "0">CFIR/LFIR parity error</bit>
+    <bit pos= "1">CPLT_CTRL - PCB access error</bit>
+    <bit pos= "2">CC - PCB access error</bit>
+    <bit pos= "3">CC - clock control error</bit>
+    <bit pos= "4">PSC - PSCOM Access Error</bit>
+    <bit pos= "5">PSC - internal or ring interface error</bit>
+    <bit pos= "6">THERM - various errors</bit>
+    <bit pos= "7">DBG - SCOM parity fail</bit>
+    <bit pos= "8">unused</bit>
+    <bit pos= "9">unused</bit>
+    <bit pos="10">Trace00 - SCOM parity error</bit>
+    <bit pos="11:62">unused</bit>
+    <bit pos="63">external local checkstop</bit>
+
+</attn_node>
+

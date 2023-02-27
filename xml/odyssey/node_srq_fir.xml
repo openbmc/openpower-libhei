@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="SRQ_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="SRQ_FIR">
+        <instance reg_inst="0" addr="0x08011000" />
+    </local_fir>
+
+    <register name="SRQ_ERR_RPT">
+        <instance reg_inst="0" addr="0x0801101C" />
+    </register>
+
+    <register name="MBXLT0">
+        <instance reg_inst="0" addr="0x08011012" />
+    </register>
+
+    <register name="MBXLT1">
+        <instance reg_inst="0" addr="0x08011013" />
+    </register>
+
+    <register name="MBXLT2">
+        <instance reg_inst="0" addr="0x08011014" />
+    </register>
+
+    <register name="MBXLT3">
+        <instance reg_inst="0" addr="0x08011021" />
+    </register>
+
+    <register name="WESR">
+        <instance reg_inst="0" addr="0x08011C06" />
+    </register>
+
+    <register name="SRQ_ERR_RPT_HOLD">
+        <instance reg_inst="0" addr="0x08011C07" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="SRQ_ERR_RPT"      reg_inst="0" />
+        <capture_register reg_name="MBXLT0"           reg_inst="0" />
+        <capture_register reg_name="MBXLT1"           reg_inst="0" />
+        <capture_register reg_name="MBXLT2"           reg_inst="0" />
+        <capture_register reg_name="MBXLT3"           reg_inst="0" />
+        <capture_register reg_name="WESR"             reg_inst="0" />
+        <capture_register reg_name="SRQ_ERR_RPT_HOLD" reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0">Internal parity error</bit>
+    <bit pos= "1">SRQ nonrecoverable error</bit>
+    <bit pos= "2">refresh overrun port0</bit>
+    <bit pos= "3">WAT error</bit>
+    <bit pos= "4">RCD parity error port0</bit>
+    <bit pos= "5">MCB control logic Error in NCF</bit>
+    <bit pos= "6">Emergency throttle engaged</bit>
+    <bit pos= "7">DSM errors port0</bit>
+    <bit pos= "8">event_n was active on the DDR interface port0</bit>
+    <bit pos= "9">WRQ or RRQ is in a hung state port0</bit>
+    <bit pos="10">state machine one hot error port0</bit>
+    <bit pos="11">ROQ errors port0</bit>
+    <bit pos="12">Address parity error seen internal to sequencer on read or write command port0</bit>
+    <bit pos="13">port0 has failed due to a persistent retry</bit>
+    <bit pos="14">informational register parity error</bit>
+    <bit pos="15">soft error reported from error report register</bit>
+    <bit pos="16">WDF unrecoverable mainline error</bit>
+    <bit pos="17">WDF mmio error</bit>
+    <bit pos="18">WDF array UE on mainline operations (SUE put in mem)</bit>
+    <bit pos="19">WDF mainline dataflow error (SUE not reliably put in mem)</bit>
+    <bit pos="20">WDF scom register parity error, affecting mainline config</bit>
+    <bit pos="21">WDF scom register parity error, affecting scom ops only</bit>
+    <bit pos="22">WDF SCOM fsm parity error</bit>
+    <bit pos="23">WDF write buffer array CE</bit>
+    <bit pos="24">refresh management CE port0</bit>
+    <bit pos="25">refresh management RAA counter UE port0</bit>
+    <bit pos="26">NCF fifo error port0</bit>
+    <bit pos="27">NCF fifo error port1</bit>
+    <bit pos="28">memcntl cmd xstop</bit>
+    <bit pos="29">SRQ recoverable error</bit>
+    <bit pos="30">DFI error port0</bit>
+    <bit pos="31">xlat addr error port0</bit>
+    <bit pos="32">refresh overrun port0</bit>
+    <bit pos="33">RCD parity error port1</bit>
+    <bit pos="34">DFI error port1</bit>
+    <bit pos="35">event_n was active on the DDR interface port1</bit>
+    <bit pos="36">WRQ or RRQ is in a hung state port1</bit>
+    <bit pos="37">state machine one hot error port1</bit>
+    <bit pos="38">ROQ errors port1</bit>
+    <bit pos="39">Address parity error seen internal to sequencer on read or write command port1</bit>
+    <bit pos="40">port1 has failed due to a persistent retry</bit>
+    <bit pos="41">refresh management CE port1</bit>
+    <bit pos="42">refresh management RAA counter UE port1</bit>
+    <bit pos="43">xlat addr error port1</bit>
+    <bit pos="44">check on ccs in progress bit</bit>
+    <bit pos="45">DSM errors port1</bit>
+
+</attn_node>

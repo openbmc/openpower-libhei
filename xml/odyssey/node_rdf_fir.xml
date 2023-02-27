@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="RDF_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="RDF_FIR">
+        <instance reg_inst="0" addr="0x08011800" />
+        <instance reg_inst="1" addr="0x08012800" />
+    </local_fir>
+
+    <register name="RDF_ERR_RPT_0">
+        <instance reg_inst="0" addr="0x0801180E" />
+        <instance reg_inst="1" addr="0x0801280E" />
+    </register>
+
+    <register name="RDF_ERR_RPT_1">
+        <instance reg_inst="0" addr="0x0801180F" />
+        <instance reg_inst="1" addr="0x0801280F" />
+    </register>
+
+    <register name="MSR">
+        <instance reg_inst="0" addr="0x0801180C" />
+        <instance reg_inst="1" addr="0x0801280C" />
+    </register>
+
+    <register name="HWMS0">
+        <instance reg_inst="0" addr="0x08011810" />
+        <instance reg_inst="1" addr="0x08012810" />
+    </register>
+
+    <register name="HWMS1">
+        <instance reg_inst="0" addr="0x08011811" />
+        <instance reg_inst="1" addr="0x08012811" />
+    </register>
+
+    <register name="HWMS2">
+        <instance reg_inst="0" addr="0x08011812" />
+        <instance reg_inst="1" addr="0x08012812" />
+    </register>
+
+    <register name="HWMS3">
+        <instance reg_inst="0" addr="0x08011813" />
+        <instance reg_inst="1" addr="0x08012813" />
+    </register>
+
+    <register name="HWMS4">
+        <instance reg_inst="0" addr="0x08011814" />
+        <instance reg_inst="1" addr="0x08012814" />
+    </register>
+
+    <register name="HWMS5">
+        <instance reg_inst="0" addr="0x08011815" />
+        <instance reg_inst="1" addr="0x08012815" />
+    </register>
+
+    <register name="HWMS6">
+        <instance reg_inst="0" addr="0x08011816" />
+        <instance reg_inst="1" addr="0x08012816" />
+    </register>
+
+    <register name="HWMS7">
+        <instance reg_inst="0" addr="0x08011817" />
+        <instance reg_inst="1" addr="0x08012817" />
+    </register>
+
+    <register name="FWMS0">
+        <instance reg_inst="0" addr="0x08011818" />
+        <instance reg_inst="1" addr="0x08012818" />
+    </register>
+
+    <register name="FWMS1">
+        <instance reg_inst="0" addr="0x08011819" />
+        <instance reg_inst="1" addr="0x08012819" />
+    </register>
+
+    <register name="FWMS2">
+        <instance reg_inst="0" addr="0x0801181A" />
+        <instance reg_inst="1" addr="0x0801281A" />
+    </register>
+
+    <register name="FWMS3">
+        <instance reg_inst="0" addr="0x0801181B" />
+        <instance reg_inst="1" addr="0x0801281B" />
+    </register>
+
+    <register name="FWMS4">
+        <instance reg_inst="0" addr="0x0801181C" />
+        <instance reg_inst="1" addr="0x0801281C" />
+    </register>
+
+    <register name="FWMS5">
+        <instance reg_inst="0" addr="0x0801181D" />
+        <instance reg_inst="1" addr="0x0801281D" />
+    </register>
+
+    <register name="FWMS6">
+        <instance reg_inst="0" addr="0x0801181E" />
+        <instance reg_inst="1" addr="0x0801281E" />
+    </register>
+
+    <register name="FWMS7">
+        <instance reg_inst="0" addr="0x0801181F" />
+        <instance reg_inst="1" addr="0x0801281F" />
+    </register>
+
+    <capture_group node_inst="0:1">
+        <capture_register reg_name="RDF_ERR_RPT_0" reg_inst="0:1" />
+        <capture_register reg_name="RDF_ERR_RPT_1" reg_inst="0:1" />
+        <capture_register reg_name="MSR"           reg_inst="0:1" />
+        <capture_register reg_name="HWMS0"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS1"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS2"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS3"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS4"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS5"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS6"         reg_inst="0:1" />
+        <capture_register reg_name="HWMS7"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS0"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS1"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS2"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS3"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS4"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS5"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS6"         reg_inst="0:1" />
+        <capture_register reg_name="FWMS7"         reg_inst="0:1" />
+    </capture_group>
+
+    <bit pos= "0">Internal SCOM error</bit>
+    <bit pos= "1">Mainline read MPE on rank 0</bit>
+    <bit pos= "2">Mainline read MPE on rank 1</bit>
+    <bit pos= "3">Mainline read MPE on rank 2</bit>
+    <bit pos= "4">Mainline read MPE on rank 3</bit>
+    <bit pos= "5">Mainline read MPE on rank 4</bit>
+    <bit pos= "6">Mainline read MPE on rank 5</bit>
+    <bit pos= "7">Mainline read MPE on rank 6</bit>
+    <bit pos= "8">Mainline read MPE on rank 7</bit>
+    <bit pos= "9">Mainline read NCE</bit>
+    <bit pos="10">Mainline read TCE</bit>
+    <bit pos="11">Mainline read SCE</bit>
+    <bit pos="12">Mainline read MCE</bit>
+    <bit pos="13">Mainline read SUE</bit>
+    <bit pos="14">Mainline read AUE</bit>
+    <bit pos="15">Mainline read UE</bit>
+    <bit pos="16">Mainline read RCD</bit>
+    <bit pos="17">Mainline read IAUE</bit>
+    <bit pos="18">Mainline read IUE</bit>
+    <bit pos="19">Mainline read IRCD</bit>
+    <bit pos="20">Mainline read IMPE</bit>
+    <bit pos="21">Maintenance MPE on rank 0</bit>
+    <bit pos="22">Maintenance MPE on rank 1</bit>
+    <bit pos="23">Maintenance MPE on rank 2</bit>
+    <bit pos="24">Maintenance MPE on rank 3</bit>
+    <bit pos="25">Maintenance MPE on rank 4</bit>
+    <bit pos="26">Maintenance MPE on rank 5</bit>
+    <bit pos="27">Maintenance MPE on rank 6</bit>
+    <bit pos="28">Maintenance MPE on rank 7</bit>
+    <bit pos="29">Maintenance NCE</bit>
+    <bit pos="30">Maintenance TCE</bit>
+    <bit pos="31">Maintenance SCE</bit>
+    <bit pos="32">Maintenance MCE</bit>
+    <bit pos="33">Maintenance SUE</bit>
+    <bit pos="34">Maintenance AUE</bit>
+    <bit pos="35">Maintenance UE</bit>
+    <bit pos="36">Maintenance RCD</bit>
+    <bit pos="37">Maintenance IAUE</bit>
+    <bit pos="38">Maintenance IUE</bit>
+    <bit pos="39">Maintenance IRCD</bit>
+    <bit pos="40">Maintenance IMPE</bit>
+    <bit pos="41">RDDATA valid error</bit>
+    <bit pos="42">SCOM status register parity error</bit>
+    <bit pos="43">SCOM recoverable register parity error</bit>
+    <bit pos="44">SCOM unrecoverable register parity error</bit>
+    <bit pos="45">ECC corrector internal parity error</bit>
+    <bit pos="46">Read buffer ECC CHK Cor CE DW0 Detected</bit>
+    <bit pos="47">Read buffer ECC CHK Cor CE DW1 Detected</bit>
+    <bit pos="48">Read buffer ECC CHK Cor UE DW0 Detected</bit>
+    <bit pos="49">Read buffer ECC CHK Cor UE DW1 Detected</bit>
+    <bit pos="50">Prefetch buffer ECC CHK Cor CE DW0 Detected</bit>
+    <bit pos="51">Prefetch buffer ECC CHK Cor CE DW1 Detected</bit>
+    <bit pos="52">Prefetch buffer ECC CHK Cor UE DW0 Detected</bit>
+    <bit pos="53">Prefetch buffer ECC CHK Cor UE DW1 Detected</bit>
+    <bit pos="54">Parity error on TLXT to RDF read buffer interface</bit>
+    <bit pos="55">Parity error on TLXT to RDF read prefetch interface</bit>
+    <bit pos="56:60">reserved</bit>
+    <bit pos="61">SCOM register parity error for debug/wat control</bit>
+    <bit pos="62">Reserved</bit>
+
+</attn_node>

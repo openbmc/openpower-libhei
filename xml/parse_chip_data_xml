@@ -31,6 +31,7 @@ my $SUPPORTED_MODEL_EC =
 {
     EXPLORER_11 => { id => 0x60D20011, type => "ocmb", desc => "Explorer 1.1" },
     EXPLORER_20 => { id => 0x60D20020, type => "ocmb", desc => "Explorer 2.0" },
+    ODYSSEY_10  => { id => 0x60C00010, type => "ocmb", desc => "Odyssey 1.0" },
     P10_10      => { id => 0x20DA0010, type => "proc", desc => "P10 1.0" },
     P10_20      => { id => 0x20DA0020, type => "proc", desc => "P10 2.0" },
 };

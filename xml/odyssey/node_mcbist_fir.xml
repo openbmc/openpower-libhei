@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<attn_node name="MCBIST_FIR" model_ec="ODYSSEY_10" reg_type="SCOM" version="2">
+
+    <local_fir name="MCBIST_FIR">
+        <instance reg_inst="0" addr="0x08011400" />
+    </local_fir>
+
+    <register name="MBSEC0">
+        <instance reg_inst="0" addr="0x08011455" />
+    </register>
+
+    <register name="MBSEC1">
+        <instance reg_inst="0" addr="0x08011456" />
+    </register>
+
+    <register name="MBSTR">
+        <instance reg_inst="0" addr="0x08011457" />
+    </register>
+
+    <register name="MBSSYMEC0">
+        <instance reg_inst="0" addr="0x08011458" />
+    </register>
+
+    <register name="MBSSYMEC1">
+        <instance reg_inst="0" addr="0x08011459" />
+    </register>
+
+    <register name="MBSSYMEC2">
+        <instance reg_inst="0" addr="0x0801145A" />
+    </register>
+
+    <register name="MBSSYMEC3">
+        <instance reg_inst="0" addr="0x0801145B" />
+    </register>
+
+    <register name="MBSSYMEC4">
+        <instance reg_inst="0" addr="0x0801145C" />
+    </register>
+
+    <register name="MBSSYMEC5">
+        <instance reg_inst="0" addr="0x0801145D" />
+    </register>
+
+    <register name="MBSSYMEC6">
+        <instance reg_inst="0" addr="0x0801145E" />
+    </register>
+
+    <register name="MBSSYMEC7">
+        <instance reg_inst="0" addr="0x0801145F" />
+    </register>
+
+    <register name="MBSSYMEC8">
+        <instance reg_inst="0" addr="0x08011460" />
+    </register>
+
+    <register name="MBSSYMEC9">
+        <instance reg_inst="0" addr="0x08011461" />
+    </register>
+
+    <register name="MBSMSEC">
+        <instance reg_inst="0" addr="0x08011469" />
+    </register>
+
+    <register name="MBNCER">
+        <instance reg_inst="0" addr="0x0801146A" />
+    </register>
+
+    <register name="MBRCER">
+        <instance reg_inst="0" addr="0x0801146B" />
+    </register>
+
+    <register name="MBMPER">
+        <instance reg_inst="0" addr="0x0801146C" />
+    </register>
+
+    <register name="MBUER">
+        <instance reg_inst="0" addr="0x0801146D" />
+    </register>
+
+    <register name="MBAUER">
+        <instance reg_inst="0" addr="0x0801146E" />
+    </register>
+
+    <register name="MBA_ERR_MASK_0">
+        <instance reg_inst="0" addr="0x08011473" />
+    </register>
+
+    <register name="MBA_ERR_MASK_1">
+        <instance reg_inst="0" addr="0x08011474" />
+    </register>
+
+    <register name="MBSEVR0">
+        <instance reg_inst="0" addr="0x0801147E" />
+    </register>
+
+    <register name="MCBAGRA">
+        <instance reg_inst="0" addr="0x080114D6" />
+    </register>
+
+    <register name="MCBMCAT">
+        <instance reg_inst="0" addr="0x080114D7" />
+    </register>
+
+    <register name="MCB_CNTL">
+        <instance reg_inst="0" addr="0x080114DB" />
+    </register>
+
+    <register name="MCB_CNTLSTAT">
+        <instance reg_inst="0" addr="0x080114DC" />
+    </register>
+
+    <register name="MCBCFG">
+        <instance reg_inst="0" addr="0x080114E0" />
+    </register>
+
+    <capture_group node_inst="0">
+        <capture_register reg_name="MBSEC0"         reg_inst="0" />
+        <capture_register reg_name="MBSEC1"         reg_inst="0" />
+        <capture_register reg_name="MBSTR"          reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC0"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC1"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC2"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC3"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC4"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC5"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC6"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC7"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC8"      reg_inst="0" />
+        <capture_register reg_name="MBSSYMEC9"      reg_inst="0" />
+        <capture_register reg_name="MBSMSEC"        reg_inst="0" />
+        <capture_register reg_name="MBNCER"         reg_inst="0" />
+        <capture_register reg_name="MBRCER"         reg_inst="0" />
+        <capture_register reg_name="MBMPER"         reg_inst="0" />
+        <capture_register reg_name="MBUER"          reg_inst="0" />
+        <capture_register reg_name="MBA_ERR_MASK_0" reg_inst="0" />
+        <capture_register reg_name="MBA_ERR_MASK_1" reg_inst="0" />
+        <capture_register reg_name="MBAUER"         reg_inst="0" />
+        <capture_register reg_name="MBSEVR0"        reg_inst="0" />
+        <capture_register reg_name="MCBAGRA"        reg_inst="0" />
+        <capture_register reg_name="MCBMCAT"        reg_inst="0" />
+        <capture_register reg_name="MCB_CNTL"       reg_inst="0" />
+        <capture_register reg_name="MCB_CNTLSTAT"   reg_inst="0" />
+        <capture_register reg_name="MCBCFG"         reg_inst="0" />
+    </capture_group>
+
+    <bit pos= "0">Internal parity error in scom component</bit>
+    <bit pos= "1">Invalid maint address</bit>
+    <bit pos= "2">Command address timeout</bit>
+    <bit pos= "3">Internal FSM error</bit>
+    <bit pos= "4">CSS Array uncorrected CE or UE</bit>
+    <bit pos= "5">MCBIST data error</bit>
+    <bit pos= "6">Hard NCE ETE attn</bit>
+    <bit pos= "7">Soft NCE ETE attn</bit>
+    <bit pos= "8">Int NCE ETE attn</bit>
+    <bit pos= "9">IUE ETE attn</bit>
+    <bit pos="10">ICE (IMPE) ETE attn</bit>
+    <bit pos="11">MCBIST program complete</bit>
+    <bit pos="12">MCBIST CCS subtest done</bit>
+    <bit pos="13">WAT debug bus attn</bit>
+    <bit pos="14">SCOM recoverable register parity error</bit>
+    <bit pos="15">SCOM fatal reg parity error</bit>
+    <bit pos="16">SCOM WAT and debug reg parity error</bit>
+    <bit pos="17">IAUE ETE attn</bit>
+    <bit pos="18">IRCD ETE attn</bit>
+
+</attn_node>
