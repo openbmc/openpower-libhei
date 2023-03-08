@@ -11,19 +11,17 @@ build_cdb = find_program('parse_chip_data_xml')
 # is run. However, this list must be kept in sync with the expected output so
 # that meson will know to run the script when an output file has changed or is
 # missing.
-cdb_files = {
-    'p10' :
-    [
-        'chip_data_p10_10.cdb',
-        'chip_data_p10_20.cdb',
-    ],
+cdb_files = {}
 
-    'explorer' :
-    [
-        'chip_data_explorer_11.cdb',
-        'chip_data_explorer_20.cdb',
-    ],
-}
+chip_config = get_option('chip_config')
+if 'p10' in chip_config
+    cdb_files += {'p10' : ['chip_data_p10_10.cdb', 'chip_data_p10_20.cdb']}
+endif
+
+if 'explorer' in chip_config
+    cdb_files += {'explorer' : ['chip_data_explorer_11.cdb',
+                                'chip_data_explorer_20.cdb']}
+endif
 
 foreach chip_dir, out_files : cdb_files
 
