@@ -1,0 +1,397 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "OMI_DL_FIR": {
+            "instances": {
+                "0": "0x08012800"
+            }
+        },
+        "OMI_DL_FIR_MASK": {
+            "instances": {
+                "0": "0x08012803"
+            }
+        },
+        "OMI_DL_FIR_ACT0": {
+            "instances": {
+                "0": "0x08012806"
+            }
+        },
+        "OMI_DL_FIR_ACT1": {
+            "instances": {
+                "0": "0x08012807"
+            }
+        },
+        "OMI_DL_FIR_WOF": {
+            "instances": {
+                "0": "0x08012808"
+            }
+        },
+        "CMN_CONFIG": {
+            "instances": {
+                "0": "0x0801280E"
+            }
+        },
+        "PMU_CNTR": {
+            "instances": {
+                "0": "0x0801280F"
+            }
+        },
+        "OMI_DL_CONFIG0": {
+            "instances": {
+                "0": "0x08012810"
+            }
+        },
+        "OMI_DL_CONFIG1": {
+            "instances": {
+                "0": "0x08012811"
+            }
+        },
+        "OMI_DL_ERR_MASK": {
+            "instances": {
+                "0": "0x08012812"
+            }
+        },
+        "OMI_DL_ERR_RPT": {
+            "instances": {
+                "0": "0x08012813"
+            }
+        },
+        "OMI_DL_ERR_CAPTURE": {
+            "instances": {
+                "0": "0x08012814"
+            }
+        },
+        "OMI_DL_EDPL_MAX_COUNT": {
+            "instances": {
+                "0": "0x08012815"
+            }
+        },
+        "OMI_DL_STATUS": {
+            "instances": {
+                "0": "0x08012816"
+            }
+        },
+        "OMI_DL_TRAINING_STATUS": {
+            "instances": {
+                "0": "0x08012817"
+            }
+        },
+        "OMI_DL_DLX_CONFIG": {
+            "instances": {
+                "0": "0x08012818"
+            }
+        },
+        "OMI_DL_DLX_INFO": {
+            "instances": {
+                "0": "0x08012819"
+            }
+        },
+        "OMI_DL_ERR_ACTION": {
+            "instances": {
+                "0": "0x0801281D"
+            }
+        },
+        "OMI_DL_DEBUG_AID": {
+            "instances": {
+                "0": "0x0801281E"
+            }
+        },
+        "OMI_DL_CYA_BITS": {
+            "instances": {
+                "0": "0x0801281F"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "OMI_DL_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OMI_DL_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "OMI-DL0 fatal error",
+                    "child_node": {
+                        "name": "OMI_DL_ERR_RPT",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "1": {
+                    "desc": "OMI-DL0 UE on data flit"
+                },
+                "2": {
+                    "desc": "OMI-DL0 CE on TL flit"
+                },
+                "3": {
+                    "desc": "OMI-DL0 detected a CRC error"
+                },
+                "4": {
+                    "desc": "OMI-DL0 received a nack"
+                },
+                "5": {
+                    "desc": "OMI-DL0 running in degraded mode"
+                },
+                "6": {
+                    "desc": "OMI-DL0 parity error detection on a lane"
+                },
+                "7": {
+                    "desc": "OMI-DL0 retrained due to no forward progress"
+                },
+                "8": {
+                    "desc": "OMI-DL0 remote side initiated a retrain"
+                },
+                "9": {
+                    "desc": "OMI-DL0 retrain due to internal error or software"
+                },
+                "10": {
+                    "desc": "OMI-DL0 threshold reached"
+                },
+                "11": {
+                    "desc": "OMI-DL0 trained"
+                },
+                "12": {
+                    "desc": "OMI-DL0 endpoint error bit 0"
+                },
+                "13": {
+                    "desc": "OMI-DL0 endpoint error bit 1"
+                },
+                "14": {
+                    "desc": "OMI-DL0 endpoint error bit 2"
+                },
+                "15": {
+                    "desc": "OMI-DL0 endpoint error bit 3"
+                },
+                "16": {
+                    "desc": "OMI-DL0 endpoint error bit 4"
+                },
+                "17": {
+                    "desc": "OMI-DL0 endpoint error bit 5"
+                },
+                "18": {
+                    "desc": "OMI-DL0 endpoint error bit 6"
+                },
+                "19": {
+                    "desc": "OMI-DL0 endpoint error bit 7"
+                },
+                "20:39": {
+                    "desc": "OMI-DL1"
+                },
+                "40:59": {
+                    "desc": "OMI-DL2"
+                },
+                "60": {
+                    "desc": "Performance monitor wrapped"
+                },
+                "61": {
+                    "desc": "reserved"
+                },
+                "62": {
+                    "desc": "LFIR internal parity error"
+                },
+                "63": {
+                    "desc": "SCOM Satellite Error"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "OMI_DL_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "OMI_DL_FIR": [
+            {
+                "reg_name": "CMN_CONFIG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PMU_CNTR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_CONFIG0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_CONFIG1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_ERR_MASK",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_ERR_CAPTURE",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_EDPL_MAX_COUNT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_TRAINING_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_DLX_CONFIG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_DLX_INFO",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_ERR_ACTION",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_DEBUG_AID",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OMI_DL_CYA_BITS",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,340 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "PAU_FIR_0": {
+            "instances": {
+                "0": "0x10010C00",
+                "3": "0x11010C00",
+                "4": "0x12010C00",
+                "5": "0x12011400",
+                "6": "0x13010C00",
+                "7": "0x13011400"
+            }
+        },
+        "PAU_FIR_0_MASK": {
+            "instances": {
+                "0": "0x10010C03",
+                "3": "0x11010C03",
+                "4": "0x12010C03",
+                "5": "0x12011403",
+                "6": "0x13010C03",
+                "7": "0x13011403"
+            }
+        },
+        "PAU_FIR_0_ACT0": {
+            "instances": {
+                "0": "0x10010C06",
+                "3": "0x11010C06",
+                "4": "0x12010C06",
+                "5": "0x12011406",
+                "6": "0x13010C06",
+                "7": "0x13011406"
+            }
+        },
+        "PAU_FIR_0_ACT1": {
+            "instances": {
+                "0": "0x10010C07",
+                "3": "0x11010C07",
+                "4": "0x12010C07",
+                "5": "0x12011407",
+                "6": "0x13010C07",
+                "7": "0x13011407"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PAU_FIR_0": {
+            "instances": [0, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_0_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_0_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_0_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_0_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_0_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_0_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_0_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_0_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_0_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "NTL array CE"
+                },
+                "1": {
+                    "desc": "NTL header array UE"
+                },
+                "2": {
+                    "desc": "NTL data array UE"
+                },
+                "3": {
+                    "desc": "NTL NVLInk Control/Header/AE Parity error"
+                },
+                "4": {
+                    "desc": "NTL NVLink Data Parity error"
+                },
+                "5": {
+                    "desc": "NTL NVLink Malformed Packet"
+                },
+                "6": {
+                    "desc": "NTL NVLink Unsupported Packet"
+                },
+                "7": {
+                    "desc": "NTL NVLink Config errors"
+                },
+                "8": {
+                    "desc": "NTL NVLink CRC errors or LMD=Stomp"
+                },
+                "9": {
+                    "desc": "NTL PRI errors"
+                },
+                "10": {
+                    "desc": "NTL logic error"
+                },
+                "11": {
+                    "desc": "NTL LMD=Data Poison"
+                },
+                "12": {
+                    "desc": "NTL data array SUE"
+                },
+                "13": {
+                    "desc": "CQ CTL/SM ASBE Array single-bit correctable error"
+                },
+                "14": {
+                    "desc": "CQ CTL/SM PBR PowerBus Recoverable"
+                },
+                "15": {
+                    "desc": "CQ CTL/SM REG Register ring error"
+                },
+                "16": {
+                    "desc": "CQ CTL/SM DUE Data Uncorrectable error for MMIO store data"
+                },
+                "17": {
+                    "desc": "CQ CTL/SM UT=1 to frozen PE"
+                },
+                "18": {
+                    "desc": "CQ CTL/SM NCF NVLink configuration error"
+                },
+                "19": {
+                    "desc": "CQ CTL/SM NVF NVLink fatal"
+                },
+                "20": {
+                    "desc": "CQ CTL/SM OCR OpenCAPI Recoverable, Command failed, and brick not fenced."
+                },
+                "21": {
+                    "desc": "CQ CTL/SM AUE Array uncorrectable error"
+                },
+                "22": {
+                    "desc": "CQ CTL/SM PBP PowerBus parity error"
+                },
+                "23": {
+                    "desc": "CQ CTL/SM PBF PowerBus Fatal"
+                },
+                "24": {
+                    "desc": "CQ CTL/SM PBC PowerBus configuration error"
+                },
+                "25": {
+                    "desc": "CQ CTL/SM FWD Forward-Progress"
+                },
+                "26": {
+                    "desc": "CQ CTL/SM NLG PAU Logic error"
+                },
+                "27": {
+                    "desc": "Cresp=Addr_Error received for a load command"
+                },
+                "28": {
+                    "desc": "Cresp=Addr_Error received for a store command"
+                },
+                "29": {
+                    "desc": "CQ DAT ECC UE on data/BE arrays"
+                },
+                "30": {
+                    "desc": "CQ DAT ECC CE on data/BE arrays"
+                },
+                "31": {
+                    "desc": "CQ DAT parity error on data/BE latches"
+                },
+                "32": {
+                    "desc": "CQ DAT parity errors on configuration registers"
+                },
+                "33": {
+                    "desc": "CQ DAT parity errors on received PowerBus rtag"
+                },
+                "34": {
+                    "desc": "CQ DAT parity errors on internal state latches"
+                },
+                "35": {
+                    "desc": "CQ DAT logic error"
+                },
+                "36": {
+                    "desc": "CQ DAT ECC SUE on data/BE arrays"
+                },
+                "37": {
+                    "desc": "CQ DAT ECC SUE on PB receive data"
+                },
+                "38": {
+                    "desc": "CQ DAT Reserved, macro bit 9"
+                },
+                "39": {
+                    "desc": "CQ DAT Reserved, macro bit 10"
+                },
+                "40": {
+                    "desc": "XTS internal logic error"
+                },
+                "41": {
+                    "desc": "XTS correctable errors in XTS internal SRAM"
+                },
+                "42": {
+                    "desc": "XTS uncorrectable errors in XTS internal SRAM"
+                },
+                "43": {
+                    "desc": "XTS correctable error on incoming stack transactions"
+                },
+                "44": {
+                    "desc": "XTS uncorrectable/protocol errors on incoming stack transaction"
+                },
+                "45": {
+                    "desc": "XTS protocol errors on incoming PBUS transaction"
+                },
+                "46": {
+                    "desc": "XTS Translate Request Fail"
+                },
+                "47": {
+                    "desc": "XTS informational fir that is set when the snooper retries a rpt_hang.check or rpt_hang.poll command."
+                },
+                "48": {
+                    "desc": "XTS Reserved, macro bit 8"
+                },
+                "49": {
+                    "desc": "XTS Reserved, macro bit 9"
+                },
+                "50": {
+                    "desc": "XTS Reserved, macro bit 10"
+                },
+                "51": {
+                    "desc": "XTS Reserved, macro bit 11"
+                },
+                "52": {
+                    "desc": "XTS Reserved, macro bit 12"
+                },
+                "53": {
+                    "desc": "XTS Reserved, macro bit 13"
+                },
+                "54": {
+                    "desc": "XTS Reserved, macro bit 14"
+                },
+                "55": {
+                    "desc": "XTS Reserved, macro bit 15"
+                },
+                "56": {
+                    "desc": "XTS Reserved, macro bit 16"
+                },
+                "57": {
+                    "desc": "XTS Reserved, macro bit 17"
+                },
+                "58": {
+                    "desc": "XTS Reserved, macro bit 18"
+                },
+                "59": {
+                    "desc": "AME Reserved, interrupt"
+                },
+                "60": {
+                    "desc": "AME data ECC UE"
+                },
+                "61": {
+                    "desc": "AME data SUE"
+                },
+                "62": {
+                    "desc": "Unused FIR"
+                },
+                "63": {
+                    "desc": "Unused FIR"
+                }
+            }
+        }
+    }
+}

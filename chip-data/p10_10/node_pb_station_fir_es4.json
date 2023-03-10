@@ -1,0 +1,205 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "PB_STATION_FIR_ES4": {
+            "instances": {
+                "0": "0x030113C0"
+            }
+        },
+        "PB_STATION_FIR_ES4_MASK": {
+            "instances": {
+                "0": "0x030113C3"
+            }
+        },
+        "PB_STATION_FIR_ES4_ACT0": {
+            "instances": {
+                "0": "0x030113C6"
+            }
+        },
+        "PB_STATION_FIR_ES4_ACT1": {
+            "instances": {
+                "0": "0x030113C7"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PB_STATION_FIR_ES4": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PB_STATION_FIR_ES4"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PB_STATION_FIR_ES4"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PB_STATION_FIR_ES4_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PB_STATION_FIR_ES4"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PB_STATION_FIR_ES4_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_STATION_FIR_ES4_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "protocol_error"
+                },
+                "1": {
+                    "desc": "overflow_error"
+                },
+                "2": {
+                    "desc": "hw_parity_error"
+                },
+                "3": {
+                    "desc": "spare"
+                },
+                "4": {
+                    "desc": "coherency_error"
+                },
+                "5": {
+                    "desc": "cresp_addr_error"
+                },
+                "6": {
+                    "desc": "cresp_error"
+                },
+                "7": {
+                    "desc": "hang_recovery_limit_error"
+                },
+                "8": {
+                    "desc": "spare"
+                },
+                "9": {
+                    "desc": "hang_recovery_gte_level1"
+                },
+                "10": {
+                    "desc": "force_mp_ipl"
+                },
+                "11": {
+                    "desc": "pb_cmd_snooper_error"
+                },
+                "12": {
+                    "desc": "data_overflow_error"
+                },
+                "13": {
+                    "desc": "data_protocol_error"
+                },
+                "14": {
+                    "desc": "data_route_error"
+                },
+                "15": {
+                    "desc": "fir_compab_trigger"
+                },
+                "16": {
+                    "desc": "link0_protocol_error"
+                },
+                "17": {
+                    "desc": "link0_overflow_error"
+                },
+                "18": {
+                    "desc": "link0_hw_parity_error"
+                },
+                "19": {
+                    "desc": "link1_protocol_error"
+                },
+                "20": {
+                    "desc": "link1_overflow_error"
+                },
+                "21": {
+                    "desc": "link1_hw_parity_error"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PB_STATION_FIR_ES4",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,599 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "TOD_M_PATH_CTRL": {
+            "instances": {
+                "0": "0x00040000"
+            }
+        },
+        "TOD_PRI_PORT_0_CTRL": {
+            "instances": {
+                "0": "0x00040001"
+            }
+        },
+        "TOD_PRI_PORT_1_CTRL": {
+            "instances": {
+                "0": "0x00040002"
+            }
+        },
+        "TOD_SEC_PORT_0_CTRL": {
+            "instances": {
+                "0": "0x00040003"
+            }
+        },
+        "TOD_SEC_PORT_1_CTRL": {
+            "instances": {
+                "0": "0x00040004"
+            }
+        },
+        "TOD_S_PATH_CTRL": {
+            "instances": {
+                "0": "0x00040005"
+            }
+        },
+        "TOD_I_PATH_CTRL": {
+            "instances": {
+                "0": "0x00040006"
+            }
+        },
+        "TOD_PSS_MSS_CTRL": {
+            "instances": {
+                "0": "0x00040007"
+            }
+        },
+        "TOD_PSS_MSS_STATUS": {
+            "instances": {
+                "0": "0x00040008"
+            }
+        },
+        "TOD_M_PATH_STATUS": {
+            "instances": {
+                "0": "0x00040009"
+            }
+        },
+        "TOD_S_PATH_STATUS": {
+            "instances": {
+                "0": "0x0004000A"
+            }
+        },
+        "TOD_M_PATH_0_STEP_STEER": {
+            "instances": {
+                "0": "0x0004000E"
+            }
+        },
+        "TOD_M_PATH_1_STEP_STEER": {
+            "instances": {
+                "0": "0x0004000F"
+            }
+        },
+        "TOD_CHIP_CTRL": {
+            "instances": {
+                "0": "0x00040010"
+            }
+        },
+        "TOD_TRACE_DATA_1": {
+            "instances": {
+                "0": "0x0004001D"
+            }
+        },
+        "TOD_TRACE_DATA_2": {
+            "instances": {
+                "0": "0x0004001E"
+            }
+        },
+        "TOD_TRACE_DATA_3": {
+            "instances": {
+                "0": "0x0004001F"
+            }
+        },
+        "TOD_FSM": {
+            "instances": {
+                "0": "0x00040024"
+            }
+        },
+        "TOD_TX_TTYPE_CTRL": {
+            "instances": {
+                "0": "0x00040027"
+            }
+        },
+        "TOD_RX_TTYPE_CTRL": {
+            "instances": {
+                "0": "0x00040029"
+            }
+        },
+        "TOD_ERROR": {
+            "instances": {
+                "0": "0x00040030"
+            }
+        },
+        "TOD_ERROR_MASK": {
+            "instances": {
+                "0": "0x00040032"
+            }
+        },
+        "TOD_ERROR_ROUTING": {
+            "instances": {
+                "0": "0x00040033"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "TOD_ERROR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TOD_ERROR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_ROUTING"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TOD_ERROR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_ROUTING"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TOD_ERROR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_ROUTING"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TOD_ERROR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_ROUTING"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TOD_ERROR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TOD_ERROR_ROUTING"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "M_PATH_CONTROL_REG_DATA_PARITY_ERROR"
+                },
+                "1": {
+                    "desc": "M_PATH_0_PARITY_ERROR"
+                },
+                "2": {
+                    "desc": "M_PATH_1_PARITY_ERROR"
+                },
+                "3": {
+                    "desc": "PCRP0_DATA_PARITY_ERROR"
+                },
+                "4": {
+                    "desc": "PCRP1_DATA_PARITY_ERROR"
+                },
+                "5": {
+                    "desc": "SCRP0_DATA_PARITY_ERROR"
+                },
+                "6": {
+                    "desc": "SCRP1_DATA_PARITY_ERROR"
+                },
+                "7": {
+                    "desc": "SPCR_DATA_PARITY_ERROR"
+                },
+                "8": {
+                    "desc": "IPCR_DATA_PARITY_ERROR"
+                },
+                "9": {
+                    "desc": "PSMSCR_DATA_PARITY_ERROR"
+                },
+                "10": {
+                    "desc": "S_PATH_0_PARITY_ERROr"
+                },
+                "11": {
+                    "desc": "REG_0X08_DATA_PARITY_ERROR"
+                },
+                "12": {
+                    "desc": "M_PATH_STATUS_REG_DATA_PARITY_ERROR"
+                },
+                "13": {
+                    "desc": "S_PATH_STATUS_REG_DATA_PARITY_ERROR"
+                },
+                "14": {
+                    "desc": "M_PATH_0_STEP_CHECK_ERROR"
+                },
+                "15": {
+                    "desc": "M_PATH_1_STEP_CHECK_ERROR"
+                },
+                "16": {
+                    "desc": "S_PATH_0_STEP_CHECK_ERROR"
+                },
+                "17": {
+                    "desc": "I_PATH_STEP_CHECK_ERROR"
+                },
+                "18": {
+                    "desc": "PSS HAMMING DISTANCE"
+                },
+                "19": {
+                    "desc": "MISC_RESET_REG_DATA_PARITY_ERROR"
+                },
+                "20": {
+                    "desc": "S_PATH_0_PARITY_ERROR"
+                },
+                "21": {
+                    "desc": "S_PATH_1_STEP_CHECK_ERROR"
+                },
+                "22": {
+                    "desc": "I_PATH_DELAY_STEP_CHECK_PARITY_ERROR"
+                },
+                "23": {
+                    "desc": "REG_0X0C DATA_PARITY ERROR"
+                },
+                "24": {
+                    "desc": "REG_0X11_0X12_0X13_0X14_0X15_0X16_DATA_PARITY_ERROR"
+                },
+                "25": {
+                    "desc": "REG_0X17_0X18_0X21_0X22_DATA_PARITY_ERROR"
+                },
+                "26": {
+                    "desc": "REG_0X1D_0X1E_0X1F_DATA_PARITY_ERROR"
+                },
+                "27": {
+                    "desc": "TIMER_VALUE_REG_DATA_PARITY_ERROR"
+                },
+                "28": {
+                    "desc": "LOW_ORDER_STEP_REG_DATA_PARITY_ERROR"
+                },
+                "29": {
+                    "desc": "FSM_REG_DATA_PARITY_ERROR"
+                },
+                "30": {
+                    "desc": "RX_TTYPE_CONTROL_REG_DATA_PARITY_ERROR"
+                },
+                "31": {
+                    "desc": "REG_0X30_0X31_0X32_0X33_DATA_PARITY_ERROR"
+                },
+                "32": {
+                    "desc": "CHIP_CONTROL_REG_DATA_PARITY_ERROR"
+                },
+                "33": {
+                    "desc": "I_PATH_SYNC_CHECK_ERROR"
+                },
+                "34": {
+                    "desc": "I_PATH_FSM_STATE_PARITY_ERROR"
+                },
+                "35": {
+                    "desc": "I_PATH_TIME_REG_PARITY_ERROR"
+                },
+                "36": {
+                    "desc": "I_PATH_TIME_REG_OVERFLOW"
+                },
+                "37": {
+                    "desc": "WOF_LOW_ORDER_STEP_COUNTER_PARITY_ERROR"
+                },
+                "38": {
+                    "desc": "RX_TTYPE_1"
+                },
+                "39": {
+                    "desc": "RX_TTYPE_1"
+                },
+                "40": {
+                    "desc": "RX_TTYPE_1"
+                },
+                "41": {
+                    "desc": "RX_TTYPE_1"
+                },
+                "42": {
+                    "desc": "RX_TTYPE_1"
+                },
+                "43": {
+                    "desc": "RX_TTYPE_1"
+                },
+                "44": {
+                    "desc": "PIB_SLAVE_ADDR_INVALID_ERROR"
+                },
+                "45": {
+                    "desc": "PIB_SLAVE_WRITE_INVALID_ERROR"
+                },
+                "46": {
+                    "desc": "PIB_SLAVE_READ_INVALID_ERROR"
+                },
+                "47": {
+                    "desc": "PIB_SLAVE_ADDR_PARITY_ERROR"
+                },
+                "48": {
+                    "desc": "PIB_SLAVE_DATA_PARITY_ERROR"
+                },
+                "49": {
+                    "desc": "TTYPE_CONTROL_REG_DATA_PARITY_ERROR"
+                },
+                "50": {
+                    "desc": "PIB_MASTER_RSP_INFO_ERROR"
+                },
+                "51": {
+                    "desc": "PIB_MASTER_RSP_INFO_ERROR"
+                },
+                "52": {
+                    "desc": "PIB_MASTER_RSP_INFO_ERROR"
+                },
+                "53": {
+                    "desc": "RX_TTYPE_INVALID_ERROR"
+                },
+                "54": {
+                    "desc": "RX_TTYPE_4_DATA_PARITY_ERROR"
+                },
+                "55": {
+                    "desc": "PIB_MASTER_REQUEST_ERROR"
+                },
+                "56": {
+                    "desc": "PIB_RESET_DURING_PIB_ACCESS_ERROR"
+                },
+                "57": {
+                    "desc": "EXTERNAL_XSTOP_ERROR"
+                },
+                "58": {
+                    "desc": "SPARE_ERROR"
+                },
+                "59": {
+                    "desc": "SPARE_ERROR"
+                },
+                "60": {
+                    "desc": "SPARE_ERROR"
+                },
+                "61": {
+                    "desc": "SPARE_ERROR"
+                },
+                "62": {
+                    "desc": "SPARE_ERROR"
+                },
+                "63": {
+                    "desc": "SPARE_ERROR"
+                }
+            }
+        }
+    },
+    "capture_groups": {
+        "TOD_ERROR": [
+            {
+                "reg_name": "TOD_M_PATH_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_PRI_PORT_0_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_PRI_PORT_1_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_SEC_PORT_0_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_SEC_PORT_1_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_S_PATH_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_I_PATH_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_PSS_MSS_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_PSS_MSS_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_M_PATH_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_S_PATH_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_M_PATH_0_STEP_STEER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_M_PATH_1_STEP_STEER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_CHIP_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_TRACE_DATA_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_TRACE_DATA_2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_TRACE_DATA_3",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_FSM",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_TX_TTYPE_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_RX_TTYPE_CTRL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_ERROR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_ERROR_MASK",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TOD_ERROR_ROUTING",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

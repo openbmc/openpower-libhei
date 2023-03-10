@@ -1,0 +1,739 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "RDFFIR": {
+            "instances": {
+                "0": "0x08011C00"
+            }
+        },
+        "RDFFIR_MASK": {
+            "instances": {
+                "0": "0x08011C03"
+            }
+        },
+        "RDFFIR_ACT0": {
+            "instances": {
+                "0": "0x08011C06"
+            }
+        },
+        "RDFFIR_ACT1": {
+            "instances": {
+                "0": "0x08011C07"
+            }
+        },
+        "RDFFIR_WOF": {
+            "instances": {
+                "0": "0x08011C08"
+            }
+        },
+        "FARB0": {
+            "instances": {
+                "0": "0x08011415"
+            }
+        },
+        "MBSEC0": {
+            "instances": {
+                "0": "0x08011855"
+            }
+        },
+        "MBSEC1": {
+            "instances": {
+                "0": "0x08011856"
+            }
+        },
+        "MBSTR": {
+            "instances": {
+                "0": "0x08011857"
+            }
+        },
+        "MBSSYMEC": {
+            "instances": {
+                "0": "0x08011858",
+                "1": "0x08011859",
+                "2": "0x0801185A",
+                "3": "0x0801185B",
+                "4": "0x0801185C",
+                "5": "0x0801185D",
+                "6": "0x0801185E",
+                "7": "0x0801185F",
+                "8": "0x08011860"
+            }
+        },
+        "MBSMSEC": {
+            "instances": {
+                "0": "0x08011869"
+            }
+        },
+        "MBNCER": {
+            "instances": {
+                "0": "0x0801186A"
+            }
+        },
+        "MBRCER": {
+            "instances": {
+                "0": "0x0801186B"
+            }
+        },
+        "MBMPER": {
+            "instances": {
+                "0": "0x0801186C"
+            }
+        },
+        "MBUER": {
+            "instances": {
+                "0": "0x0801186D"
+            }
+        },
+        "MBAUER": {
+            "instances": {
+                "0": "0x0801186E"
+            }
+        },
+        "MC_ADDR_TRANS0": {
+            "instances": {
+                "0": "0x0801186F"
+            }
+        },
+        "MC_ADDR_TRANS1": {
+            "instances": {
+                "0": "0x08011870"
+            }
+        },
+        "MC_ADDR_TRANS2": {
+            "instances": {
+                "0": "0x08011871"
+            }
+        },
+        "MBSEVR0": {
+            "instances": {
+                "0": "0x0801187E"
+            }
+        },
+        "MCBAGRA": {
+            "instances": {
+                "0": "0x080118D6"
+            }
+        },
+        "MCBMCAT": {
+            "instances": {
+                "0": "0x080118D7"
+            }
+        },
+        "MCB_CNTL": {
+            "instances": {
+                "0": "0x080118DB"
+            }
+        },
+        "MCB_CNTLSTAT": {
+            "instances": {
+                "0": "0x080118DC"
+            }
+        },
+        "MCBCFG": {
+            "instances": {
+                "0": "0x080118E0"
+            }
+        },
+        "EXP_MSR": {
+            "instances": {
+                "0": "0x08011C0C"
+            }
+        },
+        "RDF_ERR_RPT_0": {
+            "instances": {
+                "0": "0x08011C0E"
+            }
+        },
+        "RDF_ERR_RPT_1": {
+            "instances": {
+                "0": "0x08011C0F"
+            }
+        },
+        "HW_MS": {
+            "instances": {
+                "0": "0x08011C10",
+                "1": "0x08011C11",
+                "2": "0x08011C12",
+                "3": "0x08011C13",
+                "4": "0x08011C14",
+                "5": "0x08011C15",
+                "6": "0x08011C16",
+                "7": "0x08011C17"
+            }
+        },
+        "FW_MS": {
+            "instances": {
+                "0": "0x08011C18",
+                "1": "0x08011C19",
+                "2": "0x08011C1A",
+                "3": "0x08011C1B",
+                "4": "0x08011C1C",
+                "5": "0x08011C1D",
+                "6": "0x08011C1E",
+                "7": "0x08011C1F"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "RDFFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDFFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDFFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDFFIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDFFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDFFIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDFFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Mainline read MPE on rank 0"
+                },
+                "1": {
+                    "desc": "Mainline read MPE on rank 1"
+                },
+                "2": {
+                    "desc": "Mainline read MPE on rank 2"
+                },
+                "3": {
+                    "desc": "Mainline read MPE on rank 3"
+                },
+                "4": {
+                    "desc": "Mainline read MPE on rank 4"
+                },
+                "5": {
+                    "desc": "Mainline read MPE on rank 5"
+                },
+                "6": {
+                    "desc": "Mainline read MPE on rank 6"
+                },
+                "7": {
+                    "desc": "Mainline read MPE on rank 7"
+                },
+                "8": {
+                    "desc": "Mainline read NCE"
+                },
+                "9": {
+                    "desc": "Mainline read TCE"
+                },
+                "10": {
+                    "desc": "Mainline read SCE"
+                },
+                "11": {
+                    "desc": "Mainline read MCE"
+                },
+                "12": {
+                    "desc": "Mainline read SUE"
+                },
+                "13": {
+                    "desc": "Mainline read AUE"
+                },
+                "14": {
+                    "desc": "Mainline read UE"
+                },
+                "15": {
+                    "desc": "Mainline read RCD"
+                },
+                "16": {
+                    "desc": "Mainline read IAUE"
+                },
+                "17": {
+                    "desc": "Mainline read IUE"
+                },
+                "18": {
+                    "desc": "Mainline read IRCD"
+                },
+                "19": {
+                    "desc": "Mainline read IMPE"
+                },
+                "20": {
+                    "desc": "Maintenance MPE on rank 0"
+                },
+                "21": {
+                    "desc": "Maintenance MPE on rank 1"
+                },
+                "22": {
+                    "desc": "Maintenance MPE on rank 2"
+                },
+                "23": {
+                    "desc": "Maintenance MPE on rank 3"
+                },
+                "24": {
+                    "desc": "Maintenance MPE on rank 4"
+                },
+                "25": {
+                    "desc": "Maintenance MPE on rank 5"
+                },
+                "26": {
+                    "desc": "Maintenance MPE on rank 6"
+                },
+                "27": {
+                    "desc": "Maintenance MPE on rank 7"
+                },
+                "28": {
+                    "desc": "Maintenance NCE"
+                },
+                "29": {
+                    "desc": "Maintenance TCE"
+                },
+                "30": {
+                    "desc": "Maintenance SCE"
+                },
+                "31": {
+                    "desc": "Maintenance MCE"
+                },
+                "32": {
+                    "desc": "Maintenance SUE"
+                },
+                "33": {
+                    "desc": "Maintenance AUE"
+                },
+                "34": {
+                    "desc": "Maintenance UE"
+                },
+                "35": {
+                    "desc": "Maintenance RCD"
+                },
+                "36": {
+                    "desc": "Maintenance IAUE"
+                },
+                "37": {
+                    "desc": "Maintenance IUE"
+                },
+                "38": {
+                    "desc": "Maintenance IRCD"
+                },
+                "39": {
+                    "desc": "Maintenance IMPE"
+                },
+                "40": {
+                    "desc": "RDDATA valid error"
+                },
+                "41": {
+                    "desc": "SCOM status register parity error"
+                },
+                "42": {
+                    "desc": "SCOM recoverable register parity error"
+                },
+                "43": {
+                    "desc": "SCOM unrecoverable register parity error"
+                },
+                "44": {
+                    "desc": "ECC corrector internal parity error"
+                },
+                "45": {
+                    "desc": "Rd Buff ECC CHK Cor CE DW0 Detected"
+                },
+                "46": {
+                    "desc": "Rd Buff ECC CHK Cor CE DW1 Detected"
+                },
+                "47": {
+                    "desc": "Rd Buff ECC CHK Cor UE DW0 Detected"
+                },
+                "48": {
+                    "desc": "Rd Buff ECC CHK Cor UE DW1 Detected"
+                },
+                "49:59": {
+                    "desc": "Reserved"
+                },
+                "60": {
+                    "desc": "SCOM register parity error for debug/wat control"
+                },
+                "61": {
+                    "desc": "Reserved"
+                },
+                "62": {
+                    "desc": "Internal SCOM error"
+                },
+                "63": {
+                    "desc": "Internal SCOM error copy"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "RDFFIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "RDFFIR": [
+            {
+                "reg_name": "FARB0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSEC0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSEC1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSTR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 2
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 3
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 4
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 5
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 6
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 7
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC",
+                "reg_inst": {
+                    "0": 8
+                }
+            },
+            {
+                "reg_name": "MBSMSEC",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBNCER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBRCER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBMPER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBUER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBAUER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MC_ADDR_TRANS0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MC_ADDR_TRANS1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MC_ADDR_TRANS2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSEVR0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCBAGRA",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCBMCAT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCB_CNTL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCB_CNTLSTAT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCBCFG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "EXP_MSR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "RDF_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "RDF_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 2
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 3
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 4
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 5
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 6
+                }
+            },
+            {
+                "reg_name": "HW_MS",
+                "reg_inst": {
+                    "0": 7
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 2
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 3
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 4
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 5
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 6
+                }
+            },
+            {
+                "reg_name": "FW_MS",
+                "reg_inst": {
+                    "0": 7
+                }
+            }
+        ]
+    }
+}

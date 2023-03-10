@@ -1,0 +1,236 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "OCMB_PHY_FIR": {
+            "instances": {
+                "0": "0x08010C00"
+            }
+        },
+        "OCMB_PHY_FIR_MASK": {
+            "instances": {
+                "0": "0x08010C02"
+            }
+        },
+        "OCMB_PHY_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08010C04"
+            }
+        },
+        "OCMB_PHY_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08010C05"
+            }
+        },
+        "OCMB_PHY_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08010C06"
+            }
+        },
+        "OCMB_PHY_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08010C07"
+            }
+        },
+        "OCMB_PHY_FIR_WOF": {
+            "instances": {
+                "0": "0x08010C08"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "OCMB_PHY_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_PHY_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_PHY_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_PHY_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_PHY_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_PHY_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "SCOM FSM or FIR register parity error"
+                },
+                "1": {
+                    "desc": "RX state machine parity or mode register parity error (IOO0)"
+                },
+                "2": {
+                    "desc": "reserved"
+                },
+                "3": {
+                    "desc": "reserved"
+                },
+                "4": {
+                    "desc": "reserved"
+                },
+                "5": {
+                    "desc": "TX state machine parity or mode register parity error (IOO0)"
+                },
+                "6": {
+                    "desc": "reserved"
+                },
+                "7": {
+                    "desc": "reserved"
+                },
+                "8": {
+                    "desc": "reserved"
+                },
+                "9": {
+                    "desc": "reserved"
+                },
+                "10": {
+                    "desc": "reserved"
+                },
+                "11": {
+                    "desc": "reserved"
+                },
+                "12": {
+                    "desc": "reserved"
+                },
+                "13": {
+                    "desc": "PPE internal error"
+                },
+                "14": {
+                    "desc": "PPE external error"
+                },
+                "15": {
+                    "desc": "PPE Halt due to Watchdog or Interrupt"
+                },
+                "16": {
+                    "desc": "PPE Halt due to Debug"
+                },
+                "17": {
+                    "desc": "PPE Halted"
+                },
+                "18": {
+                    "desc": "PPE Watchdog Timeout"
+                },
+                "19": {
+                    "desc": "PPE Array Scrub was missed"
+                },
+                "20": {
+                    "desc": "PPE Array uncorrectable error"
+                },
+                "21": {
+                    "desc": "PPE Array correctable error"
+                },
+                "22": {
+                    "desc": "PPE Code Recal Abort"
+                },
+                "23": {
+                    "desc": "PPE Code Fatal Error"
+                },
+                "24": {
+                    "desc": "PPE Code Bad Lane Warning"
+                },
+                "25": {
+                    "desc": "PPE Code DFT Error"
+                },
+                "26": {
+                    "desc": "PPE Code Recal Not Run"
+                },
+                "27": {
+                    "desc": "PPE Code Thread Locked"
+                },
+                "28": {
+                    "desc": "PPE Code Thread Active Time Exceeded"
+                },
+                "29": {
+                    "desc": "reserved"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,203 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "PB_DOB01_DIB01_INT_ERR": {
+            "instances": {
+                "0": "0x10011828",
+                "1": "0x11011828",
+                "2": "0x12011828",
+                "3": "0x13011828"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PB_DOB01_DIB01_INT_ERR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_DOB01_DIB01_INT_ERR"
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_DOB01_DIB01_INT_ERR"
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_DOB01_DIB01_INT_ERR"
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "dob01_rtag_pbiterr"
+                },
+                "1": {
+                    "desc": "dob01_rtag_perr"
+                },
+                "2": {
+                    "desc": "dob01_misc_perr"
+                },
+                "3": {
+                    "desc": "dob01_f0vc0_evenperr"
+                },
+                "4": {
+                    "desc": "dob01_f0vc0_oddperr"
+                },
+                "5": {
+                    "desc": "dob01_f0vc1_evenperr"
+                },
+                "6": {
+                    "desc": "dob01_f0vc1_oddperr"
+                },
+                "7": {
+                    "desc": "dob01_f1vc0_evenperr"
+                },
+                "8": {
+                    "desc": "dob01_f1vc0_oddperr"
+                },
+                "9": {
+                    "desc": "dob01_f1vc1_evenperr"
+                },
+                "10": {
+                    "desc": "dob01_f1vc1_oddperr"
+                },
+                "11": {
+                    "desc": "dob01_f0_underflow"
+                },
+                "12": {
+                    "desc": "dob01_f0_overflow"
+                },
+                "13": {
+                    "desc": "dob01_f1_underflow"
+                },
+                "14": {
+                    "desc": "dob01_f1_overflow"
+                },
+                "15": {
+                    "desc": "dob01_vc0_underflow"
+                },
+                "16": {
+                    "desc": "dob01_vc0_overflow"
+                },
+                "17": {
+                    "desc": "dob01_vc1_underflow"
+                },
+                "18": {
+                    "desc": "dob01_vc1_overflow"
+                },
+                "19": {
+                    "desc": "dob01_f0vc0_underflow"
+                },
+                "20": {
+                    "desc": "dob01_f0vc0_overflow"
+                },
+                "21": {
+                    "desc": "dob01_f0vc1_underflow"
+                },
+                "22": {
+                    "desc": "dob01_f0vc1_overflow"
+                },
+                "23": {
+                    "desc": "dob01_f1vc0_underflow"
+                },
+                "24": {
+                    "desc": "dob01_f1vc0_overflow"
+                },
+                "25": {
+                    "desc": "dob01_f1vc1_underflow"
+                },
+                "26": {
+                    "desc": "dob01_f1vc1_overflow"
+                },
+                "27": {
+                    "desc": "dob01_vc0_prefetch_overflow"
+                },
+                "28": {
+                    "desc": "dob01_vc1_prefetch_overflow"
+                },
+                "29": {
+                    "desc": "dib01_evn0_underflow"
+                },
+                "30": {
+                    "desc": "dib01_evn0_overflow"
+                },
+                "31": {
+                    "desc": "dib01_evn1_underflow"
+                },
+                "32": {
+                    "desc": "dib01_evn1_overflow"
+                },
+                "33": {
+                    "desc": "dib01_rtag_pbiterr"
+                },
+                "34": {
+                    "desc": "dib01_rtag_perr"
+                },
+                "35": {
+                    "desc": "dib01_misc_perr"
+                },
+                "36": {
+                    "desc": "dib01_odd0_underflow"
+                },
+                "37": {
+                    "desc": "dib01_odd0_overflow"
+                },
+                "38": {
+                    "desc": "dib01_odd1_underflow"
+                },
+                "39": {
+                    "desc": "dib01_odd1_overflow"
+                },
+                "40": {
+                    "desc": "dib01_rtag_underflow"
+                },
+                "41": {
+                    "desc": "dib01_rtag_overflow"
+                },
+                "42": {
+                    "desc": "dib01_data_underflow"
+                },
+                "43": {
+                    "desc": "dib01_data_overflow"
+                },
+                "44": {
+                    "desc": "dib01_vc0_underflow"
+                },
+                "45": {
+                    "desc": "dib01_vc0_overflow"
+                },
+                "46": {
+                    "desc": "dib01_vc1_underflow"
+                },
+                "47": {
+                    "desc": "dib01_vc1_overflow"
+                },
+                "48": {
+                    "desc": "dib01_f0vc0_over_underflow"
+                },
+                "49": {
+                    "desc": "dib01_f0vc1_over_underflow"
+                },
+                "50": {
+                    "desc": "dib01_f1vc0_over_underflow"
+                },
+                "51": {
+                    "desc": "dib01_f1vc1_over_underflow"
+                }
+            }
+        }
+    }
+}

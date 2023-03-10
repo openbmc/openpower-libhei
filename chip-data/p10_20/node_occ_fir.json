@@ -1,0 +1,294 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "OCC_FIR": {
+            "instances": {
+                "0": "0x01010800"
+            }
+        },
+        "OCC_FIR_MASK": {
+            "instances": {
+                "0": "0x01010803"
+            }
+        },
+        "OCC_FIR_ACT0": {
+            "instances": {
+                "0": "0x01010806"
+            }
+        },
+        "OCC_FIR_ACT1": {
+            "instances": {
+                "0": "0x01010807"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "OCC_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCC_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCC_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "OCC_FW0"
+                },
+                "1": {
+                    "desc": "OCC_FW1"
+                },
+                "2": {
+                    "desc": "OCC_QME_ERROR_NOTIFY"
+                },
+                "3": {
+                    "desc": "reserved"
+                },
+                "4": {
+                    "desc": "OCC Heartbeat Error"
+                },
+                "5": {
+                    "desc": "GPE0 asserted a watchdog timeout condition"
+                },
+                "6": {
+                    "desc": "GPE1 asserted a watchdog timeout condition"
+                },
+                "7": {
+                    "desc": "GPE2 asserted a watchdog timeout condition"
+                },
+                "8": {
+                    "desc": "GPE3 asserted a watchdog timeout condition"
+                },
+                "9": {
+                    "desc": "GPE0 asserted an error condition that caused it to halt."
+                },
+                "10": {
+                    "desc": "GPE1 asserted an error condition that caused it to halt."
+                },
+                "11": {
+                    "desc": "GPE2 asserted an error condition that caused it to halt."
+                },
+                "12": {
+                    "desc": "GPE3 asserted an error condition that caused it to halt."
+                },
+                "13": {
+                    "desc": "OCB Error to PM Hcode for PM Complex Restart"
+                },
+                "14": {
+                    "desc": "SRAM UE to PM Hcode for PM Complex Restart"
+                },
+                "15": {
+                    "desc": "SRAM CE"
+                },
+                "16": {
+                    "desc": "GPE0 asserted a halt condition"
+                },
+                "17": {
+                    "desc": "GPE1 asserted a halt condition"
+                },
+                "18": {
+                    "desc": "GPE2 asserted a halt condition"
+                },
+                "19": {
+                    "desc": "GPE3 asserted a halt condition"
+                },
+                "20": {
+                    "desc": "GPE0 attempted to write outside the region defined in GPESWPR"
+                },
+                "21": {
+                    "desc": "GPE1 attempted to write outside the region defined in GPESWPR"
+                },
+                "22": {
+                    "desc": "GPE2 attempted to write outside the region defined in GPESWPR"
+                },
+                "23": {
+                    "desc": "GPE3 attempted to write outside the region defined in GPESWPR"
+                },
+                "24": {
+                    "desc": "Safe Mode for debug use"
+                },
+                "25": {
+                    "desc": "reserved"
+                },
+                "26": {
+                    "desc": "EXTERNAL_TRAP"
+                },
+                "27": {
+                    "desc": "PPC405 Core Reset Output asserted (OCC firmware)"
+                },
+                "28": {
+                    "desc": "PPC405 Chip Reset Output asserted (OCC firmware)"
+                },
+                "29": {
+                    "desc": "PPC405 System Reset Output asserted (OCC firmware)"
+                },
+                "30": {
+                    "desc": "PPC405 Wait State asserted (OCC firmware)"
+                },
+                "31": {
+                    "desc": "PPC405 Stop Ack output asserted"
+                },
+                "32": {
+                    "desc": "OCB Direct Bridge Error"
+                },
+                "33": {
+                    "desc": "OCB PIB Address Parity Error"
+                },
+                "34": {
+                    "desc": "Indirect Channel Error"
+                },
+                "35": {
+                    "desc": "Parity error detected on OPIT interrupt bus"
+                },
+                "36": {
+                    "desc": "OPIT interrupt state machine error occurred"
+                },
+                "37": {
+                    "desc": "reserved"
+                },
+                "38": {
+                    "desc": "reserved"
+                },
+                "39": {
+                    "desc": "reserved"
+                },
+                "40": {
+                    "desc": "reserved"
+                },
+                "41": {
+                    "desc": "reserved"
+                },
+                "42": {
+                    "desc": "JTAG accelerator error"
+                },
+                "43": {
+                    "desc": "Any OCI Slave error occurreds"
+                },
+                "44": {
+                    "desc": "PPC405 cache UE"
+                },
+                "45": {
+                    "desc": "PPC405 cache CE"
+                },
+                "46": {
+                    "desc": "PPC405 Machine Check"
+                },
+                "47": {
+                    "desc": "SRAM spare direct error Summary"
+                },
+                "48": {
+                    "desc": "Read, write, or parity error in the SRAM tank controller"
+                },
+                "49": {
+                    "desc": "reserved"
+                },
+                "50": {
+                    "desc": "reserved"
+                },
+                "51": {
+                    "desc": "OCI slave error for GPE0"
+                },
+                "52": {
+                    "desc": "OCI slave error for GPE1"
+                },
+                "53": {
+                    "desc": "OCI slave error for GPE2"
+                },
+                "54": {
+                    "desc": "OCI slave error for GPE3"
+                },
+                "55": {
+                    "desc": "PPC405 ICU timeout on OCI request"
+                },
+                "56": {
+                    "desc": "PPC405 DCU timeout on OCI request"
+                },
+                "57": {
+                    "desc": "OCC fault occurred (to achieve safe mode)"
+                },
+                "58": {
+                    "desc": "Read by HYP as part of the communication of a Power Management fault"
+                },
+                "59": {
+                    "desc": "reserved"
+                },
+                "60": {
+                    "desc": "reserved"
+                },
+                "61": {
+                    "desc": "reserved"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "OCC_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

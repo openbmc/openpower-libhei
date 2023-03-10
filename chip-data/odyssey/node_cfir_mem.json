@@ -1,0 +1,229 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "CFIR_MEM_CS": {
+            "instances": {
+                "0": "0x08040000"
+            }
+        },
+        "CFIR_MEM_RE": {
+            "instances": {
+                "0": "0x08040001"
+            }
+        },
+        "CFIR_MEM_SPA": {
+            "instances": {
+                "0": "0x08040002"
+            }
+        },
+        "CFIR_MEM_UCS": {
+            "instances": {
+                "0": "0x08040003"
+            }
+        },
+        "CFIR_MEM_CS_MASK": {
+            "instances": {
+                "0": "0x08040040"
+            }
+        },
+        "CFIR_MEM_RE_MASK": {
+            "instances": {
+                "0": "0x08040041"
+            }
+        },
+        "CFIR_MEM_SPA_MASK": {
+            "instances": {
+                "0": "0x08040042"
+            }
+        },
+        "CFIR_MEM_UCS_MASK": {
+            "instances": {
+                "0": "0x08040043"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_MEM": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_MEM_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_MEM_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_MEM_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_MEM_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_MEM_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_MEM_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_MEM_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_MEM_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from MEM_LOCAL_FIR",
+                    "child_node": {
+                        "name": "MEM_LOCAL_FIR"
+                    }
+                },
+                "5": {
+                    "desc": "Attention from DLX_FIR",
+                    "child_node": {
+                        "name": "DLX_FIR"
+                    }
+                },
+                "6": {
+                    "desc": "Attention from MCBIST_FIR",
+                    "child_node": {
+                        "name": "MCBIST_FIR"
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MMIO_FIR",
+                    "child_node": {
+                        "name": "MMIO_FIR"
+                    }
+                },
+                "8": {
+                    "desc": "Attention from RDF_FIR 0",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from RDF_FIR 1",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from SRQ_FIR",
+                    "child_node": {
+                        "name": "SRQ_FIR"
+                    }
+                },
+                "11": {
+                    "desc": "Attention from TLX_FIR",
+                    "child_node": {
+                        "name": "TLX_FIR"
+                    }
+                },
+                "12": {
+                    "desc": "Attention from ODP_FIR 0",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from ODP_FIR 1",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from OCMB_PHY_FIR",
+                    "child_node": {
+                        "name": "OCMB_PHY_FIR"
+                    }
+                }
+            }
+        }
+    }
+}

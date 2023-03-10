@@ -1,0 +1,590 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "RDF_FIR": {
+            "instances": {
+                "0": "0x08011800",
+                "1": "0x08012800"
+            }
+        },
+        "RDF_FIR_MASK": {
+            "instances": {
+                "0": "0x08011802",
+                "1": "0x08012802"
+            }
+        },
+        "RDF_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08011804",
+                "1": "0x08012804"
+            }
+        },
+        "RDF_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08011805",
+                "1": "0x08012805"
+            }
+        },
+        "RDF_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08011806",
+                "1": "0x08012806"
+            }
+        },
+        "RDF_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08011807",
+                "1": "0x08012807"
+            }
+        },
+        "RDF_FIR_WOF": {
+            "instances": {
+                "0": "0x08011808",
+                "1": "0x08012808"
+            }
+        },
+        "RDF_ERR_RPT_0": {
+            "instances": {
+                "0": "0x0801180E",
+                "1": "0x0801280E"
+            }
+        },
+        "RDF_ERR_RPT_1": {
+            "instances": {
+                "0": "0x0801180F",
+                "1": "0x0801280F"
+            }
+        },
+        "MSR": {
+            "instances": {
+                "0": "0x0801180C",
+                "1": "0x0801280C"
+            }
+        },
+        "HW_MS0": {
+            "instances": {
+                "0": "0x08011810",
+                "1": "0x08012810"
+            }
+        },
+        "HW_MS1": {
+            "instances": {
+                "0": "0x08011811",
+                "1": "0x08012811"
+            }
+        },
+        "HW_MS2": {
+            "instances": {
+                "0": "0x08011812",
+                "1": "0x08012812"
+            }
+        },
+        "HW_MS3": {
+            "instances": {
+                "0": "0x08011813",
+                "1": "0x08012813"
+            }
+        },
+        "HW_MS4": {
+            "instances": {
+                "0": "0x08011814",
+                "1": "0x08012814"
+            }
+        },
+        "HW_MS5": {
+            "instances": {
+                "0": "0x08011815",
+                "1": "0x08012815"
+            }
+        },
+        "HW_MS6": {
+            "instances": {
+                "0": "0x08011816",
+                "1": "0x08012816"
+            }
+        },
+        "HW_MS7": {
+            "instances": {
+                "0": "0x08011817",
+                "1": "0x08012817"
+            }
+        },
+        "FW_MS0": {
+            "instances": {
+                "0": "0x08011818",
+                "1": "0x08012818"
+            }
+        },
+        "FW_MS1": {
+            "instances": {
+                "0": "0x08011819",
+                "1": "0x08012819"
+            }
+        },
+        "FW_MS2": {
+            "instances": {
+                "0": "0x0801181A",
+                "1": "0x0801281A"
+            }
+        },
+        "FW_MS3": {
+            "instances": {
+                "0": "0x0801181B",
+                "1": "0x0801281B"
+            }
+        },
+        "FW_MS4": {
+            "instances": {
+                "0": "0x0801181C",
+                "1": "0x0801281C"
+            }
+        },
+        "FW_MS5": {
+            "instances": {
+                "0": "0x0801181D",
+                "1": "0x0801281D"
+            }
+        },
+        "FW_MS6": {
+            "instances": {
+                "0": "0x0801181E",
+                "1": "0x0801281E"
+            }
+        },
+        "FW_MS7": {
+            "instances": {
+                "0": "0x0801181F",
+                "1": "0x0801281F"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "RDF_FIR": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDF_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDF_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDF_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "RDF_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "RDF_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Internal SCOM error"
+                },
+                "1": {
+                    "desc": "Mainline read MPE on rank 0"
+                },
+                "2": {
+                    "desc": "Mainline read MPE on rank 1"
+                },
+                "3": {
+                    "desc": "Mainline read MPE on rank 2"
+                },
+                "4": {
+                    "desc": "Mainline read MPE on rank 3"
+                },
+                "5": {
+                    "desc": "Mainline read MPE on rank 4"
+                },
+                "6": {
+                    "desc": "Mainline read MPE on rank 5"
+                },
+                "7": {
+                    "desc": "Mainline read MPE on rank 6"
+                },
+                "8": {
+                    "desc": "Mainline read MPE on rank 7"
+                },
+                "9": {
+                    "desc": "Mainline read NCE"
+                },
+                "10": {
+                    "desc": "Mainline read TCE"
+                },
+                "11": {
+                    "desc": "Mainline read SCE"
+                },
+                "12": {
+                    "desc": "Mainline read MCE"
+                },
+                "13": {
+                    "desc": "Mainline read SUE"
+                },
+                "14": {
+                    "desc": "Mainline read AUE"
+                },
+                "15": {
+                    "desc": "Mainline read UE"
+                },
+                "16": {
+                    "desc": "Mainline read RCD"
+                },
+                "17": {
+                    "desc": "Mainline read IAUE"
+                },
+                "18": {
+                    "desc": "Mainline read IUE"
+                },
+                "19": {
+                    "desc": "Mainline read IRCD"
+                },
+                "20": {
+                    "desc": "Mainline read IMPE"
+                },
+                "21": {
+                    "desc": "Maintenance MPE on rank 0"
+                },
+                "22": {
+                    "desc": "Maintenance MPE on rank 1"
+                },
+                "23": {
+                    "desc": "Maintenance MPE on rank 2"
+                },
+                "24": {
+                    "desc": "Maintenance MPE on rank 3"
+                },
+                "25": {
+                    "desc": "Maintenance MPE on rank 4"
+                },
+                "26": {
+                    "desc": "Maintenance MPE on rank 5"
+                },
+                "27": {
+                    "desc": "Maintenance MPE on rank 6"
+                },
+                "28": {
+                    "desc": "Maintenance MPE on rank 7"
+                },
+                "29": {
+                    "desc": "Maintenance NCE"
+                },
+                "30": {
+                    "desc": "Maintenance TCE"
+                },
+                "31": {
+                    "desc": "Maintenance SCE"
+                },
+                "32": {
+                    "desc": "Maintenance MCE"
+                },
+                "33": {
+                    "desc": "Maintenance SUE"
+                },
+                "34": {
+                    "desc": "Maintenance AUE"
+                },
+                "35": {
+                    "desc": "Maintenance UE"
+                },
+                "36": {
+                    "desc": "Maintenance RCD"
+                },
+                "37": {
+                    "desc": "Maintenance IAUE"
+                },
+                "38": {
+                    "desc": "Maintenance IUE"
+                },
+                "39": {
+                    "desc": "Maintenance IRCD"
+                },
+                "40": {
+                    "desc": "Maintenance IMPE"
+                },
+                "41": {
+                    "desc": "RDDATA valid error"
+                },
+                "42": {
+                    "desc": "SCOM status register parity error"
+                },
+                "43": {
+                    "desc": "SCOM recoverable register parity error"
+                },
+                "44": {
+                    "desc": "SCOM unrecoverable register parity error"
+                },
+                "45": {
+                    "desc": "ECC corrector internal parity error"
+                },
+                "46": {
+                    "desc": "Read buffer ECC CHK Cor CE DW0 Detected"
+                },
+                "47": {
+                    "desc": "Read buffer ECC CHK Cor CE DW1 Detected"
+                },
+                "48": {
+                    "desc": "Read buffer ECC CHK Cor UE DW0 Detected"
+                },
+                "49": {
+                    "desc": "Read buffer ECC CHK Cor UE DW1 Detected"
+                },
+                "50": {
+                    "desc": "Prefetch buffer ECC CHK Cor CE DW0 Detected"
+                },
+                "51": {
+                    "desc": "Prefetch buffer ECC CHK Cor CE DW1 Detected"
+                },
+                "52": {
+                    "desc": "Prefetch buffer ECC CHK Cor UE DW0 Detected"
+                },
+                "53": {
+                    "desc": "Prefetch buffer ECC CHK Cor UE DW1 Detected"
+                },
+                "54": {
+                    "desc": "Parity error on TLXT to RDF read buffer interface"
+                },
+                "55": {
+                    "desc": "Parity error on TLXT to RDF read prefetch interface"
+                },
+                "56:60": {
+                    "desc": "reserved"
+                },
+                "61": {
+                    "desc": "SCOM register parity error for debug/wat control"
+                },
+                "62": {
+                    "desc": "Reserved"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "RDF_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "RDF_FIR": [
+            {
+                "reg_name": "RDF_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "RDF_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "MSR",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS1",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS2",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS3",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS4",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS5",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS6",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "HWMS7",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS1",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS2",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS3",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS4",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS5",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS6",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "FWMS7",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ]
+    }
+}

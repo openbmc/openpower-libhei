@@ -1,0 +1,215 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PB_PR0123_ERR": {
+            "instances": {
+                "0": "0x10011829",
+                "1": "0x11011829",
+                "2": "0x12011829",
+                "3": "0x13011829"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PB_PR0123_ERR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_PR0123_ERR"
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_PR0123_ERR"
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_PR0123_ERR"
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "prs0_address_pty"
+                },
+                "1": {
+                    "desc": "prs0_atag_pty"
+                },
+                "2": {
+                    "desc": "prs0_cc0_crediterr"
+                },
+                "3": {
+                    "desc": "prs0_cc1_crediterr"
+                },
+                "4": {
+                    "desc": "prs0_cc2_crediterr"
+                },
+                "5": {
+                    "desc": "prs0_cc3_crediterr"
+                },
+                "6": {
+                    "desc": "prs0_control_error"
+                },
+                "7": {
+                    "desc": "prs0_data_pty_err"
+                },
+                "8": {
+                    "desc": "prs0_rtag_misc_pty"
+                },
+                "9": {
+                    "desc": "prs0_rtag_pty"
+                },
+                "10": {
+                    "desc": "prs0_ttag_pty"
+                },
+                "11": {
+                    "desc": "prs0_vc0_crediterr"
+                },
+                "12": {
+                    "desc": "prs0_vc1_crediterr"
+                },
+                "13": {
+                    "desc": "prs0_link_down"
+                },
+                "16": {
+                    "desc": "prs1_address_pty"
+                },
+                "17": {
+                    "desc": "prs1_atag_pty"
+                },
+                "18": {
+                    "desc": "prs1_cc0_crediterr"
+                },
+                "19": {
+                    "desc": "prs1_cc1_crediterr"
+                },
+                "20": {
+                    "desc": "prs1_cc2_crediterr"
+                },
+                "21": {
+                    "desc": "prs1_cc3_crediterr"
+                },
+                "22": {
+                    "desc": "prs1_control_error"
+                },
+                "23": {
+                    "desc": "prs1_data_pty_err"
+                },
+                "24": {
+                    "desc": "prs1_rtag_misc_pty"
+                },
+                "25": {
+                    "desc": "prs1_rtag_pty"
+                },
+                "26": {
+                    "desc": "prs1_ttag_pty"
+                },
+                "27": {
+                    "desc": "prs1_vc0_crediterr"
+                },
+                "28": {
+                    "desc": "prs1_vc1_crediterr"
+                },
+                "29": {
+                    "desc": "prs1_link_down"
+                },
+                "32": {
+                    "desc": "prs2_address_pty"
+                },
+                "33": {
+                    "desc": "prs2_atag_pty"
+                },
+                "34": {
+                    "desc": "prs2_cc0_crediterr"
+                },
+                "35": {
+                    "desc": "prs2_cc1_crediterr"
+                },
+                "36": {
+                    "desc": "prs2_cc2_crediterr"
+                },
+                "37": {
+                    "desc": "prs2_cc3_crediterr"
+                },
+                "38": {
+                    "desc": "prs2_control_error"
+                },
+                "39": {
+                    "desc": "prs2_data_pty_err"
+                },
+                "40": {
+                    "desc": "prs2_rtag_misc_pty"
+                },
+                "41": {
+                    "desc": "prs2_rtag_pty"
+                },
+                "42": {
+                    "desc": "prs2_ttag_pty"
+                },
+                "43": {
+                    "desc": "prs2_vc0_crediterr"
+                },
+                "44": {
+                    "desc": "prs2_vc1_crediterr"
+                },
+                "45": {
+                    "desc": "prs2_link_down"
+                },
+                "48": {
+                    "desc": "prs3_address_pty"
+                },
+                "49": {
+                    "desc": "prs3_atag_pty"
+                },
+                "50": {
+                    "desc": "prs3_cc0_crediterr"
+                },
+                "51": {
+                    "desc": "prs3_cc1_crediterr"
+                },
+                "52": {
+                    "desc": "prs3_cc2_crediterr"
+                },
+                "53": {
+                    "desc": "prs3_cc3_crediterr"
+                },
+                "54": {
+                    "desc": "prs3_control_error"
+                },
+                "55": {
+                    "desc": "prs3_data_pty_err"
+                },
+                "56": {
+                    "desc": "prs3_rtag_misc_pty"
+                },
+                "57": {
+                    "desc": "prs3_rtag_pty"
+                },
+                "58": {
+                    "desc": "prs3_ttag_pty"
+                },
+                "59": {
+                    "desc": "prs3_vc0_crediterr"
+                },
+                "60": {
+                    "desc": "prs3_vc1_crediterr"
+                },
+                "61": {
+                    "desc": "prs3_link_down"
+                }
+            }
+        }
+    }
+}

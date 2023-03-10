@@ -1,0 +1,474 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "CFIR_N0_CS": {
+            "instances": {
+                "0": "0x02040000"
+            }
+        },
+        "CFIR_N0_CS_MASK": {
+            "instances": {
+                "0": "0x02040040"
+            }
+        },
+        "CFIR_N0_RE": {
+            "instances": {
+                "0": "0x02040001"
+            }
+        },
+        "CFIR_N0_RE_MASK": {
+            "instances": {
+                "0": "0x02040041"
+            }
+        },
+        "CFIR_N0_SPA": {
+            "instances": {
+                "0": "0x02040002"
+            }
+        },
+        "CFIR_N0_SPA_MASK": {
+            "instances": {
+                "0": "0x02040042"
+            }
+        },
+        "CFIR_N0_UCS": {
+            "instances": {
+                "0": "0x02040003"
+            }
+        },
+        "CFIR_N0_UCS_MASK": {
+            "instances": {
+                "0": "0x02040043"
+            }
+        },
+        "CFIR_N0_HA": {
+            "instances": {
+                "0": "0x02040004"
+            }
+        },
+        "CFIR_N0_HA_MASK": {
+            "instances": {
+                "0": "0x02040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_N0_CS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N0_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N0_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N0_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N0_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from NMMU_CQ_FIR",
+                    "child_node": {
+                        "name": "NMMU_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from NMMU_FIR",
+                    "child_node": {
+                        "name": "NMMU_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from INT_CQ_FIR",
+                    "child_node": {
+                        "name": "INT_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from VAS_FIR",
+                    "child_node": {
+                        "name": "VAS_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from NX_DMA_ENG_FIR",
+                    "child_node": {
+                        "name": "NX_DMA_ENG_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from NX_CQ_FIR",
+                    "child_node": {
+                        "name": "NX_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N0_RE": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N0_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N0_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N0_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N0_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from NMMU_CQ_FIR",
+                    "child_node": {
+                        "name": "NMMU_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from NMMU_FIR",
+                    "child_node": {
+                        "name": "NMMU_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from INT_CQ_FIR",
+                    "child_node": {
+                        "name": "INT_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from VAS_FIR",
+                    "child_node": {
+                        "name": "VAS_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from NX_DMA_ENG_FIR",
+                    "child_node": {
+                        "name": "NX_DMA_ENG_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from NX_CQ_FIR",
+                    "child_node": {
+                        "name": "NX_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N0_SPA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N0_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N0_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N0_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N0_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from INT_CQ_FIR",
+                    "child_node": {
+                        "name": "INT_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N0_UCS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N0_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N0_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N0_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N0_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from NMMU_CQ_FIR",
+                    "child_node": {
+                        "name": "NMMU_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from NMMU_FIR",
+                    "child_node": {
+                        "name": "NMMU_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from VAS_FIR",
+                    "child_node": {
+                        "name": "VAS_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from NX_DMA_ENG_FIR",
+                    "child_node": {
+                        "name": "NX_DMA_ENG_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from NX_CQ_FIR",
+                    "child_node": {
+                        "name": "NX_CQ_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N0_HA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N0_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N0_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N0_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N0_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

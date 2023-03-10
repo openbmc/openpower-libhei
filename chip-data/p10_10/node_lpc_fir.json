@@ -1,0 +1,135 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "LPC_FIR": {
+            "instances": {
+                "0": "0x03012000"
+            }
+        },
+        "LPC_FIR_MASK": {
+            "instances": {
+                "0": "0x03012003"
+            }
+        },
+        "LPC_FIR_ACT0": {
+            "instances": {
+                "0": "0x03012006"
+            }
+        },
+        "LPC_FIR_ACT1": {
+            "instances": {
+                "0": "0x03012007"
+            }
+        },
+        "LPC_FIR_WOF": {
+            "instances": {
+                "0": "0x03012008"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "LPC_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "LPC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "LPC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "LPC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "LPC_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "LPC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "LPC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "LPC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "LPC_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "OPB_Master_LS_received_a_transfer_size_value_unequal_to_1-_or_2-_or_4-Byte"
+                },
+                "1": {
+                    "desc": "OPB_Master_LS_received_a_invalid_command_no_ci_store_and_no_ci_load"
+                },
+                "2": {
+                    "desc": "OPB_Master_LS_received_a_address_which_was_not_aligned_to_the_received_transfer_size"
+                },
+                "3": {
+                    "desc": "OPB_Master_LS_detected_OPB_ErrAck_which_was_activated_by_the_accessed_OPB_slave"
+                },
+                "4": {
+                    "desc": "the_OPB_arbiter_activated_the_OPB_Timeout_signal_Typical_reason_is_that_the_OPB_access_did_not_hit_any_available_OPB_slave"
+                },
+                "5": {
+                    "desc": "the_OPB_Master_LS_was_not_able_to_end_the_requested_OPB_access_within_the_OPB_Master_LS_hang_timeout_time"
+                },
+                "6": {
+                    "desc": "a parity_error_was_detected_in_the_OPB_Master_LS_command_buffer"
+                },
+                "7": {
+                    "desc": "a parity_error_was_detected_in_the_OPB_Master_LS_data_buffer"
+                },
+                "8": {
+                    "desc": "spare"
+                },
+                "9": {
+                    "desc": "spare"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,394 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "EQ_L2_FIR": {
+            "instances": {
+                "0": "0x20028000",
+                "1": "0x20024000",
+                "2": "0x20022000",
+                "3": "0x20021000",
+                "4": "0x21028000",
+                "5": "0x21024000",
+                "6": "0x21022000",
+                "7": "0x21021000",
+                "8": "0x22028000",
+                "9": "0x22024000",
+                "10": "0x22022000",
+                "11": "0x22021000",
+                "12": "0x23028000",
+                "13": "0x23024000",
+                "14": "0x23022000",
+                "15": "0x23021000",
+                "16": "0x24028000",
+                "17": "0x24024000",
+                "18": "0x24022000",
+                "19": "0x24021000",
+                "20": "0x25028000",
+                "21": "0x25024000",
+                "22": "0x25022000",
+                "23": "0x25021000",
+                "24": "0x26028000",
+                "25": "0x26024000",
+                "26": "0x26022000",
+                "27": "0x26021000",
+                "28": "0x27028000",
+                "29": "0x27024000",
+                "30": "0x27022000",
+                "31": "0x27021000"
+            }
+        },
+        "EQ_L2_FIR_MASK": {
+            "instances": {
+                "0": "0x20028003",
+                "1": "0x20024003",
+                "2": "0x20022003",
+                "3": "0x20021003",
+                "4": "0x21028003",
+                "5": "0x21024003",
+                "6": "0x21022003",
+                "7": "0x21021003",
+                "8": "0x22028003",
+                "9": "0x22024003",
+                "10": "0x22022003",
+                "11": "0x22021003",
+                "12": "0x23028003",
+                "13": "0x23024003",
+                "14": "0x23022003",
+                "15": "0x23021003",
+                "16": "0x24028003",
+                "17": "0x24024003",
+                "18": "0x24022003",
+                "19": "0x24021003",
+                "20": "0x25028003",
+                "21": "0x25024003",
+                "22": "0x25022003",
+                "23": "0x25021003",
+                "24": "0x26028003",
+                "25": "0x26024003",
+                "26": "0x26022003",
+                "27": "0x26021003",
+                "28": "0x27028003",
+                "29": "0x27024003",
+                "30": "0x27022003",
+                "31": "0x27021003"
+            }
+        },
+        "EQ_L2_FIR_ACT0": {
+            "instances": {
+                "0": "0x20028006",
+                "1": "0x20024006",
+                "2": "0x20022006",
+                "3": "0x20021006",
+                "4": "0x21028006",
+                "5": "0x21024006",
+                "6": "0x21022006",
+                "7": "0x21021006",
+                "8": "0x22028006",
+                "9": "0x22024006",
+                "10": "0x22022006",
+                "11": "0x22021006",
+                "12": "0x23028006",
+                "13": "0x23024006",
+                "14": "0x23022006",
+                "15": "0x23021006",
+                "16": "0x24028006",
+                "17": "0x24024006",
+                "18": "0x24022006",
+                "19": "0x24021006",
+                "20": "0x25028006",
+                "21": "0x25024006",
+                "22": "0x25022006",
+                "23": "0x25021006",
+                "24": "0x26028006",
+                "25": "0x26024006",
+                "26": "0x26022006",
+                "27": "0x26021006",
+                "28": "0x27028006",
+                "29": "0x27024006",
+                "30": "0x27022006",
+                "31": "0x27021006"
+            }
+        },
+        "EQ_L2_FIR_ACT1": {
+            "instances": {
+                "0": "0x20028007",
+                "1": "0x20024007",
+                "2": "0x20022007",
+                "3": "0x20021007",
+                "4": "0x21028007",
+                "5": "0x21024007",
+                "6": "0x21022007",
+                "7": "0x21021007",
+                "8": "0x22028007",
+                "9": "0x22024007",
+                "10": "0x22022007",
+                "11": "0x22021007",
+                "12": "0x23028007",
+                "13": "0x23024007",
+                "14": "0x23022007",
+                "15": "0x23021007",
+                "16": "0x24028007",
+                "17": "0x24024007",
+                "18": "0x24022007",
+                "19": "0x24021007",
+                "20": "0x25028007",
+                "21": "0x25024007",
+                "22": "0x25022007",
+                "23": "0x25021007",
+                "24": "0x26028007",
+                "25": "0x26024007",
+                "26": "0x26022007",
+                "27": "0x26021007",
+                "28": "0x27028007",
+                "29": "0x27024007",
+                "30": "0x27022007",
+                "31": "0x27021007"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "EQ_L2_FIR": {
+            "instances": [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+            ],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+                        16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                        30, 31
+                    ],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_L2_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_L2_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_L2_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_L2_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+                        16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                        30, 31
+                    ],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_L2_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_L2_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_L2_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_L2_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "L2 cache read CE"
+                },
+                "1": {
+                    "desc": "L2 cache read UE"
+                },
+                "2": {
+                    "desc": "L2 cache read SUE"
+                },
+                "3": {
+                    "desc": "Hw directory initiated line delete"
+                },
+                "4": {
+                    "desc": "UE or SUE detected by on modified line"
+                },
+                "5": {
+                    "desc": "UE or SUE detected on non-modified line"
+                },
+                "6": {
+                    "desc": "L2 directory read CE"
+                },
+                "7": {
+                    "desc": "L2 directory read UE"
+                },
+                "8": {
+                    "desc": "L2 directory CE due to stuck bit"
+                },
+                "9": {
+                    "desc": "L2 directory stuck bit CE repair failed"
+                },
+                "10": {
+                    "desc": "reserved"
+                },
+                "11": {
+                    "desc": "LRU read error detected"
+                },
+                "12": {
+                    "desc": "RC timed out waiting for powerbus to return data"
+                },
+                "13": {
+                    "desc": "NCU timed out waiting for powerbus to return data"
+                },
+                "14": {
+                    "desc": "Internal h/w control error"
+                },
+                "15": {
+                    "desc": "LRU all members in a class line deleted"
+                },
+                "16": {
+                    "desc": "Cache Inhibited Ld/St hit a line in the L2 cache"
+                },
+                "17": {
+                    "desc": "(RC) load received pb cresp addr error"
+                },
+                "18": {
+                    "desc": "(RC) store received pb cresp addr error"
+                },
+                "19": {
+                    "desc": "RC incoming Power Bus data had a CE error"
+                },
+                "20": {
+                    "desc": "RC incoming Power Bus data had a UE error"
+                },
+                "21": {
+                    "desc": "RC incoming Power Bus data had a SUE error"
+                },
+                "22": {
+                    "desc": "Targetted nodal request got rty_inc cresp"
+                },
+                "23": {
+                    "desc": "RC fabric op Ld cresp addr error for hyp"
+                },
+                "24": {
+                    "desc": "RCDAT read parity error"
+                },
+                "25": {
+                    "desc": "L2 castout or CN cresp addr err"
+                },
+                "26": {
+                    "desc": "LVDIR took a parity error"
+                },
+                "27": {
+                    "desc": "Bad topology table config software error"
+                },
+                "28": {
+                    "desc": "Darn timed out waiting for data"
+                },
+                "29": {
+                    "desc": "Early hang in L2"
+                },
+                "30": {
+                    "desc": "Unexpected cast-out or push during chip_contained"
+                },
+                "31": {
+                    "desc": "reserved"
+                },
+                "32": {
+                    "desc": "Time out during PEC sequence trying to correct l2dir error"
+                },
+                "33": {
+                    "desc": "reserved"
+                },
+                "34": {
+                    "desc": "reserved"
+                },
+                "35": {
+                    "desc": "reserved"
+                },
+                "36": {
+                    "desc": "Cache CE and UE in short time period"
+                },
+                "37": {
+                    "desc": "reserved"
+                },
+                "38": {
+                    "desc": "reserved"
+                },
+                "39": {
+                    "desc": "reserved"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "EQ_L2_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5,
+                        "6": 6,
+                        "7": 7,
+                        "8": 8,
+                        "9": 9,
+                        "10": 10,
+                        "11": 11,
+                        "12": 12,
+                        "13": 13,
+                        "14": 14,
+                        "15": 15,
+                        "16": 16,
+                        "17": 17,
+                        "18": 18,
+                        "19": 19,
+                        "20": 20,
+                        "21": 21,
+                        "22": 22,
+                        "23": 23,
+                        "24": 24,
+                        "25": 25,
+                        "26": 26,
+                        "27": 27,
+                        "28": 28,
+                        "29": 29,
+                        "30": 30,
+                        "31": 31
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "root_nodes": {
+        "CS": {
+            "name": "GFIR",
+            "inst": 0
+        },
+        "RE": {
+            "name": "GFIR",
+            "inst": 0
+        },
+        "SPA": {
+            "name": "GFIR",
+            "inst": 0
+        },
+        "UCS": {
+            "name": "GFIR",
+            "inst": 0
+        }
+    }
+}

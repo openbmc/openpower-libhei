@@ -1,0 +1,207 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "ODP_FIR": {
+            "instances": {
+                "0": "0x08013000",
+                "1": "0x08013400"
+            }
+        },
+        "ODP_FIR_MASK": {
+            "instances": {
+                "0": "0x08013002",
+                "1": "0x08013402"
+            }
+        },
+        "ODP_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08013004",
+                "1": "0x08013404"
+            }
+        },
+        "ODP_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08013005",
+                "1": "0x08013405"
+            }
+        },
+        "ODP_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08013006",
+                "1": "0x08013406"
+            }
+        },
+        "ODP_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08013007",
+                "1": "0x08013407"
+            }
+        },
+        "ODP_FIR_WOF": {
+            "instances": {
+                "0": "0x08013008",
+                "1": "0x08013408"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "ODP_FIR": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "ODP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "ODP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "ODP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "ODP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "ODP_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Internal parity error"
+                },
+                "1": {
+                    "desc": "SCOM2APB state machine parity error"
+                },
+                "2": {
+                    "desc": "Write data parity error"
+                },
+                "3": {
+                    "desc": "APB responder error"
+                },
+                "4": {
+                    "desc": "ODPCTRL register parity error"
+                },
+                "5": {
+                    "desc": "PHY error"
+                },
+                "6": {
+                    "desc": "PHY Sticky Unlock Error"
+                },
+                "7": {
+                    "desc": "Bsi Interrupt occurred"
+                },
+                "8": {
+                    "desc": "ANIB Receive Error"
+                },
+                "9": {
+                    "desc": "Parity Error (even parity) for D5ACSM Channel 1 Parity Error"
+                },
+                "10": {
+                    "desc": "Parity Error (even parity) for D5ACSM Channel 0 Parity Error"
+                },
+                "11": {
+                    "desc": "PHY RX FIFO Check Error"
+                },
+                "12": {
+                    "desc": "PHY RX TX PPT Error"
+                },
+                "13": {
+                    "desc": "PHY ECC Error ARC ECC Interrupt"
+                },
+                "14:18": {
+                    "desc": "Reserved Firmware Interrupt"
+                },
+                "19": {
+                    "desc": "PHY Training Failure Interrupt"
+                },
+                "20": {
+                    "desc": "PHY Initialization Complete Interrupt"
+                },
+                "21": {
+                    "desc": "PHY Training Complete Interrupt"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,197 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "HCA_FIR": {
+            "instances": {
+                "0": "0x03011D40"
+            }
+        },
+        "HCA_FIR_MASK": {
+            "instances": {
+                "0": "0x03011D43"
+            }
+        },
+        "HCA_FIR_ACT0": {
+            "instances": {
+                "0": "0x03011D46"
+            }
+        },
+        "HCA_FIR_ACT1": {
+            "instances": {
+                "0": "0x03011D47"
+            }
+        },
+        "HCA_FIR_WOF": {
+            "instances": {
+                "0": "0x03011D48"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "HCA_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "HCA_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "HCA_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "HCA_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "HCA_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "HCA_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "HCA_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "HCA_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "HCA_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Powerbus rcmd address parity error"
+                },
+                "1": {
+                    "desc": "Powerbus rcmd ttag parity error"
+                },
+                "2": {
+                    "desc": "Powerbus cresp ttag parity error"
+                },
+                "3": {
+                    "desc": "Powerbus cresp atag parity error"
+                },
+                "4": {
+                    "desc": "HCA updt received addr_err cresp"
+                },
+                "5": {
+                    "desc": "HCA updt received invalid cresp"
+                },
+                "6": {
+                    "desc": "HCA updt received unexpected cresp"
+                },
+                "7": {
+                    "desc": "HCA detected powerbus hang"
+                },
+                "8": {
+                    "desc": "HCA rcmd hits both BARs"
+                },
+                "9": {
+                    "desc": "HCA cache array correctable error"
+                },
+                "10": {
+                    "desc": "HCA cache array uncorrectable error"
+                },
+                "11": {
+                    "desc": "HCA rcmd drop counter overflow"
+                },
+                "12": {
+                    "desc": "HCA updt command drop counter overflow"
+                },
+                "13": {
+                    "desc": "HCA updt lost decay request. No pbi machine available."
+                },
+                "14": {
+                    "desc": "ADU or PSI SMF error"
+                },
+                "15": {
+                    "desc": "Spare FIR bit"
+                },
+                "16": {
+                    "desc": "ADU recoverable error 0"
+                },
+                "17": {
+                    "desc": "ADU recoverable error 1"
+                },
+                "18": {
+                    "desc": "ADU recoverable error 2"
+                },
+                "19": {
+                    "desc": "ADU recoverable error 3"
+                },
+                "20": {
+                    "desc": "ADU recoverable error 4"
+                },
+                "21": {
+                    "desc": "ADU recoverable error 5"
+                },
+                "22": {
+                    "desc": "ADU checkstop error 0"
+                },
+                "23": {
+                    "desc": "ADU checkstop error 1"
+                },
+                "24": {
+                    "desc": "ADU checkstop error 2"
+                },
+                "25": {
+                    "desc": "ADU checkstop error 3"
+                },
+                "26": {
+                    "desc": "ADU checkstop error 4"
+                },
+                "27": {
+                    "desc": "ADU checkstop error 5"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "HCA_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

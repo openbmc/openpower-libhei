@@ -1,0 +1,373 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "SRQ_FIR": {
+            "instances": {
+                "0": "0x08011000"
+            }
+        },
+        "SRQ_FIR_MASK": {
+            "instances": {
+                "0": "0x08011002"
+            }
+        },
+        "SRQ_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08011004"
+            }
+        },
+        "SRQ_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08011005"
+            }
+        },
+        "SRQ_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08011006"
+            }
+        },
+        "SRQ_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08011007"
+            }
+        },
+        "SRQ_FIR_WOF": {
+            "instances": {
+                "0": "0x08011008"
+            }
+        },
+        "SRQ_ERR_RPT": {
+            "instances": {
+                "0": "0x0801101C"
+            }
+        },
+        "MBXLT0": {
+            "instances": {
+                "0": "0x08011012"
+            }
+        },
+        "MBXLT1": {
+            "instances": {
+                "0": "0x08011013"
+            }
+        },
+        "MBXLT2": {
+            "instances": {
+                "0": "0x08011014"
+            }
+        },
+        "MBXLT3": {
+            "instances": {
+                "0": "0x08011021"
+            }
+        },
+        "WESR": {
+            "instances": {
+                "0": "0x08011C06"
+            }
+        },
+        "SRQ_ERR_RPT_HOLD": {
+            "instances": {
+                "0": "0x08011C07"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "SRQ_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQ_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Internal parity error"
+                },
+                "1": {
+                    "desc": "SRQ nonrecoverable parity error"
+                },
+                "2": {
+                    "desc": "refresh overrun port0"
+                },
+                "3": {
+                    "desc": "WAT error"
+                },
+                "4": {
+                    "desc": "RCD parity error port0"
+                },
+                "5": {
+                    "desc": "MCB control logic Error in NCF"
+                },
+                "6": {
+                    "desc": "Emergency throttle engaged"
+                },
+                "7": {
+                    "desc": "DSM errors port0"
+                },
+                "8": {
+                    "desc": "event_n was active on the DDR interface port0"
+                },
+                "9": {
+                    "desc": "WRQ or RRQ is in a hung state port0"
+                },
+                "10": {
+                    "desc": "state machine one hot error port0"
+                },
+                "11": {
+                    "desc": "ROQ errors port0"
+                },
+                "12": {
+                    "desc": "Address parity error seen internal to sequencer on read or write command port0"
+                },
+                "13": {
+                    "desc": "port0 has failed due to a persistent retry"
+                },
+                "14": {
+                    "desc": "informational register parity error"
+                },
+                "15": {
+                    "desc": "soft error reported from error report register"
+                },
+                "16": {
+                    "desc": "WDF unrecoverable mainline error"
+                },
+                "17": {
+                    "desc": "WDF mmio error"
+                },
+                "18": {
+                    "desc": "WDF array UE on mainline operations (SUE put in mem)"
+                },
+                "19": {
+                    "desc": "WDF mainline dataflow error (SUE not reliably put in mem)"
+                },
+                "20": {
+                    "desc": "WDF scom register parity error, affecting mainline config"
+                },
+                "21": {
+                    "desc": "WDF scom register parity error, affecting scom ops only"
+                },
+                "22": {
+                    "desc": "WDF SCOM fsm parity error"
+                },
+                "23": {
+                    "desc": "WDF write buffer array CE"
+                },
+                "24": {
+                    "desc": "refresh management CE port0"
+                },
+                "25": {
+                    "desc": "refresh management RAA counter UE port0"
+                },
+                "26": {
+                    "desc": "NCF fifo error port0"
+                },
+                "27": {
+                    "desc": "NCF fifo error port1"
+                },
+                "28": {
+                    "desc": "memcntl cmd xstop"
+                },
+                "29": {
+                    "desc": "SRQ recoverable parity error"
+                },
+                "30": {
+                    "desc": "DFI error port0"
+                },
+                "31": {
+                    "desc": "xlat addr error port0"
+                },
+                "32": {
+                    "desc": "refresh overrun port1"
+                },
+                "33": {
+                    "desc": "RCD parity error port1"
+                },
+                "34": {
+                    "desc": "DFI error port1"
+                },
+                "35": {
+                    "desc": "event_n was active on the DDR interface port1"
+                },
+                "36": {
+                    "desc": "WRQ or RRQ is in a hung state port1"
+                },
+                "37": {
+                    "desc": "state machine one hot error port1"
+                },
+                "38": {
+                    "desc": "ROQ errors port1"
+                },
+                "39": {
+                    "desc": "Address parity error seen internal to sequencer on read or write command port1"
+                },
+                "40": {
+                    "desc": "port1 has failed due to a persistent retry"
+                },
+                "41": {
+                    "desc": "refresh management CE port1"
+                },
+                "42": {
+                    "desc": "refresh management RAA counter UE port1"
+                },
+                "43": {
+                    "desc": "xlat addr error port1"
+                },
+                "44": {
+                    "desc": "check on ccs in progress bit"
+                },
+                "45": {
+                    "desc": "DSM errors port1"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "SRQ_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "SRQ_FIR": [
+            {
+                "reg_name": "SRQ_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBXLT0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBXLT1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBXLT2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBXLT3",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "WESR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "SRQ_ERR_RPT_HOLD",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

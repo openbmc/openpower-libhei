@@ -1,0 +1,349 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "OCMB_LFIR": {
+            "instances": {
+                "0": "0x0804000A"
+            }
+        },
+        "OCMB_LFIR_MASK": {
+            "instances": {
+                "0": "0x0804000D"
+            }
+        },
+        "OCMB_LFIR_ACT0": {
+            "instances": {
+                "0": "0x08040010"
+            }
+        },
+        "OCMB_LFIR_ACT1": {
+            "instances": {
+                "0": "0x08040011"
+            }
+        },
+        "ADSP_PCBI": {
+            "instances": {
+                "0": "0x00200860",
+                "1": "0x00201860",
+                "2": "0x00202860",
+                "3": "0x00203860",
+                "4": "0x00204860",
+                "5": "0x00205860",
+                "6": "0x00206860",
+                "7": "0x00207860"
+            }
+        },
+        "CSU_PCBI": {
+            "instances": {
+                "0": "0x002000B0",
+                "1": "0x002010B0",
+                "2": "0x002020B0",
+                "3": "0x002030B0",
+                "4": "0x002040B0",
+                "5": "0x002050B0",
+                "6": "0x002060B0",
+                "7": "0x002070B0"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "OCMB_LFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_LFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_LFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_LFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_LFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_LFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_LFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "OCMB_LFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OCMB_LFIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR access PCB error"
+                },
+                "1": {
+                    "desc": "CFIR internal parity error"
+                },
+                "2": {
+                    "desc": "LFIR internal parity error"
+                },
+                "3": {
+                    "desc": "Debug scom satellite error"
+                },
+                "4": {
+                    "desc": "PSCOM Logic: PCB Access Error"
+                },
+                "5": {
+                    "desc": "PSCOM Logic: Summarized internal errors"
+                },
+                "6": {
+                    "desc": "Trace Logic : Scom Satellite Error - Trace0"
+                },
+                "7": {
+                    "desc": "Trace Logic : Scom Satellite Error - Trace1"
+                },
+                "8": {
+                    "desc": "PIB2GIF parity error on FSM or Registers"
+                },
+                "9": {
+                    "desc": "MSG access PCB error"
+                },
+                "10:18": {
+                    "desc": "unused"
+                },
+                "19": {
+                    "desc": "DLL IRQ"
+                },
+                "20": {
+                    "desc": "Watchdog timer interrupt"
+                },
+                "21": {
+                    "desc": "internal temp sensor tripped a threshold"
+                },
+                "22": {
+                    "desc": "GPBC_FATAL_ERROR"
+                },
+                "23": {
+                    "desc": "GPBC_NON_FATAL_ERROR"
+                },
+                "24": {
+                    "desc": "early power off warning"
+                },
+                "25": {
+                    "desc": "TOP fatal interrupts"
+                },
+                "26": {
+                    "desc": "TOP non fatal interrupts"
+                },
+                "27:30": {
+                    "desc": "Interrupt from OPSe to OCMB"
+                },
+                "31": {
+                    "desc": "SerDes continuous calibration failure"
+                },
+                "32": {
+                    "desc": "Firmware Assert or CPU Exception"
+                },
+                "33": {
+                    "desc": "Extended error information ready"
+                },
+                "34": {
+                    "desc": "Interrupt from OPSe to OCMB"
+                },
+                "35": {
+                    "desc": "DDR thermal event"
+                },
+                "36": {
+                    "desc": "DDR4 PHY fatal"
+                },
+                "37": {
+                    "desc": "DDR4 PHY non fatal"
+                },
+                "38": {
+                    "desc": "DDR4 PHY interrupt"
+                },
+                "39": {
+                    "desc": "foxhound fatal lane 7"
+                },
+                "40": {
+                    "desc": "foxhound fatal lane 6"
+                },
+                "41": {
+                    "desc": "foxhound fatal lane 5"
+                },
+                "42": {
+                    "desc": "foxhound fatal lane 4"
+                },
+                "43": {
+                    "desc": "foxhound fatal lane 3"
+                },
+                "44": {
+                    "desc": "foxhound fatal lane 2"
+                },
+                "45": {
+                    "desc": "foxhound fatal lane 1"
+                },
+                "46": {
+                    "desc": "foxhound fatal lane 0"
+                },
+                "47:54": {
+                    "desc": "foxhound non fatal"
+                },
+                "55:62": {
+                    "desc": "foxhound serdes interrupt"
+                },
+                "63": {
+                    "desc": "GIF2PCB parity error on FSM or Registers"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "OCMB_LFIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "OCMB_LFIR": [
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 2
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 3
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 4
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 5
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 6
+                }
+            },
+            {
+                "reg_name": "ADSP_PCBI",
+                "reg_inst": {
+                    "0": 7
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 2
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 3
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 4
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 5
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 6
+                }
+            },
+            {
+                "reg_name": "CSU_PCBI",
+                "reg_inst": {
+                    "0": 7
+                }
+            }
+        ]
+    }
+}

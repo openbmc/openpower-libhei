@@ -1,0 +1,81 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "CHIPLET_OCMB_SPA_FIR": {
+            "instances": {
+                "0": "0x08040004"
+            }
+        },
+        "CHIPLET_OCMB_SPA_FIR_MASK": {
+            "instances": {
+                "0": "0x08040007"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CHIPLET_OCMB_SPA_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CHIPLET_OCMB_SPA_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CHIPLET_OCMB_SPA_FIR_MASK"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from MMIOFIR",
+                    "child_node": {
+                        "name": "MMIOFIR"
+                    }
+                },
+                "4": {
+                    "desc": "Attention from SRQFIR",
+                    "child_node": {
+                        "name": "SRQFIR"
+                    }
+                },
+                "5": {
+                    "desc": "Attention from MCBISTFIR",
+                    "child_node": {
+                        "name": "MCBISTFIR"
+                    }
+                },
+                "6": {
+                    "desc": "Attention from RDFFIR",
+                    "child_node": {
+                        "name": "RDFFIR"
+                    }
+                },
+                "8": {
+                    "desc": "Attention from TLXFIR",
+                    "child_node": {
+                        "name": "TLXFIR"
+                    }
+                },
+                "9": {
+                    "desc": "Attention from OMI_DL_FIR",
+                    "child_node": {
+                        "name": "OMI_DL_FIR"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,453 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "CFIR_PCI_CS": {
+            "instances": {
+                "0": "0x08040000",
+                "1": "0x09040000"
+            }
+        },
+        "CFIR_PCI_CS_MASK": {
+            "instances": {
+                "0": "0x08040040",
+                "1": "0x09040040"
+            }
+        },
+        "CFIR_PCI_RE": {
+            "instances": {
+                "0": "0x08040001",
+                "1": "0x09040001"
+            }
+        },
+        "CFIR_PCI_RE_MASK": {
+            "instances": {
+                "0": "0x08040041",
+                "1": "0x09040041"
+            }
+        },
+        "CFIR_PCI_SPA": {
+            "instances": {
+                "0": "0x08040002",
+                "1": "0x09040002"
+            }
+        },
+        "CFIR_PCI_SPA_MASK": {
+            "instances": {
+                "0": "0x08040042",
+                "1": "0x09040042"
+            }
+        },
+        "CFIR_PCI_UCS": {
+            "instances": {
+                "0": "0x08040003",
+                "1": "0x09040003"
+            }
+        },
+        "CFIR_PCI_UCS_MASK": {
+            "instances": {
+                "0": "0x08040043",
+                "1": "0x09040043"
+            }
+        },
+        "CFIR_PCI_HA": {
+            "instances": {
+                "0": "0x08040004",
+                "1": "0x09040004"
+            }
+        },
+        "CFIR_PCI_HA_MASK": {
+            "instances": {
+                "0": "0x08040044",
+                "1": "0x09040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_PCI_CS": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PCI_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PCI_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PCI_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PCI_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from PCI_ETU_FIR",
+                    "child_node": {
+                        "name": "PCI_ETU_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PCI_ETU_FIR",
+                    "child_node": {
+                        "name": "PCI_ETU_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 4
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from PCI_ETU_FIR",
+                    "child_node": {
+                        "name": "PCI_ETU_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 5
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI_FIR",
+                    "child_node": {
+                        "name": "PCI_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from PCI_FIR",
+                    "child_node": {
+                        "name": "PCI_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 4
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Attention from PCI_FIR",
+                    "child_node": {
+                        "name": "PCI_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 5
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from PCI_IOP_FIR",
+                    "child_node": {
+                        "name": "PCI_IOP_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 2
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_IOP_FIR",
+                    "child_node": {
+                        "name": "PCI_IOP_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 3
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PCI_RE": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PCI_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PCI_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PCI_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PCI_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from PCI_ETU_FIR",
+                    "child_node": {
+                        "name": "PCI_ETU_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PCI_ETU_FIR",
+                    "child_node": {
+                        "name": "PCI_ETU_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 4
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from PCI_ETU_FIR",
+                    "child_node": {
+                        "name": "PCI_ETU_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 5
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI_FIR",
+                    "child_node": {
+                        "name": "PCI_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from PCI_FIR",
+                    "child_node": {
+                        "name": "PCI_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 4
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Attention from PCI_FIR",
+                    "child_node": {
+                        "name": "PCI_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 5
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from PCI_IOP_FIR",
+                    "child_node": {
+                        "name": "PCI_IOP_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 2
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_IOP_FIR",
+                    "child_node": {
+                        "name": "PCI_IOP_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 3
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PCI_SPA": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PCI_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PCI_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PCI_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PCI_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PCI_UCS": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PCI_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PCI_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PCI_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PCI_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from PCI_IOP_FIR",
+                    "child_node": {
+                        "name": "PCI_IOP_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 2
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_IOP_FIR",
+                    "child_node": {
+                        "name": "PCI_IOP_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 3
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PCI_HA": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PCI_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PCI_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PCI_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PCI_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

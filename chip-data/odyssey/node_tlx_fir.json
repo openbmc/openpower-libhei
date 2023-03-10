@@ -1,0 +1,330 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "TLX_FIR": {
+            "instances": {
+                "0": "0x08012000"
+            }
+        },
+        "TLX_FIR_MASK": {
+            "instances": {
+                "0": "0x08012002"
+            }
+        },
+        "TLX_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08012004"
+            }
+        },
+        "TLX_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08012005"
+            }
+        },
+        "TLX_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08012006"
+            }
+        },
+        "TLX_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08012007"
+            }
+        },
+        "TLX_FIR_WOF": {
+            "instances": {
+                "0": "0x08012008"
+            }
+        },
+        "SRQ_ROQ_CTL_0": {
+            "instances": {
+                "0": "0x0801100F"
+            }
+        },
+        "TLX_CFG_0": {
+            "instances": {
+                "0": "0x0801200C"
+            }
+        },
+        "TLX_CFG_1": {
+            "instances": {
+                "0": "0x0801200D"
+            }
+        },
+        "TLX_CFG_2": {
+            "instances": {
+                "0": "0x0801200E"
+            }
+        },
+        "TLX_CFG_3": {
+            "instances": {
+                "0": "0x0801200F"
+            }
+        },
+        "TLX_ERR_RPT_0": {
+            "instances": {
+                "0": "0x0801201C"
+            }
+        },
+        "TLX_ERR_RPT_1": {
+            "instances": {
+                "0": "0x0801201D"
+            }
+        },
+        "TLX_ERR_RPT_2": {
+            "instances": {
+                "0": "0x0801201E"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "TLX_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Internal parity error"
+                },
+                "1": {
+                    "desc": "TLXT control register parity error"
+                },
+                "2": {
+                    "desc": "TLX VC0 return credit overflow"
+                },
+                "3": {
+                    "desc": "TLX VC3 return credit overflow"
+                },
+                "4": {
+                    "desc": "TLX DCP0 return credit overflow"
+                },
+                "5": {
+                    "desc": "TLX DCP3 return credit overflow"
+                },
+                "6": {
+                    "desc": "TLXC error"
+                },
+                "7": {
+                    "desc": "TLXC parity error"
+                },
+                "8": {
+                    "desc": "TLXT config parity error"
+                },
+                "9": {
+                    "desc": "TLXT response parity error"
+                },
+                "10": {
+                    "desc": "TLXT framer control parity error"
+                },
+                "11": {
+                    "desc": "TLXT Xarb control error"
+                },
+                "12": {
+                    "desc": "TLXT DLX interface error"
+                },
+                "13": {
+                    "desc": "TLX info register parity error"
+                },
+                "14": {
+                    "desc": "TLX reorder queue error"
+                },
+                "15": {
+                    "desc": "TLXT invalid configuration"
+                },
+                "16": {
+                    "desc": "TLXR is dropping commands after a fatal error"
+                },
+                "17": {
+                    "desc": "Malformed OC packet received"
+                },
+                "18": {
+                    "desc": "Protocol error detected in OC downstream sequence"
+                },
+                "19": {
+                    "desc": "Legal OC command not supported"
+                },
+                "20": {
+                    "desc": "Legal OC command length not supported"
+                },
+                "21": {
+                    "desc": "TLXR OC Misaligned"
+                },
+                "22": {
+                    "desc": "MMIO returned non-zero response to a write"
+                },
+                "23": {
+                    "desc": "Hardware error in TLXR control logic"
+                },
+                "24": {
+                    "desc": "TLXR Info Event"
+                },
+                "25": {
+                    "desc": "TLXR detected internal error"
+                },
+                "26": {
+                    "desc": "TLXR Threshold errors"
+                },
+                "27": {
+                    "desc": "Trace_Stop from TLXR"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "TLX_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "TLX_FIR": [
+            {
+                "reg_name": "SRQ_ROQ_CTL_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_CFG_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_CFG_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_CFG_2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_CFG_3",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_2",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

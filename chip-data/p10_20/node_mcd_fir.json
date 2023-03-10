@@ -1,0 +1,169 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "MCD_FIR": {
+            "instances": {
+                "0": "0x03010800"
+            }
+        },
+        "MCD_FIR_MASK": {
+            "instances": {
+                "0": "0x03010803"
+            }
+        },
+        "MCD_FIR_ACT0": {
+            "instances": {
+                "0": "0x03010806"
+            }
+        },
+        "MCD_FIR_ACT1": {
+            "instances": {
+                "0": "0x03010807"
+            }
+        },
+        "MCD_FIR_WOF": {
+            "instances": {
+                "0": "0x03010808"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MCD_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCD_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCD_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCD_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCD_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCD_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCD_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "MCD array ECC correctable error"
+                },
+                "1": {
+                    "desc": "MCD array ECC uncorrectable error"
+                },
+                "2": {
+                    "desc": "MCD PowerBus address parity error"
+                },
+                "3": {
+                    "desc": "MCD invalid state error"
+                },
+                "4": {
+                    "desc": "Hang poll timer expired on cl_probe"
+                },
+                "5": {
+                    "desc": "PowerBus address error cresp received"
+                },
+                "6": {
+                    "desc": "MCD received a unsolicited CRESP"
+                },
+                "7": {
+                    "desc": "MCD powerbus ttag parity error"
+                },
+                "8": {
+                    "desc": "MCD scom register update error"
+                },
+                "9": {
+                    "desc": "MCD received a ack_dead_cresp"
+                },
+                "10": {
+                    "desc": "MCD configuration register had a parity error"
+                }
+            }
+        }
+    }
+}

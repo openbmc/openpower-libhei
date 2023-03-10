@@ -1,0 +1,469 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "IOHS_LOCAL_FIR": {
+            "instances": {
+                "0": "0x18040100",
+                "1": "0x19040100",
+                "2": "0x1A040100",
+                "3": "0x1B040100",
+                "4": "0x1C040100",
+                "5": "0x1D040100",
+                "6": "0x1E040100",
+                "7": "0x1F040100"
+            }
+        },
+        "IOHS_LOCAL_FIR_MASK": {
+            "instances": {
+                "0": "0x18040103",
+                "1": "0x19040103",
+                "2": "0x1A040103",
+                "3": "0x1B040103",
+                "4": "0x1C040103",
+                "5": "0x1D040103",
+                "6": "0x1E040103",
+                "7": "0x1F040103"
+            }
+        },
+        "IOHS_LOCAL_FIR_ACT0": {
+            "instances": {
+                "0": "0x18040106",
+                "1": "0x19040106",
+                "2": "0x1A040106",
+                "3": "0x1B040106",
+                "4": "0x1C040106",
+                "5": "0x1D040106",
+                "6": "0x1E040106",
+                "7": "0x1F040106"
+            }
+        },
+        "IOHS_LOCAL_FIR_ACT1": {
+            "instances": {
+                "0": "0x18040107",
+                "1": "0x19040107",
+                "2": "0x1A040107",
+                "3": "0x1B040107",
+                "4": "0x1C040107",
+                "5": "0x1D040107",
+                "6": "0x1E040107",
+                "7": "0x1F040107"
+            }
+        },
+        "IOHS_LOCAL_FIR_ACT2": {
+            "instances": {
+                "0": "0x18040109",
+                "1": "0x19040109",
+                "2": "0x1A040109",
+                "3": "0x1B040109",
+                "4": "0x1C040109",
+                "5": "0x1D040109",
+                "6": "0x1E040109",
+                "7": "0x1F040109"
+            }
+        },
+        "IOHS_LOCAL_FIR_WOF": {
+            "instances": {
+                "0": "0x18040108",
+                "1": "0x19040108",
+                "2": "0x1A040108",
+                "3": "0x1B040108",
+                "4": "0x1C040108",
+                "5": "0x1D040108",
+                "6": "0x1E040108",
+                "7": "0x1F040108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "IOHS_LOCAL_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_LOCAL_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR - Parity or PCB access error"
+                },
+                "1": {
+                    "desc": "CPLT_CTRL - PCB access error"
+                },
+                "2": {
+                    "desc": "CC - PCB access error"
+                },
+                "3": {
+                    "desc": "CC - Clock Control Error"
+                },
+                "4": {
+                    "desc": "PSC - PSCOM access error"
+                },
+                "5": {
+                    "desc": "PSC - internal or ring interface error"
+                },
+                "6": {
+                    "desc": "THERM - interal error"
+                },
+                "7": {
+                    "desc": "THERM - pcb error"
+                },
+                "8": {
+                    "desc": "THERMTRIP - Critical temperature indicator"
+                },
+                "9": {
+                    "desc": "THERMTRIP - Fatal temperature indicator"
+                },
+                "10": {
+                    "desc": "VOLTTRIP - Voltage sense error"
+                },
+                "11": {
+                    "desc": "DBG - scom parity fail"
+                },
+                "12": {
+                    "desc": "reserved"
+                },
+                "13": {
+                    "desc": "reserved"
+                },
+                "14": {
+                    "desc": "reserved"
+                },
+                "15": {
+                    "desc": "reserved"
+                },
+                "16": {
+                    "desc": "reserved"
+                },
+                "17": {
+                    "desc": "reserved"
+                },
+                "18": {
+                    "desc": "reserved"
+                },
+                "19": {
+                    "desc": "reserved"
+                },
+                "20": {
+                    "desc": "Trace00 - scom parity err"
+                },
+                "21": {
+                    "desc": "Trace01 - scom parity err"
+                },
+                "22": {
+                    "desc": "unused"
+                },
+                "23": {
+                    "desc": "unused"
+                },
+                "24": {
+                    "desc": "unused"
+                },
+                "25": {
+                    "desc": "unused"
+                },
+                "26": {
+                    "desc": "unused"
+                },
+                "27": {
+                    "desc": "unused"
+                },
+                "28": {
+                    "desc": "unused"
+                },
+                "29": {
+                    "desc": "unused"
+                },
+                "30": {
+                    "desc": "unused"
+                },
+                "31": {
+                    "desc": "unused"
+                },
+                "32": {
+                    "desc": "unused"
+                },
+                "33": {
+                    "desc": "unused"
+                },
+                "34": {
+                    "desc": "unused"
+                },
+                "35": {
+                    "desc": "unused"
+                },
+                "36": {
+                    "desc": "unused"
+                },
+                "37": {
+                    "desc": "unused"
+                },
+                "38": {
+                    "desc": "unused"
+                },
+                "39": {
+                    "desc": "unused"
+                },
+                "40": {
+                    "desc": "unused"
+                },
+                "41": {
+                    "desc": "unused"
+                },
+                "42": {
+                    "desc": "unused"
+                },
+                "43": {
+                    "desc": "unused"
+                },
+                "44": {
+                    "desc": "unused"
+                },
+                "45": {
+                    "desc": "unused"
+                },
+                "46": {
+                    "desc": "unused"
+                },
+                "47": {
+                    "desc": "unused"
+                },
+                "48": {
+                    "desc": "unused"
+                },
+                "49": {
+                    "desc": "unused"
+                },
+                "50": {
+                    "desc": "unused"
+                },
+                "51": {
+                    "desc": "unused"
+                },
+                "52": {
+                    "desc": "unused"
+                },
+                "53": {
+                    "desc": "unused"
+                },
+                "54": {
+                    "desc": "unused"
+                },
+                "55": {
+                    "desc": "unused"
+                },
+                "56": {
+                    "desc": "unused"
+                },
+                "57": {
+                    "desc": "unused"
+                },
+                "58": {
+                    "desc": "unused"
+                },
+                "59": {
+                    "desc": "unused"
+                },
+                "60": {
+                    "desc": "unused"
+                },
+                "61": {
+                    "desc": "unused"
+                },
+                "62": {
+                    "desc": "unused"
+                },
+                "63": {
+                    "desc": "ext_local_xstop"
+                }
+            }
+        }
+    }
+}

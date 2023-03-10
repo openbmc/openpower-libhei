@@ -1,0 +1,85 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "GFIR_CS": {
+            "instances": {
+                "0": "0x570F001C"
+            }
+        },
+        "GFIR_RE": {
+            "instances": {
+                "0": "0x570F001B"
+            }
+        },
+        "GFIR_SPA": {
+            "instances": {
+                "0": "0x570F001A"
+            }
+        },
+        "GFIR_UCS": {
+            "instances": {
+                "0": "0x570F002A"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "GFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_CS"
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_RE"
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_SPA"
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_UCS"
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from MEM chiplet",
+                    "child_node": {
+                        "name": "CFIR_MEM",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,447 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "TP_LOCAL_FIR": {
+            "instances": {
+                "0": "0x01040100"
+            }
+        },
+        "TP_LOCAL_FIR_MASK": {
+            "instances": {
+                "0": "0x01040103"
+            }
+        },
+        "TP_LOCAL_FIR_ACT0": {
+            "instances": {
+                "0": "0x01040106"
+            }
+        },
+        "TP_LOCAL_FIR_ACT1": {
+            "instances": {
+                "0": "0x01040107"
+            }
+        },
+        "TP_LOCAL_FIR_ACT2": {
+            "instances": {
+                "0": "0x01040109"
+            }
+        },
+        "TP_LOCAL_FIR_WOF": {
+            "instances": {
+                "0": "0x01040108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "TP_LOCAL_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR - Parity or PCB access error"
+                },
+                "1": {
+                    "desc": "CPLT_CTRL - PCB access error"
+                },
+                "2": {
+                    "desc": "CC - PCB access error"
+                },
+                "3": {
+                    "desc": "CC - Clock Control Error"
+                },
+                "4": {
+                    "desc": "PSC - PSCOM access error"
+                },
+                "5": {
+                    "desc": "PSC - internal or ring interface error"
+                },
+                "6": {
+                    "desc": "THERM - internal error"
+                },
+                "7": {
+                    "desc": "THERM - pcb error"
+                },
+                "8": {
+                    "desc": "THERMTRIP - Critical temperature indicator"
+                },
+                "9": {
+                    "desc": "THERMTRIP - Fatal temperature indicator"
+                },
+                "10": {
+                    "desc": "VOLTTRIP - Voltage sense error"
+                },
+                "11": {
+                    "desc": "DBG - scom parity fail"
+                },
+                "12": {
+                    "desc": "reserved"
+                },
+                "13": {
+                    "desc": "reserved"
+                },
+                "14": {
+                    "desc": "reserved"
+                },
+                "15": {
+                    "desc": "reserved"
+                },
+                "16": {
+                    "desc": "reserved"
+                },
+                "17": {
+                    "desc": "reserved"
+                },
+                "18": {
+                    "desc": "reserved"
+                },
+                "19": {
+                    "desc": "reserved"
+                },
+                "20": {
+                    "desc": "Trace00 - scom parity err"
+                },
+                "21": {
+                    "desc": "ITR - FMU error"
+                },
+                "22": {
+                    "desc": "ITR - PCB error"
+                },
+                "23": {
+                    "desc": "PCB Master - timeout"
+                },
+                "24": {
+                    "desc": "I2CM - Parity errors"
+                },
+                "25": {
+                    "desc": "TOD - any error",
+                    "child_node": {
+                        "name": "TOD_ERROR"
+                    }
+                },
+                "26": {
+                    "desc": "TOD - access error PIB"
+                },
+                "27": {
+                    "desc": "TOD - Error reported from PHYP"
+                },
+                "28": {
+                    "desc": "PCB slave error",
+                    "child_node": {
+                        "name": "PLL_UNLOCK"
+                    }
+                },
+                "29": {
+                    "desc": "SBE - PPE int hardware error"
+                },
+                "30": {
+                    "desc": "SBE - PPE ext hardware error"
+                },
+                "31": {
+                    "desc": "SBE - PPE code error"
+                },
+                "32": {
+                    "desc": "SBE - PPE debug code breakpoint"
+                },
+                "33": {
+                    "desc": "SBE - PPE in halted state"
+                },
+                "34": {
+                    "desc": "SBE - PPE watchdog timeout"
+                },
+                "35": {
+                    "desc": "SBE - unused"
+                },
+                "36": {
+                    "desc": "SBE - unused"
+                },
+                "37": {
+                    "desc": "SBE - PPE triggers DBG"
+                },
+                "38": {
+                    "desc": "OTP - SCOM access errors and single ecc correctable"
+                },
+                "39": {
+                    "desc": "TPIO External Trigger"
+                },
+                "40": {
+                    "desc": "PCB Master - Multicast group member count underrun (MC misconfig)"
+                },
+                "41": {
+                    "desc": "PCB Master - Parity ERR"
+                },
+                "42": {
+                    "desc": "RCS OSC error on clk A"
+                },
+                "43": {
+                    "desc": "RCS OSC error on clk B"
+                },
+                "44": {
+                    "desc": "RCS - Up/down counter A unlock"
+                },
+                "45": {
+                    "desc": "RCS - Up/down counter B unlock"
+                },
+                "46": {
+                    "desc": "PIBMEM"
+                },
+                "47": {
+                    "desc": "PIBMEM"
+                },
+                "48": {
+                    "desc": "OTP - ECC UE or CE count overflow"
+                },
+                "49": {
+                    "desc": "Nest DPLL: DCO empty"
+                },
+                "50": {
+                    "desc": "Nest DPLL: DCO full"
+                },
+                "51": {
+                    "desc": "Nest DPLL: internal error"
+                },
+                "52": {
+                    "desc": "PAU DPLL: DCO empty"
+                },
+                "53": {
+                    "desc": "PAU DPLL: DCO full"
+                },
+                "54": {
+                    "desc": "PAU DPLL: internal error"
+                },
+                "55": {
+                    "desc": "SPI Master 0 Err"
+                },
+                "56": {
+                    "desc": "SPI Master 1 Err"
+                },
+                "57": {
+                    "desc": "SPI Master 2 Err"
+                },
+                "58": {
+                    "desc": "SPI Master 3 Err"
+                },
+                "59": {
+                    "desc": "SPI Master 4 Err"
+                },
+                "60": {
+                    "desc": "unused"
+                },
+                "61": {
+                    "desc": "unused"
+                },
+                "62": {
+                    "desc": "unused"
+                },
+                "63": {
+                    "desc": "ext_local_xstop"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "TOD_ERROR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                },
+                {
+                    "group_name": "RCS_PLL",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}
