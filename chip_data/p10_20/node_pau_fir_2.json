@@ -1,0 +1,340 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PAU_FIR_2": {
+            "instances": {
+                "0": "0x10010C80",
+                "3": "0x11010C80",
+                "4": "0x12010C80",
+                "5": "0x12011480",
+                "6": "0x13010C80",
+                "7": "0x13011480"
+            }
+        },
+        "PAU_FIR_2_MASK": {
+            "instances": {
+                "0": "0x10010C83",
+                "3": "0x11010C83",
+                "4": "0x12010C83",
+                "5": "0x12011483",
+                "6": "0x13010C83",
+                "7": "0x13011483"
+            }
+        },
+        "PAU_FIR_2_ACT0": {
+            "instances": {
+                "0": "0x10010C86",
+                "3": "0x11010C86",
+                "4": "0x12010C86",
+                "5": "0x12011486",
+                "6": "0x13010C86",
+                "7": "0x13011486"
+            }
+        },
+        "PAU_FIR_2_ACT1": {
+            "instances": {
+                "0": "0x10010C87",
+                "3": "0x11010C87",
+                "4": "0x12010C87",
+                "5": "0x12011487",
+                "6": "0x13010C87",
+                "7": "0x13011487"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PAU_FIR_2": {
+            "instances": [0, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_2"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_2_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_2_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_2_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_2"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_2_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_2_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_2_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_2"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_2_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_2_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_2_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "OTL Brick2 translation fault"
+                },
+                "1": {
+                    "desc": "OTL Brick3 translation fault"
+                },
+                "2": {
+                    "desc": "OTL Brick4 translation fault"
+                },
+                "3": {
+                    "desc": "OTL Brick5 translation fault"
+                },
+                "4": {
+                    "desc": "OTL TL credit counter overflow caused by return_tl_credits"
+                },
+                "5": {
+                    "desc": "OTL RX acTag specified in a command is outside the configured specification set"
+                },
+                "6": {
+                    "desc": "OTL RX acTag specified in the command points to an invalid entry"
+                },
+                "7": {
+                    "desc": "OTL RX reserved opcode used"
+                },
+                "8": {
+                    "desc": "OTL RX return_tl_credit command found outside slot0"
+                },
+                "9": {
+                    "desc": "OTL RX bad opcode and template combination"
+                },
+                "10": {
+                    "desc": "OTL RX unsupported template format"
+                },
+                "11": {
+                    "desc": "OTL RX bad template x00 format"
+                },
+                "12": {
+                    "desc": "OTL RX control flit overrun"
+                },
+                "13": {
+                    "desc": "OTL RX unexpected data flit"
+                },
+                "14": {
+                    "desc": "OTL RX DL link down"
+                },
+                "15": {
+                    "desc": "OTL RX bad data received on command"
+                },
+                "16": {
+                    "desc": "OTL RX bad data received on response"
+                },
+                "17": {
+                    "desc": "OTL RX AP response not allowed (CAPPTag not recognized)"
+                },
+                "18": {
+                    "desc": "OR of all OTL parity errors"
+                },
+                "19": {
+                    "desc": "OR of all OTL ECC CE errors"
+                },
+                "20": {
+                    "desc": "OR of all OTL ECC UE errors"
+                },
+                "21": {
+                    "desc": "RXO OP Errors"
+                },
+                "22": {
+                    "desc": "RXO Internal Errors"
+                },
+                "23": {
+                    "desc": "OTL RXI fifo overrun"
+                },
+                "24": {
+                    "desc": "OTL RXI control flit data run length invalid"
+                },
+                "25": {
+                    "desc": "OTL RXI opcode utilizing dLength specifies dL=0b00 or other invalid dL"
+                },
+                "26": {
+                    "desc": "OTL RXI bad data received vc2"
+                },
+                "27": {
+                    "desc": "OTL RXI dcp2 fifo overrun"
+                },
+                "28": {
+                    "desc": "OTL RXI vc1 fifo overrun"
+                },
+                "29": {
+                    "desc": "OTL RXI vc2 fifo overrun"
+                },
+                "30": {
+                    "desc": "Opcode data length not supported"
+                },
+                "31": {
+                    "desc": "OTL TXI opcode error"
+                },
+                "32": {
+                    "desc": "malformed packet error type 4 (rxi_misc_error_fieldrsvdne0_tlvc2)"
+                },
+                "33": {
+                    "desc": "OTL Happi no bar match"
+                },
+                "34": {
+                    "desc": "OTL Reserved, macro bit 30"
+                },
+                "35": {
+                    "desc": "OTL Reserved, macro bit 31"
+                },
+                "36": {
+                    "desc": "MMIO invalidate requested while one is in progress"
+                },
+                "37": {
+                    "desc": "Unexpected ITAG returned on itag completion port 0"
+                },
+                "38": {
+                    "desc": "Unexpected ITAG returned on itag completion port 1"
+                },
+                "39": {
+                    "desc": "Unexpected Read PEE completion"
+                },
+                "40": {
+                    "desc": "Unexpected Checkout response"
+                },
+                "41": {
+                    "desc": "Translation request while SPAP is invalid"
+                },
+                "42": {
+                    "desc": "Read a PEE which was not valid"
+                },
+                "43": {
+                    "desc": "Bloom filter protection error"
+                },
+                "44": {
+                    "desc": "Translation request to non-valid TA"
+                },
+                "45": {
+                    "desc": "TA Translation request to an invalid TA"
+                },
+                "46": {
+                    "desc": "correctable array error (SBE)"
+                },
+                "47": {
+                    "desc": "uncorrectable array error (UE or parity)"
+                },
+                "48": {
+                    "desc": "S/TLBI buffer overflow"
+                },
+                "49": {
+                    "desc": "SBE correctable error on Powerbus checkout response data or Powerbus PEE read data"
+                },
+                "50": {
+                    "desc": "UE  uncorrectable error on Powerbus checkout response data or Powerbus PEE read data"
+                },
+                "51": {
+                    "desc": "SUE error on Powerbus checkout response data or Powerbus PEE read data"
+                },
+                "52": {
+                    "desc": "PA mem_hit when bar mode is nonzero"
+                },
+                "53": {
+                    "desc": "XSL Reserved, macro bit 17"
+                },
+                "54": {
+                    "desc": "OTL Brick0 translation fault"
+                },
+                "55": {
+                    "desc": "OTL Brick1 translation fault"
+                },
+                "56": {
+                    "desc": "AME ECC UE on control information or state bit errors that are contained within AME and ATL"
+                },
+                "57": {
+                    "desc": "AME ECC UE on control information or state bit errors that can affect correctness of external logic such as XSL castout"
+                },
+                "58": {
+                    "desc": "AME Logic errors that are contained within AME and ATL"
+                },
+                "59": {
+                    "desc": "AME Logic errors that can affect correctness of external logic such as XSL castout"
+                },
+                "60": {
+                    "desc": "AME firmware-detected fatal error conditions"
+                },
+                "61": {
+                    "desc": "AME Reserved"
+                },
+                "62": {
+                    "desc": "Unused FIR"
+                },
+                "63": {
+                    "desc": "Unused FIR"
+                }
+            }
+        }
+    }
+}

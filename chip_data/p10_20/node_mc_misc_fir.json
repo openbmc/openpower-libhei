@@ -1,0 +1,300 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "MC_MISC_FIR": {
+            "instances": {
+                "0": "0x0C010F00",
+                "1": "0x0D010F00",
+                "2": "0x0E010F00",
+                "3": "0x0F010F00"
+            }
+        },
+        "MC_MISC_FIR_MASK": {
+            "instances": {
+                "0": "0x0C010F03",
+                "1": "0x0D010F03",
+                "2": "0x0E010F03",
+                "3": "0x0F010F03"
+            }
+        },
+        "MC_MISC_FIR_ACT0": {
+            "instances": {
+                "0": "0x0C010F06",
+                "1": "0x0D010F06",
+                "2": "0x0E010F06",
+                "3": "0x0F010F06"
+            }
+        },
+        "MC_MISC_FIR_ACT1": {
+            "instances": {
+                "0": "0x0C010F07",
+                "1": "0x0D010F07",
+                "2": "0x0E010F07",
+                "3": "0x0F010F07"
+            }
+        },
+        "MC_MISC_FIR_ACT2": {
+            "instances": {
+                "0": "0x0C010F09",
+                "1": "0x0D010F09",
+                "2": "0x0E010F09",
+                "3": "0x0F010F09"
+            }
+        },
+        "MC_MISC_FIR_WOF": {
+            "instances": {
+                "0": "0x0C010F08",
+                "1": "0x0D010F08",
+                "2": "0x0E010F08",
+                "3": "0x0F010F08"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MC_MISC_FIR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_MISC_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_MISC_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "WAT Debug Bus Attention"
+                },
+                "1": {
+                    "desc": "SCOM DBGSRC Register parity Error"
+                },
+                "2": {
+                    "desc": "SCOM Recoverable Register Parity Error"
+                },
+                "3": {
+                    "desc": "spare"
+                },
+                "4": {
+                    "desc": "Application interrupt received from OCMB on channel 0, subchannel A"
+                },
+                "5": {
+                    "desc": "Application interrupt received from OCMB on channel 0, subchannel B"
+                },
+                "6": {
+                    "desc": "Application interrupt received from OCMB on channel 1, subchannel A"
+                },
+                "7": {
+                    "desc": "Application interrupt received from OCMB on channel 1, subchannel B"
+                },
+                "8": {
+                    "desc": "Parity Error taken on MCEBUSEN[0,1,2,3] regs"
+                },
+                "9": {
+                    "desc": "Parity Error taken on WAT* Regs"
+                },
+                "10": {
+                    "desc": "Reserved"
+                },
+                "11": {
+                    "desc": "Reserved"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MC_MISC_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3
+                    }
+                }
+            ]
+        }
+    }
+}

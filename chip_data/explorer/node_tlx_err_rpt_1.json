@@ -1,0 +1,97 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "isolation_nodes": {
+        "TLX_ERR_RPT_1": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_ERR_RPT_1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_ERR_RPT_1_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000005C00000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_ERR_RPT_1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_ERR_RPT_1_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000005C00000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLX_ERR_RPT_1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLX_ERR_RPT_1_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000005C00000"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "37": {
+                    "desc": "TLXT FIFO CE"
+                },
+                "39": {
+                    "desc": "Unexpected Interrupt Response"
+                },
+                "40": {
+                    "desc": "BDI Poisoned"
+                },
+                "41": {
+                    "desc": "TLXT Metadata UE"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,294 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "CFIR_TP_CS": {
+            "instances": {
+                "0": "0x01040000"
+            }
+        },
+        "CFIR_TP_CS_MASK": {
+            "instances": {
+                "0": "0x01040040"
+            }
+        },
+        "CFIR_TP_RE": {
+            "instances": {
+                "0": "0x01040001"
+            }
+        },
+        "CFIR_TP_RE_MASK": {
+            "instances": {
+                "0": "0x01040041"
+            }
+        },
+        "CFIR_TP_SPA": {
+            "instances": {
+                "0": "0x01040002"
+            }
+        },
+        "CFIR_TP_SPA_MASK": {
+            "instances": {
+                "0": "0x01040042"
+            }
+        },
+        "CFIR_TP_UCS": {
+            "instances": {
+                "0": "0x01040003"
+            }
+        },
+        "CFIR_TP_UCS_MASK": {
+            "instances": {
+                "0": "0x01040043"
+            }
+        },
+        "CFIR_TP_HA": {
+            "instances": {
+                "0": "0x01040004"
+            }
+        },
+        "CFIR_TP_HA_MASK": {
+            "instances": {
+                "0": "0x01040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_TP_CS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_TP_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_TP_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from OCC_FIR",
+                    "child_node": {
+                        "name": "OCC_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PBAO_FIR",
+                    "child_node": {
+                        "name": "PBAO_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_TP_RE": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_TP_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_TP_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from OCC_FIR",
+                    "child_node": {
+                        "name": "OCC_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PBAO_FIR",
+                    "child_node": {
+                        "name": "PBAO_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_TP_SPA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_TP_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_TP_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_TP_UCS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_TP_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_TP_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_TP_HA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_TP_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_TP_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

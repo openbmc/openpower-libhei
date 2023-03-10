@@ -1,0 +1,184 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "PSIHB_FIR": {
+            "instances": {
+                "0": "0x03011D00"
+            }
+        },
+        "PSIHB_FIR_MASK": {
+            "instances": {
+                "0": "0x03011D03"
+            }
+        },
+        "PSIHB_FIR_ACT0": {
+            "instances": {
+                "0": "0x03011D06"
+            }
+        },
+        "PSIHB_FIR_ACT1": {
+            "instances": {
+                "0": "0x03011D07"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PSIHB_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PSIHB_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PSIHB_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PSIHB_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PSIHB_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PSIHB_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PSIHB_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PSIHB_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PSIHB_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CE from PowerBus data"
+                },
+                "1": {
+                    "desc": "UE from PowerBus data"
+                },
+                "2": {
+                    "desc": "SUE from PowerBus data"
+                },
+                "3": {
+                    "desc": "Interrupt Condition present in PSIHB"
+                },
+                "4": {
+                    "desc": "Interrupt from FSP is being processed"
+                },
+                "5": {
+                    "desc": "CE from PSILL data"
+                },
+                "6": {
+                    "desc": "UE from PSILL data"
+                },
+                "7": {
+                    "desc": "Error bit set, ignores the interrupt mask"
+                },
+                "8": {
+                    "desc": "Invalid TType Hit on PHB or FSP bar"
+                },
+                "9": {
+                    "desc": "Invalid CResp returned to command issued by PSIHB"
+                },
+                "10": {
+                    "desc": "PowerBus time out waiting for data grant"
+                },
+                "11": {
+                    "desc": "PB parity error"
+                },
+                "12": {
+                    "desc": "FSP tried access to trusted space"
+                },
+                "13": {
+                    "desc": "Unexpected PB CRESP or DATA"
+                },
+                "14": {
+                    "desc": "Interrupt register change while interrupt still pending"
+                },
+                "15": {
+                    "desc": "PSI Interrupt address Error"
+                },
+                "16": {
+                    "desc": "OCC Interrupt address Error"
+                },
+                "17": {
+                    "desc": "FSI Interrupt address Error"
+                },
+                "18": {
+                    "desc": "LPC Interrupt address Error"
+                },
+                "19": {
+                    "desc": "LOCAL ERROR Interrupt address Error"
+                },
+                "20": {
+                    "desc": "HOST ERROR Interrupt address Error"
+                },
+                "21": {
+                    "desc": "PSI global error bit 0"
+                },
+                "22": {
+                    "desc": "PSI global error bit 1"
+                },
+                "23": {
+                    "desc": "Upstream error"
+                },
+                "24": {
+                    "desc": "spare"
+                },
+                "25": {
+                    "desc": "spare"
+                },
+                "26": {
+                    "desc": "spare"
+                },
+                "27": {
+                    "desc": "fir parity Error"
+                }
+            }
+        }
+    }
+}

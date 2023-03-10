@@ -1,0 +1,502 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "CORE_THREAD_STATE": {
+            "instances": {
+                "0": "0x20028412",
+                "1": "0x20024412",
+                "2": "0x20022412",
+                "3": "0x20021412",
+                "4": "0x21028412",
+                "5": "0x21024412",
+                "6": "0x21022412",
+                "7": "0x21021412",
+                "8": "0x22028412",
+                "9": "0x22024412",
+                "10": "0x22022412",
+                "11": "0x22021412",
+                "12": "0x23028412",
+                "13": "0x23024412",
+                "14": "0x23022412",
+                "15": "0x23021412",
+                "16": "0x24028412",
+                "17": "0x24024412",
+                "18": "0x24022412",
+                "19": "0x24021412",
+                "20": "0x25028412",
+                "21": "0x25024412",
+                "22": "0x25022412",
+                "23": "0x25021412",
+                "24": "0x26028412",
+                "25": "0x26024412",
+                "26": "0x26022412",
+                "27": "0x26021412",
+                "28": "0x27028412",
+                "29": "0x27024412",
+                "30": "0x27022412",
+                "31": "0x27021412"
+            }
+        },
+        "EQ_SPATTN": {
+            "instances": {
+                "0": "0x20028499",
+                "1": "0x20024499",
+                "2": "0x20022499",
+                "3": "0x20021499",
+                "4": "0x21028499",
+                "5": "0x21024499",
+                "6": "0x21022499",
+                "7": "0x21021499",
+                "8": "0x22028499",
+                "9": "0x22024499",
+                "10": "0x22022499",
+                "11": "0x22021499",
+                "12": "0x23028499",
+                "13": "0x23024499",
+                "14": "0x23022499",
+                "15": "0x23021499",
+                "16": "0x24028499",
+                "17": "0x24024499",
+                "18": "0x24022499",
+                "19": "0x24021499",
+                "20": "0x25028499",
+                "21": "0x25024499",
+                "22": "0x25022499",
+                "23": "0x25021499",
+                "24": "0x26028499",
+                "25": "0x26024499",
+                "26": "0x26022499",
+                "27": "0x26021499",
+                "28": "0x27028499",
+                "29": "0x27024499",
+                "30": "0x27022499",
+                "31": "0x27021499"
+            }
+        },
+        "EQ_SPATTN_MASK": {
+            "instances": {
+                "0": "0x2002849A",
+                "1": "0x2002449A",
+                "2": "0x2002249A",
+                "3": "0x2002149A",
+                "4": "0x2102849A",
+                "5": "0x2102449A",
+                "6": "0x2102249A",
+                "7": "0x2102149A",
+                "8": "0x2202849A",
+                "9": "0x2202449A",
+                "10": "0x2202249A",
+                "11": "0x2202149A",
+                "12": "0x2302849A",
+                "13": "0x2302449A",
+                "14": "0x2302249A",
+                "15": "0x2302149A",
+                "16": "0x2402849A",
+                "17": "0x2402449A",
+                "18": "0x2402249A",
+                "19": "0x2402149A",
+                "20": "0x2502849A",
+                "21": "0x2502449A",
+                "22": "0x2502249A",
+                "23": "0x2502149A",
+                "24": "0x2602849A",
+                "25": "0x2602449A",
+                "26": "0x2602249A",
+                "27": "0x2602149A",
+                "28": "0x2702849A",
+                "29": "0x2702449A",
+                "30": "0x2702249A",
+                "31": "0x2702149A"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "EQ_CORE_THREAD_STATE": {
+            "instances": [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+            ],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+                        16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                        30, 31
+                    ],
+                    "expr": {
+                        "expr_type": "or",
+                        "exprs": [
+                            {
+                                "expr_type": "lshift",
+                                "expr": {
+                                    "expr_type": "and",
+                                    "exprs": [
+                                        {
+                                            "expr_type": "not",
+                                            "expr": {
+                                                "expr_type": "reg",
+                                                "reg_name": "CORE_THREAD_STATE"
+                                            }
+                                        },
+                                        {
+                                            "expr_type": "int",
+                                            "int_value": "0x0000000000000001"
+                                        }
+                                    ]
+                                },
+                                "shift_value": 63
+                            },
+                            {
+                                "expr_type": "lshift",
+                                "expr": {
+                                    "expr_type": "and",
+                                    "exprs": [
+                                        {
+                                            "expr_type": "reg",
+                                            "reg_name": "CORE_THREAD_STATE"
+                                        },
+                                        {
+                                            "expr_type": "int",
+                                            "int_value": "0x0000000000000001"
+                                        }
+                                    ]
+                                },
+                                "shift_value": 62
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "EQ_SPATTN normal core mode",
+                    "child_node": {
+                        "name": "EQ_SPATTN_NORMAL",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7,
+                            "8": 8,
+                            "9": 9,
+                            "10": 10,
+                            "11": 11,
+                            "12": 12,
+                            "13": 13,
+                            "14": 14,
+                            "15": 15,
+                            "16": 16,
+                            "17": 17,
+                            "18": 18,
+                            "19": 19,
+                            "20": 20,
+                            "21": 21,
+                            "22": 22,
+                            "23": 23,
+                            "24": 24,
+                            "25": 25,
+                            "26": 26,
+                            "27": 27,
+                            "28": 28,
+                            "29": 29,
+                            "30": 30,
+                            "31": 31
+                        }
+                    }
+                },
+                "1": {
+                    "desc": "EQ_SPATTN fused core mode",
+                    "child_node": {
+                        "name": "EQ_SPATTN_FUSED",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7,
+                            "8": 8,
+                            "9": 9,
+                            "10": 10,
+                            "11": 11,
+                            "12": 12,
+                            "13": 13,
+                            "14": 14,
+                            "15": 15,
+                            "16": 16,
+                            "17": 17,
+                            "18": 18,
+                            "19": 19,
+                            "20": 20,
+                            "21": 21,
+                            "22": 22,
+                            "23": 23,
+                            "24": 24,
+                            "25": 25,
+                            "26": 26,
+                            "27": 27,
+                            "28": 28,
+                            "29": 29,
+                            "30": 30,
+                            "31": 31
+                        }
+                    }
+                }
+            }
+        },
+        "EQ_SPATTN_NORMAL": {
+            "instances": [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+            ],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [
+                        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+                        16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+                        30, 31
+                    ],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_SPATTN"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_SPATTN_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0xFFFF000000000000"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "lt0_spr_instr_stop"
+                },
+                "1": {
+                    "desc": "lt0_attn_complete"
+                },
+                "2": {
+                    "desc": "lt0_core_checkstop_recovery_handshake"
+                },
+                "3": {
+                    "desc": "lt0_core_code_to_sp"
+                },
+                "4": {
+                    "desc": "lt1_spr_instr_stop"
+                },
+                "5": {
+                    "desc": "lt1_attn_complete"
+                },
+                "6": {
+                    "desc": "lt1_core_checkstop_recovery_handshake"
+                },
+                "7": {
+                    "desc": "lt1_core_code_to_sp"
+                },
+                "8": {
+                    "desc": "lt2_spr_instr_stop"
+                },
+                "9": {
+                    "desc": "lt2_attn_complete"
+                },
+                "10": {
+                    "desc": "lt2_core_checkstop_recovery_handshake"
+                },
+                "11": {
+                    "desc": "lt2_core_code_to_sp"
+                },
+                "12": {
+                    "desc": "lt3_spr_instr_stop"
+                },
+                "13": {
+                    "desc": "lt3_attn_complete"
+                },
+                "14": {
+                    "desc": "lt3_core_checkstop_recovery_handshake"
+                },
+                "15": {
+                    "desc": "lt3_core_code_to_sp"
+                }
+            }
+        },
+        "EQ_SPATTN_FUSED": {
+            "instances": [
+                0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+                18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
+            ],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [
+                        0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28,
+                        30
+                    ],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_SPATTN"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_SPATTN_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0xF0F0F0F000000000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [
+                        1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29,
+                        31
+                    ],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_SPATTN"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_SPATTN_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0F0F0F0F00000000"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "lt0_spr_instr_stop"
+                },
+                "1": {
+                    "desc": "lt0_attn_complete"
+                },
+                "2": {
+                    "desc": "lt0_core_checkstop_recovery_handshake"
+                },
+                "3": {
+                    "desc": "lt0_core_code_to_sp"
+                },
+                "4": {
+                    "desc": "lt1_spr_instr_stop"
+                },
+                "5": {
+                    "desc": "lt1_attn_complete"
+                },
+                "6": {
+                    "desc": "lt1_core_checkstop_recovery_handshake"
+                },
+                "7": {
+                    "desc": "lt1_core_code_to_sp"
+                },
+                "8": {
+                    "desc": "lt2_spr_instr_stop"
+                },
+                "9": {
+                    "desc": "lt2_attn_complete"
+                },
+                "10": {
+                    "desc": "lt2_core_checkstop_recovery_handshake"
+                },
+                "11": {
+                    "desc": "lt2_core_code_to_sp"
+                },
+                "12": {
+                    "desc": "lt3_spr_instr_stop"
+                },
+                "13": {
+                    "desc": "lt3_attn_complete"
+                },
+                "14": {
+                    "desc": "lt3_core_checkstop_recovery_handshake"
+                },
+                "15": {
+                    "desc": "lt3_core_code_to_sp"
+                },
+                "16": {
+                    "desc": "lt4_spr_instr_stop"
+                },
+                "17": {
+                    "desc": "lt4_attn_complete"
+                },
+                "18": {
+                    "desc": "lt4_core_checkstop_recovery_handshake"
+                },
+                "19": {
+                    "desc": "lt4_core_code_to_sp"
+                },
+                "20": {
+                    "desc": "lt5_spr_instr_stop"
+                },
+                "21": {
+                    "desc": "lt5_attn_complete"
+                },
+                "22": {
+                    "desc": "lt5_core_checkstop_recovery_handshake"
+                },
+                "23": {
+                    "desc": "lt5_core_code_to_sp"
+                },
+                "24": {
+                    "desc": "lt6_spr_instr_stop"
+                },
+                "25": {
+                    "desc": "lt6_attn_complete"
+                },
+                "26": {
+                    "desc": "lt6_core_checkstop_recovery_handshake"
+                },
+                "27": {
+                    "desc": "lt6_core_code_to_sp"
+                },
+                "28": {
+                    "desc": "lt7_spr_instr_stop"
+                },
+                "29": {
+                    "desc": "lt7_attn_complete"
+                },
+                "30": {
+                    "desc": "lt7_core_checkstop_recovery_handshake"
+                },
+                "31": {
+                    "desc": "lt7_core_code_to_sp"
+                }
+            }
+        }
+    }
+}

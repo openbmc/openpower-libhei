@@ -1,0 +1,227 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "MCBISTFIR": {
+            "instances": {
+                "0": "0x08011800"
+            }
+        },
+        "MCBISTFIR_MASK": {
+            "instances": {
+                "0": "0x08011803"
+            }
+        },
+        "MCBISTFIR_ACT0": {
+            "instances": {
+                "0": "0x08011806"
+            }
+        },
+        "MCBISTFIR_ACT1": {
+            "instances": {
+                "0": "0x08011807"
+            }
+        },
+        "MCBISTFIR_WOF": {
+            "instances": {
+                "0": "0x08011808"
+            }
+        },
+        "MCB_ERR_RPT_0": {
+            "instances": {
+                "0": "0x080118E7"
+            }
+        },
+        "MCB_ERR_RPT_1": {
+            "instances": {
+                "0": "0x080118EC"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MCBISTFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBISTFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBISTFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBISTFIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBISTFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBISTFIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBISTFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Invalid maint address"
+                },
+                "1": {
+                    "desc": "Command address timeout"
+                },
+                "2": {
+                    "desc": "Internal FSM error"
+                },
+                "3": {
+                    "desc": "MCBIST broadcast out of sync"
+                },
+                "4": {
+                    "desc": "MCBIST data error"
+                },
+                "5": {
+                    "desc": "Hard NCE ETE attn"
+                },
+                "6": {
+                    "desc": "Soft NCE ETE attn"
+                },
+                "7": {
+                    "desc": "Int NCE ETE attn"
+                },
+                "8": {
+                    "desc": "RCE ETE attn"
+                },
+                "9": {
+                    "desc": "ICE (IMPE) ETE attn"
+                },
+                "10": {
+                    "desc": "MCBIST program complete"
+                },
+                "11": {
+                    "desc": "MCBIST CCS subtest done"
+                },
+                "12": {
+                    "desc": "WAT debug bus attn"
+                },
+                "13": {
+                    "desc": "SCOM recoverable register parity error"
+                },
+                "14": {
+                    "desc": "SCOM fatal reg parity error"
+                },
+                "15": {
+                    "desc": "SCOM WAT and debug reg parity error"
+                },
+                "16:17": {
+                    "desc": "Reserved"
+                },
+                "18": {
+                    "desc": "Internal SCOM error"
+                },
+                "19": {
+                    "desc": "Internal SCOM error clone"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MCBISTFIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "MCBISTFIR": [
+            {
+                "reg_name": "MCB_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCB_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

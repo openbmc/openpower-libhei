@@ -1,0 +1,219 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "MMIO_FIR": {
+            "instances": {
+                "0": "0x08010870"
+            }
+        },
+        "MMIO_FIR_MASK": {
+            "instances": {
+                "0": "0x08010872"
+            }
+        },
+        "MMIO_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08010874"
+            }
+        },
+        "MMIO_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08010875"
+            }
+        },
+        "MMIO_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08010876"
+            }
+        },
+        "MMIO_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08010877"
+            }
+        },
+        "MMIO_FIR_WOF": {
+            "instances": {
+                "0": "0x08010878"
+            }
+        },
+        "MMIO_ERR_RPT_0": {
+            "instances": {
+                "0": "0x0801087C"
+            }
+        },
+        "MMIO_ERR_RPT_1": {
+            "instances": {
+                "0": "0x0801087E"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MMIO_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIO_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIO_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIO_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIO_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIO_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Interal SCOM logic parity error"
+                },
+                "1": {
+                    "desc": "Attempt to access an unimplemented address in the AFU descriptor"
+                },
+                "2": {
+                    "desc": "Error detected during MMIO inband or senor cache access"
+                },
+                "3": {
+                    "desc": "Parity error in SCOM satellite component FSM"
+                },
+                "4": {
+                    "desc": "Parity error in MMIO/CFG logic FSM"
+                },
+                "5": {
+                    "desc": "Overflow detected in internal MMIO/CFG logic FIFO"
+                },
+                "6": {
+                    "desc": "Fatal parity error detected in control register"
+                },
+                "7": {
+                    "desc": "Parity error detected in informational register"
+                },
+                "8": {
+                    "desc": "Both start signals asserted to Sensor cache logic"
+                },
+                "9": {
+                    "desc": "Multiple parity errors on data from sequencer to sensor cache logic"
+                },
+                "10": {
+                    "desc": "State machine parity error in sensor cache logic"
+                },
+                "11": {
+                    "desc": "Sensor cache register parity error"
+                },
+                "12": {
+                    "desc": "acTAG PASID config error"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MMIO_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "MMIO_FIR": [
+            {
+                "reg_name": "MMIO_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MMIO_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

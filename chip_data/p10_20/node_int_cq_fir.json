@@ -1,0 +1,336 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "INT_CQ_FIR": {
+            "instances": {
+                "0": "0x02010830"
+            }
+        },
+        "INT_CQ_FIR_MASK": {
+            "instances": {
+                "0": "0x02010833"
+            }
+        },
+        "INT_CQ_FIR_ACT0": {
+            "instances": {
+                "0": "0x02010836"
+            }
+        },
+        "INT_CQ_FIR_ACT1": {
+            "instances": {
+                "0": "0x02010837"
+            }
+        },
+        "INT_CQ_FIR_WOF": {
+            "instances": {
+                "0": "0x02010838"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "INT_CQ_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "INT_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "INT_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "INT_CQ_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "INT_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "INT_CQ_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "INT_CQ_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CE while consuming data from the PowerBus Data ramp"
+                },
+                "1": {
+                    "desc": "UE while consuming data from the PowerBus Data ramp"
+                },
+                "2": {
+                    "desc": "SUE while consuming data from the PowerBus Data ramp"
+                },
+                "3": {
+                    "desc": "CE while reading the PowerBus Data In Array"
+                },
+                "4": {
+                    "desc": "UE detected while reading the PowerBus Data In Array"
+                },
+                "5": {
+                    "desc": "CE while reading the PowerBus Data Out Array"
+                },
+                "6": {
+                    "desc": "UE while reading the PowerBus Data Out Array"
+                },
+                "7": {
+                    "desc": "CE while consuming data on the AIB Data Bus"
+                },
+                "8": {
+                    "desc": "UE while consuming data on the AIB Data Bus"
+                },
+                "9": {
+                    "desc": "Received an unsolicited master Combined Response"
+                },
+                "10": {
+                    "desc": "Received unsolicited PowerBus data"
+                },
+                "11": {
+                    "desc": "Parity error detected on AIB credit signals from PC"
+                },
+                "12": {
+                    "desc": "Parity error detected on AIB credit available signals from PC"
+                },
+                "13": {
+                    "desc": "Parity error detected on AIB credit signals from VC"
+                },
+                "14": {
+                    "desc": "Parity error detected on AIB credit available signals from VC"
+                },
+                "15": {
+                    "desc": "Parity error detected on AIB Command Control"
+                },
+                "16": {
+                    "desc": "Parity error detected on AIB Command Bus"
+                },
+                "17": {
+                    "desc": "Parity error detected on AIB Data Control"
+                },
+                "18": {
+                    "desc": "Parity err detected in a PowerBus interface(Rcmdx, cRespx, Data rtag)"
+                },
+                "19": {
+                    "desc": "Slave CI Store or CI Load to an improper location"
+                },
+                "20": {
+                    "desc": "Slave CI Store or CI Load to an invalid Set Translation Table entry"
+                },
+                "21": {
+                    "desc": "Slave CI Store or CI Load error (targeting IC_BAR)"
+                },
+                "22": {
+                    "desc": "Slave CI Store or CI Load error (not targetting IC_BAR)"
+                },
+                "23": {
+                    "desc": "Migration Register Table (MRT) access - invalid entry selected"
+                },
+                "24": {
+                    "desc": "Migration Register Table (MRT) access - size error"
+                },
+                "25": {
+                    "desc": "SCOM satellite error"
+                },
+                "26": {
+                    "desc": "Topology ID Index Translation Table Entry Invalid"
+                },
+                "27": {
+                    "desc": "Master Write Queue has flagged a PowerBus operational hang"
+                },
+                "28": {
+                    "desc": "Master Read Queue has flagged a PowerBus operational hang"
+                },
+                "29": {
+                    "desc": "Master Interrupt Queue has flagged a PowerBus operational hang"
+                },
+                "30": {
+                    "desc": "Master Read Queue has flagged a PowerBus data hang"
+                },
+                "31": {
+                    "desc": "CI Store Queue has flagged a PowerBus data hang"
+                },
+                "32": {
+                    "desc": "CI Load Queue has flagged an AIB data hang"
+                },
+                "33": {
+                    "desc": "Bad cResp received during a Master Write command"
+                },
+                "34": {
+                    "desc": "Bad cResp received during a Master Read command"
+                },
+                "35": {
+                    "desc": "Bad cResp received during a Master Interrupt command"
+                },
+                "36": {
+                    "desc": "A Master Read machine received cResp of abort_trm or abort_trm_ed"
+                },
+                "37": {
+                    "desc": "Master Interrupt Protocol Error"
+                },
+                "38": {
+                    "desc": "Master Memory Op Targeted Secure Memory"
+                },
+                "39": {
+                    "desc": "AIB Fence Raised"
+                },
+                "40": {
+                    "desc": "Parity error detected on CQs configuration registers"
+                },
+                "41": {
+                    "desc": "reserved"
+                },
+                "42": {
+                    "desc": "Command Queue (FSM) severe error summary"
+                },
+                "43": {
+                    "desc": "PC fatal error summary, as indicated on pc_cq_fatal_error(0:3)"
+                },
+                "44": {
+                    "desc": "PC fatal error summary, as indicated on pc_cq_fatal_error(0:3)"
+                },
+                "45": {
+                    "desc": "PC fatal error summary, as indicated on pc_cq_fatal_error(0:3)"
+                },
+                "46": {
+                    "desc": "PC fatal error summary, as indicated on pc_cq_fatal_error(0:3)"
+                },
+                "47": {
+                    "desc": "PC recoverable error summary, as indicated on pc_cq_recov_error(0:3)"
+                },
+                "48": {
+                    "desc": "PC recoverable error summary, as indicated on pc_cq_recov_error(0:3)"
+                },
+                "49": {
+                    "desc": "PC recoverable error summary, as indicated on pc_cq_recov_error(0:3)"
+                },
+                "50": {
+                    "desc": "PC recoverable error summary, as indicated on pc_cq_recov_error(0:3)"
+                },
+                "51": {
+                    "desc": "PC informational error summary, as indicated on pc_cq_info_error(0:3)"
+                },
+                "52": {
+                    "desc": "PC informational error summary, as indicated on pc_cq_info_error(0:3)"
+                },
+                "53": {
+                    "desc": "PC informational error summary, as indicated on pc_cq_info_error(0:3)"
+                },
+                "54": {
+                    "desc": "PC informational error summary, as indicated on pc_cq_info_error(0:3)"
+                },
+                "55": {
+                    "desc": "VC fatal error summary, as indicated on vc_cq_fatal_error(0:2)"
+                },
+                "56": {
+                    "desc": "VC fatal error summary, as indicated on vc_cq_fatal_error(0:2)"
+                },
+                "57": {
+                    "desc": "VC fatal error summary, as indicated on vc_cq_fatal_error(0:2)"
+                },
+                "58": {
+                    "desc": "VC recoverable error summary, as indicated on vc_cq_recov_error(0:2)"
+                },
+                "59": {
+                    "desc": "VC recoverable error summary, as indicated on vc_cq_recov_error(0:2)"
+                },
+                "60": {
+                    "desc": "VC recoverable error summary, as indicated on vc_cq_recov_error(0:2)"
+                },
+                "61": {
+                    "desc": "VC informational error summary, as indicated on vc_cq_info_error(0:2)"
+                },
+                "62": {
+                    "desc": "VC informational error summary, as indicated on vc_cq_info_error(0:2)"
+                },
+                "63": {
+                    "desc": "VC informational error summary, as indicated on vc_cq_info_error(0:2)"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "INT_CQ_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

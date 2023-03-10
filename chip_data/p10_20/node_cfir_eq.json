@@ -1,0 +1,1227 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "CFIR_EQ_CS": {
+            "instances": {
+                "0": "0x20040000",
+                "1": "0x21040000",
+                "2": "0x22040000",
+                "3": "0x23040000",
+                "4": "0x24040000",
+                "5": "0x25040000",
+                "6": "0x26040000",
+                "7": "0x27040000"
+            }
+        },
+        "CFIR_EQ_CS_MASK": {
+            "instances": {
+                "0": "0x20040040",
+                "1": "0x21040040",
+                "2": "0x22040040",
+                "3": "0x23040040",
+                "4": "0x24040040",
+                "5": "0x25040040",
+                "6": "0x26040040",
+                "7": "0x27040040"
+            }
+        },
+        "CFIR_EQ_RE": {
+            "instances": {
+                "0": "0x20040001",
+                "1": "0x21040001",
+                "2": "0x22040001",
+                "3": "0x23040001",
+                "4": "0x24040001",
+                "5": "0x25040001",
+                "6": "0x26040001",
+                "7": "0x27040001"
+            }
+        },
+        "CFIR_EQ_RE_MASK": {
+            "instances": {
+                "0": "0x20040041",
+                "1": "0x21040041",
+                "2": "0x22040041",
+                "3": "0x23040041",
+                "4": "0x24040041",
+                "5": "0x25040041",
+                "6": "0x26040041",
+                "7": "0x27040041"
+            }
+        },
+        "CFIR_EQ_SPA": {
+            "instances": {
+                "0": "0x20040002",
+                "1": "0x21040002",
+                "2": "0x22040002",
+                "3": "0x23040002",
+                "4": "0x24040002",
+                "5": "0x25040002",
+                "6": "0x26040002",
+                "7": "0x27040002"
+            }
+        },
+        "CFIR_EQ_SPA_MASK": {
+            "instances": {
+                "0": "0x20040042",
+                "1": "0x21040042",
+                "2": "0x22040042",
+                "3": "0x23040042",
+                "4": "0x24040042",
+                "5": "0x25040042",
+                "6": "0x26040042",
+                "7": "0x27040042"
+            }
+        },
+        "CFIR_EQ_UCS": {
+            "instances": {
+                "0": "0x20040003",
+                "1": "0x21040003",
+                "2": "0x22040003",
+                "3": "0x23040003",
+                "4": "0x24040003",
+                "5": "0x25040003",
+                "6": "0x26040003",
+                "7": "0x27040003"
+            }
+        },
+        "CFIR_EQ_UCS_MASK": {
+            "instances": {
+                "0": "0x20040043",
+                "1": "0x21040043",
+                "2": "0x22040043",
+                "3": "0x23040043",
+                "4": "0x24040043",
+                "5": "0x25040043",
+                "6": "0x26040043",
+                "7": "0x27040043"
+            }
+        },
+        "CFIR_EQ_HA": {
+            "instances": {
+                "0": "0x20040004",
+                "1": "0x21040004",
+                "2": "0x22040004",
+                "3": "0x23040004",
+                "4": "0x24040004",
+                "5": "0x25040004",
+                "6": "0x26040004",
+                "7": "0x27040004"
+            }
+        },
+        "CFIR_EQ_HA_MASK": {
+            "instances": {
+                "0": "0x20040044",
+                "1": "0x21040044",
+                "2": "0x22040044",
+                "3": "0x23040044",
+                "4": "0x24040044",
+                "5": "0x25040044",
+                "6": "0x26040044",
+                "7": "0x27040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_EQ_CS": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_EQ_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_EQ_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from EQ_LOCAL_FIR",
+                    "child_node": {
+                        "name": "EQ_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "Attention from EQ_QME_FIR",
+                    "child_node": {
+                        "name": "EQ_QME_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_EQ_RE": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_EQ_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_EQ_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from EQ_LOCAL_FIR",
+                    "child_node": {
+                        "name": "EQ_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from EQ_L2_FIR",
+                    "child_node": {
+                        "name": "EQ_L2_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from EQ_L3_FIR",
+                    "child_node": {
+                        "name": "EQ_L3_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Attention from EQ_NCU_FIR",
+                    "child_node": {
+                        "name": "EQ_NCU_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "Attention from EQ_QME_FIR",
+                    "child_node": {
+                        "name": "EQ_QME_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_EQ_SPA": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_EQ_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_EQ_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from EQ_LOCAL_FIR",
+                    "child_node": {
+                        "name": "EQ_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Core Special Attention Register",
+                    "child_node": {
+                        "name": "EQ_CORE_THREAD_STATE",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_EQ_UCS": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_EQ_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_EQ_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from EQ_LOCAL_FIR",
+                    "child_node": {
+                        "name": "EQ_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 4,
+                            "2": 8,
+                            "3": 12,
+                            "4": 16,
+                            "5": 20,
+                            "6": 24,
+                            "7": 28
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 1,
+                            "1": 5,
+                            "2": 9,
+                            "3": 13,
+                            "4": 17,
+                            "5": 21,
+                            "6": 25,
+                            "7": 29
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 2,
+                            "1": 6,
+                            "2": 10,
+                            "3": 14,
+                            "4": 18,
+                            "5": 22,
+                            "6": 26,
+                            "7": 30
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from EQ_CORE_FIR",
+                    "child_node": {
+                        "name": "EQ_CORE_FIR",
+                        "inst": {
+                            "0": 3,
+                            "1": 7,
+                            "2": 11,
+                            "3": 15,
+                            "4": 19,
+                            "5": 23,
+                            "6": 27,
+                            "7": 31
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_EQ_HA": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_EQ_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_EQ_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from EQ_LOCAL_FIR",
+                    "child_node": {
+                        "name": "EQ_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

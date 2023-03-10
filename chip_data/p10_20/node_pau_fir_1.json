@@ -1,0 +1,340 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PAU_FIR_1": {
+            "instances": {
+                "0": "0x10010C40",
+                "3": "0x11010C40",
+                "4": "0x12010C40",
+                "5": "0x12011440",
+                "6": "0x13010C40",
+                "7": "0x13011440"
+            }
+        },
+        "PAU_FIR_1_MASK": {
+            "instances": {
+                "0": "0x10010C43",
+                "3": "0x11010C43",
+                "4": "0x12010C43",
+                "5": "0x12011443",
+                "6": "0x13010C43",
+                "7": "0x13011443"
+            }
+        },
+        "PAU_FIR_1_ACT0": {
+            "instances": {
+                "0": "0x10010C46",
+                "3": "0x11010C46",
+                "4": "0x12010C46",
+                "5": "0x12011446",
+                "6": "0x13010C46",
+                "7": "0x13011446"
+            }
+        },
+        "PAU_FIR_1_ACT1": {
+            "instances": {
+                "0": "0x10010C47",
+                "3": "0x11010C47",
+                "4": "0x12010C47",
+                "5": "0x12011447",
+                "6": "0x13010C47",
+                "7": "0x13011447"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PAU_FIR_1": {
+            "instances": [0, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_1_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_1_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_1_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_1_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_1_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_1_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_FIR_1_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_1_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_FIR_1_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "NDL Brick0 stall"
+                },
+                "1": {
+                    "desc": "NDL Brick0 nostall"
+                },
+                "2": {
+                    "desc": "NDL Brick1 stall"
+                },
+                "3": {
+                    "desc": "NDL Brick1 nostall"
+                },
+                "4": {
+                    "desc": "NDL Brick2 stall"
+                },
+                "5": {
+                    "desc": "NDL Brick2 nostall"
+                },
+                "6": {
+                    "desc": "NDL Brick3 stall"
+                },
+                "7": {
+                    "desc": "NDL Brick3 nostall"
+                },
+                "8": {
+                    "desc": "NDL Brick4 stall"
+                },
+                "9": {
+                    "desc": "NDL Brick4 nostall"
+                },
+                "10": {
+                    "desc": "NDL Brick5 stall"
+                },
+                "11": {
+                    "desc": "NDL Brick5 nostall"
+                },
+                "12": {
+                    "desc": "MISC Register ring error"
+                },
+                "13": {
+                    "desc": "MISC Parity error from interrupt base real address register"
+                },
+                "14": {
+                    "desc": "MISC Parity error on Indirect SCOM Address register"
+                },
+                "15": {
+                    "desc": "MISC Parity error on MISC Control register"
+                },
+                "16": {
+                    "desc": "FIR1 Reserved, bit 16"
+                },
+                "17": {
+                    "desc": "ATS Invalid TVT entry"
+                },
+                "18": {
+                    "desc": "ATS TVT Address range error"
+                },
+                "19": {
+                    "desc": "ATS TCE Page access error during TCE cache lookup"
+                },
+                "20": {
+                    "desc": "ATS Effective Address hit multiple TCE cache entries"
+                },
+                "21": {
+                    "desc": "ATS TCE Page access error during TCE table-walk"
+                },
+                "22": {
+                    "desc": "ATS Timeout on TCE tree walk"
+                },
+                "23": {
+                    "desc": "ATS Parity error on TCE cache directory array"
+                },
+                "24": {
+                    "desc": "ATS Parity error on TCE cache data array"
+                },
+                "25": {
+                    "desc": "ATS ECC UE on Effective Address array"
+                },
+                "26": {
+                    "desc": "ATS ECC CE on Effective Address array"
+                },
+                "27": {
+                    "desc": "ATS ECC UE on TDRmem array"
+                },
+                "28": {
+                    "desc": "ATS ECC CE on TDRmem array"
+                },
+                "29": {
+                    "desc": "ATS ECC UE on CQ CTL DMA Read data to TDR_mem array during table-walk"
+                },
+                "30": {
+                    "desc": "ATS ECC CE on CQ CTL DMA Read data to TDR_mem array during table-walk"
+                },
+                "31": {
+                    "desc": "ATS Parity error on TVT entry"
+                },
+                "32": {
+                    "desc": "ATS Parity error on IODA Address Register"
+                },
+                "33": {
+                    "desc": "ATS Parity error on ATS Control Register"
+                },
+                "34": {
+                    "desc": "ATS Parity error on ATS Timeout Control register"
+                },
+                "35": {
+                    "desc": "ATS Invalid IODA Table Address Register Table Select entry"
+                },
+                "36": {
+                    "desc": "ATS Reserved, macro bit 19"
+                },
+                "37": {
+                    "desc": "kill xlate epoch timeout."
+                },
+                "38": {
+                    "desc": "XSL Reserved, macro bit 19."
+                },
+                "39": {
+                    "desc": "XSL Reserved, macro bit 20."
+                },
+                "40": {
+                    "desc": "XSL Reserved, macro bit 21."
+                },
+                "41": {
+                    "desc": "XSL Reserved, macro bit 22."
+                },
+                "42": {
+                    "desc": "XSL Reserved, macro bit 23."
+                },
+                "43": {
+                    "desc": "XSL Reserved, macro bit 24."
+                },
+                "44": {
+                    "desc": "XSL Reserved, macro bit 25."
+                },
+                "45": {
+                    "desc": "XSL Reserved, macro bit 26."
+                },
+                "46": {
+                    "desc": "XSL Reserved, macro bit 27."
+                },
+                "47": {
+                    "desc": "NDL Brick6 stall"
+                },
+                "48": {
+                    "desc": "NDL Brick6 nostall"
+                },
+                "49": {
+                    "desc": "NDL Brick7 stall"
+                },
+                "50": {
+                    "desc": "NDL Brick7 nostall"
+                },
+                "51": {
+                    "desc": "NDL Brick8 stall"
+                },
+                "52": {
+                    "desc": "NDL Brick8 nostall"
+                },
+                "53": {
+                    "desc": "NDL Brick9 stall"
+                },
+                "54": {
+                    "desc": "NDL Brick9 nostall"
+                },
+                "55": {
+                    "desc": "NDL Brick10 stall"
+                },
+                "56": {
+                    "desc": "NDL Brick10 nostall"
+                },
+                "57": {
+                    "desc": "NDL Brick11 stall"
+                },
+                "58": {
+                    "desc": "NDL Brick11 nostall"
+                },
+                "59": {
+                    "desc": "AME ECC CE"
+                },
+                "60": {
+                    "desc": "MISC Pervasive SCOM satellite signaled internal FSM error (ring 0, sat 0)"
+                },
+                "61": {
+                    "desc": "MISC Pervasive SCOM satellite signaled internal FSM error (ring 0, sat 1)"
+                },
+                "62": {
+                    "desc": "Unused FIR"
+                },
+                "63": {
+                    "desc": "Unused FIR"
+                }
+            }
+        }
+    }
+}

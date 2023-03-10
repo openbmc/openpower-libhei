@@ -1,0 +1,301 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "TLXFIR": {
+            "instances": {
+                "0": "0x08012400"
+            }
+        },
+        "TLXFIR_MASK": {
+            "instances": {
+                "0": "0x08012403"
+            }
+        },
+        "TLXFIR_ACT0": {
+            "instances": {
+                "0": "0x08012406"
+            }
+        },
+        "TLXFIR_ACT1": {
+            "instances": {
+                "0": "0x08012407"
+            }
+        },
+        "TLXFIR_WOF": {
+            "instances": {
+                "0": "0x08012408"
+            }
+        },
+        "TLX_ERR_RPT_0": {
+            "instances": {
+                "0": "0x0801241C"
+            }
+        },
+        "TLX_ERR_RPT_1": {
+            "instances": {
+                "0": "0x0801241D"
+            }
+        },
+        "TLX_ERR_RPT_2": {
+            "instances": {
+                "0": "0x0801241E"
+            }
+        },
+        "TLX_ERR_RPT_0_MASK": {
+            "instances": {
+                "0": "0x08012414"
+            }
+        },
+        "TLX_ERR_RPT_1_MASK": {
+            "instances": {
+                "0": "0x08012415"
+            }
+        },
+        "TLX_ERR_RPT_2_MASK": {
+            "instances": {
+                "0": "0x08012416"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "TLXFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLXFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLXFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLXFIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLXFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TLXFIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TLXFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Info reg parity error"
+                },
+                "1": {
+                    "desc": "Ctrl reg parity error"
+                },
+                "2": {
+                    "desc": "TLX VC0 return credit counter overflow"
+                },
+                "3": {
+                    "desc": "TLX VC1 return credit counter overflow"
+                },
+                "4": {
+                    "desc": "TLX dcp0 return credit counter overflow"
+                },
+                "5": {
+                    "desc": "TLX dcp1 return credit counter overflow"
+                },
+                "6": {
+                    "desc": "TLX credit management block error"
+                },
+                "7": {
+                    "desc": "TLX credit management block parity error"
+                },
+                "8": {
+                    "desc": "TLXT fatal parity error"
+                },
+                "9": {
+                    "desc": "TLXT recoverable error",
+                    "child_node": {
+                        "name": "TLX_ERR_RPT_1"
+                    }
+                },
+                "10": {
+                    "desc": "TLXT configuration error"
+                },
+                "11": {
+                    "desc": "TLXT informational parity error"
+                },
+                "12": {
+                    "desc": "TLXT hard error"
+                },
+                "13:15": {
+                    "desc": "Reserved"
+                },
+                "16": {
+                    "desc": "Corrupted pad mem pattern"
+                },
+                "17": {
+                    "desc": "Downstream OC parity error"
+                },
+                "18": {
+                    "desc": "OC malformed"
+                },
+                "19": {
+                    "desc": "OC protocol error"
+                },
+                "20": {
+                    "desc": "Address translate error"
+                },
+                "21": {
+                    "desc": "Metadata unc or data parity error"
+                },
+                "22": {
+                    "desc": "OC unsupported group 2"
+                },
+                "23": {
+                    "desc": "OC unsupported group 1"
+                },
+                "24": {
+                    "desc": "Bit flip control error"
+                },
+                "25": {
+                    "desc": "Control HW error"
+                },
+                "26": {
+                    "desc": "ECC corrected and others"
+                },
+                "27": {
+                    "desc": "Trace stop"
+                },
+                "28": {
+                    "desc": "Internal SCOM error"
+                },
+                "29": {
+                    "desc": "Internal SCOM error clone"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "TLXFIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "TLXFIR": [
+            {
+                "reg_name": "TLX_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_0_MASK",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_1_MASK",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TLX_ERR_RPT_2_MASK",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

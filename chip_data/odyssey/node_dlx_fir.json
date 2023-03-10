@@ -1,0 +1,429 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "DLX_FIR": {
+            "instances": {
+                "0": "0x08012400"
+            }
+        },
+        "DLX_FIR_MASK": {
+            "instances": {
+                "0": "0x08012402"
+            }
+        },
+        "DLX_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08012404"
+            }
+        },
+        "DLX_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08012405"
+            }
+        },
+        "DLX_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08012406"
+            }
+        },
+        "DLX_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08012407"
+            }
+        },
+        "DLX_FIR_WOF": {
+            "instances": {
+                "0": "0x08012408"
+            }
+        },
+        "CMN_CONFIG": {
+            "instances": {
+                "0": "0x0801240E"
+            }
+        },
+        "PMU_CNTR": {
+            "instances": {
+                "0": "0x0801240F"
+            }
+        },
+        "DLX_CONFIG0": {
+            "instances": {
+                "0": "0x08012410"
+            }
+        },
+        "DLX_CONFIG1": {
+            "instances": {
+                "0": "0x08012411"
+            }
+        },
+        "DLX_ERR_MASK": {
+            "instances": {
+                "0": "0x08012412"
+            }
+        },
+        "DLX_ERR_RPT": {
+            "instances": {
+                "0": "0x08012413"
+            }
+        },
+        "DLX_EDPL_MAX_COUNT": {
+            "instances": {
+                "0": "0x08012415"
+            }
+        },
+        "DLX_STATUS": {
+            "instances": {
+                "0": "0x08012416"
+            }
+        },
+        "DLX_TRAINING_STATUS": {
+            "instances": {
+                "0": "0x08012417"
+            }
+        },
+        "DLX_RMT_CONFIG": {
+            "instances": {
+                "0": "0x08012418"
+            }
+        },
+        "DLX_RMT_INFO": {
+            "instances": {
+                "0": "0x08012419"
+            }
+        },
+        "DLX_SKIT_CTL": {
+            "instances": {
+                "0": "0x0801241A"
+            }
+        },
+        "DLX_SKIT_STATUS": {
+            "instances": {
+                "0": "0x0801241B"
+            }
+        },
+        "DLX_CYA2": {
+            "instances": {
+                "0": "0x0801241C"
+            }
+        },
+        "DLX_ERR_ACTION": {
+            "instances": {
+                "0": "0x0801241D"
+            }
+        },
+        "DLX_DEBUG_AID": {
+            "instances": {
+                "0": "0x0801241E"
+            }
+        },
+        "DLX_CYA_BITS": {
+            "instances": {
+                "0": "0x0801241F"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "DLX_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "DLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "DLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "DLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "DLX_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Internal parity error in SCOM component"
+                },
+                "1": {
+                    "desc": "DL0 fatal error",
+                    "child_node": {
+                        "name": "DLX_ERR_RPT",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "2": {
+                    "desc": "DL0 buffer UE / insufficient working lanes",
+                    "child_node": {
+                        "name": "DLX_ERR_RPT",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "3": {
+                    "desc": "DL0 CE on TL flit"
+                },
+                "4": {
+                    "desc": "DL0 detected a CRC error"
+                },
+                "5": {
+                    "desc": "DL0 received a nack"
+                },
+                "6": {
+                    "desc": "DL0 running in degraded mode"
+                },
+                "7": {
+                    "desc": "DL0 parity error detection on a lane"
+                },
+                "8": {
+                    "desc": "DL0 retrained due to no forward progress"
+                },
+                "9": {
+                    "desc": "DL0 remote side initiated a retrain"
+                },
+                "10": {
+                    "desc": "DL0 retrain due to internal error or software"
+                },
+                "11": {
+                    "desc": "DL0 threshold reached"
+                },
+                "12": {
+                    "desc": "DL0 trained"
+                },
+                "13": {
+                    "desc": "DL0 received replay flit with link_errors bit 0"
+                },
+                "14": {
+                    "desc": "DL0 received replay flit with link_errors bit 1"
+                },
+                "15": {
+                    "desc": "DL0 received replay flit with link_errors bit 2"
+                },
+                "16": {
+                    "desc": "DL0 received replay flit with link_errors bit 3"
+                },
+                "17": {
+                    "desc": "DL0 received replay flit with link_errors bit 4"
+                },
+                "18": {
+                    "desc": "DL0 received replay flit with link_errors bit 5"
+                },
+                "19": {
+                    "desc": "DL0 received replay flit with link_errors bit 6"
+                },
+                "20": {
+                    "desc": "DL0 received replay flit with link_errors bit 7"
+                },
+                "21": {
+                    "desc": "DL0 skitter error"
+                },
+                "22": {
+                    "desc": "DL0 skitter drift detected"
+                },
+                "23:63": {
+                    "desc": "reserved"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "DLX_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "DLX_FIR": [
+            {
+                "reg_name": "CMN_CONFIG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PMU_CNTR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_CONFIG0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_CONFIG1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_ERR_MASK",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_EDPL_MAX_COUNT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_TRAINING_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_RMT_CONFIG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_RMT_INFO",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_SKIT_CTL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_SKIT_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_CYA2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_ERR_ACTION",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_DEBUG_AID",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "DLX_CYA_BITS",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

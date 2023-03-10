@@ -1,0 +1,206 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "MMIOFIR": {
+            "instances": {
+                "0": "0x08010870"
+            }
+        },
+        "MMIOFIR_MASK": {
+            "instances": {
+                "0": "0x08010873"
+            }
+        },
+        "MMIOFIR_ACT0": {
+            "instances": {
+                "0": "0x08010876"
+            }
+        },
+        "MMIOFIR_ACT1": {
+            "instances": {
+                "0": "0x08010877"
+            }
+        },
+        "MMIOFIR_WOF": {
+            "instances": {
+                "0": "0x08010878"
+            }
+        },
+        "MMIO_ERR_RPT_0": {
+            "instances": {
+                "0": "0x0801087C"
+            }
+        },
+        "MMIO_ERR_RPT_1": {
+            "instances": {
+                "0": "0x0801087E"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MMIOFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIOFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIOFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIOFIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIOFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MMIOFIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MMIOFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "AFU desc unimp"
+                },
+                "1": {
+                    "desc": "MMIO err"
+                },
+                "2": {
+                    "desc": "SCOM err"
+                },
+                "3": {
+                    "desc": "FSM perr"
+                },
+                "4": {
+                    "desc": "FIFO overflow"
+                },
+                "5": {
+                    "desc": "Ctl reg parity err"
+                },
+                "6": {
+                    "desc": "Info reg parity error"
+                },
+                "7": {
+                    "desc": "SNSC both starts err"
+                },
+                "8": {
+                    "desc": "SNSC mult seq parity err"
+                },
+                "9": {
+                    "desc": "SNSC FSM parity err"
+                },
+                "10": {
+                    "desc": "SNSC reg parity err"
+                },
+                "11": {
+                    "desc": "acTAG PASID cfg err"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MMIOFIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "MMIOFIR": [
+            {
+                "reg_name": "MMIO_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MMIO_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

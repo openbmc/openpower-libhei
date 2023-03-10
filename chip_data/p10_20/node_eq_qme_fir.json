@@ -1,0 +1,236 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "EQ_QME_FIR": {
+            "instances": {
+                "0": "0x200E0000",
+                "1": "0x210E0000",
+                "2": "0x220E0000",
+                "3": "0x230E0000",
+                "4": "0x240E0000",
+                "5": "0x250E0000",
+                "6": "0x260E0000",
+                "7": "0x270E0000"
+            }
+        },
+        "EQ_QME_FIR_MASK": {
+            "instances": {
+                "0": "0x200E0004",
+                "1": "0x210E0004",
+                "2": "0x220E0004",
+                "3": "0x230E0004",
+                "4": "0x240E0004",
+                "5": "0x250E0004",
+                "6": "0x260E0004",
+                "7": "0x270E0004"
+            }
+        },
+        "EQ_QME_FIR_ACT0": {
+            "instances": {
+                "0": "0x200E0008",
+                "1": "0x210E0008",
+                "2": "0x220E0008",
+                "3": "0x230E0008",
+                "4": "0x240E0008",
+                "5": "0x250E0008",
+                "6": "0x260E0008",
+                "7": "0x270E0008"
+            }
+        },
+        "EQ_QME_FIR_ACT1": {
+            "instances": {
+                "0": "0x200E000C",
+                "1": "0x210E000C",
+                "2": "0x220E000C",
+                "3": "0x230E000C",
+                "4": "0x240E000C",
+                "5": "0x250E000C",
+                "6": "0x260E000C",
+                "7": "0x270E000C"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "EQ_QME_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_QME_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_QME_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_QME_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_QME_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_QME_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_QME_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_QME_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_QME_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "PPE halted due to an error"
+                },
+                "1": {
+                    "desc": "PPE asserted debug trigger"
+                },
+                "2": {
+                    "desc": "Spare trigger for testing or workarounds"
+                },
+                "3": {
+                    "desc": "PPE asserted a watchdog timeout condition"
+                },
+                "4": {
+                    "desc": "QME hardware detected its own timeout on the PCB Slave interface"
+                },
+                "5": {
+                    "desc": "Block Copy Engine or QME PPE direct access error from the Fabric"
+                },
+                "6": {
+                    "desc": "SRAM Uncorrectable Error"
+                },
+                "7": {
+                    "desc": "SRAM Correctable Error"
+                },
+                "8": {
+                    "desc": "Resonant Clock Table array Parity Error"
+                },
+                "9": {
+                    "desc": "PIG request of PCB interrupt before its previous interrupt completed"
+                },
+                "10": {
+                    "desc": "Scrub timer tick occurred when scrub is still pending"
+                },
+                "11": {
+                    "desc": "QME_LFIR_CTFS_ERR"
+                },
+                "12": {
+                    "desc": "QME_LFIR_CPMS_ERR"
+                },
+                "13": {
+                    "desc": "PGPE Heartbeat Lost from a hw deadman timer controlled by QHB"
+                },
+                "14": {
+                    "desc": "BCE forward progress error"
+                },
+                "15": {
+                    "desc": "Resclk TARGET_PSTATE Change Protocol Error"
+                },
+                "16": {
+                    "desc": "PCB Network or Endpoint Reset occurred when QME was not halted"
+                },
+                "17": {
+                    "desc": "Firmware cleared special wakeup request before SPECIAL_WKUP_DONE"
+                },
+                "18": {
+                    "desc": "A new special wakeup right after previous cleared"
+                },
+                "19": {
+                    "desc": "Core External Interrupt wakeup sources present but disabled by threads"
+                },
+                "20": {
+                    "desc": "Core External Interrupt present but the chiplet is deconfigured"
+                },
+                "21": {
+                    "desc": "Reserved"
+                },
+                "22": {
+                    "desc": "PB read cmd waited too long for lost data (hang)"
+                },
+                "23": {
+                    "desc": "PPE tried to write a protected addr as defined by the SWPR[n] register"
+                },
+                "24": {
+                    "desc": "DTC Sequencer read a UE from SRAM"
+                },
+                "25": {
+                    "desc": "Correctable error detected on incoming data for a PowerBus read"
+                },
+                "26": {
+                    "desc": "UE Detected on incoming data for a PowerBus read"
+                },
+                "27": {
+                    "desc": "SUE Detected on incoming data for a PowerBus read"
+                },
+                "28": {
+                    "desc": "PB Request address hit an invalid entry in the TOPOLOGY XLATE TABLE"
+                },
+                "29": {
+                    "desc": "Parity error detected on a powerbus tag"
+                },
+                "30": {
+                    "desc": "Code attempted to write the PIG register when the previous request was still pending"
+                },
+                "31": {
+                    "desc": "Local access error bit(s) set"
+                },
+                "32": {
+                    "desc": "CE detected on read to the SSA located in QME powerbus routing logic"
+                },
+                "33": {
+                    "desc": "UE detected on read to the SSA located in QME powerbus routing logic"
+                },
+                "34": {
+                    "desc": "Resonant clock CCFG parity error"
+                },
+                "35": {
+                    "desc": "spare"
+                }
+            }
+        }
+    }
+}

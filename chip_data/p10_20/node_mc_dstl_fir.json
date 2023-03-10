@@ -1,0 +1,415 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "MC_DSTL_FIR": {
+            "instances": {
+                "0": "0x0C010D00",
+                "1": "0x0C010D40",
+                "2": "0x0D010D00",
+                "3": "0x0D010D40",
+                "4": "0x0E010D00",
+                "5": "0x0E010D40",
+                "6": "0x0F010D00",
+                "7": "0x0F010D40"
+            }
+        },
+        "MC_DSTL_FIR_MASK": {
+            "instances": {
+                "0": "0x0C010D03",
+                "1": "0x0C010D43",
+                "2": "0x0D010D03",
+                "3": "0x0D010D43",
+                "4": "0x0E010D03",
+                "5": "0x0E010D43",
+                "6": "0x0F010D03",
+                "7": "0x0F010D43"
+            }
+        },
+        "MC_DSTL_FIR_ACT0": {
+            "instances": {
+                "0": "0x0C010D06",
+                "1": "0x0C010D46",
+                "2": "0x0D010D06",
+                "3": "0x0D010D46",
+                "4": "0x0E010D06",
+                "5": "0x0E010D46",
+                "6": "0x0F010D06",
+                "7": "0x0F010D46"
+            }
+        },
+        "MC_DSTL_FIR_ACT1": {
+            "instances": {
+                "0": "0x0C010D07",
+                "1": "0x0C010D47",
+                "2": "0x0D010D07",
+                "3": "0x0D010D47",
+                "4": "0x0E010D07",
+                "5": "0x0E010D47",
+                "6": "0x0F010D07",
+                "7": "0x0F010D47"
+            }
+        },
+        "MC_DSTL_FIR_ACT2": {
+            "instances": {
+                "0": "0x0C010D09",
+                "1": "0x0C010D49",
+                "2": "0x0D010D09",
+                "3": "0x0D010D49",
+                "4": "0x0E010D09",
+                "5": "0x0E010D49",
+                "6": "0x0F010D09",
+                "7": "0x0F010D49"
+            }
+        },
+        "MC_DSTL_FIR_WOF": {
+            "instances": {
+                "0": "0x0C010D08",
+                "1": "0x0C010D48",
+                "2": "0x0D010D08",
+                "3": "0x0D010D48",
+                "4": "0x0E010D08",
+                "5": "0x0E010D48",
+                "6": "0x0F010D08",
+                "7": "0x0F010D48"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MC_DSTL_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_DSTL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_DSTL_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Subchannel A AFU initiated Checkstop"
+                },
+                "1": {
+                    "desc": "Subchannel A AFU initiated Recoverable Attention"
+                },
+                "2": {
+                    "desc": "Subchannel A AFU initiated Special Attention"
+                },
+                "3": {
+                    "desc": "Subchannel A AFU initiated Application Interrupt Attention"
+                },
+                "4": {
+                    "desc": "Subchannel B AFU initiated Checkstop"
+                },
+                "5": {
+                    "desc": "Subchannel B AFU initiated Recoverable Attention"
+                },
+                "6": {
+                    "desc": "Subchannel B AFU initiated Special Attention"
+                },
+                "7": {
+                    "desc": "Subchannel B AFU initiated Application Interrupt Attention"
+                },
+                "8": {
+                    "desc": "Error on parity bits protecting incoming command from MCS to DSTL"
+                },
+                "9": {
+                    "desc": "A credit reset was attempted while rd and wdf buffers in use"
+                },
+                "10": {
+                    "desc": "Config reg recoverable parity error"
+                },
+                "11": {
+                    "desc": "Config reg fatal parity error"
+                },
+                "12": {
+                    "desc": "Subchannel A counter error"
+                },
+                "13": {
+                    "desc": "Subchannel B counter error"
+                },
+                "14": {
+                    "desc": "Subchannel A valid cmd timeout error"
+                },
+                "15": {
+                    "desc": "Subchannel B valid cmd timeout error"
+                },
+                "16": {
+                    "desc": "Subchannel A buffer overuse error"
+                },
+                "17": {
+                    "desc": "Subchannel B buffer overuse error"
+                },
+                "18": {
+                    "desc": "Subchannel A DL link down"
+                },
+                "19": {
+                    "desc": "Subchannel B DL link down"
+                },
+                "20": {
+                    "desc": "Subchannel A has entered the fail state"
+                },
+                "21": {
+                    "desc": "Subchannel B has entered the fail state"
+                },
+                "22": {
+                    "desc": "Subchannel A Channel timeout"
+                },
+                "23": {
+                    "desc": "Subchannel B Channel timeout"
+                },
+                "24": {
+                    "desc": "decrypt err: scom reg has parity error"
+                },
+                "25": {
+                    "desc": "decrypt err: attempt to write or access key when locked"
+                },
+                "26": {
+                    "desc": "decrypt err: address pipe parity error"
+                },
+                "27": {
+                    "desc": "decrypt err: CL to decrypt parity error on valid tag"
+                },
+                "28": {
+                    "desc": "decrypt err: parity error on USTL decrypt DMX interface"
+                },
+                "29": {
+                    "desc": "encrypt err: scom reg has parity error"
+                },
+                "30": {
+                    "desc": "encrypt err: attempt to write or access key when locked"
+                },
+                "31": {
+                    "desc": "encrypt err: parity error on address encryption rounds"
+                },
+                "32": {
+                    "desc": "encrypt err: parity error on data encryption rounds"
+                },
+                "33": {
+                    "desc": "Subchannel A AFU Application Interrupt Attention while another in process"
+                },
+                "34": {
+                    "desc": "Subchannel B AFU Application Interrupt Attention while another in process"
+                },
+                "35": {
+                    "desc": "A parity error local to Subchhanel A occurred"
+                },
+                "36": {
+                    "desc": "A parity error local to Subchhanel B occurred"
+                },
+                "37": {
+                    "desc": "reserved"
+                },
+                "38": {
+                    "desc": "reserved"
+                },
+                "39": {
+                    "desc": "Subchannel A has significant traffic flow"
+                },
+                "40": {
+                    "desc": "Subchannel B has significant traffic flow"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MC_DSTL_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5,
+                        "6": 6,
+                        "7": 7
+                    }
+                }
+            ]
+        }
+    }
+}

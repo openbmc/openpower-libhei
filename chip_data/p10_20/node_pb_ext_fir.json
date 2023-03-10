@@ -1,0 +1,93 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PB_EXT_FIR": {
+            "instances": {
+                "0": "0x030113AE"
+            }
+        },
+        "PB_EXT_FIR_MASK": {
+            "instances": {
+                "0": "0x030113B1"
+            }
+        },
+        "PB_EXT_FIR_ACT0": {
+            "instances": {
+                "0": "0x030113B4"
+            }
+        },
+        "PB_EXT_FIR_ACT1": {
+            "instances": {
+                "0": "0x030113B5"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PB_EXT_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PB_EXT_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_EXT_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_EXT_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PB_EXT_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "pb_x0_fir_err"
+                },
+                "1": {
+                    "desc": "pb_x1_fir_err"
+                },
+                "2": {
+                    "desc": "pb_x2_fir_err"
+                },
+                "3": {
+                    "desc": "pb_x3_fir_err"
+                },
+                "4": {
+                    "desc": "pb_x4_fir_err"
+                },
+                "5": {
+                    "desc": "pb_x5_fir_err"
+                },
+                "6": {
+                    "desc": "pb_x6_fir_err"
+                },
+                "7": {
+                    "desc": "pb_x7_fir_err"
+                }
+            }
+        }
+    }
+}

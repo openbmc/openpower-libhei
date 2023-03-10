@@ -1,0 +1,267 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "NX_CQ_FIR": {
+            "instances": {
+                "0": "0x02011080"
+            }
+        },
+        "NX_CQ_FIR_MASK": {
+            "instances": {
+                "0": "0x02011083"
+            }
+        },
+        "NX_CQ_FIR_ACT0": {
+            "instances": {
+                "0": "0x02011086"
+            }
+        },
+        "NX_CQ_FIR_ACT1": {
+            "instances": {
+                "0": "0x02011087"
+            }
+        },
+        "NX_CQ_FIR_WOF": {
+            "instances": {
+                "0": "0x02011088"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "NX_CQ_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_CQ_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_CQ_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_CQ_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_CQ_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_CQ_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_CQ_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "PBI internal parity error"
+                },
+                "1": {
+                    "desc": "PowerBus CE error"
+                },
+                "2": {
+                    "desc": "PowerBus UE error"
+                },
+                "3": {
+                    "desc": "PowerBus SUE error"
+                },
+                "4": {
+                    "desc": "Inbound array CE error"
+                },
+                "5": {
+                    "desc": "Inbound array UE error"
+                },
+                "6": {
+                    "desc": "Paste request rejected"
+                },
+                "7": {
+                    "desc": "PowerBus command hang error"
+                },
+                "8": {
+                    "desc": "PowerBus read address error"
+                },
+                "9": {
+                    "desc": "PowerBus write address error"
+                },
+                "10": {
+                    "desc": "PowerBus miscellaneous error"
+                },
+                "11": {
+                    "desc": "MMIO BAR parity error"
+                },
+                "12": {
+                    "desc": "UMAC detected SUE on WC Interrupt"
+                },
+                "13": {
+                    "desc": "ACK_DEAD cresp received by read command"
+                },
+                "14": {
+                    "desc": "ACK_DEAD cresp received by write command"
+                },
+                "15": {
+                    "desc": "Reserved. Used to be PowerBus Link Abort in P9"
+                },
+                "16": {
+                    "desc": "Hang poll time expired on internal transfer"
+                },
+                "17": {
+                    "desc": "Parity error on ERAT arrays"
+                },
+                "18": {
+                    "desc": "Correctable error on ERAT arrays"
+                },
+                "19": {
+                    "desc": "Uncorrectable error on ERAT arrays"
+                },
+                "20": {
+                    "desc": "Special uncorrectable error on ERAT arrays"
+                },
+                "21": {
+                    "desc": "Hang on checkin/checkout request to NMMU"
+                },
+                "22": {
+                    "desc": "ERAT control logic error"
+                },
+                "23": {
+                    "desc": "Uncorrectable error on the Powerbus data for xlate"
+                },
+                "24": {
+                    "desc": "Special uncorrectable error on the Powerbus data for xlate"
+                },
+                "25": {
+                    "desc": "ACK_DEAD cresp received by UMAC read command"
+                },
+                "26": {
+                    "desc": "Link check aborted while waiting on UMAC data"
+                },
+                "27": {
+                    "desc": "Uncorrectable error on CRB QW0/4"
+                },
+                "28": {
+                    "desc": "Special uncorrectable error on CRB QW0/4"
+                },
+                "29": {
+                    "desc": "UMAC has detected a control logic error"
+                },
+                "30": {
+                    "desc": "Other SCOM satellite parity error"
+                },
+                "31": {
+                    "desc": "SCOM write to RNG when not allowed"
+                },
+                "32": {
+                    "desc": "A first noise source in the RNG has failed"
+                },
+                "33": {
+                    "desc": "A second noise source in the RNG has failed"
+                },
+                "34": {
+                    "desc": "RNG has detected a control logic error"
+                },
+                "35": {
+                    "desc": "NMMU has signaled local checkstop"
+                },
+                "36": {
+                    "desc": "VAS has signaled local checkstop"
+                },
+                "37": {
+                    "desc": "PBCQ has detected a control logic error"
+                },
+                "38": {
+                    "desc": "PBCQ has detected a failed link on an interrupt"
+                },
+                "39": {
+                    "desc": "UMAC has detected an SUE on interrupt address"
+                },
+                "40": {
+                    "desc": "SMF error"
+                },
+                "41": {
+                    "desc": "Topology index error detected in NX"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "NX_CQ_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

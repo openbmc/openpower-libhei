@@ -1,0 +1,289 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "VAS_FIR": {
+            "instances": {
+                "0": "0x02011400"
+            }
+        },
+        "VAS_FIR_MASK": {
+            "instances": {
+                "0": "0x02011403"
+            }
+        },
+        "VAS_FIR_ACT0": {
+            "instances": {
+                "0": "0x02011406"
+            }
+        },
+        "VAS_FIR_ACT1": {
+            "instances": {
+                "0": "0x02011407"
+            }
+        },
+        "VAS_FIR_WOF": {
+            "instances": {
+                "0": "0x02011408"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "VAS_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "VAS_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "VAS_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "VAS_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "VAS_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "VAS_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "VAS_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "VAS_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "VAS_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "VAS_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "VAS_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "VAS_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "VAS_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Hardware error detected in Egress logic"
+                },
+                "1": {
+                    "desc": "Hardware error detected in Ingress logic"
+                },
+                "2": {
+                    "desc": "Hardware error detected in CQ logic"
+                },
+                "3": {
+                    "desc": "Hardware error detected in WC logic"
+                },
+                "4": {
+                    "desc": "Hardware error detected in RG logic"
+                },
+                "5": {
+                    "desc": "PowerBus parity error detected on CQ logic interface"
+                },
+                "6": {
+                    "desc": "CQ logic detected PowerBus address error on CRESP from a read operation"
+                },
+                "7": {
+                    "desc": "CQ logic detected PowerBus address error on CRESP from a write operation"
+                },
+                "8": {
+                    "desc": "Correctable ECC error detected in Egress logic"
+                },
+                "9": {
+                    "desc": "Correctable ECC error detected in Ingress logic"
+                },
+                "10": {
+                    "desc": "Correctable ECC error detected in CQ logic"
+                },
+                "11": {
+                    "desc": "Correctable ECC error detected in WC logic"
+                },
+                "12": {
+                    "desc": "Correctable ECC error detected in RG logic"
+                },
+                "13": {
+                    "desc": "ECC Correctable Error detected on CQ outbound PowerBus interface"
+                },
+                "14": {
+                    "desc": "ECC Uncorrectable Error detected on CQ outbound PowerBus interface"
+                },
+                "15": {
+                    "desc": "PowerBus state machine hang detected in CQ logic"
+                },
+                "16": {
+                    "desc": "Uncorrectable ECC error detected in Egress logic"
+                },
+                "17": {
+                    "desc": "Uncorrectable ECC error detected in Ingress logic"
+                },
+                "18": {
+                    "desc": "Uncorrectable ECC error detected in CQ logic"
+                },
+                "19": {
+                    "desc": "Uncorrectable ECC error detected in WC logic"
+                },
+                "20": {
+                    "desc": "Uncorrectable ECC error detected in RG logic"
+                },
+                "21": {
+                    "desc": "Parity error detected in Ingress logic"
+                },
+                "22": {
+                    "desc": "Software cast error detected in Ingress logic"
+                },
+                "23": {
+                    "desc": "reserved"
+                },
+                "24": {
+                    "desc": "ECC sue error detected in Egress logic"
+                },
+                "25": {
+                    "desc": "ECC sue error detected in Ingress logic"
+                },
+                "26": {
+                    "desc": "ECC sue error detected in CQ logic"
+                },
+                "27": {
+                    "desc": "ECC sue error detected in WC logic"
+                },
+                "28": {
+                    "desc": "ECC sue error detected in RG logic"
+                },
+                "29": {
+                    "desc": "PowerBus link error detected on read operation in CQ logic"
+                },
+                "30": {
+                    "desc": "PowerBus link error detected on write operation in CQ logic"
+                },
+                "31": {
+                    "desc": "PowerBus link abort operation received in CQ logic"
+                },
+                "32": {
+                    "desc": "Address error detected on hypervisor MMIO read"
+                },
+                "33": {
+                    "desc": "Address error detected on OS MMIO read"
+                },
+                "34": {
+                    "desc": "Address error detected on hypervisor MMIO write"
+                },
+                "35": {
+                    "desc": "Address error detected on OS MMIO write"
+                },
+                "36": {
+                    "desc": "non-8-Byte MMIO detected by hypervisor"
+                },
+                "37": {
+                    "desc": "non-8-Byte MMIO detected by user or OS"
+                },
+                "38": {
+                    "desc": "reserved"
+                },
+                "39": {
+                    "desc": "reserved"
+                },
+                "40": {
+                    "desc": "reserved"
+                },
+                "41": {
+                    "desc": "reserved"
+                },
+                "42": {
+                    "desc": "ASB_Notify sent but not claimed and interrupts were disabled in window context"
+                },
+                "43": {
+                    "desc": "reserved"
+                },
+                "44": {
+                    "desc": "VAS rejected a PB paste command"
+                },
+                "45": {
+                    "desc": "VAS hung waiting for data from PowerBus"
+                },
+                "46": {
+                    "desc": "Incoming PowerBus parity error"
+                },
+                "47": {
+                    "desc": "HW error from SCOM Satellite 1"
+                },
+                "48": {
+                    "desc": "NX Local Checkstop"
+                },
+                "49": {
+                    "desc": "SCOM MMIO address offset error"
+                },
+                "50": {
+                    "desc": "TopoID Error Bit"
+                },
+                "51": {
+                    "desc": "spare"
+                }
+            }
+        }
+    }
+}

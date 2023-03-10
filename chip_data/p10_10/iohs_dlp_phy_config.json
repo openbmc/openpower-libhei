@@ -1,0 +1,1317 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "IOHS_DLP_FIR": {
+            "instances": {
+                "0": "0x18011000",
+                "1": "0x19011000",
+                "2": "0x1A011000",
+                "3": "0x1B011000",
+                "4": "0x1C011000",
+                "5": "0x1D011000",
+                "6": "0x1E011000",
+                "7": "0x1F011000"
+            }
+        },
+        "IOHS_DLP_FIR_MASK": {
+            "instances": {
+                "0": "0x18011003",
+                "1": "0x19011003",
+                "2": "0x1A011003",
+                "3": "0x1B011003",
+                "4": "0x1C011003",
+                "5": "0x1D011003",
+                "6": "0x1E011003",
+                "7": "0x1F011003"
+            }
+        },
+        "IOHS_DLP_FIR_ACT0": {
+            "instances": {
+                "0": "0x18011006",
+                "1": "0x19011006",
+                "2": "0x1A011006",
+                "3": "0x1B011006",
+                "4": "0x1C011006",
+                "5": "0x1D011006",
+                "6": "0x1E011006",
+                "7": "0x1F011006"
+            }
+        },
+        "IOHS_DLP_FIR_ACT1": {
+            "instances": {
+                "0": "0x18011007",
+                "1": "0x19011007",
+                "2": "0x1A011007",
+                "3": "0x1B011007",
+                "4": "0x1C011007",
+                "5": "0x1D011007",
+                "6": "0x1E011007",
+                "7": "0x1F011007"
+            }
+        },
+        "IOHS_DLP_FIR_WOF": {
+            "instances": {
+                "0": "0x18011008",
+                "1": "0x19011008",
+                "2": "0x1A011008",
+                "3": "0x1B011008",
+                "4": "0x1C011008",
+                "5": "0x1D011008",
+                "6": "0x1E011008",
+                "7": "0x1F011008"
+            }
+        },
+        "IOHS_DLP_CONFIG": {
+            "instances": {
+                "0": "0x1801100A",
+                "1": "0x1901100A",
+                "2": "0x1A01100A",
+                "3": "0x1B01100A",
+                "4": "0x1C01100A",
+                "5": "0x1D01100A",
+                "6": "0x1E01100A",
+                "7": "0x1F01100A"
+            }
+        },
+        "IOHS_DLP_CONTROL": {
+            "instances": {
+                "0": "0x1801100B",
+                "1": "0x1901100B",
+                "2": "0x1A01100B",
+                "3": "0x1B01100B",
+                "4": "0x1C01100B",
+                "5": "0x1D01100B",
+                "6": "0x1E01100B",
+                "7": "0x1F01100B"
+            }
+        },
+        "IOHS_DLP_PHY_CONFIG": {
+            "instances": {
+                "0": "0x1801100C",
+                "1": "0x1901100C",
+                "2": "0x1A01100C",
+                "3": "0x1B01100C",
+                "4": "0x1C01100C",
+                "5": "0x1D01100C",
+                "6": "0x1E01100C",
+                "7": "0x1F01100C"
+            }
+        },
+        "IOHS_DLP_SEC_CONFIG": {
+            "instances": {
+                "0": "0x1801100D",
+                "1": "0x1901100D",
+                "2": "0x1A01100D",
+                "3": "0x1B01100D",
+                "4": "0x1C01100D",
+                "5": "0x1D01100D",
+                "6": "0x1E01100D",
+                "7": "0x1F01100D"
+            }
+        },
+        "IOHS_DLP_OPTICAL_CONFIG": {
+            "instances": {
+                "0": "0x1801100F",
+                "1": "0x1901100F",
+                "2": "0x1A01100F",
+                "3": "0x1B01100F",
+                "4": "0x1C01100F",
+                "5": "0x1D01100F",
+                "6": "0x1E01100F",
+                "7": "0x1F01100F"
+            }
+        },
+        "IOHS_DLP_LINK0_TX_LANE_CONTROL": {
+            "instances": {
+                "0": "0x18011010",
+                "1": "0x19011010",
+                "2": "0x1A011010",
+                "3": "0x1B011010",
+                "4": "0x1C011010",
+                "5": "0x1D011010",
+                "6": "0x1E011010",
+                "7": "0x1F011010"
+            }
+        },
+        "IOHS_DLP_LINK1_TX_LANE_CONTROL": {
+            "instances": {
+                "0": "0x18011011",
+                "1": "0x19011011",
+                "2": "0x1A011011",
+                "3": "0x1B011011",
+                "4": "0x1C011011",
+                "5": "0x1D011011",
+                "6": "0x1E011011",
+                "7": "0x1F011011"
+            }
+        },
+        "IOHS_DLP_LINK0_RX_LANE_CONTROL": {
+            "instances": {
+                "0": "0x18011012",
+                "1": "0x19011012",
+                "2": "0x1A011012",
+                "3": "0x1B011012",
+                "4": "0x1C011012",
+                "5": "0x1D011012",
+                "6": "0x1E011012",
+                "7": "0x1F011012"
+            }
+        },
+        "IOHS_DLP_LINK1_RX_LANE_CONTROL": {
+            "instances": {
+                "0": "0x18011013",
+                "1": "0x19011013",
+                "2": "0x1A011013",
+                "3": "0x1B011013",
+                "4": "0x1C011013",
+                "5": "0x1D011013",
+                "6": "0x1E011013",
+                "7": "0x1F011013"
+            }
+        },
+        "IOHS_DLP_LINK0_INFO": {
+            "instances": {
+                "0": "0x18011014",
+                "1": "0x19011014",
+                "2": "0x1A011014",
+                "3": "0x1B011014",
+                "4": "0x1C011014",
+                "5": "0x1D011014",
+                "6": "0x1E011014",
+                "7": "0x1F011014"
+            }
+        },
+        "IOHS_DLP_LINK1_INFO": {
+            "instances": {
+                "0": "0x18011015",
+                "1": "0x19011015",
+                "2": "0x1A011015",
+                "3": "0x1B011015",
+                "4": "0x1C011015",
+                "5": "0x1D011015",
+                "6": "0x1E011015",
+                "7": "0x1F011015"
+            }
+        },
+        "IOHS_DLP_LINK0_ERROR_STATUS": {
+            "instances": {
+                "0": "0x18011016",
+                "1": "0x19011016",
+                "2": "0x1A011016",
+                "3": "0x1B011016",
+                "4": "0x1C011016",
+                "5": "0x1D011016",
+                "6": "0x1E011016",
+                "7": "0x1F011016"
+            }
+        },
+        "IOHS_DLP_LINK1_ERROR_STATUS": {
+            "instances": {
+                "0": "0x18011017",
+                "1": "0x19011017",
+                "2": "0x1A011017",
+                "3": "0x1B011017",
+                "4": "0x1C011017",
+                "5": "0x1D011017",
+                "6": "0x1E011017",
+                "7": "0x1F011017"
+            }
+        },
+        "IOHS_DLP_REPLAY_THRESHOLD": {
+            "instances": {
+                "0": "0x18011018",
+                "1": "0x19011018",
+                "2": "0x1A011018",
+                "3": "0x1B011018",
+                "4": "0x1C011018",
+                "5": "0x1D011018",
+                "6": "0x1E011018",
+                "7": "0x1F011018"
+            }
+        },
+        "IOHS_DLP_SL_ECC_THRESHOLD": {
+            "instances": {
+                "0": "0x18011019",
+                "1": "0x19011019",
+                "2": "0x1A011019",
+                "3": "0x1B011019",
+                "4": "0x1C011019",
+                "5": "0x1D011019",
+                "6": "0x1E011019",
+                "7": "0x1F011019"
+            }
+        },
+        "IOHS_DLP_LINK0_SYN_CAPTURE": {
+            "instances": {
+                "0": "0x18011022",
+                "1": "0x19011022",
+                "2": "0x1A011022",
+                "3": "0x1B011022",
+                "4": "0x1C011022",
+                "5": "0x1D011022",
+                "6": "0x1E011022",
+                "7": "0x1F011022"
+            }
+        },
+        "IOHS_DLP_LINK1_SYN_CAPTURE": {
+            "instances": {
+                "0": "0x18011023",
+                "1": "0x19011023",
+                "2": "0x1A011023",
+                "3": "0x1B011023",
+                "4": "0x1C011023",
+                "5": "0x1D011023",
+                "6": "0x1E011023",
+                "7": "0x1F011023"
+            }
+        },
+        "IOHS_DLP_LINK0_EDPL_STATUS": {
+            "instances": {
+                "0": "0x18011024",
+                "1": "0x19011024",
+                "2": "0x1A011024",
+                "3": "0x1B011024",
+                "4": "0x1C011024",
+                "5": "0x1D011024",
+                "6": "0x1E011024",
+                "7": "0x1F011024"
+            }
+        },
+        "IOHS_DLP_LINK1_EDPL_STATUS": {
+            "instances": {
+                "0": "0x18011025",
+                "1": "0x19011025",
+                "2": "0x1A011025",
+                "3": "0x1B011025",
+                "4": "0x1C011025",
+                "5": "0x1D011025",
+                "6": "0x1E011025",
+                "7": "0x1F011025"
+            }
+        },
+        "IOHS_DLP_LINK0_QUALITY": {
+            "instances": {
+                "0": "0x18011026",
+                "1": "0x19011026",
+                "2": "0x1A011026",
+                "3": "0x1B011026",
+                "4": "0x1C011026",
+                "5": "0x1D011026",
+                "6": "0x1E011026",
+                "7": "0x1F011026"
+            }
+        },
+        "IOHS_DLP_LINK1_QUALITY": {
+            "instances": {
+                "0": "0x18011027",
+                "1": "0x19011027",
+                "2": "0x1A011027",
+                "3": "0x1B011027",
+                "4": "0x1C011027",
+                "5": "0x1D011027",
+                "6": "0x1E011027",
+                "7": "0x1F011027"
+            }
+        },
+        "IOHS_DLP_DLL_STATUS": {
+            "instances": {
+                "0": "0x18011028",
+                "1": "0x19011028",
+                "2": "0x1A011028",
+                "3": "0x1B011028",
+                "4": "0x1C011028",
+                "5": "0x1D011028",
+                "6": "0x1E011028",
+                "7": "0x1F011028"
+            }
+        },
+        "IOHS_DLP_MISC_ERROR_STATUS": {
+            "instances": {
+                "0": "0x18011029",
+                "1": "0x19011029",
+                "2": "0x1A011029",
+                "3": "0x1B011029",
+                "4": "0x1C011029",
+                "5": "0x1D011029",
+                "6": "0x1E011029",
+                "7": "0x1F011029"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "IOHS_DLP_PHY_CONFIG": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_PHY_CONFIG"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000000003"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_PHY_CONFIG"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000000003"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_PHY_CONFIG"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000000003"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "62": {
+                    "desc": "Attention from IOHS_DLP_FIR in OpenCAPI mode",
+                    "child_node": {
+                        "name": "IOHS_DLP_FIR_OC",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "63": {
+                    "desc": "Attention from IOHS_DLP_FIR in SMP mode",
+                    "child_node": {
+                        "name": "IOHS_DLP_FIR_SMP",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        },
+        "IOHS_DLP_FIR_OC": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "unused"
+                },
+                "1": {
+                    "desc": "unused"
+                },
+                "2": {
+                    "desc": "unused"
+                },
+                "3": {
+                    "desc": "unused"
+                },
+                "4": {
+                    "desc": "unused"
+                },
+                "5": {
+                    "desc": "unused"
+                },
+                "6": {
+                    "desc": "link0 crc error"
+                },
+                "7": {
+                    "desc": "link1 crc error"
+                },
+                "8": {
+                    "desc": "link0 nak received"
+                },
+                "9": {
+                    "desc": "link1 nak received"
+                },
+                "10": {
+                    "desc": "unused"
+                },
+                "11": {
+                    "desc": "unused"
+                },
+                "12": {
+                    "desc": "unused"
+                },
+                "13": {
+                    "desc": "unused"
+                },
+                "14": {
+                    "desc": "unused"
+                },
+                "15": {
+                    "desc": "unused"
+                },
+                "16": {
+                    "desc": "unused"
+                },
+                "17": {
+                    "desc": "unused"
+                },
+                "18": {
+                    "desc": "unused"
+                },
+                "19": {
+                    "desc": "unused"
+                },
+                "20": {
+                    "desc": "link0 loss block align"
+                },
+                "21": {
+                    "desc": "link1 loss block align"
+                },
+                "22": {
+                    "desc": "link0 invalid block"
+                },
+                "23": {
+                    "desc": "link1 invalid block"
+                },
+                "24": {
+                    "desc": "unused"
+                },
+                "25": {
+                    "desc": "unused"
+                },
+                "26": {
+                    "desc": "link0 deskew overflow"
+                },
+                "27": {
+                    "desc": "link1 deskew overflow"
+                },
+                "28": {
+                    "desc": "link0 sw retrain"
+                },
+                "29": {
+                    "desc": "link1 sw retrain"
+                },
+                "30": {
+                    "desc": "unused"
+                },
+                "31": {
+                    "desc": "unused"
+                },
+                "32": {
+                    "desc": "unused"
+                },
+                "33": {
+                    "desc": "unused"
+                },
+                "34": {
+                    "desc": "link0 no forward progress"
+                },
+                "35": {
+                    "desc": "link1 no forward progress"
+                },
+                "36": {
+                    "desc": "link0 training set received"
+                },
+                "37": {
+                    "desc": "link1 training set received"
+                },
+                "38": {
+                    "desc": "unused"
+                },
+                "39": {
+                    "desc": "unused"
+                },
+                "40": {
+                    "desc": "unused"
+                },
+                "41": {
+                    "desc": "unused"
+                },
+                "42": {
+                    "desc": "unused"
+                },
+                "43": {
+                    "desc": "unused"
+                },
+                "44": {
+                    "desc": "link0 degraded mode"
+                },
+                "45": {
+                    "desc": "link1 degraded mode"
+                },
+                "46": {
+                    "desc": "unused"
+                },
+                "47": {
+                    "desc": "unused"
+                },
+                "48": {
+                    "desc": "link0 dlx error"
+                },
+                "49": {
+                    "desc": "link1 dlx error"
+                },
+                "50": {
+                    "desc": "unused"
+                },
+                "51": {
+                    "desc": "unused"
+                },
+                "52": {
+                    "desc": "link0 correctable array error"
+                },
+                "53": {
+                    "desc": "link1 correctable array error"
+                },
+                "54": {
+                    "desc": "link0 uncorrectable array error"
+                },
+                "55": {
+                    "desc": "link1 uncorrectable array error"
+                },
+                "56": {
+                    "desc": "link0 dlx clock frequency error"
+                },
+                "57": {
+                    "desc": "link1 dlx clock frequency error"
+                },
+                "58": {
+                    "desc": "link0 unrecoverable error"
+                },
+                "59": {
+                    "desc": "link1 unrecoverable error"
+                },
+                "60": {
+                    "desc": "link0 internal error"
+                },
+                "61": {
+                    "desc": "link1 internal error"
+                }
+            }
+        },
+        "IOHS_DLP_FIR_SMP": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "IOHS_DLP_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "IOHS_DLP_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "link0 trained"
+                },
+                "1": {
+                    "desc": "link1 trained"
+                },
+                "2": {
+                    "desc": "link0 op irq"
+                },
+                "3": {
+                    "desc": "link1 op irq"
+                },
+                "4": {
+                    "desc": "link0 replay threshold"
+                },
+                "5": {
+                    "desc": "link1 replay threshold"
+                },
+                "6": {
+                    "desc": "link0 crc error"
+                },
+                "7": {
+                    "desc": "link1 crc error"
+                },
+                "8": {
+                    "desc": "link0 nak received"
+                },
+                "9": {
+                    "desc": "link1 nak received"
+                },
+                "10": {
+                    "desc": "link0 replay buffer full"
+                },
+                "11": {
+                    "desc": "link1 replay buffer full"
+                },
+                "12": {
+                    "desc": "link0 sl ecc threshold"
+                },
+                "13": {
+                    "desc": "link1 sl ecc threshold"
+                },
+                "14": {
+                    "desc": "link0 sl ecc correctable"
+                },
+                "15": {
+                    "desc": "link1 sl ecc correctable"
+                },
+                "16": {
+                    "desc": "link0 sl ecc ue"
+                },
+                "17": {
+                    "desc": "link1 sl ecc ue"
+                },
+                "18": {
+                    "desc": "link0 retrain threshold"
+                },
+                "19": {
+                    "desc": "link1 retrain threshold"
+                },
+                "20": {
+                    "desc": "link0 loss block align"
+                },
+                "21": {
+                    "desc": "link1 loss block align"
+                },
+                "22": {
+                    "desc": "link0 invalid block"
+                },
+                "23": {
+                    "desc": "link1 invalid block"
+                },
+                "24": {
+                    "desc": "link0 deskew error"
+                },
+                "25": {
+                    "desc": "link1 deskew error"
+                },
+                "26": {
+                    "desc": "link0 deskew overflow"
+                },
+                "27": {
+                    "desc": "link1 deskew overflow"
+                },
+                "28": {
+                    "desc": "link0 sw retrain"
+                },
+                "29": {
+                    "desc": "link1 sw retrain"
+                },
+                "30": {
+                    "desc": "link0 ack queue overflow"
+                },
+                "31": {
+                    "desc": "link1 ack queue overflow"
+                },
+                "32": {
+                    "desc": "link0 ack queue underflow"
+                },
+                "33": {
+                    "desc": "link1 ack queue underflow"
+                },
+                "34": {
+                    "desc": "link0 num replay"
+                },
+                "35": {
+                    "desc": "link1 num replay"
+                },
+                "36": {
+                    "desc": "link0 training set received"
+                },
+                "37": {
+                    "desc": "link1 training set received"
+                },
+                "38": {
+                    "desc": "link0 prbs select error"
+                },
+                "39": {
+                    "desc": "link1 prbs select error"
+                },
+                "40": {
+                    "desc": "link0 tcomplete bad"
+                },
+                "41": {
+                    "desc": "link1 tcomplete bad"
+                },
+                "42": {
+                    "desc": "link0 no spare lane available"
+                },
+                "43": {
+                    "desc": "link1 no spare lane available"
+                },
+                "44": {
+                    "desc": "link0 spare done"
+                },
+                "45": {
+                    "desc": "link1 spare done"
+                },
+                "46": {
+                    "desc": "link0 too many crc errors"
+                },
+                "47": {
+                    "desc": "link1 too many crc errors"
+                },
+                "48": {
+                    "desc": "unused"
+                },
+                "49": {
+                    "desc": "unused"
+                },
+                "50": {
+                    "desc": "link0 osc switch"
+                },
+                "51": {
+                    "desc": "link1 osc switch"
+                },
+                "52": {
+                    "desc": "link0 correctable array error"
+                },
+                "53": {
+                    "desc": "link1 correctable array error"
+                },
+                "54": {
+                    "desc": "link0 uncorrectable array error"
+                },
+                "55": {
+                    "desc": "link1 uncorrectable array error"
+                },
+                "56": {
+                    "desc": "link0 training failed"
+                },
+                "57": {
+                    "desc": "link1 training failed"
+                },
+                "58": {
+                    "desc": "link0 unrecoverable error"
+                },
+                "59": {
+                    "desc": "link1 unrecoverable error"
+                },
+                "60": {
+                    "desc": "link0 internal error"
+                },
+                "61": {
+                    "desc": "link1 internal error"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "IOHS_DLP_FIR_SMP",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5,
+                        "6": 6,
+                        "7": 7
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "IOHS_DLP_FIR_SMP": [
+            {
+                "reg_name": "IOHS_DLP_CONFIG",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_CONTROL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_SEC_CONFIG",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_OPTICAL_CONFIG",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_TX_LANE_CONTROL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_TX_LANE_CONTROL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_RX_LANE_CONTROL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_RX_LANE_CONTROL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_INFO",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_INFO",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_ERROR_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_ERROR_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_REPLAY_THRESHOLD",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_SL_ECC_THRESHOLD",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_SYN_CAPTURE",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_SYN_CAPTURE",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_EDPL_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_EDPL_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK0_QUALITY",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_LINK1_QUALITY",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_DLL_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            },
+            {
+                "reg_name": "IOHS_DLP_MISC_ERROR_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            }
+        ]
+    }
+}

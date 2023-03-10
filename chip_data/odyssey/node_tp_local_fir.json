@@ -1,0 +1,251 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "TP_LOCAL_FIR": {
+            "instances": {
+                "0": "0x01040100"
+            }
+        },
+        "TP_LOCAL_FIR_MASK": {
+            "instances": {
+                "0": "0x01040102"
+            }
+        },
+        "TP_LOCAL_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x01040104"
+            }
+        },
+        "TP_LOCAL_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x01040105"
+            }
+        },
+        "TP_LOCAL_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x01040106"
+            }
+        },
+        "TP_LOCAL_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x01040107"
+            }
+        },
+        "TP_LOCAL_FIR_WOF": {
+            "instances": {
+                "0": "0x01040108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "TP_LOCAL_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "TP_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "TP_LOCAL_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR/LFIR parity error"
+                },
+                "1": {
+                    "desc": "CPLT_CTRL - PCB access error"
+                },
+                "2": {
+                    "desc": "CC - PCB access error"
+                },
+                "3": {
+                    "desc": "CC - clock control error"
+                },
+                "4": {
+                    "desc": "PSC - PSCOM Access Error"
+                },
+                "5": {
+                    "desc": "PSC - internal or ring interface error"
+                },
+                "6": {
+                    "desc": "THERM - various errors"
+                },
+                "7": {
+                    "desc": "DBG - SCOM parity fail"
+                },
+                "8": {
+                    "desc": "unused"
+                },
+                "9": {
+                    "desc": "FSI errors (OTP, I2C)"
+                },
+                "10": {
+                    "desc": "Trace00 - SCOM parity error"
+                },
+                "11": {
+                    "desc": "ITR - FMU error"
+                },
+                "12": {
+                    "desc": "ITR - PCB error"
+                },
+                "13": {
+                    "desc": "PCB master - timeout"
+                },
+                "14": {
+                    "desc": "I2CM - parity errors"
+                },
+                "15:17": {
+                    "desc": "unused"
+                },
+                "18": {
+                    "desc": "Error reported from one or more PCB responder - PLL lock/unlock"
+                },
+                "19": {
+                    "desc": "SBE - PPE internal hardware error"
+                },
+                "20": {
+                    "desc": "SBE - PPE external hardware error"
+                },
+                "21": {
+                    "desc": "SBE - PPE code error"
+                },
+                "22": {
+                    "desc": "SBE - PPE debug code breakpoint"
+                },
+                "23": {
+                    "desc": "SBE - PPE in halted state"
+                },
+                "24": {
+                    "desc": "SBE - PPE watchdog timeout"
+                },
+                "25:26": {
+                    "desc": "SBE - unused"
+                },
+                "27": {
+                    "desc": "SBE - PPE triggers DBG"
+                },
+                "28:29": {
+                    "desc": "unused"
+                },
+                "30": {
+                    "desc": "PCB controller - multicast group member count underrun"
+                },
+                "31": {
+                    "desc": "PCB controller - parity error"
+                },
+                "32:35": {
+                    "desc": "unused"
+                },
+                "36": {
+                    "desc": "PIBMEM"
+                },
+                "37": {
+                    "desc": "PIBMEM"
+                },
+                "38:44": {
+                    "desc": "unused"
+                },
+                "45": {
+                    "desc": "SPI controller 0 error"
+                },
+                "46:62": {
+                    "desc": "unused"
+                },
+                "63": {
+                    "desc": "external local checkstop"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,411 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "CFIR_IOHS_CS": {
+            "instances": {
+                "0": "0x18040000",
+                "1": "0x19040000",
+                "2": "0x1A040000",
+                "3": "0x1B040000",
+                "4": "0x1C040000",
+                "5": "0x1D040000",
+                "6": "0x1E040000",
+                "7": "0x1F040000"
+            }
+        },
+        "CFIR_IOHS_CS_MASK": {
+            "instances": {
+                "0": "0x18040040",
+                "1": "0x19040040",
+                "2": "0x1A040040",
+                "3": "0x1B040040",
+                "4": "0x1C040040",
+                "5": "0x1D040040",
+                "6": "0x1E040040",
+                "7": "0x1F040040"
+            }
+        },
+        "CFIR_IOHS_RE": {
+            "instances": {
+                "0": "0x18040001",
+                "1": "0x19040001",
+                "2": "0x1A040001",
+                "3": "0x1B040001",
+                "4": "0x1C040001",
+                "5": "0x1D040001",
+                "6": "0x1E040001",
+                "7": "0x1F040001"
+            }
+        },
+        "CFIR_IOHS_RE_MASK": {
+            "instances": {
+                "0": "0x18040041",
+                "1": "0x19040041",
+                "2": "0x1A040041",
+                "3": "0x1B040041",
+                "4": "0x1C040041",
+                "5": "0x1D040041",
+                "6": "0x1E040041",
+                "7": "0x1F040041"
+            }
+        },
+        "CFIR_IOHS_SPA": {
+            "instances": {
+                "0": "0x18040002",
+                "1": "0x19040002",
+                "2": "0x1A040002",
+                "3": "0x1B040002",
+                "4": "0x1C040002",
+                "5": "0x1D040002",
+                "6": "0x1E040002",
+                "7": "0x1F040002"
+            }
+        },
+        "CFIR_IOHS_SPA_MASK": {
+            "instances": {
+                "0": "0x18040042",
+                "1": "0x19040042",
+                "2": "0x1A040042",
+                "3": "0x1B040042",
+                "4": "0x1C040042",
+                "5": "0x1D040042",
+                "6": "0x1E040042",
+                "7": "0x1F040042"
+            }
+        },
+        "CFIR_IOHS_UCS": {
+            "instances": {
+                "0": "0x18040003",
+                "1": "0x19040003",
+                "2": "0x1A040003",
+                "3": "0x1B040003",
+                "4": "0x1C040003",
+                "5": "0x1D040003",
+                "6": "0x1E040003",
+                "7": "0x1F040003"
+            }
+        },
+        "CFIR_IOHS_UCS_MASK": {
+            "instances": {
+                "0": "0x18040043",
+                "1": "0x19040043",
+                "2": "0x1A040043",
+                "3": "0x1B040043",
+                "4": "0x1C040043",
+                "5": "0x1D040043",
+                "6": "0x1E040043",
+                "7": "0x1F040043"
+            }
+        },
+        "CFIR_IOHS_HA": {
+            "instances": {
+                "0": "0x18040004",
+                "1": "0x19040004",
+                "2": "0x1A040004",
+                "3": "0x1B040004",
+                "4": "0x1C040004",
+                "5": "0x1D040004",
+                "6": "0x1E040004",
+                "7": "0x1F040004"
+            }
+        },
+        "CFIR_IOHS_HA_MASK": {
+            "instances": {
+                "0": "0x18040044",
+                "1": "0x19040044",
+                "2": "0x1A040044",
+                "3": "0x1B040044",
+                "4": "0x1C040044",
+                "5": "0x1D040044",
+                "6": "0x1E040044",
+                "7": "0x1F040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_IOHS_CS": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_IOHS_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_IOHS_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from IOHS_LOCAL_FIR",
+                    "child_node": {
+                        "name": "IOHS_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from IOHS_DLP_FIR",
+                    "child_node": {
+                        "name": "IOHS_DLP_PHY_CONFIG",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_IOHS_RE": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_IOHS_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_IOHS_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from IOHS_LOCAL_FIR",
+                    "child_node": {
+                        "name": "IOHS_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from IOHS_DLP_FIR",
+                    "child_node": {
+                        "name": "IOHS_DLP_PHY_CONFIG",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_IOHS_SPA": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_IOHS_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_IOHS_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from IOHS_LOCAL_FIR",
+                    "child_node": {
+                        "name": "IOHS_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from IOHS_DLP_FIR",
+                    "child_node": {
+                        "name": "IOHS_DLP_PHY_CONFIG",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_IOHS_UCS": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_IOHS_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_IOHS_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from IOHS_LOCAL_FIR",
+                    "child_node": {
+                        "name": "IOHS_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_IOHS_HA": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_IOHS_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_IOHS_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from IOHS_LOCAL_FIR",
+                    "child_node": {
+                        "name": "IOHS_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3,
+                            "4": 4,
+                            "5": 5,
+                            "6": 6,
+                            "7": 7
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

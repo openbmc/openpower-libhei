@@ -1,0 +1,512 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "MCBIST_FIR": {
+            "instances": {
+                "0": "0x08011400"
+            }
+        },
+        "MCBIST_FIR_MASK": {
+            "instances": {
+                "0": "0x08011402"
+            }
+        },
+        "MCBIST_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08011404"
+            }
+        },
+        "MCBIST_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08011405"
+            }
+        },
+        "MCBIST_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08011406"
+            }
+        },
+        "MCBIST_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08011407"
+            }
+        },
+        "MCBIST_FIR_WOF": {
+            "instances": {
+                "0": "0x08011408"
+            }
+        },
+        "MBSEC0": {
+            "instances": {
+                "0": "0x08011455"
+            }
+        },
+        "MBSEC1": {
+            "instances": {
+                "0": "0x08011456"
+            }
+        },
+        "MBSTR": {
+            "instances": {
+                "0": "0x08011457"
+            }
+        },
+        "MBSSYMEC0": {
+            "instances": {
+                "0": "0x08011458"
+            }
+        },
+        "MBSSYMEC1": {
+            "instances": {
+                "0": "0x08011459"
+            }
+        },
+        "MBSSYMEC2": {
+            "instances": {
+                "0": "0x0801145A"
+            }
+        },
+        "MBSSYMEC3": {
+            "instances": {
+                "0": "0x0801145B"
+            }
+        },
+        "MBSSYMEC4": {
+            "instances": {
+                "0": "0x0801145C"
+            }
+        },
+        "MBSSYMEC5": {
+            "instances": {
+                "0": "0x0801145D"
+            }
+        },
+        "MBSSYMEC6": {
+            "instances": {
+                "0": "0x0801145E"
+            }
+        },
+        "MBSSYMEC7": {
+            "instances": {
+                "0": "0x0801145F"
+            }
+        },
+        "MBSSYMEC8": {
+            "instances": {
+                "0": "0x08011460"
+            }
+        },
+        "MBSSYMEC9": {
+            "instances": {
+                "0": "0x08011461"
+            }
+        },
+        "MBSMSEC": {
+            "instances": {
+                "0": "0x08011469"
+            }
+        },
+        "MBNCER": {
+            "instances": {
+                "0": "0x0801146A"
+            }
+        },
+        "MBRCER": {
+            "instances": {
+                "0": "0x0801146B"
+            }
+        },
+        "MBMPER": {
+            "instances": {
+                "0": "0x0801146C"
+            }
+        },
+        "MBUER": {
+            "instances": {
+                "0": "0x0801146D"
+            }
+        },
+        "MBAUER": {
+            "instances": {
+                "0": "0x0801146E"
+            }
+        },
+        "MBA_ERR_MASK_0": {
+            "instances": {
+                "0": "0x08011473"
+            }
+        },
+        "MBA_ERR_MASK_1": {
+            "instances": {
+                "0": "0x08011474"
+            }
+        },
+        "MBSEVR0": {
+            "instances": {
+                "0": "0x0801147E"
+            }
+        },
+        "MCBAGRA": {
+            "instances": {
+                "0": "0x080114D6"
+            }
+        },
+        "MCBMCAT": {
+            "instances": {
+                "0": "0x080114D7"
+            }
+        },
+        "MCB_CNTL": {
+            "instances": {
+                "0": "0x080114DB"
+            }
+        },
+        "MCB_CNTLSTAT": {
+            "instances": {
+                "0": "0x080114DC"
+            }
+        },
+        "MCBCFG": {
+            "instances": {
+                "0": "0x080114E0"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MCBIST_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBIST_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBIST_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBIST_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MCBIST_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MCBIST_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Internal parity error in scom component"
+                },
+                "1": {
+                    "desc": "Invalid maint address"
+                },
+                "2": {
+                    "desc": "Command address timeout"
+                },
+                "3": {
+                    "desc": "Internal FSM error"
+                },
+                "4": {
+                    "desc": "CSS Array uncorrected CE or UE"
+                },
+                "5": {
+                    "desc": "MCBIST data error"
+                },
+                "6": {
+                    "desc": "Hard NCE ETE attn"
+                },
+                "7": {
+                    "desc": "Soft NCE ETE attn"
+                },
+                "8": {
+                    "desc": "Int NCE ETE attn"
+                },
+                "9": {
+                    "desc": "IUE ETE attn"
+                },
+                "10": {
+                    "desc": "ICE (IMPE) ETE attn"
+                },
+                "11": {
+                    "desc": "MCBIST program complete"
+                },
+                "12": {
+                    "desc": "MCBIST CCS subtest done"
+                },
+                "13": {
+                    "desc": "WAT debug bus attn"
+                },
+                "14": {
+                    "desc": "SCOM recoverable register parity error"
+                },
+                "15": {
+                    "desc": "SCOM fatal reg parity error"
+                },
+                "16": {
+                    "desc": "SCOM WAT and debug reg parity error"
+                },
+                "17": {
+                    "desc": "IAUE ETE attn"
+                },
+                "18": {
+                    "desc": "IRCD ETE attn"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MCBIST_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "MCBIST_FIR": [
+            {
+                "reg_name": "MBSEC0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSEC1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSTR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC3",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC4",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC5",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC6",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC7",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC8",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSSYMEC9",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSMSEC",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBNCER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBRCER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBMPER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBUER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBA_ERR_MASK_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBA_ERR_MASK_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBAUER",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MBSEVR0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCBAGRA",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCBMCAT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCB_CNTL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCB_CNTLSTAT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MCBCFG",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

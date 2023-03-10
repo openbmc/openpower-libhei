@@ -1,0 +1,228 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PBAF_FIR": {
+            "instances": {
+                "0": "0x03011DC0"
+            }
+        },
+        "PBAF_FIR_MASK": {
+            "instances": {
+                "0": "0x03011DC3"
+            }
+        },
+        "PBAF_FIR_ACT0": {
+            "instances": {
+                "0": "0x03011DC6"
+            }
+        },
+        "PBAF_FIR_ACT1": {
+            "instances": {
+                "0": "0x03011DC7"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PBAF_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PBAF_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAF_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAF_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAF_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PBAF_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAF_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAF_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PBAF_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "PB CRESP Addr Error Received for Forwarded Read Request"
+                },
+                "1": {
+                    "desc": "PB Read Data Timeout for Forwarded Request"
+                },
+                "2": {
+                    "desc": "PB Read Data SUE Error for Forwarded Request"
+                },
+                "3": {
+                    "desc": "PB Read Data UE Error for Forwarded Request"
+                },
+                "4": {
+                    "desc": "PB Read Data CE Error for Forwarded Request"
+                },
+                "5": {
+                    "desc": "PB Unexpected CRESP"
+                },
+                "6": {
+                    "desc": "PB Unexpected Data"
+                },
+                "7": {
+                    "desc": "PB Tag parity Error Detected"
+                },
+                "8": {
+                    "desc": "PB CRESP Addr Error Received for Forwarded Write Request"
+                },
+                "9": {
+                    "desc": "PB Invalid CRESP"
+                },
+                "10": {
+                    "desc": "PB CRESP ACK Dead response received for Forwarded Read request"
+                },
+                "11": {
+                    "desc": "PB OPERATIONAL Timeout detected"
+                },
+                "12": {
+                    "desc": "BCUE PowerBus Link Dead"
+                },
+                "13": {
+                    "desc": "PB CRESP Addr Error Received for BCUE Write Request"
+                },
+                "14": {
+                    "desc": "BCDE PowerBus Link Dead"
+                },
+                "15": {
+                    "desc": "PB CRESP Addr Error Received for BCDE Read Request"
+                },
+                "16": {
+                    "desc": "PB Read Data Timeout for BCDE Request"
+                },
+                "17": {
+                    "desc": "PB Read Data SUE Error for BCDE Request"
+                },
+                "18": {
+                    "desc": "PB Read Data UE Error for BCDE Request"
+                },
+                "19": {
+                    "desc": "PB Read Data CE Error for BCDE Request"
+                },
+                "20": {
+                    "desc": "Internal Logic Error"
+                },
+                "21": {
+                    "desc": "Byte count is less than full cache line"
+                },
+                "22": {
+                    "desc": "PBAXRCV Low data before High Data"
+                },
+                "23": {
+                    "desc": "PBAXRCV Low data timeout"
+                },
+                "24": {
+                    "desc": "PBAXRCV Reservation data timeout"
+                },
+                "25": {
+                    "desc": "Illegal PBAX Flow"
+                },
+                "26": {
+                    "desc": "PBAXSND engine retry threshold reached sending Phase 1"
+                },
+                "27": {
+                    "desc": "PBAXSND engine retry threshold reached sending Phase 2"
+                },
+                "28": {
+                    "desc": "PBAXSND Reservation Timeout"
+                },
+                "29": {
+                    "desc": "PB CRESP ACK Dead response received"
+                },
+                "30": {
+                    "desc": "PBAXIRCV Low data before High Data"
+                },
+                "31": {
+                    "desc": "PBAXIRCV Low data timeout"
+                },
+                "32": {
+                    "desc": "PBAXIRCV Reservation data timeout"
+                },
+                "33": {
+                    "desc": "Illegal PBAX Flow"
+                },
+                "34": {
+                    "desc": "PBAXISND engine retry threshold reached sending Phase 1"
+                },
+                "35": {
+                    "desc": "PBAXISND engine retry threshold reached sending Phase 2"
+                },
+                "36": {
+                    "desc": "PBAXISND Reservation Timeout"
+                },
+                "37": {
+                    "desc": "spare"
+                },
+                "38": {
+                    "desc": "spare"
+                },
+                "39": {
+                    "desc": "spare"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PBAF_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

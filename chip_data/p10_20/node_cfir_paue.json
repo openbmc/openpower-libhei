@@ -1,0 +1,433 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "CFIR_PAUE_CS": {
+            "instances": {
+                "0": "0x10040000",
+                "1": "0x11040000"
+            }
+        },
+        "CFIR_PAUE_CS_MASK": {
+            "instances": {
+                "0": "0x10040040",
+                "1": "0x11040040"
+            }
+        },
+        "CFIR_PAUE_RE": {
+            "instances": {
+                "0": "0x10040001",
+                "1": "0x11040001"
+            }
+        },
+        "CFIR_PAUE_RE_MASK": {
+            "instances": {
+                "0": "0x10040041",
+                "1": "0x11040041"
+            }
+        },
+        "CFIR_PAUE_SPA": {
+            "instances": {
+                "0": "0x10040002",
+                "1": "0x11040002"
+            }
+        },
+        "CFIR_PAUE_SPA_MASK": {
+            "instances": {
+                "0": "0x10040042",
+                "1": "0x11040042"
+            }
+        },
+        "CFIR_PAUE_UCS": {
+            "instances": {
+                "0": "0x10040003",
+                "1": "0x11040003"
+            }
+        },
+        "CFIR_PAUE_UCS_MASK": {
+            "instances": {
+                "0": "0x10040043",
+                "1": "0x11040043"
+            }
+        },
+        "CFIR_PAUE_HA": {
+            "instances": {
+                "0": "0x10040004",
+                "1": "0x11040004"
+            }
+        },
+        "CFIR_PAUE_HA_MASK": {
+            "instances": {
+                "0": "0x10040044",
+                "1": "0x11040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_PAUE_CS": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PAUE_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PAUE_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PAU_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PAU_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from PAU_FIR_0",
+                    "child_node": {
+                        "name": "PAU_FIR_0",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PAU_FIR_1",
+                    "child_node": {
+                        "name": "PAU_FIR_1",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from PAU_FIR_2",
+                    "child_node": {
+                        "name": "PAU_FIR_2",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PAU_PHY_FIR",
+                    "child_node": {
+                        "name": "PAU_PHY_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAU_PTL_FIR",
+                    "child_node": {
+                        "name": "PAU_PTL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PAUE_RE": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PAUE_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PAUE_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PAU_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PAU_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from PAU_FIR_0",
+                    "child_node": {
+                        "name": "PAU_FIR_0",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PAU_FIR_1",
+                    "child_node": {
+                        "name": "PAU_FIR_1",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from PAU_FIR_2",
+                    "child_node": {
+                        "name": "PAU_FIR_2",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PAU_PHY_FIR",
+                    "child_node": {
+                        "name": "PAU_PHY_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAU_PTL_FIR",
+                    "child_node": {
+                        "name": "PAU_PTL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PAUE_SPA": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PAUE_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PAUE_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PAU_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PAU_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PAU_PHY_FIR",
+                    "child_node": {
+                        "name": "PAU_PHY_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAU_PTL_FIR",
+                    "child_node": {
+                        "name": "PAU_PTL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PAUE_UCS": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PAUE_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PAUE_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PAU_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PAU_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from PAU_FIR_0",
+                    "child_node": {
+                        "name": "PAU_FIR_0",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from PAU_FIR_1",
+                    "child_node": {
+                        "name": "PAU_FIR_1",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from PAU_FIR_2",
+                    "child_node": {
+                        "name": "PAU_FIR_2",
+                        "inst": {
+                            "0": 0,
+                            "1": 3
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PAU_PHY_FIR",
+                    "child_node": {
+                        "name": "PAU_PHY_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_PAUE_HA": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_PAUE_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_PAUE_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from PAU_LOCAL_FIR",
+                    "child_node": {
+                        "name": "PAU_LOCAL_FIR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

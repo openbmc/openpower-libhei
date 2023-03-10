@@ -1,0 +1,322 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PCI_ETU_FIR": {
+            "instances": {
+                "0": "0x08010908",
+                "1": "0x08010948",
+                "2": "0x08010988",
+                "3": "0x09010908",
+                "4": "0x09010948",
+                "5": "0x09010988"
+            }
+        },
+        "PCI_ETU_FIR_MASK": {
+            "instances": {
+                "0": "0x0801090B",
+                "1": "0x0801094B",
+                "2": "0x0801098B",
+                "3": "0x0901090B",
+                "4": "0x0901094B",
+                "5": "0x0901098B"
+            }
+        },
+        "PCI_ETU_FIR_ACT0": {
+            "instances": {
+                "0": "0x0801090E",
+                "1": "0x0801094E",
+                "2": "0x0801098E",
+                "3": "0x0901090E",
+                "4": "0x0901094E",
+                "5": "0x0901098E"
+            }
+        },
+        "PCI_ETU_FIR_ACT1": {
+            "instances": {
+                "0": "0x0801090F",
+                "1": "0x0801094F",
+                "2": "0x0801098F",
+                "3": "0x0901090F",
+                "4": "0x0901094F",
+                "5": "0x0901098F"
+            }
+        },
+        "PCI_ETU_FIR_WOF": {
+            "instances": {
+                "0": "0x08010910",
+                "1": "0x08010950",
+                "2": "0x08010990",
+                "3": "0x09010910",
+                "4": "0x09010950",
+                "5": "0x09010990"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PCI_ETU_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_ETU_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_ETU_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_ETU_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_ETU_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_ETU_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_ETU_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_ETU_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_ETU_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "AIB_COMMAND_INVALID"
+                },
+                "1": {
+                    "desc": "AIB_ADDRESS_INVALID"
+                },
+                "2": {
+                    "desc": "AIB_ACCESS_ERROR"
+                },
+                "3": {
+                    "desc": "PAPR_OUTBOUND_INJECT_ERROR"
+                },
+                "4": {
+                    "desc": "AIB_FATAL_CLASS_ERROR"
+                },
+                "5": {
+                    "desc": "AIB_INF_CLASS_ERROR"
+                },
+                "6": {
+                    "desc": "spare"
+                },
+                "7": {
+                    "desc": "PE_STOP_STATE_SIGNALED"
+                },
+                "8": {
+                    "desc": "OUT_COMMON_ARRAY_FATAL_ERROR"
+                },
+                "9": {
+                    "desc": "OUT_COMMON_LATCH_FATAL_ERROR"
+                },
+                "10": {
+                    "desc": "OUT_COMMON_LOGIC_FATAL_ERROR"
+                },
+                "11": {
+                    "desc": "BLIF_OUT_INTERFACE_PARITY_ERROR"
+                },
+                "12": {
+                    "desc": "CFG_WRITE_CA_OR_UR_RESPONSE"
+                },
+                "13": {
+                    "desc": "MMIO_REQUEST_TIMEOUT"
+                },
+                "14": {
+                    "desc": "OUT_RRB_SOURCED_ERROR"
+                },
+                "15": {
+                    "desc": "CFG_LOGIC_SIGNALED_ERROR"
+                },
+                "16": {
+                    "desc": "RSB_REG_REQUEST_ADDRESS_ERROR"
+                },
+                "17": {
+                    "desc": "RSB_FDA_FATAL_ERROR"
+                },
+                "18": {
+                    "desc": "RSB_FDA_INF_ERROR"
+                },
+                "19": {
+                    "desc": "RSB_FDB_FATAL_ERROR"
+                },
+                "20": {
+                    "desc": "RSB_FDB_INF_ERROR"
+                },
+                "21": {
+                    "desc": "RSB_ERR_FATAL_ERROR"
+                },
+                "22": {
+                    "desc": "RSB_ERR_INF_ERROR"
+                },
+                "23": {
+                    "desc": "RSB_DBG_FATAL_ERROR"
+                },
+                "24": {
+                    "desc": "RSB_DBG_INF_ERROR"
+                },
+                "25": {
+                    "desc": "PCIE_REQUEST_ACCESS_ERROR"
+                },
+                "26": {
+                    "desc": "RSB_BUS_LOGIC_ERROR"
+                },
+                "27": {
+                    "desc": "RSB_UVI_FATAL_ERROR"
+                },
+                "28": {
+                    "desc": "RSB_UVI_INF_ERROR"
+                },
+                "29": {
+                    "desc": "SCOM_FATAL_ERROR"
+                },
+                "30": {
+                    "desc": "SCOM_INF_ERROR"
+                },
+                "31": {
+                    "desc": "PCIE_MACRO_ERROR_ACTIVE_STATUS"
+                },
+                "32": {
+                    "desc": "ARB_IODA_FATAL_ERROR"
+                },
+                "33": {
+                    "desc": "ARB_MSI_PE_MATCH_ERROR"
+                },
+                "34": {
+                    "desc": "ARB_MSI_ADDRESS_ERROR"
+                },
+                "35": {
+                    "desc": "ARB_TVT_ERROR"
+                },
+                "36": {
+                    "desc": "ARB_RCVD_FATAL_ERROR_MSG"
+                },
+                "37": {
+                    "desc": "ARB_RCVD_NONFATAL_ERROR_MSG"
+                },
+                "38": {
+                    "desc": "ARB_RCVD_CORRECTIBLE_ERROR_MSG"
+                },
+                "39": {
+                    "desc": "PAPR_INBOUND_INJECT_ERROR"
+                },
+                "40": {
+                    "desc": "ARB_COMMON_FATAL_ERROR"
+                },
+                "41": {
+                    "desc": "ARB_TABLE_BAR_DISABLED_ERROR"
+                },
+                "42": {
+                    "desc": "ARB_BLIF_COMPLETION_ERROR"
+                },
+                "43": {
+                    "desc": "ARB_PCT_TIMEOUT_ERROR"
+                },
+                "44": {
+                    "desc": "ARB_ECC_CORRECTABLE_ERROR"
+                },
+                "45": {
+                    "desc": "ARB_ECC_UNCORRECTABLE_ERROR"
+                },
+                "46": {
+                    "desc": "ARB_TLP_POISON_SIGNALED"
+                },
+                "47": {
+                    "desc": "ARB_RTT_PENUM_INVALID_ERROR"
+                },
+                "48": {
+                    "desc": "MRG_COMMON_FATAL_ERROR"
+                },
+                "49": {
+                    "desc": "MRG_TABLE_BAR_DISABLED_ERROR"
+                },
+                "50": {
+                    "desc": "MRG_ECC_CORRECTABLE_ERROR"
+                },
+                "51": {
+                    "desc": "MRG_ECC_UNCORRECTABLE_ERROR"
+                },
+                "52": {
+                    "desc": "MRG_AIB2_TX_TIMEOUT_ERROR"
+                },
+                "53": {
+                    "desc": "MRG_MRT_ERROR"
+                },
+                "54": {
+                    "desc": "spare"
+                },
+                "55": {
+                    "desc": "spare"
+                },
+                "56": {
+                    "desc": "TCE_IODA_PAGE_ACCESS_ERROR"
+                },
+                "57": {
+                    "desc": "TCE_REQUEST_TIMEOUT_ERROR"
+                },
+                "58": {
+                    "desc": "TCE_UNEXPECTED_RESPONSE_ERROR"
+                },
+                "59": {
+                    "desc": "TCE_COMMON_FATAL_ERROR"
+                },
+                "60": {
+                    "desc": "TCE_ECC_CORRECTABLE_ERROR"
+                },
+                "61": {
+                    "desc": "TCE_ECC_UNCORRECTABLE_ERROR"
+                },
+                "62": {
+                    "desc": "spare"
+                },
+                "63": {
+                    "desc": "FIR_INTERNAL_PARITY_ERROR"
+                }
+            }
+        }
+    }
+}

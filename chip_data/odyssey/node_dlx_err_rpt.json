@@ -1,0 +1,123 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "isolation_nodes": {
+        "DLX_ERR_RPT": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000003FFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000003FFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000003FFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "DLX_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000003FFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "50": {
+                    "desc": "buffer UE"
+                },
+                "51": {
+                    "desc": "insufficient working lanes"
+                },
+                "52": {
+                    "desc": "bad CRC from TLXT"
+                },
+                "53": {
+                    "desc": "flit hammer"
+                },
+                "54": {
+                    "desc": "TX lane reversal"
+                },
+                "55": {
+                    "desc": "RX receiving slow A"
+                },
+                "56": {
+                    "desc": "RX receiving illegal run length"
+                },
+                "57": {
+                    "desc": "control parity error"
+                },
+                "58": {
+                    "desc": "scom register parity error"
+                },
+                "59": {
+                    "desc": "truncated flit from TL"
+                },
+                "60": {
+                    "desc": "illegal run length from TL"
+                },
+                "61": {
+                    "desc": "ack pointer overflow"
+                },
+                "62": {
+                    "desc": "UE on bus from TLXT"
+                },
+                "63": {
+                    "desc": "ECC UE on dword containing run length"
+                }
+            }
+        }
+    }
+}
