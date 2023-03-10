@@ -1,0 +1,756 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "HCA_ERR_RPT_HOLD_REG": {
+            "instances": {
+                "0": "0x03011D56"
+            }
+        },
+        "INT_CQ_ERR_RPT_HOLD": {
+            "instances": {
+                "0": "0x02010839"
+            }
+        },
+        "INT_CQ_ERR_INFO1": {
+            "instances": {
+                "0": "0x0201083B"
+            }
+        },
+        "INT_CQ_ERR_INFO2": {
+            "instances": {
+                "0": "0x0201083C"
+            }
+        },
+        "INT_CQ_ERR_INFO3": {
+            "instances": {
+                "0": "0x0201083D"
+            }
+        },
+        "INT_PC_ERR0_WOF": {
+            "instances": {
+                "0": "0x02010AC2"
+            }
+        },
+        "INT_PC_ERR0_WOF_DETAIL": {
+            "instances": {
+                "0": "0x02010AC3"
+            }
+        },
+        "INT_PC_ERR0_FATAL": {
+            "instances": {
+                "0": "0x02010AC4"
+            }
+        },
+        "INT_PC_ERR0_RECOV": {
+            "instances": {
+                "0": "0x02010AC5"
+            }
+        },
+        "INT_PC_ERR0_INFO": {
+            "instances": {
+                "0": "0x02010AC6"
+            }
+        },
+        "INT_PC_ERR1_WOF": {
+            "instances": {
+                "0": "0x02010ACA"
+            }
+        },
+        "INT_PC_ERR1_WOF_DETAIL": {
+            "instances": {
+                "0": "0x02010ACB"
+            }
+        },
+        "INT_PC_ERR1_FATAL": {
+            "instances": {
+                "0": "0x02010ACC"
+            }
+        },
+        "INT_PC_ERR1_RECOV": {
+            "instances": {
+                "0": "0x02010ACD"
+            }
+        },
+        "INT_PC_ERR1_INFO": {
+            "instances": {
+                "0": "0x02010ACE"
+            }
+        },
+        "INT_PC_NXC_WOF_ERR": {
+            "instances": {
+                "0": "0x02010AD2"
+            }
+        },
+        "INT_PC_NXC_WOF_ERR_DETAIL": {
+            "instances": {
+                "0": "0x02010AD3"
+            }
+        },
+        "INT_PC_NXC_FATAL_ERR": {
+            "instances": {
+                "0": "0x02010AD4"
+            }
+        },
+        "INT_PC_NXC_RECOV_ERR": {
+            "instances": {
+                "0": "0x02010AD5"
+            }
+        },
+        "INT_PC_NXC_INFO_ERR": {
+            "instances": {
+                "0": "0x02010AD6"
+            }
+        },
+        "INT_VC_WOF_ERR_G0": {
+            "instances": {
+                "0": "0x020109C2"
+            }
+        },
+        "INT_VC_WOF_ERR_G0_DETAIL": {
+            "instances": {
+                "0": "0x020109C3"
+            }
+        },
+        "INT_VC_FATAL_ERR_G0": {
+            "instances": {
+                "0": "0x020109C4"
+            }
+        },
+        "INT_VC_RECOV_ERR_G0": {
+            "instances": {
+                "0": "0x020109C5"
+            }
+        },
+        "INT_VC_INFO_ERR_G0": {
+            "instances": {
+                "0": "0x020109C6"
+            }
+        },
+        "INT_VC_WOF_ERR_G1": {
+            "instances": {
+                "0": "0x020109CA"
+            }
+        },
+        "INT_VC_WOF_ERR_G1_DETAIL": {
+            "instances": {
+                "0": "0x020109CB"
+            }
+        },
+        "INT_VC_FATAL_ERR_G1": {
+            "instances": {
+                "0": "0x020109CC"
+            }
+        },
+        "INT_VC_RECOV_ERR_G1": {
+            "instances": {
+                "0": "0x020109CD"
+            }
+        },
+        "INT_VC_INFO_ERR_G1": {
+            "instances": {
+                "0": "0x020109CE"
+            }
+        },
+        "NMMU_CQ_ERR_RPT_0": {
+            "instances": {
+                "0": "0x02010C22",
+                "1": "0x03010C22"
+            }
+        },
+        "NX_CQ_ERR_RPT_0": {
+            "instances": {
+                "0": "0x020110A2"
+            }
+        },
+        "NX_CQ_ERR_RPT_1": {
+            "instances": {
+                "0": "0x020110A1"
+            }
+        },
+        "SU_DMA_ERROR_REPORT_0": {
+            "instances": {
+                "0": "0x02011057"
+            }
+        },
+        "SU_DMA_ERROR_REPORT_1": {
+            "instances": {
+                "0": "0x02011058"
+            }
+        },
+        "OCC_SCOM_ERR_RPT": {
+            "instances": {
+                "0": "0x0101080A"
+            }
+        },
+        "OCC_SCOM_ERR_RPT2": {
+            "instances": {
+                "0": "0x0101080B"
+            }
+        },
+        "PB_TL_LINK_SYN_01": {
+            "instances": {
+                "0": "0x10011812",
+                "1": "0x11011812",
+                "2": "0x12011812",
+                "3": "0x13011812"
+            }
+        },
+        "PB_TL_LINK_SYN_23": {
+            "instances": {
+                "0": "0x10011813",
+                "1": "0x11011813",
+                "2": "0x12011813",
+                "3": "0x13011813"
+            }
+        },
+        "PB_EN_DOB_ECC_ERR": {
+            "instances": {
+                "0": "0x10011818",
+                "1": "0x11011818",
+                "2": "0x12011818",
+                "3": "0x13011818"
+            }
+        },
+        "PB_MISC_CFG": {
+            "instances": {
+                "0": "0x10011825",
+                "1": "0x11011825",
+                "2": "0x12011825",
+                "3": "0x13011825"
+            }
+        },
+        "PB_STATION_MODE_EN1": {
+            "instances": {
+                "0": "0x0301120A"
+            }
+        },
+        "PB_STATION_MODE_EN2": {
+            "instances": {
+                "0": "0x0301124A"
+            }
+        },
+        "PB_STATION_MODE_EN3": {
+            "instances": {
+                "0": "0x0301128A"
+            }
+        },
+        "PB_STATION_MODE_EN4": {
+            "instances": {
+                "0": "0x030112CA"
+            }
+        },
+        "PB_STATION_MODE_EQ": {
+            "instances": {
+                "0": "0x0301100A",
+                "1": "0x0301104A",
+                "2": "0x0301108A",
+                "3": "0x030110CA",
+                "4": "0x0301110A",
+                "5": "0x0301114A",
+                "6": "0x0301118A",
+                "7": "0x030111CA"
+            }
+        },
+        "PB_STATION_MODE_ES1": {
+            "instances": {
+                "0": "0x0301130A"
+            }
+        },
+        "PB_STATION_MODE_ES2": {
+            "instances": {
+                "0": "0x0301134A"
+            }
+        },
+        "PB_STATION_MODE_ES3": {
+            "instances": {
+                "0": "0x0301138A"
+            }
+        },
+        "PB_STATION_MODE_ES4": {
+            "instances": {
+                "0": "0x030113CA"
+            }
+        },
+        "PBA_ERR_RPT0": {
+            "instances": {
+                "0": "0x03011DCC"
+            }
+        },
+        "PBA_ERR_RPT1": {
+            "instances": {
+                "0": "0x03011DCD"
+            }
+        },
+        "PBA_ERR_RPT2": {
+            "instances": {
+                "0": "0x03011DCE"
+            }
+        },
+        "PBAO_ERR_RPT_1": {
+            "instances": {
+                "0": "0x01010CCD"
+            }
+        },
+        "PBAO_ERR_RPT_2": {
+            "instances": {
+                "0": "0x01010CCE"
+            }
+        },
+        "PBAIB_CERR_RPT_REG": {
+            "instances": {
+                "0": "0x0801084B",
+                "1": "0x0801088B",
+                "2": "0x080108CB",
+                "3": "0x0901084B",
+                "4": "0x0901088B",
+                "5": "0x090108CB"
+            }
+        },
+        "PCI_NFIR_ERR_RPT0": {
+            "instances": {
+                "0": "0x0301184A",
+                "1": "0x0301188A",
+                "2": "0x030118CA",
+                "3": "0x0201184A",
+                "4": "0x0201188A",
+                "5": "0x020118CA"
+            }
+        },
+        "PCI_NFIR_ERR_RPT1": {
+            "instances": {
+                "0": "0x0301184B",
+                "1": "0x0301188B",
+                "2": "0x030118CB",
+                "3": "0x0201184B",
+                "4": "0x0201188B",
+                "5": "0x020118CB"
+            }
+        }
+    },
+    "capture_groups": {
+        "HCA_FIR": [
+            {
+                "reg_name": "HCA_ERR_RPT_HOLD_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "INT_CQ_FIR": [
+            {
+                "reg_name": "INT_CQ_ERR_RPT_HOLD",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_CQ_ERR_INFO1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_CQ_ERR_INFO2",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_CQ_ERR_INFO3",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR0_WOF",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR0_WOF_DETAIL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR0_FATAL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR0_RECOV",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR0_INFO",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR1_WOF",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR1_WOF_DETAIL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR1_FATAL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR1_RECOV",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_ERR1_INFO",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_NXC_WOF_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_NXC_WOF_ERR_DETAIL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_NXC_FATAL_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_NXC_RECOV_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_PC_NXC_INFO_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_WOF_ERR_G0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_WOF_ERR_G0_DETAIL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_FATAL_ERR_G0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_RECOV_ERR_G0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_INFO_ERR_G0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_WOF_ERR_G1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_WOF_ERR_G1_DETAIL",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_FATAL_ERR_G1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_RECOV_ERR_G1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "INT_VC_INFO_ERR_G1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "NMMU_CQ_FIR": [
+            {
+                "reg_name": "NMMU_CQ_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ],
+        "NX_CQ_FIR": [
+            {
+                "reg_name": "NX_CQ_ERR_RPT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "NX_CQ_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "NX_DMA_ENG_FIR": [
+            {
+                "reg_name": "SU_DMA_ERROR_REPORT_0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "SU_DMA_ERROR_REPORT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "OCC_FIR": [
+            {
+                "reg_name": "OCC_SCOM_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "OCC_SCOM_ERR_RPT2",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PAU_PTL_FIR": [
+            {
+                "reg_name": "PB_TL_LINK_SYN_01",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3
+                }
+            },
+            {
+                "reg_name": "PB_TL_LINK_SYN_23",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3
+                }
+            },
+            {
+                "reg_name": "PB_EN_DOB_ECC_ERR",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3
+                }
+            },
+            {
+                "reg_name": "PB_MISC_CFG",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3
+                }
+            }
+        ],
+        "PB_STATION_FIR_EN1": [
+            {
+                "reg_name": "PB_STATION_MODE_EN1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_EN2": [
+            {
+                "reg_name": "PB_STATION_MODE_EN2",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_EN3": [
+            {
+                "reg_name": "PB_STATION_MODE_EN3",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_EN4": [
+            {
+                "reg_name": "PB_STATION_MODE_EN4",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_EQ": [
+            {
+                "reg_name": "PB_STATION_MODE_EQ",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5,
+                    "6": 6,
+                    "7": 7
+                }
+            }
+        ],
+        "PB_STATION_FIR_ES1": [
+            {
+                "reg_name": "PB_STATION_MODE_ES1",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_ES2": [
+            {
+                "reg_name": "PB_STATION_MODE_ES2",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_ES3": [
+            {
+                "reg_name": "PB_STATION_MODE_ES3",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PB_STATION_FIR_ES4": [
+            {
+                "reg_name": "PB_STATION_MODE_ES4",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PBAF_FIR": [
+            {
+                "reg_name": "PBA_ERR_RPT0",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PBA_ERR_RPT1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PBA_ERR_RPT2",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PBAO_FIR": [
+            {
+                "reg_name": "PBAO_ERR_RPT_1",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PBAO_ERR_RPT_2",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PCI_FIR": [
+            {
+                "reg_name": "PBAIB_CERR_RPT_REG",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5
+                }
+            }
+        ],
+        "PCI_NEST_FIR": [
+            {
+                "reg_name": "PCI_NFIR_ERR_RPT0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5
+                }
+            },
+            {
+                "reg_name": "PCI_NFIR_ERR_RPT1",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1,
+                    "2": 2,
+                    "3": 3,
+                    "4": 4,
+                    "5": 5
+                }
+            }
+        ]
+    }
+}

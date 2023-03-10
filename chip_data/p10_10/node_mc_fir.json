@@ -1,0 +1,336 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "MC_FIR": {
+            "instances": {
+                "0": "0x0C010C00",
+                "1": "0x0D010C00",
+                "2": "0x0E010C00",
+                "3": "0x0F010C00"
+            }
+        },
+        "MC_FIR_MASK": {
+            "instances": {
+                "0": "0x0C010C03",
+                "1": "0x0D010C03",
+                "2": "0x0E010C03",
+                "3": "0x0F010C03"
+            }
+        },
+        "MC_FIR_ACT0": {
+            "instances": {
+                "0": "0x0C010C06",
+                "1": "0x0D010C06",
+                "2": "0x0E010C06",
+                "3": "0x0F010C06"
+            }
+        },
+        "MC_FIR_ACT1": {
+            "instances": {
+                "0": "0x0C010C07",
+                "1": "0x0D010C07",
+                "2": "0x0E010C07",
+                "3": "0x0F010C07"
+            }
+        },
+        "MC_FIR_ACT2": {
+            "instances": {
+                "0": "0x0C010C09",
+                "1": "0x0D010C09",
+                "2": "0x0E010C09",
+                "3": "0x0F010C09"
+            }
+        },
+        "MC_FIR_WOF": {
+            "instances": {
+                "0": "0x0C010C08",
+                "1": "0x0D010C08",
+                "2": "0x0E010C08",
+                "3": "0x0F010C08"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MC_FIR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "MC internal recoverable error"
+                },
+                "1": {
+                    "desc": "MC internal non-recoverable error"
+                },
+                "2": {
+                    "desc": "MC powerbus protocol error"
+                },
+                "3": {
+                    "desc": "MC inband bar with incorrect ttype"
+                },
+                "4": {
+                    "desc": "MC multiple BAR hit"
+                },
+                "5": {
+                    "desc": "Non-zero ECC syndrome for PowerBus write data"
+                },
+                "6": {
+                    "desc": "reserved"
+                },
+                "7": {
+                    "desc": "reserved"
+                },
+                "8": {
+                    "desc": "Command list state machine timeout"
+                },
+                "9": {
+                    "desc": "reserved"
+                },
+                "10": {
+                    "desc": "reserved"
+                },
+                "11": {
+                    "desc": "WAT0 event occurred"
+                },
+                "12": {
+                    "desc": "WAT1 event occurred"
+                },
+                "13": {
+                    "desc": "WAT2 event occurred"
+                },
+                "14": {
+                    "desc": "WAT3 event occurred"
+                },
+                "15": {
+                    "desc": "Plus One Prefetch generated command did not hit any BARs"
+                },
+                "16": {
+                    "desc": "Plus One Prefetch generated command hit config or mmio BAR"
+                },
+                "17": {
+                    "desc": "Parity Error in WAT/Debug config register"
+                },
+                "18": {
+                    "desc": "reserved"
+                },
+                "19": {
+                    "desc": "reserved"
+                },
+                "20": {
+                    "desc": "Incoming Powerbus Command hit multiple valid configured topology IDs"
+                },
+                "21": {
+                    "desc": "reserved"
+                },
+                "22": {
+                    "desc": "Secure mem facility access privilege error by originating thread"
+                },
+                "23": {
+                    "desc": "Multiple sync cmds received by an MC, or while one is pending"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MC_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3
+                    }
+                }
+            ]
+        }
+    }
+}

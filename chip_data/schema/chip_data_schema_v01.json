@@ -1,0 +1,332 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Chip Data Schema",
+    "version": 1,
+    "type": "object",
+    "required": ["version", "model_ec"],
+    "additionalProperties": false,
+    "properties": {
+        "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1
+        },
+        "model_ec": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/model_ec" }
+        },
+        "registers": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^\\w+$": { "$ref": "#/$defs/register" }
+            }
+        },
+        "isolation_nodes": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^\\w+$": { "$ref": "#/$defs/isolation_node" }
+            }
+        },
+        "root_nodes": {
+            "type": "object",
+            "propertyNames": { "$ref": "#/$defs/attn_type" },
+            "patternProperties": {
+                "": { "$ref": "#/$defs/root_node" }
+            }
+        },
+        "capture_groups": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^\\w+$": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/capture_register" }
+                }
+            }
+        }
+    },
+    "$defs": {
+        "name": {
+            "type": "string",
+            "pattern": "^\\w+$"
+        },
+        "instance": {
+            "type": "integer",
+            "minimum": 0
+        },
+        "instance_array": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "$ref": "#/$defs/instance" }
+        },
+        "instance_map": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^[0-9]+$": { "$ref": "#/$defs/instance" }
+            }
+        },
+        "hex_string": {
+            "type": "string",
+            "pattern": "^0x([0-9a-fA-F]{8}){1,2}$"
+        },
+        "model_ec": {
+            "type": "string",
+            "enum": [
+                "P10_10",
+                "P10_20",
+                "EXPLORER_11",
+                "EXPLORER_20",
+                "ODYSSEY_10",
+                "P11S_10",
+                "P11T_10"
+            ]
+        },
+        "attn_type": {
+            "type": "string",
+            "enum": ["CS", "UCS", "RE", "SPA", "HA"]
+        },
+        "reg_type": {
+            "type": "string",
+            "enum": ["SCOM", "IDSCOM"]
+        },
+        "access_type": {
+            "type": "string",
+            "enum": ["RO", "WO", "RW"]
+        },
+        "register": {
+            "type": "object",
+            "required": ["instances"],
+            "additionalProperties": false,
+            "properties": {
+                "reg_type": { "$ref": "#/$defs/reg_type" },
+                "access": { "$ref": "#/$defs/access_type" },
+                "instances": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^[0-9]+$": { "$ref": "#/$defs/hex_string" }
+                    }
+                }
+            }
+        },
+        "isolation_node": {
+            "type": "object",
+            "required": ["instances", "rules", "bits"],
+            "additionalProperties": false,
+            "properties": {
+                "reg_type": { "$ref": "#/$defs/reg_type" },
+                "instances": { "$ref": "#/$defs/instance_array" },
+                "rules": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/isolation_rule" }
+                },
+                "bits": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^[0-9]+(:[0-9]+)?$": {
+                            "$ref": "#/$defs/isolation_bit"
+                        }
+                    }
+                },
+                "capture_groups": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/capture_group" }
+                }
+            }
+        },
+        "isolation_rule": {
+            "type": "object",
+            "required": ["attn_type", "node_inst", "expr"],
+            "additionalProperties": false,
+            "properties": {
+                "attn_type": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/attn_type" }
+                },
+                "node_inst": { "$ref": "#/$defs/instance_array" },
+                "expr": { "$ref": "#/$defs/isolation_rule_expression" }
+            }
+        },
+        "isolation_rule_expression": {
+            "type": "object",
+            "required": ["expr_type"],
+            "properties": {
+                "expr_type": {
+                    "type": "string",
+                    "enum": [
+                        "reg",
+                        "int",
+                        "and",
+                        "or",
+                        "not",
+                        "lshift",
+                        "rshift"
+                    ]
+                },
+                "reg_name": { "$ref": "#/$defs/name" },
+                "reg_inst": { "$ref": "#/$defs/instance_map" },
+                "int_value": { "$ref": "#/$defs/hex_string" },
+                "expr": { "$ref": "#/$defs/isolation_rule_expression" },
+                "exprs": {
+                    "type": "array",
+                    "minItems": 2,
+                    "items": { "$ref": "#/$defs/isolation_rule_expression" }
+                },
+                "shift_value": {
+                    "type": "integer",
+                    "minimum": 0
+                }
+            },
+            "allOf": [
+                {
+                    "if": { "properties": { "expr_type": { "const": "reg" } } },
+                    "then": {
+                        "required": ["reg_name"],
+                        "not": {
+                            "required": [
+                                "int_value",
+                                "shift_value",
+                                "expr",
+                                "exprs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": { "properties": { "expr_type": { "const": "int" } } },
+                    "then": {
+                        "required": ["int_value"],
+                        "not": {
+                            "required": [
+                                "reg_name",
+                                "reg_inst",
+                                "shift_value",
+                                "expr",
+                                "exprs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "expr_type": { "enum": ["and", "or"] }
+                        }
+                    },
+                    "then": {
+                        "required": ["exprs"],
+                        "not": {
+                            "required": [
+                                "reg_name",
+                                "reg_inst",
+                                "int_value",
+                                "shift_value",
+                                "expr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": { "properties": { "expr_type": { "const": "not" } } },
+                    "then": {
+                        "required": ["expr"],
+                        "not": {
+                            "required": [
+                                "reg_name",
+                                "reg_inst",
+                                "int_value",
+                                "shift_value",
+                                "exprs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "expr_type": { "enum": ["lshift", "rshift"] }
+                        }
+                    },
+                    "then": {
+                        "required": ["expr", "shift_value"],
+                        "not": {
+                            "required": [
+                                "reg_name",
+                                "reg_inst",
+                                "int_value",
+                                "exprs"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        "isolation_bit": {
+            "type": "object",
+            "required": ["desc"],
+            "additionalProperties": false,
+            "properties": {
+                "desc": {
+                    "type": "string"
+                },
+                "child_node": {
+                    "type": "object",
+                    "required": ["name"],
+                    "additionalProperties": false,
+                    "properties": {
+                        "name": { "$ref": "#/$defs/name" },
+                        "inst": { "$ref": "#/$defs/instance_map" }
+                    }
+                },
+                "capture_groups": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": { "$ref": "#/$defs/capture_group" }
+                }
+            }
+        },
+        "capture_group": {
+            "type": "object",
+            "required": ["group_name", "group_inst"],
+            "additionalProperties": false,
+            "properties": {
+                "group_name": { "$ref": "#/$defs/name" },
+                "group_inst": { "$ref": "#/$defs/instance_map" }
+            }
+        },
+        "root_node": {
+            "type": "object",
+            "required": ["name", "inst"],
+            "additionalProperties": false,
+            "properties": {
+                "name": { "$ref": "#/$defs/name" },
+                "inst": { "$ref": "#/$defs/instance" }
+            }
+        },
+        "capture_register": {
+            "type": "object",
+            "required": ["reg_name", "reg_inst"],
+            "additionalProperties": false,
+            "properties": {
+                "reg_name": { "$ref": "#/$defs/name" },
+                "reg_inst": { "$ref": "#/$defs/instance_map" }
+            }
+        }
+    }
+}

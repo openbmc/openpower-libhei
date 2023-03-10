@@ -1,0 +1,390 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PAU_PTL_FIR": {
+            "instances": {
+                "0": "0x10011800",
+                "1": "0x11011800",
+                "2": "0x12011800",
+                "3": "0x13011800"
+            }
+        },
+        "PAU_PTL_FIR_MASK": {
+            "instances": {
+                "0": "0x10011803",
+                "1": "0x11011803",
+                "2": "0x12011803",
+                "3": "0x13011803"
+            }
+        },
+        "PAU_PTL_FIR_ACT0": {
+            "instances": {
+                "0": "0x10011806",
+                "1": "0x11011806",
+                "2": "0x12011806",
+                "3": "0x13011806"
+            }
+        },
+        "PAU_PTL_FIR_ACT1": {
+            "instances": {
+                "0": "0x10011807",
+                "1": "0x11011807",
+                "2": "0x12011807",
+                "3": "0x13011807"
+            }
+        },
+        "PAU_PTL_FIR_WOF": {
+            "instances": {
+                "0": "0x10011808",
+                "1": "0x11011808",
+                "2": "0x12011808",
+                "3": "0x13011808"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PAU_PTL_FIR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_PTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_PTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_PTL_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_PTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PAU_PTL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PAU_PTL_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "fmr00 trained. Even PTL, even half."
+                },
+                "1": {
+                    "desc": "fmr01 trained. Even PTL, odd half."
+                },
+                "2": {
+                    "desc": "fmr02 trained. Odd PTL, even half."
+                },
+                "3": {
+                    "desc": "fmr03 trained. Odd PTL, odd half."
+                },
+                "4": {
+                    "desc": "dob01 ue"
+                },
+                "5": {
+                    "desc": "dob01 ce"
+                },
+                "6": {
+                    "desc": "dob01 sue"
+                },
+                "7": {
+                    "desc": "data outbound switch internal error - even PTL.",
+                    "child_node": {
+                        "name": "PB_DOB01_DIB01_INT_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "dob23 ue"
+                },
+                "9": {
+                    "desc": "dob23 ce"
+                },
+                "10": {
+                    "desc": "dob23 sue"
+                },
+                "11": {
+                    "desc": "data outbound switch internal error - odd PTL.",
+                    "child_node": {
+                        "name": "PB_DOB23_DIB23_INT_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Even PTL, even framer internal error",
+                    "child_node": {
+                        "name": "PB_FM0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Even PTL, outbound switch cmd/presp/cresp internal error"
+                },
+                "14": {
+                    "desc": "Even PTL, odd framer internal error",
+                    "child_node": {
+                        "name": "PB_FM0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Odd PTL, even framer internal error",
+                    "child_node": {
+                        "name": "PB_FM0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Odd PTL, outbound switch cmd/presp/cresp internal error"
+                },
+                "17": {
+                    "desc": "Odd PTL, odd framer internal error",
+                    "child_node": {
+                        "name": "PB_FM0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Even PTL, even parser internal error",
+                    "child_node": {
+                        "name": "PB_PR0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Even PTL, odd parser internal error",
+                    "child_node": {
+                        "name": "PB_PR0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Odd PTL, even parser internal error",
+                    "child_node": {
+                        "name": "PB_PR0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "Odd PTL, odd parser internal error",
+                    "child_node": {
+                        "name": "PB_PR0123_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "22": {
+                    "desc": "Even PTL, even link down"
+                },
+                "23": {
+                    "desc": "Even PTL, odd link down"
+                },
+                "24": {
+                    "desc": "Odd PTL, even link down"
+                },
+                "25": {
+                    "desc": "Odd PTL, odd link down"
+                },
+                "26": {
+                    "desc": "Even PTL data inbound switch internal error",
+                    "child_node": {
+                        "name": "PB_DOB01_DIB01_INT_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Odd PTL data inbound switch internal error",
+                    "child_node": {
+                        "name": "PB_DOB23_DIB23_INT_ERR",
+                        "inst": {
+                            "0": 0,
+                            "1": 1,
+                            "2": 2,
+                            "3": 3
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "mailbox 00 special attention"
+                },
+                "29": {
+                    "desc": "mailbox 01 special attention"
+                },
+                "30": {
+                    "desc": "mailbox 10 special attention"
+                },
+                "31": {
+                    "desc": "mailbox 11 special attention"
+                },
+                "32": {
+                    "desc": "mailbox 20 special attention"
+                },
+                "33": {
+                    "desc": "mailbox 21 special attention"
+                },
+                "34": {
+                    "desc": "mailbox 30 special attention"
+                },
+                "35": {
+                    "desc": "mailbox 31 special attention"
+                },
+                "36": {
+                    "desc": "ptl0 spare"
+                },
+                "37": {
+                    "desc": "ptl1 spare"
+                },
+                "38": {
+                    "desc": "ptl2 spare"
+                },
+                "39": {
+                    "desc": "ptl3 spare"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PAU_PTL_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3
+                    }
+                }
+            ]
+        }
+    }
+}

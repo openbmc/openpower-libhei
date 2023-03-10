@@ -1,0 +1,239 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "PB_FM0123_ERR": {
+            "instances": {
+                "0": "0x10011827",
+                "1": "0x11011827",
+                "2": "0x12011827",
+                "3": "0x13011827"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PB_FM0123_ERR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_FM0123_ERR"
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_FM0123_ERR"
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "PB_FM0123_ERR"
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "fmr0_control_error"
+                },
+                "1": {
+                    "desc": "fmr0_addr_perr"
+                },
+                "2": {
+                    "desc": "fmr0_cc0_crediterr"
+                },
+                "3": {
+                    "desc": "fmr0_cc1_crediterr"
+                },
+                "4": {
+                    "desc": "fmr0_cc2_crediterr"
+                },
+                "5": {
+                    "desc": "fmr0_cc3_crediterr"
+                },
+                "6": {
+                    "desc": "fmr0_dat_hi_perr"
+                },
+                "7": {
+                    "desc": "fmr0_dat_lo_perr"
+                },
+                "8": {
+                    "desc": "fmr0_frame_crediterr"
+                },
+                "9": {
+                    "desc": "fmr0_internal_err"
+                },
+                "10": {
+                    "desc": "fmr0_prsp_ptyerr"
+                },
+                "11": {
+                    "desc": "fmr0_ttag_perr"
+                },
+                "12": {
+                    "desc": "fmr0_vc0_crediterr"
+                },
+                "13": {
+                    "desc": "fmr0_vc1_crediterr"
+                },
+                "14": {
+                    "desc": "fmr0_rtag_ptyerr"
+                },
+                "15": {
+                    "desc": "fmr0_rtag_misc_pty"
+                },
+                "16": {
+                    "desc": "fmr1_control_error"
+                },
+                "17": {
+                    "desc": "fmr1_addr_perr"
+                },
+                "18": {
+                    "desc": "fmr1_cc0_crediterr"
+                },
+                "19": {
+                    "desc": "fmr1_cc1_crediterr"
+                },
+                "20": {
+                    "desc": "fmr1_cc2_crediterr"
+                },
+                "21": {
+                    "desc": "fmr1_cc3_crediterr"
+                },
+                "22": {
+                    "desc": "fmr1_dat_hi_perr"
+                },
+                "23": {
+                    "desc": "fmr1_dat_lo_perr"
+                },
+                "24": {
+                    "desc": "fmr1_frame_crediterr"
+                },
+                "25": {
+                    "desc": "fmr1_internal_err"
+                },
+                "26": {
+                    "desc": "fmr1_prsp_ptyerr"
+                },
+                "27": {
+                    "desc": "fmr1_ttag_perr"
+                },
+                "28": {
+                    "desc": "fmr1_vc0_crediterr"
+                },
+                "29": {
+                    "desc": "fmr1_vc1_crediterr"
+                },
+                "30": {
+                    "desc": "fmr1_rtag_ptyerr"
+                },
+                "31": {
+                    "desc": "fmr1_rtag_misc_pty"
+                },
+                "32": {
+                    "desc": "fmr2_control_error"
+                },
+                "33": {
+                    "desc": "fmr2_addr_perr"
+                },
+                "34": {
+                    "desc": "fmr2_cc0_crediterr"
+                },
+                "35": {
+                    "desc": "fmr2_cc1_crediterr"
+                },
+                "36": {
+                    "desc": "fmr2_cc2_crediterr"
+                },
+                "37": {
+                    "desc": "fmr2_cc3_crediterr"
+                },
+                "38": {
+                    "desc": "fmr2_dat_hi_perr"
+                },
+                "39": {
+                    "desc": "fmr2_dat_lo_perr"
+                },
+                "40": {
+                    "desc": "fmr2_frame_crediterr"
+                },
+                "41": {
+                    "desc": "fmr2_internal_err"
+                },
+                "42": {
+                    "desc": "fmr2_prsp_ptyerr"
+                },
+                "43": {
+                    "desc": "fmr2_ttag_perr"
+                },
+                "44": {
+                    "desc": "fmr2_vc0_crediterr"
+                },
+                "45": {
+                    "desc": "fmr2_vc1_crediterr"
+                },
+                "46": {
+                    "desc": "fmr2_rtag_ptyerr"
+                },
+                "47": {
+                    "desc": "fmr2_rtag_misc_pty"
+                },
+                "48": {
+                    "desc": "fmr3_control_error"
+                },
+                "49": {
+                    "desc": "fmr3_addr_perr"
+                },
+                "50": {
+                    "desc": "fmr3_cc0_crediterr"
+                },
+                "51": {
+                    "desc": "fmr3_cc1_crediterr"
+                },
+                "52": {
+                    "desc": "fmr3_cc2_crediterr"
+                },
+                "53": {
+                    "desc": "fmr3_cc3_crediterr"
+                },
+                "54": {
+                    "desc": "fmr3_dat_hi_perr"
+                },
+                "55": {
+                    "desc": "fmr3_dat_lo_perr"
+                },
+                "56": {
+                    "desc": "fmr3_frame_crediterr"
+                },
+                "57": {
+                    "desc": "fmr3_internal_err"
+                },
+                "58": {
+                    "desc": "fmr3_prsp_ptyerr"
+                },
+                "59": {
+                    "desc": "fmr3_ttag_perr"
+                },
+                "60": {
+                    "desc": "fmr3_vc0_crediterr"
+                },
+                "61": {
+                    "desc": "fmr3_vc1_crediterr"
+                },
+                "62": {
+                    "desc": "fmr3_rtag_ptyerr"
+                },
+                "63": {
+                    "desc": "fmr3_rtag_misc_pty"
+                }
+            }
+        }
+    }
+}

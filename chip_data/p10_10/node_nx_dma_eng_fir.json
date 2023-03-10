@@ -1,0 +1,285 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "NX_DMA_ENG_FIR": {
+            "instances": {
+                "0": "0x02011100"
+            }
+        },
+        "NX_DMA_ENG_FIR_MASK": {
+            "instances": {
+                "0": "0x02011103"
+            }
+        },
+        "NX_DMA_ENG_FIR_ACT0": {
+            "instances": {
+                "0": "0x02011106"
+            }
+        },
+        "NX_DMA_ENG_FIR_ACT1": {
+            "instances": {
+                "0": "0x02011107"
+            }
+        },
+        "NX_DMA_ENG_FIR_WOF": {
+            "instances": {
+                "0": "0x02011108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "NX_DMA_ENG_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_DMA_ENG_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_DMA_ENG_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_DMA_ENG_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_DMA_ENG_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_DMA_ENG_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_DMA_ENG_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_DMA_ENG_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_DMA_ENG_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_DMA_ENG_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NX_DMA_ENG_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_DMA_ENG_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NX_DMA_ENG_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "DMA hang timer expired"
+                },
+                "1": {
+                    "desc": "SHM invalid state"
+                },
+                "2": {
+                    "desc": "reserved"
+                },
+                "3": {
+                    "desc": "reserved"
+                },
+                "4": {
+                    "desc": "Channel 0 842 engine ECC CE"
+                },
+                "5": {
+                    "desc": "Channel 0 842 engine ECC UE"
+                },
+                "6": {
+                    "desc": "Channel 1 842 engine ECC CE"
+                },
+                "7": {
+                    "desc": "Channel 1 842 engine ECC UE"
+                },
+                "8": {
+                    "desc": "DMA Non-zero CSB CC detected"
+                },
+                "9": {
+                    "desc": "DMA array ECC CE"
+                },
+                "10": {
+                    "desc": "DMA outbound write/inbound read ECC CE"
+                },
+                "11": {
+                    "desc": "Channel 4 GZIP ECC CE"
+                },
+                "12": {
+                    "desc": "Channel 4 GZIP ECC UE"
+                },
+                "13": {
+                    "desc": "Channel 4 GZIP ECC PE"
+                },
+                "14": {
+                    "desc": "Error from other SCOM satellites"
+                },
+                "15": {
+                    "desc": "DMA invalid state error (unrecoverable)"
+                },
+                "16": {
+                    "desc": "DMA invalid state error (unrecoverable)"
+                },
+                "17": {
+                    "desc": "DMA array ECC UE"
+                },
+                "18": {
+                    "desc": "DMA outbound write/inbound read ECC UE"
+                },
+                "19": {
+                    "desc": "DMA inbound read error"
+                },
+                "20": {
+                    "desc": "Channel 0 842 invalid state error"
+                },
+                "21": {
+                    "desc": "Channel 1 842 invalid state error"
+                },
+                "22": {
+                    "desc": "Channel 2 SYM invalid state error"
+                },
+                "23": {
+                    "desc": "Channel 3 SYM invalid state error"
+                },
+                "24": {
+                    "desc": "Channel 4 GZIP invalid state error"
+                },
+                "25": {
+                    "desc": "reserved"
+                },
+                "26": {
+                    "desc": "reserved"
+                },
+                "27": {
+                    "desc": "reserved"
+                },
+                "28": {
+                    "desc": "reserved"
+                },
+                "29": {
+                    "desc": "reserved"
+                },
+                "30": {
+                    "desc": "reserved"
+                },
+                "31": {
+                    "desc": "UE error on CRB QW0 or QW4"
+                },
+                "32": {
+                    "desc": "SUE error on CRB QW0 or QW4"
+                },
+                "33": {
+                    "desc": "SUE error on something other than CRB QW0 or QW4"
+                },
+                "34": {
+                    "desc": "Channel 0 842 watchdog timer expired"
+                },
+                "35": {
+                    "desc": "Channel 1 842 watchdog timer expired"
+                },
+                "36": {
+                    "desc": "Channel 2 SYM watchdog timer expired"
+                },
+                "37": {
+                    "desc": "Channel 3 SYM watchdog timer expired"
+                },
+                "38": {
+                    "desc": "Hypervisor local checkstop"
+                },
+                "39": {
+                    "desc": "Channel 4 Gzip watchdog timer expired"
+                },
+                "40": {
+                    "desc": "reserved"
+                },
+                "41": {
+                    "desc": "reserved"
+                },
+                "42": {
+                    "desc": "reserved"
+                },
+                "43": {
+                    "desc": "reserved"
+                },
+                "44": {
+                    "desc": "reserved"
+                },
+                "45": {
+                    "desc": "reserved"
+                },
+                "46": {
+                    "desc": "reserved"
+                },
+                "47": {
+                    "desc": "reserved"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "NX_DMA_ENG_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

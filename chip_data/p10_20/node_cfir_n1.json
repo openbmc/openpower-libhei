@@ -1,0 +1,906 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "CFIR_N1_CS": {
+            "instances": {
+                "0": "0x03040000"
+            }
+        },
+        "CFIR_N1_CS_MASK": {
+            "instances": {
+                "0": "0x03040040"
+            }
+        },
+        "CFIR_N1_RE": {
+            "instances": {
+                "0": "0x03040001"
+            }
+        },
+        "CFIR_N1_RE_MASK": {
+            "instances": {
+                "0": "0x03040041"
+            }
+        },
+        "CFIR_N1_SPA": {
+            "instances": {
+                "0": "0x03040002"
+            }
+        },
+        "CFIR_N1_SPA_MASK": {
+            "instances": {
+                "0": "0x03040042"
+            }
+        },
+        "CFIR_N1_UCS": {
+            "instances": {
+                "0": "0x03040003"
+            }
+        },
+        "CFIR_N1_UCS_MASK": {
+            "instances": {
+                "0": "0x03040043"
+            }
+        },
+        "CFIR_N1_HA": {
+            "instances": {
+                "0": "0x03040004"
+            }
+        },
+        "CFIR_N1_HA_MASK": {
+            "instances": {
+                "0": "0x03040044"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "CFIR_N1_CS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N1_CS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N1_CS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N1_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N1_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from NMMU_CQ_FIR",
+                    "child_node": {
+                        "name": "NMMU_CQ_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from NMMU_FIR",
+                    "child_node": {
+                        "name": "NMMU_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MCD_FIR",
+                    "child_node": {
+                        "name": "MCD_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from HCA_FIR",
+                    "child_node": {
+                        "name": "HCA_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Attention from LPC_FIR",
+                    "child_node": {
+                        "name": "LPC_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "22": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "23": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from PB_STATION_FIR_EN1",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN1",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from PB_STATION_FIR_EN2",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN2",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from PB_STATION_FIR_EN3",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN3",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from PB_STATION_FIR_EN4",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN4",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from PB_STATION_FIR_ES1",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES1",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from PB_STATION_FIR_ES2",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES2",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from PB_STATION_FIR_ES3",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES3",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from PB_STATION_FIR_ES4",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES4",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "33": {
+                    "desc": "Attention from PB_EXT_FIR",
+                    "child_node": {
+                        "name": "PB_EXT_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from PSIHB_FIR",
+                    "child_node": {
+                        "name": "PSIHB_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from PBAF_FIR",
+                    "child_node": {
+                        "name": "PBAF_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N1_RE": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N1_RE"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N1_RE_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N1_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N1_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from NMMU_CQ_FIR",
+                    "child_node": {
+                        "name": "NMMU_CQ_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from NMMU_FIR",
+                    "child_node": {
+                        "name": "NMMU_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MCD_FIR",
+                    "child_node": {
+                        "name": "MCD_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from HCA_FIR",
+                    "child_node": {
+                        "name": "HCA_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "11": {
+                    "desc": "Attention from LPC_FIR",
+                    "child_node": {
+                        "name": "LPC_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from PCI_NEST_FIR",
+                    "child_node": {
+                        "name": "PCI_NEST_FIR",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "22": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "23": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from PB_STATION_FIR_EN1",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN1",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from PB_STATION_FIR_EN2",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN2",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from PB_STATION_FIR_EN3",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN3",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from PB_STATION_FIR_EN4",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN4",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from PB_STATION_FIR_ES1",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES1",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from PB_STATION_FIR_ES2",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES2",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from PB_STATION_FIR_ES3",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES3",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from PB_STATION_FIR_ES4",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES4",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from PSIHB_FIR",
+                    "child_node": {
+                        "name": "PSIHB_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from PBAF_FIR",
+                    "child_node": {
+                        "name": "PBAF_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N1_SPA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N1_SPA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N1_SPA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N1_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N1_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MCD_FIR",
+                    "child_node": {
+                        "name": "MCD_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "20": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "22": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "23": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from PB_STATION_FIR_EQ",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EQ",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from PB_STATION_FIR_EN1",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN1",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from PB_STATION_FIR_EN2",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN2",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from PB_STATION_FIR_EN3",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN3",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from PB_STATION_FIR_EN4",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_EN4",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from PB_STATION_FIR_ES1",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES1",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from PB_STATION_FIR_ES2",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES2",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from PB_STATION_FIR_ES3",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES3",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from PB_STATION_FIR_ES4",
+                    "child_node": {
+                        "name": "PB_STATION_FIR_ES4",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N1_UCS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N1_UCS"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N1_UCS_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N1_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N1_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "5": {
+                    "desc": "Attention from NMMU_CQ_FIR",
+                    "child_node": {
+                        "name": "NMMU_CQ_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "6": {
+                    "desc": "Attention from NMMU_FIR",
+                    "child_node": {
+                        "name": "NMMU_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                }
+            }
+        },
+        "CFIR_N1_HA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "CFIR_N1_HA"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "CFIR_N1_HA_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0FFFFFFFFFFFFFFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "4": {
+                    "desc": "Attention from N1_LOCAL_FIR",
+                    "child_node": {
+                        "name": "N1_LOCAL_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

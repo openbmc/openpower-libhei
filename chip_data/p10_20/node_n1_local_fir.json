@@ -1,0 +1,427 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "N1_LOCAL_FIR": {
+            "instances": {
+                "0": "0x03040100"
+            }
+        },
+        "N1_LOCAL_FIR_MASK": {
+            "instances": {
+                "0": "0x03040103"
+            }
+        },
+        "N1_LOCAL_FIR_ACT0": {
+            "instances": {
+                "0": "0x03040106"
+            }
+        },
+        "N1_LOCAL_FIR_ACT1": {
+            "instances": {
+                "0": "0x03040107"
+            }
+        },
+        "N1_LOCAL_FIR_ACT2": {
+            "instances": {
+                "0": "0x03040109"
+            }
+        },
+        "N1_LOCAL_FIR_WOF": {
+            "instances": {
+                "0": "0x03040108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "N1_LOCAL_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "N1_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "N1_LOCAL_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR - Parity or PCB access error"
+                },
+                "1": {
+                    "desc": "CPLT_CTRL - PCB access error"
+                },
+                "2": {
+                    "desc": "CC - PCB access error"
+                },
+                "3": {
+                    "desc": "CC - Clock Control Error"
+                },
+                "4": {
+                    "desc": "PSC - PSCOM access error"
+                },
+                "5": {
+                    "desc": "PSC - internal or ring interface error"
+                },
+                "6": {
+                    "desc": "THERM - internal error"
+                },
+                "7": {
+                    "desc": "THERM - pcb error"
+                },
+                "8": {
+                    "desc": "THERMTRIP - Critical temperature indicator"
+                },
+                "9": {
+                    "desc": "THERMTRIP - Fatal temperature indicator"
+                },
+                "10": {
+                    "desc": "VOLTTRIP - Voltage sense error"
+                },
+                "11": {
+                    "desc": "DBG - scom parity fail"
+                },
+                "12": {
+                    "desc": "reserved"
+                },
+                "13": {
+                    "desc": "reserved"
+                },
+                "14": {
+                    "desc": "reserved"
+                },
+                "15": {
+                    "desc": "reserved"
+                },
+                "16": {
+                    "desc": "reserved"
+                },
+                "17": {
+                    "desc": "reserved"
+                },
+                "18": {
+                    "desc": "reserved"
+                },
+                "19": {
+                    "desc": "reserved"
+                },
+                "20": {
+                    "desc": "Trace00 - scom parity err"
+                },
+                "21": {
+                    "desc": "Trace01 - scom parity err"
+                },
+                "22": {
+                    "desc": "unused"
+                },
+                "23": {
+                    "desc": "unused"
+                },
+                "24": {
+                    "desc": "unused"
+                },
+                "25": {
+                    "desc": "unused"
+                },
+                "26": {
+                    "desc": "unused"
+                },
+                "27": {
+                    "desc": "unused"
+                },
+                "28": {
+                    "desc": "unused"
+                },
+                "29": {
+                    "desc": "unused"
+                },
+                "30": {
+                    "desc": "unused"
+                },
+                "31": {
+                    "desc": "unused"
+                },
+                "32": {
+                    "desc": "unused"
+                },
+                "33": {
+                    "desc": "unused"
+                },
+                "34": {
+                    "desc": "unused"
+                },
+                "35": {
+                    "desc": "unused"
+                },
+                "36": {
+                    "desc": "unused"
+                },
+                "37": {
+                    "desc": "unused"
+                },
+                "38": {
+                    "desc": "unused"
+                },
+                "39": {
+                    "desc": "unused"
+                },
+                "40": {
+                    "desc": "unused"
+                },
+                "41": {
+                    "desc": "unused"
+                },
+                "42": {
+                    "desc": "unused"
+                },
+                "43": {
+                    "desc": "unused"
+                },
+                "44": {
+                    "desc": "unused"
+                },
+                "45": {
+                    "desc": "unused"
+                },
+                "46": {
+                    "desc": "unused"
+                },
+                "47": {
+                    "desc": "unused"
+                },
+                "48": {
+                    "desc": "unused"
+                },
+                "49": {
+                    "desc": "unused"
+                },
+                "50": {
+                    "desc": "unused"
+                },
+                "51": {
+                    "desc": "unused"
+                },
+                "52": {
+                    "desc": "unused"
+                },
+                "53": {
+                    "desc": "unused"
+                },
+                "54": {
+                    "desc": "unused"
+                },
+                "55": {
+                    "desc": "unused"
+                },
+                "56": {
+                    "desc": "Firmware signaled power bus quiesce failed"
+                },
+                "57": {
+                    "desc": "Firmware signaled power bus system quiesce failed"
+                },
+                "58": {
+                    "desc": "Firmware signaled deadman timer tigger occurred"
+                },
+                "59": {
+                    "desc": "Fimware signaled power bus chip quiesce failed"
+                },
+                "60": {
+                    "desc": "Hypervisor / Hostboot / OPAL initiated Terminate Immediate"
+                },
+                "61": {
+                    "desc": "Host detected LPC timeout"
+                },
+                "62": {
+                    "desc": "reserved for software use"
+                },
+                "63": {
+                    "desc": "ext_local_xstop"
+                }
+            }
+        }
+    }
+}

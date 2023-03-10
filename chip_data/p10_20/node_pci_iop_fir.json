@@ -1,0 +1,176 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PCI_IOP_FIR": {
+            "instances": {
+                "0": "0x08011100",
+                "1": "0x08011500",
+                "2": "0x09011100",
+                "3": "0x09011500"
+            }
+        },
+        "PCI_IOP_FIR_MASK": {
+            "instances": {
+                "0": "0x08011103",
+                "1": "0x08011503",
+                "2": "0x09011103",
+                "3": "0x09011503"
+            }
+        },
+        "PCI_IOP_FIR_ACT0": {
+            "instances": {
+                "0": "0x08011106",
+                "1": "0x08011506",
+                "2": "0x09011106",
+                "3": "0x09011506"
+            }
+        },
+        "PCI_IOP_FIR_ACT1": {
+            "instances": {
+                "0": "0x08011107",
+                "1": "0x08011507",
+                "2": "0x09011107",
+                "3": "0x09011507"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PCI_IOP_FIR": {
+            "instances": [0, 1, 2, 3],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_IOP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_IOP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_IOP_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_IOP_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_IOP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_IOP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_IOP_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_IOP_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_IOP_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_IOP_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_IOP_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_IOP_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Correctable error in PH0 arrays"
+                },
+                "1": {
+                    "desc": "Uncorrectable error in PH0 arrays"
+                },
+                "2": {
+                    "desc": "Correctable error in PH1 arrays"
+                },
+                "3": {
+                    "desc": "Uncorrectable error in PH1 arrays"
+                },
+                "4": {
+                    "desc": "Correctable error from SCOM in WRAP0"
+                },
+                "5": {
+                    "desc": "Uncorrectable error from SCOM in WRAP0"
+                },
+                "6": {
+                    "desc": "Correctable error from SCOM in WRAP1"
+                },
+                "7": {
+                    "desc": "Uncorrectable error from SCOM in WRAP1"
+                },
+                "8": {
+                    "desc": "Correctable error from SCRUB in WRAP0"
+                },
+                "9": {
+                    "desc": "Uncorrectable error from SCRUB in WRAP0"
+                },
+                "10": {
+                    "desc": "Correctable error from SCRUB in WRAP1"
+                },
+                "11": {
+                    "desc": "Uncorrectable error from SCRUB in WRAP1"
+                }
+            }
+        }
+    }
+}

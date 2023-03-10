@@ -1,0 +1,276 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "NMMU_FIR": {
+            "instances": {
+                "0": "0x02010C40",
+                "1": "0x03010C40"
+            }
+        },
+        "NMMU_FIR_MASK": {
+            "instances": {
+                "0": "0x02010C43",
+                "1": "0x03010C43"
+            }
+        },
+        "NMMU_FIR_ACT0": {
+            "instances": {
+                "0": "0x02010C46",
+                "1": "0x03010C46"
+            }
+        },
+        "NMMU_FIR_ACT1": {
+            "instances": {
+                "0": "0x02010C47",
+                "1": "0x03010C47"
+            }
+        },
+        "NMMU_FIR_WOF": {
+            "instances": {
+                "0": "0x02010C48",
+                "1": "0x03010C48"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "NMMU_FIR": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Fabric DIn xlat array CE error detected"
+                },
+                "1": {
+                    "desc": "Fabric DIn xlat array UE error detected"
+                },
+                "2": {
+                    "desc": "Fabric DIn xlat array SUE error detected"
+                },
+                "3": {
+                    "desc": "Fabric mst rd array CE error detected"
+                },
+                "4": {
+                    "desc": "Fabric mst rd array UE error detected"
+                },
+                "5": {
+                    "desc": "Fabric mst rd array SUE error detected"
+                },
+                "6": {
+                    "desc": "Fabric xlat protocol error detected"
+                },
+                "7": {
+                    "desc": "Fabric xlat op timeout detected"
+                },
+                "8": {
+                    "desc": "SLB directory parity error detected"
+                },
+                "9": {
+                    "desc": "SLB cache parity error detected"
+                },
+                "10": {
+                    "desc": "SLB lru parity error detected"
+                },
+                "11": {
+                    "desc": "SLB multi-hit error detected"
+                },
+                "12": {
+                    "desc": "TLB directory parity error detected"
+                },
+                "13": {
+                    "desc": "TLB cache parity error detected"
+                },
+                "14": {
+                    "desc": "TLB lru parity error detected"
+                },
+                "15": {
+                    "desc": "TLB multi-hit error detected"
+                },
+                "16": {
+                    "desc": "Segment fault detected"
+                },
+                "17": {
+                    "desc": "Page fault detected due to no matching pte"
+                },
+                "18": {
+                    "desc": "Page fault detected due to basic prot chk fail"
+                },
+                "19": {
+                    "desc": "Page fault detected due to virt prot chk fail"
+                },
+                "20": {
+                    "desc": "Page fault detected due to seid mismatch"
+                },
+                "21": {
+                    "desc": "Address error cresp detected by twsm for read"
+                },
+                "22": {
+                    "desc": "PTE update fail due to armwf mismatch"
+                },
+                "23": {
+                    "desc": "Address error cresp detected by twsm for write"
+                },
+                "24": {
+                    "desc": "Unsupported radix cfg for guest-side"
+                },
+                "25": {
+                    "desc": "Unsupported radix cfg for host-side"
+                },
+                "26": {
+                    "desc": "Invalid wimg setting detected"
+                },
+                "27": {
+                    "desc": "Invalid radix quad access detected"
+                },
+                "28": {
+                    "desc": "Unexpected access to foreign address space"
+                },
+                "29": {
+                    "desc": "Prefetch abort/fail detected"
+                },
+                "30": {
+                    "desc": "Context cache array parity error detected"
+                },
+                "31": {
+                    "desc": "Radix pwc array parity error detected"
+                },
+                "32": {
+                    "desc": "Tablewalk sm control error detected"
+                },
+                "33": {
+                    "desc": "Castout sm control error detected"
+                },
+                "34": {
+                    "desc": "Check-in sm control error detected"
+                },
+                "35": {
+                    "desc": "Invalidate sm control error detected"
+                },
+                "36": {
+                    "desc": "Tablewalk sm timeout error detected"
+                },
+                "37": {
+                    "desc": "Castout sm timeout error detected"
+                },
+                "38": {
+                    "desc": "Check-in sm timeout error detected"
+                },
+                "39": {
+                    "desc": "Invalidate sm timeout error detected"
+                },
+                "40": {
+                    "desc": "NX local checkstop error detected"
+                },
+                "41": {
+                    "desc": "fbc snoop invalidate filter parity error"
+                },
+                "42": {
+                    "desc": "fabric purge threshold exceeded"
+                },
+                "43": {
+                    "desc": "NPU local checkstop error detected"
+                },
+                "44": {
+                    "desc": "FBC local checkstop error detected"
+                },
+                "45": {
+                    "desc": "FBC local checkstop error detected"
+                }
+            }
+        }
+    }
+}

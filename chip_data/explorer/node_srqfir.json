@@ -1,0 +1,252 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "registers": {
+        "SRQFIR": {
+            "instances": {
+                "0": "0x08011400"
+            }
+        },
+        "SRQFIR_MASK": {
+            "instances": {
+                "0": "0x08011403"
+            }
+        },
+        "SRQFIR_ACT0": {
+            "instances": {
+                "0": "0x08011406"
+            }
+        },
+        "SRQFIR_ACT1": {
+            "instances": {
+                "0": "0x08011407"
+            }
+        },
+        "SRQFIR_WOF": {
+            "instances": {
+                "0": "0x08011408"
+            }
+        },
+        "SRQ_ERR_RPT": {
+            "instances": {
+                "0": "0x0801141C"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "SRQFIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQFIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQFIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "SRQFIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "SRQFIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "SRQ recoverable error"
+                },
+                "1": {
+                    "desc": "SRQ nonrecoverable error"
+                },
+                "2": {
+                    "desc": "Refresh overrun"
+                },
+                "3": {
+                    "desc": "WAT error"
+                },
+                "4": {
+                    "desc": "RCD parity error"
+                },
+                "5": {
+                    "desc": "MCB logic error"
+                },
+                "6": {
+                    "desc": "Emergency throttle"
+                },
+                "7": {
+                    "desc": "NCF MCB parity error"
+                },
+                "8": {
+                    "desc": "DDR MBA event n"
+                },
+                "9": {
+                    "desc": "WRQ RRQ hang err"
+                },
+                "10": {
+                    "desc": "SM one hot error"
+                },
+                "11": {
+                    "desc": "Reg parity error"
+                },
+                "12": {
+                    "desc": "Cmd parity error"
+                },
+                "13": {
+                    "desc": "Port fail"
+                },
+                "14": {
+                    "desc": "informational register parity error bit"
+                },
+                "15": {
+                    "desc": "Debug parity error"
+                },
+                "16": {
+                    "desc": "WDF unrecoverable mainline error"
+                },
+                "17": {
+                    "desc": "WDF mmio error"
+                },
+                "18": {
+                    "desc": "WDF array UE on mainline operations (SUE put in mem)"
+                },
+                "19": {
+                    "desc": "WDF mainline dataflow error (SUE not reliably put in mem)"
+                },
+                "20": {
+                    "desc": "WDF scom register parity err, affecting mainline config"
+                },
+                "21": {
+                    "desc": "WDF scom register parity err, affecting scom ops only"
+                },
+                "22": {
+                    "desc": "WDF SCOM fsm parity error"
+                },
+                "23": {
+                    "desc": "WDF write buffer array CE"
+                },
+                "24": {
+                    "desc": "NCF UE"
+                },
+                "25": {
+                    "desc": "Firmware initiated channel fail"
+                },
+                "26": {
+                    "desc": "NCF logic error"
+                },
+                "27": {
+                    "desc": "NCF parity error"
+                },
+                "28": {
+                    "desc": "NCF correctable error"
+                },
+                "29": {
+                    "desc": "Internal scom error"
+                },
+                "30": {
+                    "desc": "Internal scom error copy"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "SRQFIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "SRQFIR": [
+            {
+                "reg_name": "SRQ_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
+    }
+}

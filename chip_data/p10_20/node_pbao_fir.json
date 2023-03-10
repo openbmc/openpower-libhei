@@ -1,0 +1,168 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PBAO_FIR": {
+            "instances": {
+                "0": "0x01010CC0"
+            }
+        },
+        "PBAO_FIR_MASK": {
+            "instances": {
+                "0": "0x01010CC3"
+            }
+        },
+        "PBAO_FIR_ACT0": {
+            "instances": {
+                "0": "0x01010CC6"
+            }
+        },
+        "PBAO_FIR_ACT1": {
+            "instances": {
+                "0": "0x01010CC7"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PBAO_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PBAO_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAO_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAO_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAO_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PBAO_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAO_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PBAO_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PBAO_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "OCI Address Parity Error Det"
+                },
+                "1": {
+                    "desc": "PBA OCI Slave Initialization Error"
+                },
+                "2": {
+                    "desc": "OCI Write Data Parity Error Detected"
+                },
+                "3": {
+                    "desc": "spare"
+                },
+                "4": {
+                    "desc": "BCUE Setup Error"
+                },
+                "5": {
+                    "desc": "BCUE Read Data Parity Error OR MRDERR Asserted"
+                },
+                "6": {
+                    "desc": "BCDE Setup Error"
+                },
+                "7": {
+                    "desc": "BCDE Write Data error indicated by OCI Slave"
+                },
+                "8": {
+                    "desc": "Internal Logic Error"
+                },
+                "9": {
+                    "desc": "Illegal access to OCI Register"
+                },
+                "10": {
+                    "desc": "Push Write Error"
+                },
+                "11": {
+                    "desc": "Push Write Error"
+                },
+                "12": {
+                    "desc": "Illegal PBAX Flow"
+                },
+                "13": {
+                    "desc": "Illegal PBAX Flow"
+                },
+                "14": {
+                    "desc": "PBAXSND Reservation Error"
+                },
+                "15": {
+                    "desc": "PBAXISND Reservation Error"
+                },
+                "16": {
+                    "desc": "htm fifo interface fequency variation error"
+                },
+                "17": {
+                    "desc": "Invalide PB topology translate table entry"
+                },
+                "18": {
+                    "desc": "spare"
+                },
+                "19": {
+                    "desc": "spare"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PBAO_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,469 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "EQ_LOCAL_FIR": {
+            "instances": {
+                "0": "0x20040100",
+                "1": "0x21040100",
+                "2": "0x22040100",
+                "3": "0x23040100",
+                "4": "0x24040100",
+                "5": "0x25040100",
+                "6": "0x26040100",
+                "7": "0x27040100"
+            }
+        },
+        "EQ_LOCAL_FIR_MASK": {
+            "instances": {
+                "0": "0x20040103",
+                "1": "0x21040103",
+                "2": "0x22040103",
+                "3": "0x23040103",
+                "4": "0x24040103",
+                "5": "0x25040103",
+                "6": "0x26040103",
+                "7": "0x27040103"
+            }
+        },
+        "EQ_LOCAL_FIR_ACT0": {
+            "instances": {
+                "0": "0x20040106",
+                "1": "0x21040106",
+                "2": "0x22040106",
+                "3": "0x23040106",
+                "4": "0x24040106",
+                "5": "0x25040106",
+                "6": "0x26040106",
+                "7": "0x27040106"
+            }
+        },
+        "EQ_LOCAL_FIR_ACT1": {
+            "instances": {
+                "0": "0x20040107",
+                "1": "0x21040107",
+                "2": "0x22040107",
+                "3": "0x23040107",
+                "4": "0x24040107",
+                "5": "0x25040107",
+                "6": "0x26040107",
+                "7": "0x27040107"
+            }
+        },
+        "EQ_LOCAL_FIR_ACT2": {
+            "instances": {
+                "0": "0x20040109",
+                "1": "0x21040109",
+                "2": "0x22040109",
+                "3": "0x23040109",
+                "4": "0x24040109",
+                "5": "0x25040109",
+                "6": "0x26040109",
+                "7": "0x27040109"
+            }
+        },
+        "EQ_LOCAL_FIR_WOF": {
+            "instances": {
+                "0": "0x20040108",
+                "1": "0x21040108",
+                "2": "0x22040108",
+                "3": "0x23040108",
+                "4": "0x24040108",
+                "5": "0x25040108",
+                "6": "0x26040108",
+                "7": "0x27040108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "EQ_LOCAL_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "EQ_LOCAL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "EQ_LOCAL_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR - Parity or PCB access error"
+                },
+                "1": {
+                    "desc": "CPLT_CTRL - PCB access error"
+                },
+                "2": {
+                    "desc": "CC - PCB access error"
+                },
+                "3": {
+                    "desc": "CC - Clock Control Error"
+                },
+                "4": {
+                    "desc": "PSC - PSCOM access error"
+                },
+                "5": {
+                    "desc": "PSC - internal or ring interface error"
+                },
+                "6": {
+                    "desc": "THERM1 - internal error"
+                },
+                "7": {
+                    "desc": "THERM1 - pcb error"
+                },
+                "8": {
+                    "desc": "THERMTRIP1 - Critical temperature indicator"
+                },
+                "9": {
+                    "desc": "THERMTRIP1 - Fatal temperature indicator"
+                },
+                "10": {
+                    "desc": "VOLTTRIP1 - Voltage sense error"
+                },
+                "11": {
+                    "desc": "THERM2 - internal error"
+                },
+                "12": {
+                    "desc": "THERM2 - pcb error"
+                },
+                "13": {
+                    "desc": "THERMTRIP2 - Critical temperature indicator"
+                },
+                "14": {
+                    "desc": "THERMTRIP2 - Fatal temperature indicator"
+                },
+                "15": {
+                    "desc": "VOLTTRIP2 - Voltage sense error"
+                },
+                "16": {
+                    "desc": "DBG - scom parity fail"
+                },
+                "17": {
+                    "desc": "reserved"
+                },
+                "18": {
+                    "desc": "reserved"
+                },
+                "19": {
+                    "desc": "reserved"
+                },
+                "20": {
+                    "desc": "L30 Trace Err"
+                },
+                "21": {
+                    "desc": "L31 Trace Err"
+                },
+                "22": {
+                    "desc": "L32 Trace Err"
+                },
+                "23": {
+                    "desc": "L33 Trace Err"
+                },
+                "24": {
+                    "desc": "DCADJ FIR ERR Core 0"
+                },
+                "25": {
+                    "desc": "DCADJ FIR ERR Core 1"
+                },
+                "26": {
+                    "desc": "DCADJ FIR ERR Core 2"
+                },
+                "27": {
+                    "desc": "DCADJ FIR ERR Core 3"
+                },
+                "28": {
+                    "desc": "SKEWADJ FIR ERR Core0"
+                },
+                "29": {
+                    "desc": "SKEWADJ FIR ERR Core1"
+                },
+                "30": {
+                    "desc": "SKEWADJ FIR ERR Core2"
+                },
+                "31": {
+                    "desc": "SKEWADJ FIR ERR Core3"
+                },
+                "32": {
+                    "desc": "DC_SCOM_ERR_0"
+                },
+                "33": {
+                    "desc": "DC_SCOM_ERR_1"
+                },
+                "34": {
+                    "desc": "DC_SCOM_ERR_2"
+                },
+                "35": {
+                    "desc": "DC_SCOM_ERR_3"
+                },
+                "36": {
+                    "desc": "SKEW_SCOM_ERR_0"
+                },
+                "37": {
+                    "desc": "SKEW_SCOM_ERR_1"
+                },
+                "38": {
+                    "desc": "SKEW_SCOM_ERR_2"
+                },
+                "39": {
+                    "desc": "SKEW_SCOM_ERR_3"
+                },
+                "40": {
+                    "desc": "unused"
+                },
+                "41": {
+                    "desc": "unused"
+                },
+                "42": {
+                    "desc": "unused"
+                },
+                "43": {
+                    "desc": "unused"
+                },
+                "44": {
+                    "desc": "unused"
+                },
+                "45": {
+                    "desc": "unused"
+                },
+                "46": {
+                    "desc": "unused"
+                },
+                "47": {
+                    "desc": "unused"
+                },
+                "48": {
+                    "desc": "unused"
+                },
+                "49": {
+                    "desc": "unused"
+                },
+                "50": {
+                    "desc": "unused"
+                },
+                "51": {
+                    "desc": "unused"
+                },
+                "52": {
+                    "desc": "unused"
+                },
+                "53": {
+                    "desc": "unused"
+                },
+                "54": {
+                    "desc": "unused"
+                },
+                "55": {
+                    "desc": "unused"
+                },
+                "56": {
+                    "desc": "unused"
+                },
+                "57": {
+                    "desc": "unused"
+                },
+                "58": {
+                    "desc": "unused"
+                },
+                "59": {
+                    "desc": "unused"
+                },
+                "60": {
+                    "desc": "unused"
+                },
+                "61": {
+                    "desc": "unused"
+                },
+                "62": {
+                    "desc": "unused"
+                },
+                "63": {
+                    "desc": "ext_local_xstop"
+                }
+            }
+        }
+    }
+}

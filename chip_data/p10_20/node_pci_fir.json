@@ -1,0 +1,161 @@
+{
+    "version": 1,
+    "model_ec": ["P10_20"],
+    "registers": {
+        "PCI_FIR": {
+            "instances": {
+                "0": "0x08010840",
+                "1": "0x08010880",
+                "2": "0x080108C0",
+                "3": "0x09010840",
+                "4": "0x09010880",
+                "5": "0x090108C0"
+            }
+        },
+        "PCI_FIR_MASK": {
+            "instances": {
+                "0": "0x08010843",
+                "1": "0x08010883",
+                "2": "0x080108C3",
+                "3": "0x09010843",
+                "4": "0x09010883",
+                "5": "0x090108C3"
+            }
+        },
+        "PCI_FIR_ACT0": {
+            "instances": {
+                "0": "0x08010846",
+                "1": "0x08010886",
+                "2": "0x080108C6",
+                "3": "0x09010846",
+                "4": "0x09010886",
+                "5": "0x090108C6"
+            }
+        },
+        "PCI_FIR_ACT1": {
+            "instances": {
+                "0": "0x08010847",
+                "1": "0x08010887",
+                "2": "0x080108C7",
+                "3": "0x09010847",
+                "4": "0x09010887",
+                "5": "0x090108C7"
+            }
+        },
+        "PCI_FIR_WOF": {
+            "instances": {
+                "0": "0x08010848",
+                "1": "0x08010888",
+                "2": "0x080108C8",
+                "3": "0x09010848",
+                "4": "0x09010888",
+                "5": "0x090108C8"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PCI_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "register parity error"
+                },
+                "1": {
+                    "desc": "hardware error"
+                },
+                "2": {
+                    "desc": "AIB interface error"
+                },
+                "3": {
+                    "desc": "ETU reset error"
+                },
+                "4": {
+                    "desc": "PEC SCOM error"
+                },
+                "5": {
+                    "desc": "spare"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PCI_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5
+                    }
+                }
+            ]
+        }
+    }
+}

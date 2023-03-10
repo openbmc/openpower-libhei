@@ -1,0 +1,207 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "NMMU_CQ_FIR": {
+            "instances": {
+                "0": "0x02010C00",
+                "1": "0x03010C00"
+            }
+        },
+        "NMMU_CQ_FIR_MASK": {
+            "instances": {
+                "0": "0x02010C03",
+                "1": "0x03010C03"
+            }
+        },
+        "NMMU_CQ_FIR_ACT0": {
+            "instances": {
+                "0": "0x02010C06",
+                "1": "0x03010C06"
+            }
+        },
+        "NMMU_CQ_FIR_ACT1": {
+            "instances": {
+                "0": "0x02010C07",
+                "1": "0x03010C07"
+            }
+        },
+        "NMMU_CQ_FIR_WOF": {
+            "instances": {
+                "0": "0x02010C08",
+                "1": "0x03010C08"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "NMMU_CQ_FIR": {
+            "instances": [0, 1],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_CQ_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_CQ_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_CQ_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_CQ_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_CQ_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "NMMU_CQ_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_CQ_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "NMMU_CQ_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "PBI internal parity error"
+                },
+                "1": {
+                    "desc": "PowerBus command hang error"
+                },
+                "2": {
+                    "desc": "PowerBus read address error"
+                },
+                "3": {
+                    "desc": "PowerBus write address error"
+                },
+                "4": {
+                    "desc": "PowerBus miscellaneous error"
+                },
+                "5": {
+                    "desc": "Reserved"
+                },
+                "6": {
+                    "desc": "PowerBus Xlate UE error"
+                },
+                "7": {
+                    "desc": "PowerBus Xlate SUE error"
+                },
+                "8": {
+                    "desc": "PowerBus CE error"
+                },
+                "9": {
+                    "desc": "PowerBus UE error"
+                },
+                "10": {
+                    "desc": "PowerBus SUE error"
+                },
+                "11": {
+                    "desc": "Inbound LCO_ARRAY CE error"
+                },
+                "12": {
+                    "desc": "Inbound LCO_ARRAY UE error"
+                },
+                "13": {
+                    "desc": "Inbound LCO_ARRAY SUE error"
+                },
+                "14": {
+                    "desc": "Inbound array CE error"
+                },
+                "15": {
+                    "desc": "Inbound array UE error"
+                },
+                "16": {
+                    "desc": "internal state error"
+                },
+                "17": {
+                    "desc": "ACK_DEAD cresp received by read command"
+                },
+                "18": {
+                    "desc": "ACK_DEAD cresp received by write command"
+                },
+                "19": {
+                    "desc": "Link check aborted while waiting on data"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "NMMU_CQ_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1
+                    }
+                }
+            ]
+        }
+    }
+}

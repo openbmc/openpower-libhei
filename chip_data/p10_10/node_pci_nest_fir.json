@@ -1,0 +1,227 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "PCI_NEST_FIR": {
+            "instances": {
+                "0": "0x03011840",
+                "1": "0x03011880",
+                "2": "0x030118C0",
+                "3": "0x02011840",
+                "4": "0x02011880",
+                "5": "0x020118C0"
+            }
+        },
+        "PCI_NEST_FIR_MASK": {
+            "instances": {
+                "0": "0x03011843",
+                "1": "0x03011883",
+                "2": "0x030118C3",
+                "3": "0x02011843",
+                "4": "0x02011883",
+                "5": "0x020118C3"
+            }
+        },
+        "PCI_NEST_FIR_ACT0": {
+            "instances": {
+                "0": "0x03011846",
+                "1": "0x03011886",
+                "2": "0x030118C6",
+                "3": "0x02011846",
+                "4": "0x02011886",
+                "5": "0x020118C6"
+            }
+        },
+        "PCI_NEST_FIR_ACT1": {
+            "instances": {
+                "0": "0x03011847",
+                "1": "0x03011887",
+                "2": "0x030118C7",
+                "3": "0x02011847",
+                "4": "0x02011887",
+                "5": "0x020118C7"
+            }
+        },
+        "PCI_NEST_FIR_WOF": {
+            "instances": {
+                "0": "0x03011848",
+                "1": "0x03011888",
+                "2": "0x030118C8",
+                "3": "0x02011848",
+                "4": "0x02011888",
+                "5": "0x020118C8"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PCI_NEST_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_NEST_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_NEST_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_NEST_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_NEST_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_NEST_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_NEST_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "PCI_NEST_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "PCI_NEST_FIR_ACT1"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "BAR Parity Error"
+                },
+                "1": {
+                    "desc": "Non-BAR Parity Error"
+                },
+                "2": {
+                    "desc": "Power Bus to PEC CE"
+                },
+                "3": {
+                    "desc": "Power Bus to PEC UE"
+                },
+                "4": {
+                    "desc": "Power Bus to PEC SUE"
+                },
+                "5": {
+                    "desc": "Array CE"
+                },
+                "6": {
+                    "desc": "Array UE"
+                },
+                "7": {
+                    "desc": "Array SUE"
+                },
+                "8": {
+                    "desc": "Register Array Parity Error"
+                },
+                "9": {
+                    "desc": "Power Bus Interface Parity Error"
+                },
+                "10": {
+                    "desc": "Power Bus Data Hang"
+                },
+                "11": {
+                    "desc": "Power Bus Hang Error"
+                },
+                "12": {
+                    "desc": "RD ARE Error"
+                },
+                "13": {
+                    "desc": "Non-Rd ARE Error"
+                },
+                "14": {
+                    "desc": "PCI Hang Error"
+                },
+                "15": {
+                    "desc": "PCI Clock Error"
+                },
+                "16": {
+                    "desc": "AIB Fence"
+                },
+                "17": {
+                    "desc": "Hardware Error"
+                },
+                "18": {
+                    "desc": "Unsolicited Power Bus Data"
+                },
+                "19": {
+                    "desc": "Unexpected Combined Response"
+                },
+                "20": {
+                    "desc": "Invalid Combined Response"
+                },
+                "21": {
+                    "desc": "Power Bus Unsupported Size"
+                },
+                "22": {
+                    "desc": "Power Bus Unsupported Command"
+                },
+                "23": {
+                    "desc": "reserved"
+                },
+                "24": {
+                    "desc": "reserved"
+                },
+                "25": {
+                    "desc": "reserved"
+                },
+                "26": {
+                    "desc": "Software Defined"
+                },
+                "27": {
+                    "desc": "PEC SCOM Engine Error"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PCI_NEST_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5
+                    }
+                }
+            ]
+        }
+    }
+}

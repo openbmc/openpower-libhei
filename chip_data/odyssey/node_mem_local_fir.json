@@ -1,0 +1,185 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "MEM_LOCAL_FIR": {
+            "instances": {
+                "0": "0x08040100"
+            }
+        },
+        "MEM_LOCAL_FIR_MASK": {
+            "instances": {
+                "0": "0x08040102"
+            }
+        },
+        "MEM_LOCAL_FIR_CFG_XSTOP": {
+            "instances": {
+                "0": "0x08040104"
+            }
+        },
+        "MEM_LOCAL_FIR_CFG_RECOV": {
+            "instances": {
+                "0": "0x08040105"
+            }
+        },
+        "MEM_LOCAL_FIR_CFG_ATTN": {
+            "instances": {
+                "0": "0x08040106"
+            }
+        },
+        "MEM_LOCAL_FIR_CFG_LXSTOP": {
+            "instances": {
+                "0": "0x08040107"
+            }
+        },
+        "MEM_LOCAL_FIR_WOF": {
+            "instances": {
+                "0": "0x08040108"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MEM_LOCAL_FIR": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MEM_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR_CFG_XSTOP"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MEM_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR_CFG_RECOV"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MEM_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR_CFG_ATTN"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MEM_LOCAL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MEM_LOCAL_FIR_CFG_LXSTOP"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "CFIR/LFIR parity error"
+                },
+                "1": {
+                    "desc": "CPLT_CTRL - PCB access error"
+                },
+                "2": {
+                    "desc": "CC - PCB access error"
+                },
+                "3": {
+                    "desc": "CC - clock control error"
+                },
+                "4": {
+                    "desc": "PSC - PSCOM Access Error"
+                },
+                "5": {
+                    "desc": "PSC - internal or ring interface error"
+                },
+                "6": {
+                    "desc": "THERM - various errors"
+                },
+                "7": {
+                    "desc": "DBG - SCOM parity fail"
+                },
+                "8": {
+                    "desc": "unused"
+                },
+                "9": {
+                    "desc": "unused"
+                },
+                "10": {
+                    "desc": "Trace00 - SCOM parity error"
+                },
+                "11:62": {
+                    "desc": "unused"
+                },
+                "63": {
+                    "desc": "external local checkstop"
+                }
+            }
+        }
+    }
+}

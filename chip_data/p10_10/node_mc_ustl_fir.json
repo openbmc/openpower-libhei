@@ -1,0 +1,478 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "MC_USTL_FIR": {
+            "instances": {
+                "0": "0x0C010E00",
+                "1": "0x0C010E40",
+                "2": "0x0D010E00",
+                "3": "0x0D010E40",
+                "4": "0x0E010E00",
+                "5": "0x0E010E40",
+                "6": "0x0F010E00",
+                "7": "0x0F010E40"
+            }
+        },
+        "MC_USTL_FIR_MASK": {
+            "instances": {
+                "0": "0x0C010E03",
+                "1": "0x0C010E43",
+                "2": "0x0D010E03",
+                "3": "0x0D010E43",
+                "4": "0x0E010E03",
+                "5": "0x0E010E43",
+                "6": "0x0F010E03",
+                "7": "0x0F010E43"
+            }
+        },
+        "MC_USTL_FIR_ACT0": {
+            "instances": {
+                "0": "0x0C010E06",
+                "1": "0x0C010E46",
+                "2": "0x0D010E06",
+                "3": "0x0D010E46",
+                "4": "0x0E010E06",
+                "5": "0x0E010E46",
+                "6": "0x0F010E06",
+                "7": "0x0F010E46"
+            }
+        },
+        "MC_USTL_FIR_ACT1": {
+            "instances": {
+                "0": "0x0C010E07",
+                "1": "0x0C010E47",
+                "2": "0x0D010E07",
+                "3": "0x0D010E47",
+                "4": "0x0E010E07",
+                "5": "0x0E010E47",
+                "6": "0x0F010E07",
+                "7": "0x0F010E47"
+            }
+        },
+        "MC_USTL_FIR_ACT2": {
+            "instances": {
+                "0": "0x0C010E09",
+                "1": "0x0C010E49",
+                "2": "0x0D010E09",
+                "3": "0x0D010E49",
+                "4": "0x0E010E09",
+                "5": "0x0E010E49",
+                "6": "0x0F010E09",
+                "7": "0x0F010E49"
+            }
+        },
+        "MC_USTL_FIR_WOF": {
+            "instances": {
+                "0": "0x0C010E08",
+                "1": "0x0C010E48",
+                "2": "0x0D010E08",
+                "3": "0x0D010E48",
+                "4": "0x0E010E08",
+                "5": "0x0E010E48",
+                "6": "0x0F010E08",
+                "7": "0x0F010E48"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MC_USTL_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR_ACT1"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT2"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_USTL_FIR_ACT1"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_USTL_FIR_ACT2"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "Unexpected Flit Data showed up for Chana"
+                },
+                "1": {
+                    "desc": "Unexpected Flit Data showed up for Chanb"
+                },
+                "2": {
+                    "desc": "A unsupported template for a command flit for chana"
+                },
+                "3": {
+                    "desc": "A unsupported template for a command flit for chanb"
+                },
+                "4": {
+                    "desc": "Reserved"
+                },
+                "5": {
+                    "desc": "Reserved"
+                },
+                "6": {
+                    "desc": "WDF CE detected on buffer output"
+                },
+                "7": {
+                    "desc": "WDF UE detected on buffer output"
+                },
+                "8": {
+                    "desc": "WDF SUE detected on buffer output"
+                },
+                "9": {
+                    "desc": "WDF buffer overrun detected"
+                },
+                "10": {
+                    "desc": "WDF detected parity on USTL tag interface"
+                },
+                "11": {
+                    "desc": "WDF detected a scom sequencer error"
+                },
+                "12": {
+                    "desc": "WDF detected a pwctl sequencer error"
+                },
+                "13": {
+                    "desc": "WDF detected a parity error on the misc_reg scom register"
+                },
+                "14": {
+                    "desc": "Parity Error detected in WDF for CL pop"
+                },
+                "15": {
+                    "desc": "WDF detected a non-zero syndrome (CE ore UE) from USTL"
+                },
+                "16": {
+                    "desc": "WDF CMD parity errror"
+                },
+                "17": {
+                    "desc": "Unused"
+                },
+                "18": {
+                    "desc": "Unused"
+                },
+                "19": {
+                    "desc": "Read Buffers overflowed/underflowed (more than 64 in use)"
+                },
+                "20": {
+                    "desc": "WRT CE detected on buffer output"
+                },
+                "21": {
+                    "desc": "WRT UE detected on buffer output"
+                },
+                "22": {
+                    "desc": "WRT SUE detected on buffer output"
+                },
+                "23": {
+                    "desc": "WRT detected a scom sequencer error"
+                },
+                "24": {
+                    "desc": "WRT detected a parity error on the misc_reg scom register"
+                },
+                "25": {
+                    "desc": "WRT Data Syndrome not equal to 0 for input for write buffer"
+                },
+                "26": {
+                    "desc": "No buffer error; Buffer manager parity error"
+                },
+                "27": {
+                    "desc": "A fail response set as checkstop occurred for chana"
+                },
+                "28": {
+                    "desc": "A fail response set as checkstop occurred for chanb"
+                },
+                "29": {
+                    "desc": "A fail response set as recoverable occurred for chana"
+                },
+                "30": {
+                    "desc": "A fail response set as recoverable occurred for chanb"
+                },
+                "31": {
+                    "desc": "A lol drop set as checkstop occurred for chana"
+                },
+                "32": {
+                    "desc": "A lol drop set as checkstop occurred for chanb"
+                },
+                "33": {
+                    "desc": "A lol drop set as recoverable occurred for chana"
+                },
+                "34": {
+                    "desc": "A lol drop set as recoverable occurred for chanb"
+                },
+                "35": {
+                    "desc": "flit data pariry error from dl for chana"
+                },
+                "36": {
+                    "desc": "flit data pariry error from dl for chanb"
+                },
+                "37": {
+                    "desc": "internal fifo parity error for chana"
+                },
+                "38": {
+                    "desc": "internal fifo parity error for chanb"
+                },
+                "39": {
+                    "desc": "Unexpected read or write response received, chana"
+                },
+                "40": {
+                    "desc": "Unexpected read or write response received, chanb"
+                },
+                "41": {
+                    "desc": "Bad data set for data that is not valid chana"
+                },
+                "42": {
+                    "desc": "Bad data set for data that is not valid chanb"
+                },
+                "43": {
+                    "desc": "Memory read data returned in template 0, chana"
+                },
+                "44": {
+                    "desc": "Memory read data returned in template 0, chanb"
+                },
+                "45": {
+                    "desc": "Recieved mmio response while in LOL mode chana"
+                },
+                "46": {
+                    "desc": "Recieved mmio response while in LOL mode chanb"
+                },
+                "47": {
+                    "desc": "valid bad data or SUE received channel a"
+                },
+                "48": {
+                    "desc": "Valid bad data or SUE received chanb"
+                },
+                "49": {
+                    "desc": "ChanA excessive data error"
+                },
+                "50": {
+                    "desc": "ChanB excessive data error"
+                },
+                "51": {
+                    "desc": "Commit state where commit data is not marked as valid"
+                },
+                "52": {
+                    "desc": "Commit state where commit data is not marked as valid"
+                },
+                "53": {
+                    "desc": "A fifo in the ustl chana overflowed"
+                },
+                "54": {
+                    "desc": "A fifo in the ustl chanb overflowed"
+                },
+                "55": {
+                    "desc": "Invalid command decoded in USTL FF subchannel A"
+                },
+                "56": {
+                    "desc": "Invalid command decoded in USTL FF subchannel B"
+                },
+                "57": {
+                    "desc": "Fatal register parity error"
+                },
+                "58": {
+                    "desc": "recov register parity error"
+                },
+                "59": {
+                    "desc": "ChanA response invalid(dlength and/or dpart received)"
+                },
+                "60": {
+                    "desc": "ChanB response invalid(dlength and/or dpart received)"
+                },
+                "61": {
+                    "desc": "spare"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MC_USTL_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5,
+                        "6": 6,
+                        "7": 7
+                    }
+                }
+            ]
+        }
+    }
+}

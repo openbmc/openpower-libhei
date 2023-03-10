@@ -1,0 +1,1435 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "GFIR_CS": {
+            "instances": {
+                "0": "0x570F001C"
+            }
+        },
+        "GFIR_RE": {
+            "instances": {
+                "0": "0x570F001B"
+            }
+        },
+        "GFIR_SPA": {
+            "instances": {
+                "0": "0x570F001A"
+            }
+        },
+        "GFIR_UCS": {
+            "instances": {
+                "0": "0x570F002A"
+            }
+        },
+        "GFIR_HA": {
+            "instances": {
+                "0": "0x570F002B"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "GFIR_CS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_CS"
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "2": {
+                    "desc": "Attention from N0 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N0_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "3": {
+                    "desc": "Attention from N1 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N1_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_CS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_CS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_CS",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_CS",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_CS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_CS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_CS",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "33": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "34": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "35": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "36": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "37": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_CS",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_RE": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_RE"
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "2": {
+                    "desc": "Attention from N0 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N0_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "3": {
+                    "desc": "Attention from N1 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N1_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_RE",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_RE",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_RE",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_RE",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_RE",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_RE",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_RE",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "33": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "34": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "35": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "36": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "37": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_RE",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_SPA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_SPA"
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "2": {
+                    "desc": "Attention from N0 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N0_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "3": {
+                    "desc": "Attention from N1 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N1_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_SPA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_SPA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_SPA",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_SPA",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_SPA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_SPA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_SPA",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "33": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "34": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "35": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "36": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "37": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_SPA",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_UCS": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["UCS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_UCS"
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "2": {
+                    "desc": "Attention from N0 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N0_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "3": {
+                    "desc": "Attention from N1 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N1_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_UCS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_UCS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_UCS",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_UCS",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_UCS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_UCS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_UCS",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "33": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "34": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "35": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "36": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "37": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_UCS",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_HA": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["HA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "reg",
+                        "reg_name": "GFIR_HA"
+                    }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "2": {
+                    "desc": "Attention from N0 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N0_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "3": {
+                    "desc": "Attention from N1 chiplet",
+                    "child_node": {
+                        "name": "CFIR_N1_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "8": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from PCI chiplet",
+                    "child_node": {
+                        "name": "CFIR_PCI_HA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "12": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_HA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_HA",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "15": {
+                    "desc": "Attention from MC chiplet",
+                    "child_node": {
+                        "name": "CFIR_MC_HA",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "16": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "17": {
+                    "desc": "Attention from PAUE chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUE_HA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "18": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "19": {
+                    "desc": "Attention from PAUW chiplet",
+                    "child_node": {
+                        "name": "CFIR_PAUW_HA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "24": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "25": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "26": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "27": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "28": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "29": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "30": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "31": {
+                    "desc": "Attention from IOHS chiplet",
+                    "child_node": {
+                        "name": "CFIR_IOHS_HA",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                },
+                "32": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "33": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "34": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 2
+                        }
+                    }
+                },
+                "35": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 3
+                        }
+                    }
+                },
+                "36": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 4
+                        }
+                    }
+                },
+                "37": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 5
+                        }
+                    }
+                },
+                "38": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 6
+                        }
+                    }
+                },
+                "39": {
+                    "desc": "Attention from EQ chiplet",
+                    "child_node": {
+                        "name": "CFIR_EQ_HA",
+                        "inst": {
+                            "0": 7
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "root_nodes": {
+        "CS": {
+            "name": "GFIR_CS",
+            "inst": 0
+        },
+        "RE": {
+            "name": "GFIR_RE",
+            "inst": 0
+        },
+        "SPA": {
+            "name": "GFIR_SPA",
+            "inst": 0
+        },
+        "UCS": {
+            "name": "GFIR_UCS",
+            "inst": 0
+        },
+        "HA": {
+            "name": "GFIR_HA",
+            "inst": 0
+        }
+    }
+}

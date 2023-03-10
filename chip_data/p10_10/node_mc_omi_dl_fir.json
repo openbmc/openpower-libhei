@@ -1,0 +1,398 @@
+{
+    "version": 1,
+    "model_ec": ["P10_10"],
+    "registers": {
+        "MC_OMI_DL_FIR": {
+            "instances": {
+                "0": "0x0C011400",
+                "1": "0x0C011800",
+                "2": "0x0D011400",
+                "3": "0x0D011800",
+                "4": "0x0E011400",
+                "5": "0x0E011800",
+                "6": "0x0F011400",
+                "7": "0x0F011800"
+            }
+        },
+        "MC_OMI_DL_FIR_MASK": {
+            "instances": {
+                "0": "0x0C011403",
+                "1": "0x0C011803",
+                "2": "0x0D011403",
+                "3": "0x0D011803",
+                "4": "0x0E011403",
+                "5": "0x0E011803",
+                "6": "0x0F011403",
+                "7": "0x0F011803"
+            }
+        },
+        "MC_OMI_DL_FIR_ACT0": {
+            "instances": {
+                "0": "0x0C011406",
+                "1": "0x0C011806",
+                "2": "0x0D011406",
+                "3": "0x0D011806",
+                "4": "0x0E011406",
+                "5": "0x0E011806",
+                "6": "0x0F011406",
+                "7": "0x0F011806"
+            }
+        },
+        "MC_OMI_DL_FIR_ACT1": {
+            "instances": {
+                "0": "0x0C011407",
+                "1": "0x0C011807",
+                "2": "0x0D011407",
+                "3": "0x0D011807",
+                "4": "0x0E011407",
+                "5": "0x0E011807",
+                "6": "0x0F011407",
+                "7": "0x0F011807"
+            }
+        },
+        "MC_OMI_DL_FIR_WOF": {
+            "instances": {
+                "0": "0x0C011408",
+                "1": "0x0C011808",
+                "2": "0x0D011408",
+                "3": "0x0D011808",
+                "4": "0x0E011408",
+                "5": "0x0E011808",
+                "6": "0x0F011408",
+                "7": "0x0F011808"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "MC_OMI_DL_FIR": {
+            "instances": [0, 1, 2, 3, 4, 5, 6, 7],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_OMI_DL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_OMI_DL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_ACT0"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_OMI_DL_FIR_ACT1"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0, 1, 2, 3, 4, 5, 6, 7],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_OMI_DL_FIR"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_MASK"
+                                }
+                            },
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "MC_OMI_DL_FIR_ACT0"
+                            },
+                            {
+                                "expr_type": "not",
+                                "expr": {
+                                    "expr_type": "reg",
+                                    "reg_name": "MC_OMI_DL_FIR_ACT1"
+                                }
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "OMI-DL0 fatal error",
+                    "child_node": {
+                        "name": "MC_OMI_DL_ERR_RPT",
+                        "inst": {
+                            "0": 0,
+                            "1": 2,
+                            "2": 4,
+                            "3": 6,
+                            "4": 8,
+                            "5": 10,
+                            "6": 12,
+                            "7": 14
+                        }
+                    }
+                },
+                "1": {
+                    "desc": "OMI-DL0 UE on data flit"
+                },
+                "2": {
+                    "desc": "OMI-DL0 CE on TL flit"
+                },
+                "3": {
+                    "desc": "OMI-DL0 detected a CRC error"
+                },
+                "4": {
+                    "desc": "OMI-DL0 received a nack"
+                },
+                "5": {
+                    "desc": "OMI-DL0 running in degraded mode"
+                },
+                "6": {
+                    "desc": "OMI-DL0 parity error detection on a lane"
+                },
+                "7": {
+                    "desc": "OMI-DL0 retrained due to no forward progress"
+                },
+                "8": {
+                    "desc": "OMI-DL0 remote side initiated a retrain"
+                },
+                "9": {
+                    "desc": "OMI-DL0 retrain due to internal error or software"
+                },
+                "10": {
+                    "desc": "OMI-DL0 threshold reached"
+                },
+                "11": {
+                    "desc": "OMI-DL0 trained"
+                },
+                "12": {
+                    "desc": "OMI-DL0 endpoint error bit 0"
+                },
+                "13": {
+                    "desc": "OMI-DL0 endpoint error bit 1"
+                },
+                "14": {
+                    "desc": "OMI-DL0 endpoint error bit 2"
+                },
+                "15": {
+                    "desc": "OMI-DL0 endpoint error bit 3"
+                },
+                "16": {
+                    "desc": "OMI-DL0 endpoint error bit 4"
+                },
+                "17": {
+                    "desc": "OMI-DL0 endpoint error bit 5"
+                },
+                "18": {
+                    "desc": "OMI-DL0 endpoint error bit 6"
+                },
+                "19": {
+                    "desc": "OMI-DL0 endpoint error bit 7"
+                },
+                "20": {
+                    "desc": "OMI-DL1 fatal error",
+                    "child_node": {
+                        "name": "MC_OMI_DL_ERR_RPT",
+                        "inst": {
+                            "0": 1,
+                            "1": 3,
+                            "2": 5,
+                            "3": 7,
+                            "4": 9,
+                            "5": 11,
+                            "6": 13,
+                            "7": 15
+                        }
+                    }
+                },
+                "21": {
+                    "desc": "OMI-DL1 UE on data flit"
+                },
+                "22": {
+                    "desc": "OMI-DL1 CE on TL flit"
+                },
+                "23": {
+                    "desc": "OMI-DL1 detected a CRC error"
+                },
+                "24": {
+                    "desc": "OMI-DL1 received a nack"
+                },
+                "25": {
+                    "desc": "OMI-DL1 running in degraded mode"
+                },
+                "26": {
+                    "desc": "OMI-DL1 parity error detection on a lane"
+                },
+                "27": {
+                    "desc": "OMI-DL1 retrained due to no forward progress"
+                },
+                "28": {
+                    "desc": "OMI-DL1 remote side initiated a retrain"
+                },
+                "29": {
+                    "desc": "OMI-DL1 retrain due to internal error or software"
+                },
+                "30": {
+                    "desc": "OMI-DL1 threshold reached"
+                },
+                "31": {
+                    "desc": "OMI-DL1 trained"
+                },
+                "32": {
+                    "desc": "OMI-DL1 endpoint error bit 0"
+                },
+                "33": {
+                    "desc": "OMI-DL1 endpoint error bit 1"
+                },
+                "34": {
+                    "desc": "OMI-DL1 endpoint error bit 2"
+                },
+                "35": {
+                    "desc": "OMI-DL1 endpoint error bit 3"
+                },
+                "36": {
+                    "desc": "OMI-DL1 endpoint error bit 4"
+                },
+                "37": {
+                    "desc": "OMI-DL1 endpoint error bit 5"
+                },
+                "38": {
+                    "desc": "OMI-DL1 endpoint error bit 6"
+                },
+                "39": {
+                    "desc": "OMI-DL1 endpoint error bit 7"
+                },
+                "40": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "41": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "42": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "43": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "44": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "45": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "46": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "47": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "48": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "49": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "50": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "51": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "52": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "53": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "54": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "55": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "56": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "57": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "58": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "59": {
+                    "desc": "OMI-DL2 unused"
+                },
+                "60": {
+                    "desc": "Performance monitor wrapped"
+                },
+                "61": {
+                    "desc": "OMI-DL common FIR Register"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MC_OMI_DL_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1,
+                        "2": 2,
+                        "3": 3,
+                        "4": 4,
+                        "5": 5,
+                        "6": 6,
+                        "7": 7
+                    }
+                }
+            ]
+        }
+    }
+}

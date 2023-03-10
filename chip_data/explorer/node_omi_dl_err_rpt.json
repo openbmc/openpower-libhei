@@ -1,0 +1,100 @@
+{
+    "version": 1,
+    "model_ec": ["EXPLORER_11", "EXPLORER_20"],
+    "isolation_nodes": {
+        "OMI_DL_ERR_RPT": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000000FFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RE"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000000FFF"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SPA"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "reg",
+                                "reg_name": "OMI_DL_ERR_RPT"
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x0000000000000FFF"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "52": {
+                    "desc": "spare"
+                },
+                "53": {
+                    "desc": "spare"
+                },
+                "54": {
+                    "desc": "spare"
+                },
+                "55": {
+                    "desc": "RX receiving slow A"
+                },
+                "56": {
+                    "desc": "RX receiving illegal run length"
+                },
+                "57": {
+                    "desc": "control parity error"
+                },
+                "58": {
+                    "desc": "data parity error"
+                },
+                "59": {
+                    "desc": "truncated flit from TL"
+                },
+                "60": {
+                    "desc": "illegal run length from TL"
+                },
+                "61": {
+                    "desc": "Ack pointer overflow"
+                },
+                "62": {
+                    "desc": "UE on control flit replay buffer"
+                },
+                "63": {
+                    "desc": "UE on control flit frame buffer"
+                }
+            }
+        }
+    }
+}
