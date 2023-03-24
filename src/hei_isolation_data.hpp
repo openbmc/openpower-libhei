@@ -138,9 +138,8 @@ class IsolationData
     bool queryCheckstop() const
     {
         auto itr = std::find_if(
-            iv_sigList.begin(), iv_sigList.end(), [](const auto& s) {
-                return ATTN_TYPE_CHECKSTOP == s.getAttnType();
-            });
+            iv_sigList.begin(), iv_sigList.end(),
+            [](const auto& s) { return ATTN_TYPE_CHIP_CS == s.getAttnType(); });
 
         return iv_sigList.end() != itr;
     }
