@@ -167,21 +167,37 @@ enum AttentionType_t : uint8_t
     // clang-format off
 
     /** System checkstop hardware attention. Unrecoverable, fatal error. */
+    // TODO: This is deprecated and will be removed. Use CHIP_CS instead.
     ATTN_TYPE_CHECKSTOP   = 1,
 
-    /** Unit checkstop hardware attention. A unit within the system is no longer
-     *  usable but the rest of the system should be able to recover. */
+    /**
+     * Hardware error event indicating that an entire chip has checkstopped and
+     * is no longer usable.
+     */
+    ATTN_TYPE_CHIP_CS     = 1,
+
+    /**
+     * Hardware error event indicating that a unit within a chip has
+     * checkstopped and is no longer usable. Other units within the chip should
+     * continue uninterrupted. Possible degraded functionality.
+     */
     ATTN_TYPE_UNIT_CS     = 2,
 
-    /** Recoverable hardware attention. The system should be able to continue
-     *  uninterrupted, possible degraded functionality. */
+    /**
+     * Hardware error event in which the hardware recovered. The system should
+     * be able to continue uninterrupted. Possible degraded functionality.
+     */
     ATTN_TYPE_RECOVERABLE = 3,
 
-    /** Software or hardware event requiring action by the service processor
-     *  firmware. */
+    /**
+     * Software or hardware event requiring action by the service processor
+     * firmware.
+     */
     ATTN_TYPE_SP_ATTN     = 4,
 
-    /** Software or hardware event requiring action by the host firmware. */
+    /**
+     * Software or hardware event requiring action by the host firmware.
+     */
     ATTN_TYPE_HOST_ATTN   = 5,
 
     // clang-format on

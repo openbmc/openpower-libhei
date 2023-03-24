@@ -56,7 +56,7 @@ class Signature
     BitPosition_t iv_bit   = 0; ///< Target bit within this register.
 
     /** Attention type reported by this bit. */
-    AttentionType_t iv_attnType = ATTN_TYPE_CHECKSTOP;
+    AttentionType_t iv_attnType = ATTN_TYPE_CHIP_CS;
 
   public: // Member functions
     /** @return The chip containing this register. */
