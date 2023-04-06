@@ -134,16 +134,6 @@ class IsolationData
         iv_regDump.clear();
     }
 
-    /** @brief Queries the signature list for any checkstop attentions. */
-    bool queryCheckstop() const
-    {
-        auto itr = std::find_if(
-            iv_sigList.begin(), iv_sigList.end(),
-            [](const auto& s) { return ATTN_TYPE_CHIP_CS == s.getAttnType(); });
-
-        return iv_sigList.end() != itr;
-    }
-
 }; // end class IsolationData
 
 } // end namespace libhei
