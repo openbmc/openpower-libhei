@@ -464,13 +464,13 @@ object instance maps define how group instances map to register instances.
 
 ### 10.4) Supported Chip Models and EC Levels
 
-| Value         | Description            |
-| ------------- | ---------------------- |
-| `EXPLORER_11` | Explorer chip EC 1.1   |
-| `EXPLORER_20` | Explorer chip EC 2.0   |
-| `ODYSSEY_10`  | Odyssey chip EC 1.0    |
-| `P11S_10`     | P11 Spinal chip EC 1.0 |
-| `P11T_10`     | P11 Tap chip EC 1.0    |
+| Value         | Description          |
+| ------------- | -------------------- |
+| `EXPLORER_11` | Explorer chip EC 1.1 |
+| `EXPLORER_20` | Explorer chip EC 2.0 |
+| `ODYSSEY_10`  | Odyssey chip EC 1.0  |
+| `P10_10`      | P10 EC 1.0           |
+| `P10_20`      | P10 EC 2.0           |
 
 ### 10.5) Supported Attention Types
 
@@ -485,6 +485,7 @@ chips.
 | `UCS` | Local checkstop hardware attention within a chip unit.             |
 | `RE`  | Recoverable hardware attention.                                    |
 | `SPA` | SW or HW event requiring action by the service processor firmware. |
+| `HA`  | SW or HW event requiring action by the host firmware.              |
 
 ### 10.6) Supported Register Types
 

@@ -12,22 +12,22 @@
                 "0": "0x08040102"
             }
         },
-        "MEM_LOCAL_FIR_CFG_XSTOP": {
+        "MEM_LOCAL_FIR_CFG_CS": {
             "instances": {
                 "0": "0x08040104"
             }
         },
-        "MEM_LOCAL_FIR_CFG_RECOV": {
+        "MEM_LOCAL_FIR_CFG_RE": {
             "instances": {
                 "0": "0x08040105"
             }
         },
-        "MEM_LOCAL_FIR_CFG_ATTN": {
+        "MEM_LOCAL_FIR_CFG_SPA": {
             "instances": {
                 "0": "0x08040106"
             }
         },
-        "MEM_LOCAL_FIR_CFG_LXSTOP": {
+        "MEM_LOCAL_FIR_CFG_UCS": {
             "instances": {
                 "0": "0x08040107"
             }
@@ -61,7 +61,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MEM_LOCAL_FIR_CFG_XSTOP"
+                                "reg_name": "MEM_LOCAL_FIR_CFG_CS"
                             }
                         ]
                     }
@@ -85,7 +85,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MEM_LOCAL_FIR_CFG_RECOV"
+                                "reg_name": "MEM_LOCAL_FIR_CFG_RE"
                             }
                         ]
                     }
@@ -109,7 +109,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MEM_LOCAL_FIR_CFG_ATTN"
+                                "reg_name": "MEM_LOCAL_FIR_CFG_SPA"
                             }
                         ]
                     }
@@ -133,7 +133,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MEM_LOCAL_FIR_CFG_LXSTOP"
+                                "reg_name": "MEM_LOCAL_FIR_CFG_UCS"
                             }
                         ]
                     }

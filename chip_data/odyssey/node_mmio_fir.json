@@ -12,22 +12,22 @@
                 "0": "0x08010872"
             }
         },
-        "MMIO_FIR_CFG_XSTOP": {
+        "MMIO_FIR_CFG_CS": {
             "instances": {
                 "0": "0x08010874"
             }
         },
-        "MMIO_FIR_CFG_RECOV": {
+        "MMIO_FIR_CFG_RE": {
             "instances": {
                 "0": "0x08010875"
             }
         },
-        "MMIO_FIR_CFG_ATTN": {
+        "MMIO_FIR_CFG_SPA": {
             "instances": {
                 "0": "0x08010876"
             }
         },
-        "MMIO_FIR_CFG_LXSTOP": {
+        "MMIO_FIR_CFG_UCS": {
             "instances": {
                 "0": "0x08010877"
             }
@@ -71,7 +71,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MMIO_FIR_CFG_XSTOP"
+                                "reg_name": "MMIO_FIR_CFG_CS"
                             }
                         ]
                     }
@@ -95,7 +95,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MMIO_FIR_CFG_RECOV"
+                                "reg_name": "MMIO_FIR_CFG_RE"
                             }
                         ]
                     }
@@ -119,7 +119,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MMIO_FIR_CFG_ATTN"
+                                "reg_name": "MMIO_FIR_CFG_SPA"
                             }
                         ]
                     }
@@ -143,7 +143,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "MMIO_FIR_CFG_LXSTOP"
+                                "reg_name": "MMIO_FIR_CFG_UCS"
                             }
                         ]
                     }
