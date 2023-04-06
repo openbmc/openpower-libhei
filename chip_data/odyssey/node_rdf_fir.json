@@ -14,25 +14,25 @@
                 "1": "0x08012802"
             }
         },
-        "RDF_FIR_CFG_XSTOP": {
+        "RDF_FIR_CFG_CS": {
             "instances": {
                 "0": "0x08011804",
                 "1": "0x08012804"
             }
         },
-        "RDF_FIR_CFG_RECOV": {
+        "RDF_FIR_CFG_RE": {
             "instances": {
                 "0": "0x08011805",
                 "1": "0x08012805"
             }
         },
-        "RDF_FIR_CFG_ATTN": {
+        "RDF_FIR_CFG_SPA": {
             "instances": {
                 "0": "0x08011806",
                 "1": "0x08012806"
             }
         },
-        "RDF_FIR_CFG_LXSTOP": {
+        "RDF_FIR_CFG_UCS": {
             "instances": {
                 "0": "0x08011807",
                 "1": "0x08012807"
@@ -182,7 +182,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_XSTOP"
+                                "reg_name": "RDF_FIR_CFG_CS"
                             }
                         ]
                     }
@@ -206,7 +206,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_RECOV"
+                                "reg_name": "RDF_FIR_CFG_RE"
                             }
                         ]
                     }
@@ -230,7 +230,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_ATTN"
+                                "reg_name": "RDF_FIR_CFG_SPA"
                             }
                         ]
                     }
@@ -254,7 +254,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_LXSTOP"
+                                "reg_name": "RDF_FIR_CFG_UCS"
                             }
                         ]
                     }

@@ -12,22 +12,22 @@
                 "0": "0x08010C02"
             }
         },
-        "OCMB_PHY_FIR_CFG_XSTOP": {
+        "OCMB_PHY_FIR_CFG_CS": {
             "instances": {
                 "0": "0x08010C04"
             }
         },
-        "OCMB_PHY_FIR_CFG_RECOV": {
+        "OCMB_PHY_FIR_CFG_RE": {
             "instances": {
                 "0": "0x08010C05"
             }
         },
-        "OCMB_PHY_FIR_CFG_ATTN": {
+        "OCMB_PHY_FIR_CFG_SPA": {
             "instances": {
                 "0": "0x08010C06"
             }
         },
-        "OCMB_PHY_FIR_CFG_LXSTOP": {
+        "OCMB_PHY_FIR_CFG_UCS": {
             "instances": {
                 "0": "0x08010C07"
             }
@@ -61,7 +61,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_XSTOP"
+                                "reg_name": "OCMB_PHY_FIR_CFG_CS"
                             }
                         ]
                     }
@@ -85,7 +85,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_RECOV"
+                                "reg_name": "OCMB_PHY_FIR_CFG_RE"
                             }
                         ]
                     }
@@ -109,7 +109,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_ATTN"
+                                "reg_name": "OCMB_PHY_FIR_CFG_SPA"
                             }
                         ]
                     }
@@ -133,7 +133,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_LXSTOP"
+                                "reg_name": "OCMB_PHY_FIR_CFG_UCS"
                             }
                         ]
                     }

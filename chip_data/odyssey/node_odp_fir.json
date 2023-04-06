@@ -14,25 +14,25 @@
                 "1": "0x08013402"
             }
         },
-        "ODP_FIR_CFG_XSTOP": {
+        "ODP_FIR_CFG_CS": {
             "instances": {
                 "0": "0x08013004",
                 "1": "0x08013404"
             }
         },
-        "ODP_FIR_CFG_RECOV": {
+        "ODP_FIR_CFG_RE": {
             "instances": {
                 "0": "0x08013005",
                 "1": "0x08013405"
             }
         },
-        "ODP_FIR_CFG_ATTN": {
+        "ODP_FIR_CFG_SPA": {
             "instances": {
                 "0": "0x08013006",
                 "1": "0x08013406"
             }
         },
-        "ODP_FIR_CFG_LXSTOP": {
+        "ODP_FIR_CFG_UCS": {
             "instances": {
                 "0": "0x08013007",
                 "1": "0x08013407"
@@ -68,7 +68,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "ODP_FIR_CFG_XSTOP"
+                                "reg_name": "ODP_FIR_CFG_CS"
                             }
                         ]
                     }
@@ -92,7 +92,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "ODP_FIR_CFG_RECOV"
+                                "reg_name": "ODP_FIR_CFG_RE"
                             }
                         ]
                     }
@@ -116,7 +116,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "ODP_FIR_CFG_ATTN"
+                                "reg_name": "ODP_FIR_CFG_SPA"
                             }
                         ]
                     }
@@ -140,7 +140,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "ODP_FIR_CFG_LXSTOP"
+                                "reg_name": "ODP_FIR_CFG_UCS"
                             }
                         ]
                     }
