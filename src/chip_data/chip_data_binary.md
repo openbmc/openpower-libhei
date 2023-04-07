@@ -1,6 +1,6 @@
-# Chip Data Files
+# Chip Data Binary Files
 
-The Chip Data Files define everything we need to know about a chip type. Their
+The binary files define everything we need to know about a chip type. Their
 purpose is to keep libhei agnostic to specific chip information. Required
 information includes:
 
