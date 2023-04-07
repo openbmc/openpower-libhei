@@ -1,6 +1,6 @@
-# Chip Data Files
+# Chip Data Binary Files
 
-The Chip Data Files define everything we need to know about a chip type. Their
+The binary files define everything we need to know about a chip type. Their
 purpose is to keep libhei agnostic to specific chip information. Required
 information includes:
 
@@ -232,7 +232,7 @@ metadata will be the following for each root node:
 
 | Value | Description                                                 |
 | :---: | :---------------------------------------------------------- |
-|   1   | System checkstop hardware attention                         |
+|   1   | Chip checkstop hardware attention                           |
 |   2   | Unit checkstop hardware attention                           |
 |   3   | Recoverable hardware attention                              |
 |   4   | SW or HW event requiring action by the service processor FW |
