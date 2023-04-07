@@ -13,10 +13,10 @@ namespace libhei
 const std::map<SimulatorData::SimChipType, const char*>
     SimulatorData::cv_chipPath = {
         {SAMPLE, "../test/simulator/sample_data/sample.cdb"},
-        {EXPLORER_11, "xml/chip_data_explorer_11.cdb"},
-        {EXPLORER_20, "xml/chip_data_explorer_20.cdb"},
-        {P10_10, "xml/chip_data_p10_10.cdb"},
-        {P10_20, "xml/chip_data_p10_20.cdb"},
+        {EXPLORER_11, "chip_data/chip_data_explorer_11.cdb"},
+        {EXPLORER_20, "chip_data/chip_data_explorer_20.cdb"},
+        {P10_10, "chip_data/chip_data_p10_10.cdb"},
+        {P10_20, "chip_data/chip_data_p10_20.cdb"},
 };
 
 //------------------------------------------------------------------------------
@@ -73,6 +73,35 @@ void SimulatorData::addChip(const Chip& i_chip)
 
 //------------------------------------------------------------------------------
 
+const char* __attn(AttentionType_t i_type)
+{
+    const char* str = "";
+    switch (i_type)
+    {
+        case ATTN_TYPE_CHIP_CS:
+            str = "CHIP_CS";
+            break;
+        case ATTN_TYPE_UNIT_CS:
+            str = "UNIT_CS";
+            break;
+        case ATTN_TYPE_RECOVERABLE:
+            str = "RECOVERABLE";
+            break;
+        case ATTN_TYPE_SP_ATTN:
+            str = "SP_ATTN";
+            break;
+        case ATTN_TYPE_HOST_ATTN:
+            str = "HOST_ATTN";
+            break;
+        default:
+            HEI_ERR("Unsupported attention type: %u", i_type);
+            assert(0);
+    }
+    return str;
+}
+
+//------------------------------------------------------------------------------
+
 void SimulatorData::endIteration()
 {
     // Start by calling libhei::isolate().
@@ -95,23 +124,44 @@ void SimulatorData::endIteration()
     // Get the list of signatures found in isolation.
     std::vector<Signature> givenSigList = isoData.getSignatureList();
 
-    // Verify the expected list and given list are the same.
-    ASSERT_EQ(iv_expSigList.size(), givenSigList.size());
-
-    std::sort(iv_expSigList.begin(), iv_expSigList.end());
-    std::sort(givenSigList.begin(), givenSigList.end());
-
-    /* TODO: Currently used for debug. Eventually, we want this written to file.
-    for (const auto& s : givenSigList)
+    // Print out the expected signature list and verify matches with given list.
+    HEI_INF("Signature summary:")
+    bool mismatch = false;
+    for (const auto& e : iv_expSigList)
     {
-        HEI_INF("Signature: %s 0x%04x %u %u %u",
-                (const char*)s.getChip().getChip(), s.getId(), s.getInstance(),
-                s.getBit(), s.getAttnType());
-    }
-    */
+        auto gItr = std::find(givenSigList.begin(), givenSigList.end(), e);
+        if (givenSigList.end() != gItr)
+        {
+            HEI_INF("  Match:      %s 0x%04x %2u %2u %s",
+                    (const char*)e.getChip().getChip(), e.getId(),
+                    e.getInstance(), e.getBit(), __attn(e.getAttnType()));
 
-    ASSERT_TRUE(std::equal(givenSigList.begin(), givenSigList.end(),
-                           iv_expSigList.begin()));
+            // Remove from given signature list so we can determine if there are
+            // any leftovers at the end.
+            givenSigList.erase(gItr);
+        }
+        else
+        {
+            HEI_INF("  No match:   %s 0x%04x %2u %2u %s",
+                    (const char*)e.getChip().getChip(), e.getId(),
+                    e.getInstance(), e.getBit(), __attn(e.getAttnType()));
+
+            mismatch = true;
+        }
+    }
+
+    // Print out any leftover signatures from the given list.
+    for (const auto& g : givenSigList)
+    {
+        HEI_INF("  Unexpected: %s 0x%04x %2u %2u %s",
+                (const char*)g.getChip().getChip(), g.getId(), g.getInstance(),
+                g.getBit(), __attn(g.getAttnType()));
+
+        mismatch = true;
+    }
+
+    // Final check for mismatches.
+    ASSERT_FALSE(mismatch);
 
     // The iteration is complete so we can flush the data.
     flushIterationData();
