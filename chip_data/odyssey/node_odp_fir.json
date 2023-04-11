@@ -43,6 +43,223 @@
                 "0": "0x08013008",
                 "1": "0x08013408"
             }
+        },
+        "PHY_INTERRUPT_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800201040801303f",
+                "1": "0x800201040801343f"
+            }
+        },
+        "PHY_INTERRUPT_ENABLE": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800201000801303f",
+                "1": "0x800201000801343f"
+            }
+        },
+        "DX_LCDL_STATUS0": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800100e40801303f",
+                "1": "0x800100e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS1": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800110e40801303f",
+                "1": "0x800110e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS2": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800120e40801303f",
+                "1": "0x800120e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS3": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800130e40801303f",
+                "1": "0x800130e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS4": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800140e40801303f",
+                "1": "0x800140e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS5": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800150e40801303f",
+                "1": "0x800150e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS6": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800160e40801303f",
+                "1": "0x800160e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS7": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800170e40801303f",
+                "1": "0x800170e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS8": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800180e40801303f",
+                "1": "0x800180e40801343f"
+            }
+        },
+        "DX_LCDL_STATUS9": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800190e40801303f",
+                "1": "0x800190e40801343f"
+            }
+        },
+        "AC_LCDL_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800200e40801303f",
+                "1": "0x800200e40801343f"
+            }
+        },
+        "LCDL_DBG_CNTL3": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800200eb0801303f",
+                "1": "0x800200eb0801343f"
+            }
+        },
+        "PPT_INFO0": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800100ac0801303f",
+                "1": "0x800100ac0801343f"
+            }
+        },
+        "PPT_INFO1": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800110ac0801303f",
+                "1": "0x800110ac0801343f"
+            }
+        },
+        "PPT_INFO2": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800120ac0801303f",
+                "1": "0x800120ac0801343f"
+            }
+        },
+        "PPT_INFO3": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800130ac0801303f",
+                "1": "0x800130ac0801343f"
+            }
+        },
+        "PPT_INFO4": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800140ac0801303f",
+                "1": "0x800140ac0801343f"
+            }
+        },
+        "PPT_INFO5": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800150ac0801303f",
+                "1": "0x800150ac0801343f"
+            }
+        },
+        "PPT_INFO6": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800160ac0801303f",
+                "1": "0x800160ac0801343f"
+            }
+        },
+        "PPT_INFO7": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800170ac0801303f",
+                "1": "0x800170ac0801343f"
+            }
+        },
+        "PPT_INFO8": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800180ac0801303f",
+                "1": "0x800180ac0801343f"
+            }
+        },
+        "PPT_INFO9": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800190ac0801303f",
+                "1": "0x800190ac0801343f"
+            }
+        },
+        "ARC_ECC_INDICATIONS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c00820801303f",
+                "1": "0x800c00820801343f"
+            }
+        },
+        "ARC_PMU_ECC_CTL": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c00860801303f",
+                "1": "0x800c00860801343f"
+            }
+        },
+        "APB_ARC_ECC_CTRL": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c008c0801303f",
+                "1": "0x800c008c0801343f"
+            }
+        },
+        "APB_ARC_DB_ERR": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c008d0801303f",
+                "1": "0x800c008d0801343f"
+            }
+        },
+        "ARC_SB_CTR_ENABLES": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c00850801303f",
+                "1": "0x800c00850801343f"
+            }
+        },
+        "ARC_DCCM_SB_ERR_CTR": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c00840801303f",
+                "1": "0x800c00840801343f"
+            }
+        },
+        "ARC_ICCM_SB_ERR_CTR": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800c00830801303f",
+                "1": "0x800c00830801343f"
+            }
         }
     },
     "isolation_nodes": {
@@ -166,7 +383,16 @@
                     "desc": "PHY error"
                 },
                 "6": {
-                    "desc": "PHY Sticky Unlock Error"
+                    "desc": "PHY Sticky Unlock Error",
+                    "capture_groups": [
+                        {
+                            "group_name": "LCDL_STATUS_REGS",
+                            "group_inst": {
+                                "0": 0,
+                                "1": 1
+                            }
+                        }
+                    ]
                 },
                 "7": {
                     "desc": "Bsi Interrupt occurred"
@@ -184,10 +410,28 @@
                     "desc": "PHY RX FIFO Check Error"
                 },
                 "12": {
-                    "desc": "PHY RX TX PPT Error"
+                    "desc": "PHY RX TX PPT Error",
+                    "capture_groups": [
+                        {
+                            "group_name": "PPT_INFO_REGS",
+                            "group_inst": {
+                                "0": 0,
+                                "1": 1
+                            }
+                        }
+                    ]
                 },
                 "13": {
-                    "desc": "PHY ECC Error ARC ECC Interrupt"
+                    "desc": "PHY ECC Error ARC ECC Interrupt",
+                    "capture_groups": [
+                        {
+                            "group_name": "ARC_INFO_REGS",
+                            "group_inst": {
+                                "0": 0,
+                                "1": 1
+                            }
+                        }
+                    ]
                 },
                 "14:18": {
                     "desc": "Reserved Firmware Interrupt"
@@ -201,7 +445,243 @@
                 "21": {
                     "desc": "PHY Training Complete Interrupt"
                 }
-            }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "ODP_FIR",
+                    "group_inst": {
+                        "0": 0,
+                        "1": 1
+                    }
+                }
+            ]
         }
+    },
+    "capture_groups": {
+        "ODP_FIR": [
+            {
+                "reg_name": "PHY_INTERRUPT_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PHY_INTERRUPT_ENABLE",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ],
+        "LCDL_STATUS_REGS": [
+            {
+                "reg_name": "DX_LCDL_STATUS0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS1",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS2",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS3",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS4",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS5",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS6",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS7",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS8",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DX_LCDL_STATUS9",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "AC_LCDL_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "LCDL_DBG_CNTL3",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ],
+        "PPT_INFO_REGS": [
+            {
+                "reg_name": "PPT_INFO0",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO1",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO2",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO3",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO4",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO5",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO6",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO7",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO8",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "PPT_INFO9",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ],
+        "ARC_INFO_REGS": [
+            {
+                "reg_name": "ARC_ECC_INDICATIONS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "ARC_PMU_ECC_CTL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "APB_ARC_ECC_CTRL",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "APB_ARC_DB_ERR",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "ARC_SB_CTR_ENABLES",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "ARC_DCCM_SB_ERR_CTR",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "ARC_ICCM_SB_ERR_CTR",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ]
     }
 }
