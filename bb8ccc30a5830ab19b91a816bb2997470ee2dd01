@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd694012_df77a16b",
+        "filename": "chip_data/pyprd/chip_data/chip_data.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2023-04-14T19:24:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "bb8ccc30a5830ab19b91a816bb2997470ee2dd01",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "571891e3_a7cb7e76",
+        "filename": "chip_data/pyprd/util/model_ec.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2023-04-14T19:24:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 61
+      },
+      "revId": "bb8ccc30a5830ab19b91a816bb2997470ee2dd01",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "002ab248_faa832c2",
+        "filename": "chip_data/schema/chip-data-schema-v01.json",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2023-04-14T19:24:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "bb8ccc30a5830ab19b91a816bb2997470ee2dd01",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
