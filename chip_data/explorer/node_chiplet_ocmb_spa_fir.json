@@ -18,7 +18,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",

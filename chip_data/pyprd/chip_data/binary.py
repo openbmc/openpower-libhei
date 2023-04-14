@@ -82,7 +82,7 @@ def _reg_val(reg_type: str, reg_val: int) -> bytes:
 
 
 def _attn_type(value: str) -> bytes:
-    m = {"CS": 1, "UCS": 2, "RE": 3, "SPA": 4, "HA": 5}
+    m = {"CHIP_CS": 1, "UNIT_CS": 2, "RECOV": 3, "SP_ATTN": 4, "HOST_ATTN": 5}
     return _bin(1, m[value])
 
 

@@ -17,6 +17,8 @@ def _check_model_ec(model_ec: list) -> list:
         "EXPLORER_11",
         "EXPLORER_20",
         "ODYSSEY_10",
+        "P11S_10",
+        "P11T_10",
     ]
 
     for v in model_ec:
@@ -33,7 +35,7 @@ def _check_access(access: str) -> str:
 
 
 def _check_attn_type(attn_type: [str, list]) -> [str, list]:
-    supported = ["CS", "RE", "SPA", "UCS", "HA"]
+    supported = ["CHIP_CS", "UNIT_CS", "RECOV", "SP_ATTN", "HOST_ATTN"]
 
     t = type(attn_type)
 

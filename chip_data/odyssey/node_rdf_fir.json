@@ -14,25 +14,25 @@
                 "1": "0x08012802"
             }
         },
-        "RDF_FIR_CFG_CS": {
+        "RDF_FIR_CFG_CHIP_CS": {
             "instances": {
                 "0": "0x08011804",
                 "1": "0x08012804"
             }
         },
-        "RDF_FIR_CFG_RE": {
+        "RDF_FIR_CFG_RECOV": {
             "instances": {
                 "0": "0x08011805",
                 "1": "0x08012805"
             }
         },
-        "RDF_FIR_CFG_SPA": {
+        "RDF_FIR_CFG_SP_ATTN": {
             "instances": {
                 "0": "0x08011806",
                 "1": "0x08012806"
             }
         },
-        "RDF_FIR_CFG_UCS": {
+        "RDF_FIR_CFG_UNIT_CS": {
             "instances": {
                 "0": "0x08011807",
                 "1": "0x08012807"
@@ -164,7 +164,7 @@
             "instances": [0, 1],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",
@@ -182,13 +182,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_CS"
+                                "reg_name": "RDF_FIR_CFG_CHIP_CS"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",
@@ -206,13 +206,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_RE"
+                                "reg_name": "RDF_FIR_CFG_RECOV"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",
@@ -230,13 +230,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_SPA"
+                                "reg_name": "RDF_FIR_CFG_SP_ATTN"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",
@@ -254,7 +254,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "RDF_FIR_CFG_UCS"
+                                "reg_name": "RDF_FIR_CFG_UNIT_CS"
                             }
                         ]
                     }

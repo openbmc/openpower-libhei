@@ -48,7 +48,7 @@
             "instances": [0, 1, 2, 3],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0, 1, 2, 3],
                     "expr": {
                         "expr_type": "and",
@@ -82,7 +82,7 @@
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0, 1, 2, 3],
                     "expr": {
                         "expr_type": "and",
@@ -113,7 +113,7 @@
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0, 1, 2, 3],
                     "expr": {
                         "expr_type": "and",
@@ -144,7 +144,7 @@
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0, 1, 2, 3],
                     "expr": {
                         "expr_type": "and",
