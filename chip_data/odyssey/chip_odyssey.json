@@ -2,19 +2,19 @@
     "version": 1,
     "model_ec": ["ODYSSEY_10"],
     "root_nodes": {
-        "CS": {
+        "CHIP_CS": {
             "name": "GFIR",
             "inst": 0
         },
-        "RE": {
+        "RECOV": {
             "name": "GFIR",
             "inst": 0
         },
-        "SPA": {
+        "SP_ATTN": {
             "name": "GFIR",
             "inst": 0
         },
-        "UCS": {
+        "UNIT_CS": {
             "name": "GFIR",
             "inst": 0
         }

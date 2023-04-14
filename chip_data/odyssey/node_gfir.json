@@ -2,22 +2,22 @@
     "version": 1,
     "model_ec": ["ODYSSEY_10"],
     "registers": {
-        "GFIR_CS": {
+        "GFIR_CHIP_CS": {
             "instances": {
                 "0": "0x570F001C"
             }
         },
-        "GFIR_RE": {
+        "GFIR_RECOV": {
             "instances": {
                 "0": "0x570F001B"
             }
         },
-        "GFIR_SPA": {
+        "GFIR_SP_ATTN": {
             "instances": {
                 "0": "0x570F001A"
             }
         },
-        "GFIR_UCS": {
+        "GFIR_UNIT_CS": {
             "instances": {
                 "0": "0x570F002A"
             }
@@ -28,35 +28,35 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
-                        "reg_name": "GFIR_CS"
+                        "reg_name": "GFIR_CHIP_CS"
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
-                        "reg_name": "GFIR_RE"
+                        "reg_name": "GFIR_RECOV"
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
-                        "reg_name": "GFIR_SPA"
+                        "reg_name": "GFIR_SP_ATTN"
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
-                        "reg_name": "GFIR_UCS"
+                        "reg_name": "GFIR_UNIT_CS"
                     }
                 }
             ],

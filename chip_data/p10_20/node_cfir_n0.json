@@ -58,7 +58,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -179,7 +179,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -300,7 +300,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -349,7 +349,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -434,7 +434,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["HA"],
+                    "attn_type": ["HOST_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",

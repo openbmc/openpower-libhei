@@ -89,7 +89,7 @@
         },
         "attn_type": {
             "type": "string",
-            "enum": ["CS", "UCS", "RE", "SPA", "HA"]
+            "enum": ["CHIP_CS", "UNIT_CS", "RECOV", "SP_ATTN", "HOST_ATTN"]
         },
         "reg_type": {
             "type": "string",

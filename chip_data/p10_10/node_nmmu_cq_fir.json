@@ -38,7 +38,7 @@
             "instances": [0, 1],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",
@@ -72,7 +72,7 @@
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",
@@ -103,7 +103,7 @@
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0, 1],
                     "expr": {
                         "expr_type": "and",

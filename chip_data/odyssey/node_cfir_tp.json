@@ -2,42 +2,42 @@
     "version": 1,
     "model_ec": ["ODYSSEY_10"],
     "registers": {
-        "CFIR_TP_CS": {
+        "CFIR_TP_CHIP_CS": {
             "instances": {
                 "0": "0x01040000"
             }
         },
-        "CFIR_TP_RE": {
+        "CFIR_TP_RECOV": {
             "instances": {
                 "0": "0x01040001"
             }
         },
-        "CFIR_TP_SPA": {
+        "CFIR_TP_SP_ATTN": {
             "instances": {
                 "0": "0x01040002"
             }
         },
-        "CFIR_TP_UCS": {
+        "CFIR_TP_UNIT_CS": {
             "instances": {
                 "0": "0x01040003"
             }
         },
-        "CFIR_TP_CS_MASK": {
+        "CFIR_TP_CHIP_CS_MASK": {
             "instances": {
                 "0": "0x01040040"
             }
         },
-        "CFIR_TP_RE_MASK": {
+        "CFIR_TP_RECOV_MASK": {
             "instances": {
                 "0": "0x01040041"
             }
         },
-        "CFIR_TP_SPA_MASK": {
+        "CFIR_TP_SP_ATTN_MASK": {
             "instances": {
                 "0": "0x01040042"
             }
         },
-        "CFIR_TP_UCS_MASK": {
+        "CFIR_TP_UNIT_CS_MASK": {
             "instances": {
                 "0": "0x01040043"
             }
@@ -48,20 +48,20 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_TP_CS"
+                                "reg_name": "CFIR_TP_CHIP_CS"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_TP_CS_MASK"
+                                    "reg_name": "CFIR_TP_CHIP_CS_MASK"
                                 }
                             },
                             {
@@ -72,20 +72,20 @@
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_TP_RE"
+                                "reg_name": "CFIR_TP_RECOV"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_TP_RE_MASK"
+                                    "reg_name": "CFIR_TP_RECOV_MASK"
                                 }
                             },
                             {
@@ -96,20 +96,20 @@
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_TP_SPA"
+                                "reg_name": "CFIR_TP_SP_ATTN"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_TP_SPA_MASK"
+                                    "reg_name": "CFIR_TP_SP_ATTN_MASK"
                                 }
                             },
                             {
@@ -120,20 +120,20 @@
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_TP_UCS"
+                                "reg_name": "CFIR_TP_UNIT_CS"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_TP_UCS_MASK"
+                                    "reg_name": "CFIR_TP_UNIT_CS_MASK"
                                 }
                             },
                             {

@@ -33,7 +33,7 @@ def _check_access(access: str) -> str:
 
 
 def _check_attn_type(attn_type: [str, list]) -> [str, list]:
-    supported = ["CS", "RE", "SPA", "UCS", "HA"]
+    supported = ["CHIP_CS", "UNIT_CS", "RECOV", "SP_ATTN", "HOST_ATTN"]
 
     t = type(attn_type)
 
