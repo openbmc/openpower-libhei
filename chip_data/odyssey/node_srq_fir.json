@@ -12,22 +12,22 @@
                 "0": "0x08011002"
             }
         },
-        "SRQ_FIR_CFG_CS": {
+        "SRQ_FIR_CFG_CHIP_CS": {
             "instances": {
                 "0": "0x08011004"
             }
         },
-        "SRQ_FIR_CFG_RE": {
+        "SRQ_FIR_CFG_RECOV": {
             "instances": {
                 "0": "0x08011005"
             }
         },
-        "SRQ_FIR_CFG_SPA": {
+        "SRQ_FIR_CFG_SP_ATTN": {
             "instances": {
                 "0": "0x08011006"
             }
         },
-        "SRQ_FIR_CFG_UCS": {
+        "SRQ_FIR_CFG_UNIT_CS": {
             "instances": {
                 "0": "0x08011007"
             }
@@ -78,7 +78,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -96,13 +96,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "SRQ_FIR_CFG_CS"
+                                "reg_name": "SRQ_FIR_CFG_CHIP_CS"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -120,13 +120,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "SRQ_FIR_CFG_RE"
+                                "reg_name": "SRQ_FIR_CFG_RECOV"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -144,13 +144,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "SRQ_FIR_CFG_SPA"
+                                "reg_name": "SRQ_FIR_CFG_SP_ATTN"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -168,7 +168,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "SRQ_FIR_CFG_UCS"
+                                "reg_name": "SRQ_FIR_CFG_UNIT_CS"
                             }
                         ]
                     }

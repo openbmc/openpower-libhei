@@ -12,22 +12,22 @@
                 "0": "0x08012002"
             }
         },
-        "TLX_FIR_CFG_CS": {
+        "TLX_FIR_CFG_CHIP_CS": {
             "instances": {
                 "0": "0x08012004"
             }
         },
-        "TLX_FIR_CFG_RE": {
+        "TLX_FIR_CFG_RECOV": {
             "instances": {
                 "0": "0x08012005"
             }
         },
-        "TLX_FIR_CFG_SPA": {
+        "TLX_FIR_CFG_SP_ATTN": {
             "instances": {
                 "0": "0x08012006"
             }
         },
-        "TLX_FIR_CFG_UCS": {
+        "TLX_FIR_CFG_UNIT_CS": {
             "instances": {
                 "0": "0x08012007"
             }
@@ -83,7 +83,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -101,13 +101,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "TLX_FIR_CFG_CS"
+                                "reg_name": "TLX_FIR_CFG_CHIP_CS"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -125,13 +125,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "TLX_FIR_CFG_RE"
+                                "reg_name": "TLX_FIR_CFG_RECOV"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -149,13 +149,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "TLX_FIR_CFG_SPA"
+                                "reg_name": "TLX_FIR_CFG_SP_ATTN"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -173,7 +173,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "TLX_FIR_CFG_UCS"
+                                "reg_name": "TLX_FIR_CFG_UNIT_CS"
                             }
                         ]
                     }

@@ -234,7 +234,7 @@ following Isolation Rule JSON object:
 
 ```json
 {
-  "attn_type": ["CS", "RE", "SPA"],
+  "attn_type": ["CHIP_CS", "RECOV", "SP_ATTN"],
   "node_inst": [0, 1],
   "expr": {
     "expr_type": "and",
@@ -464,13 +464,15 @@ object instance maps define how group instances map to register instances.
 
 ### 10.4) Supported Chip Models and EC Levels
 
-| Value         | Description          |
-| ------------- | -------------------- |
-| `EXPLORER_11` | Explorer chip EC 1.1 |
-| `EXPLORER_20` | Explorer chip EC 2.0 |
-| `ODYSSEY_10`  | Odyssey chip EC 1.0  |
-| `P10_10`      | P10 EC 1.0           |
-| `P10_20`      | P10 EC 2.0           |
+| Value         | Description            |
+| ------------- | ---------------------- |
+| `EXPLORER_11` | Explorer chip EC 1.1   |
+| `EXPLORER_20` | Explorer chip EC 2.0   |
+| `ODYSSEY_10`  | Odyssey chip EC 1.0    |
+| `P10_10`      | P10 EC 1.0             |
+| `P10_20`      | P10 EC 2.0             |
+| `P11S_10`     | P11 Spinal chip EC 1.0 |
+| `P11T_10`     | P11 Tap chip EC 1.0    |
 
 ### 10.5) Supported Attention Types
 
@@ -479,13 +481,13 @@ which is certainly true for processor chips. However, systems may, but not
 always, recover from a chip checkstop on a memory buffer or other peripheral
 chips.
 
-| Value | Description                                                        |
-| ----- | ------------------------------------------------------------------ |
-| `CS`  | Chip checkstop hardware attention.                                 |
-| `UCS` | Local checkstop hardware attention within a chip unit.             |
-| `RE`  | Recoverable hardware attention.                                    |
-| `SPA` | SW or HW event requiring action by the service processor firmware. |
-| `HA`  | SW or HW event requiring action by the host firmware.              |
+| Value       | Description                                            |
+| ----------- | ------------------------------------------------------ |
+| `CHIP_CS`   | Chip checkstop hardware attention.                     |
+| `UNIT_CS`   | Local checkstop hardware attention within a chip unit. |
+| `RECOV`     | Recoverable hardware attention.                        |
+| `SP_ATTN`   | SW or HW event requiring action by the SP firmware.    |
+| `HOST_ATTN` | SW or HW event requiring action by the host firmware.  |
 
 ### 10.6) Supported Register Types
 

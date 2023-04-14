@@ -8,11 +8,11 @@ from pyprd.util.model_ec import supported as supported_model_ec
 AttnType = namedtuple("AttnType", "id desc")
 
 _attn_types = {
-    "CS": AttnType(1, "chip checkstop"),
-    "UCS": AttnType(2, "unit checkstop"),
-    "RE": AttnType(3, "recoverable"),
-    "SPA": AttnType(4, "special attention"),
-    "HA": AttnType(5, "host attention"),
+    "CHIP_CS": AttnType(1, "chip checkstop"),
+    "UNIT_CS": AttnType(2, "unit checkstop"),
+    "RECOV": AttnType(3, "recoverable"),
+    "SP_ATTN": AttnType(4, "special attention"),
+    "HOST_ATTN": AttnType(5, "host attention"),
 }
 
 

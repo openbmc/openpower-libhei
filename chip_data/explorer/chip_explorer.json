@@ -2,15 +2,15 @@
     "version": 1,
     "model_ec": ["EXPLORER_11", "EXPLORER_20"],
     "root_nodes": {
-        "CS": {
+        "CHIP_CS": {
             "name": "CHIPLET_OCMB_FIR",
             "inst": 0
         },
-        "RE": {
+        "RECOV": {
             "name": "CHIPLET_OCMB_FIR",
             "inst": 0
         },
-        "SPA": {
+        "SP_ATTN": {
             "name": "CHIPLET_OCMB_SPA_FIR",
             "inst": 0
         }

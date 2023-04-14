@@ -58,7 +58,7 @@
             "instances": [0, 1, 2, 3, 4, 5],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0, 1, 2, 3, 4, 5],
                     "expr": {
                         "expr_type": "and",
@@ -92,7 +92,7 @@
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0, 1, 2, 3, 4, 5],
                     "expr": {
                         "expr_type": "and",

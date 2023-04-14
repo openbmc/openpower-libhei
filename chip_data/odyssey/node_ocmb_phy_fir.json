@@ -12,22 +12,22 @@
                 "0": "0x08010C02"
             }
         },
-        "OCMB_PHY_FIR_CFG_CS": {
+        "OCMB_PHY_FIR_CFG_CHIP_CS": {
             "instances": {
                 "0": "0x08010C04"
             }
         },
-        "OCMB_PHY_FIR_CFG_RE": {
+        "OCMB_PHY_FIR_CFG_RECOV": {
             "instances": {
                 "0": "0x08010C05"
             }
         },
-        "OCMB_PHY_FIR_CFG_SPA": {
+        "OCMB_PHY_FIR_CFG_SP_ATTN": {
             "instances": {
                 "0": "0x08010C06"
             }
         },
-        "OCMB_PHY_FIR_CFG_UCS": {
+        "OCMB_PHY_FIR_CFG_UNIT_CS": {
             "instances": {
                 "0": "0x08010C07"
             }
@@ -43,7 +43,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -61,13 +61,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_CS"
+                                "reg_name": "OCMB_PHY_FIR_CFG_CHIP_CS"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -85,13 +85,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_RE"
+                                "reg_name": "OCMB_PHY_FIR_CFG_RECOV"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -109,13 +109,13 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_SPA"
+                                "reg_name": "OCMB_PHY_FIR_CFG_SP_ATTN"
                             }
                         ]
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
@@ -133,7 +133,7 @@
                             },
                             {
                                 "expr_type": "reg",
-                                "reg_name": "OCMB_PHY_FIR_CFG_UCS"
+                                "reg_name": "OCMB_PHY_FIR_CFG_UNIT_CS"
                             }
                         ]
                     }

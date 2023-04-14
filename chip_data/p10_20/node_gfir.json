@@ -33,7 +33,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
@@ -309,7 +309,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
@@ -585,7 +585,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
@@ -861,7 +861,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
@@ -1137,7 +1137,7 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["HA"],
+                    "attn_type": ["HOST_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "reg",
@@ -1411,23 +1411,23 @@
         }
     },
     "root_nodes": {
-        "CS": {
+        "CHIP_CS": {
             "name": "GFIR_CS",
             "inst": 0
         },
-        "RE": {
+        "RECOV": {
             "name": "GFIR_RE",
             "inst": 0
         },
-        "SPA": {
+        "SP_ATTN": {
             "name": "GFIR_SPA",
             "inst": 0
         },
-        "UCS": {
+        "UNIT_CS": {
             "name": "GFIR_UCS",
             "inst": 0
         },
-        "HA": {
+        "HOST_ATTN": {
             "name": "GFIR_HA",
             "inst": 0
         }

@@ -2,42 +2,42 @@
     "version": 1,
     "model_ec": ["ODYSSEY_10"],
     "registers": {
-        "CFIR_MEM_CS": {
+        "CFIR_MEM_CHIP_CS": {
             "instances": {
                 "0": "0x08040000"
             }
         },
-        "CFIR_MEM_RE": {
+        "CFIR_MEM_RECOVCOV": {
             "instances": {
                 "0": "0x08040001"
             }
         },
-        "CFIR_MEM_SPA": {
+        "CFIR_MEM_SP_ATTN": {
             "instances": {
                 "0": "0x08040002"
             }
         },
-        "CFIR_MEM_UCS": {
+        "CFIR_MEM_UNIT_CS": {
             "instances": {
                 "0": "0x08040003"
             }
         },
-        "CFIR_MEM_CS_MASK": {
+        "CFIR_MEM_CHIP_CS_MASK": {
             "instances": {
                 "0": "0x08040040"
             }
         },
-        "CFIR_MEM_RE_MASK": {
+        "CFIR_MEM_RECOV_MASK": {
             "instances": {
                 "0": "0x08040041"
             }
         },
-        "CFIR_MEM_SPA_MASK": {
+        "CFIR_MEM_SP_ATTN_MASK": {
             "instances": {
                 "0": "0x08040042"
             }
         },
-        "CFIR_MEM_UCS_MASK": {
+        "CFIR_MEM_UNIT_CS_MASK": {
             "instances": {
                 "0": "0x08040043"
             }
@@ -48,20 +48,20 @@
             "instances": [0],
             "rules": [
                 {
-                    "attn_type": ["CS"],
+                    "attn_type": ["CHIP_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_MEM_CS"
+                                "reg_name": "CFIR_MEM_CHIP_CS"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_MEM_CS_MASK"
+                                    "reg_name": "CFIR_MEM_CHIP_CS_MASK"
                                 }
                             },
                             {
@@ -72,20 +72,20 @@
                     }
                 },
                 {
-                    "attn_type": ["RE"],
+                    "attn_type": ["RECOV"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_MEM_RE"
+                                "reg_name": "CFIR_MEM_RECOVCOV"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_MEM_RE_MASK"
+                                    "reg_name": "CFIR_MEM_RECOV_MASK"
                                 }
                             },
                             {
@@ -96,20 +96,20 @@
                     }
                 },
                 {
-                    "attn_type": ["SPA"],
+                    "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_MEM_SPA"
+                                "reg_name": "CFIR_MEM_SP_ATTN"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_MEM_SPA_MASK"
+                                    "reg_name": "CFIR_MEM_SP_ATTN_MASK"
                                 }
                             },
                             {
@@ -120,20 +120,20 @@
                     }
                 },
                 {
-                    "attn_type": ["UCS"],
+                    "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
                     "expr": {
                         "expr_type": "and",
                         "exprs": [
                             {
                                 "expr_type": "reg",
-                                "reg_name": "CFIR_MEM_UCS"
+                                "reg_name": "CFIR_MEM_UNIT_CS"
                             },
                             {
                                 "expr_type": "not",
                                 "expr": {
                                     "expr_type": "reg",
-                                    "reg_name": "CFIR_MEM_UCS_MASK"
+                                    "reg_name": "CFIR_MEM_UNIT_CS_MASK"
                                 }
                             },
                             {
