@@ -37,7 +37,7 @@ namespace libhei
 class HardwareRegister : public Register
 {
   public: // Aliases
-    using Ptr      = std::shared_ptr<HardwareRegister>;
+    using Ptr = std::shared_ptr<HardwareRegister>;
     using ConstPtr = std::shared_ptr<const HardwareRegister>;
 
     using Key = std::pair<RegisterId_t, Instance_t>;

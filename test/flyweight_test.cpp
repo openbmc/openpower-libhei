@@ -31,8 +31,8 @@ TEST(FlyweightTest, TestSet1)
     auto f2 = foo_factory.get(2);
     auto f3 = foo_factory.get(1); // same as f1
 
-    ASSERT_NE(f1, f2); // Pointing to different objects
-    ASSERT_EQ(f1, f3); // Pointing to the same object
+    ASSERT_NE(f1, f2);            // Pointing to different objects
+    ASSERT_EQ(f1, f3);            // Pointing to the same object
 
     ASSERT_EQ(size_t(2),
               foo_factory.size()); // Only two entries in the flyweight

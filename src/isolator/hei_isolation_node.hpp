@@ -40,7 +40,7 @@ namespace libhei
 class IsolationNode
 {
   public: // Aliases
-    using Ptr      = std::shared_ptr<IsolationNode>;
+    using Ptr = std::shared_ptr<IsolationNode>;
     using ConstPtr = std::shared_ptr<const IsolationNode>;
 
     using Key = std::pair<NodeId_t, Instance_t>;

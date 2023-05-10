@@ -63,7 +63,7 @@ using NodeId_t = uint16_t;
  */
 enum RegisterType_t : uint8_t
 {
-    REG_TYPE_SCOM    = 0x01, ///< Power Systems SCOM register.
+    REG_TYPE_SCOM = 0x01,    ///< Power Systems SCOM register.
     REG_TYPE_ID_SCOM = 0x02, ///< Power Systems Indirect SCOM register.
 };
 
@@ -145,9 +145,9 @@ using RegisterAddress_t = uint64_t;
  */
 enum RegisterAttributeFlags_t : uint8_t
 {
-    REG_ATTR_ACCESS_READ  = 0x80, ///< Register read access access
+    REG_ATTR_ACCESS_READ = 0x80,  ///< Register read access access
     REG_ATTR_ACCESS_WRITE = 0x40, ///< Register write access access
-    REG_ATTR_RESERVED     = 0x3f, ///< Reserved/unused bits
+    REG_ATTR_RESERVED = 0x3f,     ///< Reserved/unused bits
 };
 
 /**

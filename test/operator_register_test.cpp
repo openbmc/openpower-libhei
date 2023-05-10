@@ -48,9 +48,9 @@ TEST(OperatorRegisterTest, BasicOperations)
 TEST(OperatorRegisterTest, BasicOperationsWithFlyweights)
 {
     auto& const_factory = Flyweight<const ConstantRegister>::getSingleton();
-    auto& and_factory   = Flyweight<const AndRegister>::getSingleton();
-    auto& or_factory    = Flyweight<const OrRegister>::getSingleton();
-    auto& not_factory   = Flyweight<const NotRegister>::getSingleton();
+    auto& and_factory = Flyweight<const AndRegister>::getSingleton();
+    auto& or_factory = Flyweight<const OrRegister>::getSingleton();
+    auto& not_factory = Flyweight<const NotRegister>::getSingleton();
 
     auto const1 = const_factory.get(CONST1);
     auto const2 = const_factory.get(CONST2);
@@ -70,7 +70,7 @@ TEST(OperatorRegisterTest, BasicOperationsWithFlyweights)
 
 TEST(OperatorRegisterTest, ShiftOperations)
 {
-    auto& const_factory  = Flyweight<const ConstantRegister>::getSingleton();
+    auto& const_factory = Flyweight<const ConstantRegister>::getSingleton();
     auto& lshift_factory = Flyweight<const LeftShiftRegister>::getSingleton();
     auto& rshift_factory = Flyweight<const RightShiftRegister>::getSingleton();
 
@@ -96,10 +96,10 @@ TEST(OperatorRegisterTest, ComplexOperation)
     // Something seemingly complex:
     //   ~(((CONST1 & CONST2) << 12) | ((CONST1 | CONST2) >> 4)))
 
-    auto& const_factory  = Flyweight<const ConstantRegister>::getSingleton();
-    auto& and_factory    = Flyweight<const AndRegister>::getSingleton();
-    auto& or_factory     = Flyweight<const OrRegister>::getSingleton();
-    auto& not_factory    = Flyweight<const NotRegister>::getSingleton();
+    auto& const_factory = Flyweight<const ConstantRegister>::getSingleton();
+    auto& and_factory = Flyweight<const AndRegister>::getSingleton();
+    auto& or_factory = Flyweight<const OrRegister>::getSingleton();
+    auto& not_factory = Flyweight<const NotRegister>::getSingleton();
     auto& lshift_factory = Flyweight<const LeftShiftRegister>::getSingleton();
     auto& rshift_factory = Flyweight<const RightShiftRegister>::getSingleton();
 
@@ -125,7 +125,7 @@ TEST(OperatorRegisterTest, ComplexOperation)
 TEST(OperatorRegisterTest, ConstRegConstructor)
 {
     auto& const_factory = Flyweight<const ConstantRegister>::getSingleton();
-    auto& and_factory   = Flyweight<const AndRegister>::getSingleton();
+    auto& and_factory = Flyweight<const AndRegister>::getSingleton();
 
     // The ConstRegister constructor is a template that requires some integer
     // type.

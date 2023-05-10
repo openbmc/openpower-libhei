@@ -30,18 +30,18 @@ uint64_t BitString::getFieldRight(uint64_t i_pos, uint64_t i_len) const
 
     // Get the relative address of this byte and the relative starting position
     // within the byte.
-    uint64_t relPos  = 0;
+    uint64_t relPos = 0;
     uint8_t* relAddr = getRelativePosition(relPos, i_pos);
 
     // Get the length of the target bit field within this byte and the length of
     // the bit field for any remaining bits.
-    uint64_t bf_len     = i_len;
+    uint64_t bf_len = i_len;
     uint64_t remain_len = 0;
     if (UINT8_BIT_LEN < relPos + i_len)
     {
         // The target bit field crosses a byte boundary. So truncate the bit
         // length for this byte and update the remaining length.
-        bf_len     = UINT8_BIT_LEN - relPos;
+        bf_len = UINT8_BIT_LEN - relPos;
         remain_len = i_len - bf_len;
     }
 
@@ -74,18 +74,18 @@ void BitString::setFieldLeft(uint64_t i_pos, uint64_t i_len, uint64_t i_val)
 
     // Get the relative address of this byte and the relative starting position
     // within the byte.
-    uint64_t relPos  = 0;
+    uint64_t relPos = 0;
     uint8_t* relAddr = getRelativePosition(relPos, i_pos);
 
     // Get the length of the target bit field within this byte and the length of
     // the bit field for any remaining bits.
-    uint64_t bf_len     = i_len;
+    uint64_t bf_len = i_len;
     uint64_t remain_len = 0;
     if (UINT8_BIT_LEN < relPos + i_len)
     {
         // The target bit field crosses a byte boundary. So truncate the bit
         // length for this byte and update the remaining length.
-        bf_len     = UINT8_BIT_LEN - relPos;
+        bf_len = UINT8_BIT_LEN - relPos;
         remain_len = i_len - bf_len;
     }
 
@@ -204,7 +204,7 @@ void BitString::setString(const BitString& i_sStr, uint64_t i_sPos,
         // Start with the last chunk and work backwards.
         for (int32_t pos = lastPos; 0 <= pos; pos -= UINT64_BIT_LEN)
         {
-            uint64_t len   = std::min(actLen - pos, UINT64_BIT_LEN);
+            uint64_t len = std::min(actLen - pos, UINT64_BIT_LEN);
             uint64_t value = i_sStr.getFieldRight(i_sPos + pos, len);
             setFieldRight(i_dPos + pos, len, value);
         }

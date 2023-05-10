@@ -51,8 +51,8 @@ bool IsolationNode::analyze(const Chip& i_chip, AttentionType_t i_attnType,
             {
                 // This bit was driven from an attention from another register.
                 // Continue down the isolation tree to look for more attentions.
-                bool attnFound =
-                    child_itr->second->analyze(i_chip, i_attnType, io_isoData);
+                bool attnFound = child_itr->second->analyze(i_chip, i_attnType,
+                                                            io_isoData);
                 if (!attnFound)
                 {
                     // It is possible the child node is only intended for FFDC.
@@ -152,8 +152,8 @@ std::vector<const IsolationNode*> IsolationNode::cv_isolationStack{};
 void IsolationNode::pushIsolationStack() const
 {
     // Ensure this node does not already exist in cv_isolationStack.
-    auto itr =
-        std::find(cv_isolationStack.begin(), cv_isolationStack.end(), this);
+    auto itr = std::find(cv_isolationStack.begin(), cv_isolationStack.end(),
+                         this);
     HEI_ASSERT(cv_isolationStack.end() == itr);
 
     // Push to node to the stack.

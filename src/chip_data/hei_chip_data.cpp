@@ -47,7 +47,7 @@ void __readRegister(ChipDataStream& io_stream, IsolationChip::Ptr& io_isoChip)
 
             // Get this register from the flyweight factory.
             auto& factory = Flyweight<const ScomRegister>::getSingleton();
-            auto hwReg    = factory.get(id, inst, attr, addr);
+            auto hwReg = factory.get(id, inst, attr, addr);
 
             // Add this register to the isolation chip.
             io_isoChip->addHardwareRegister(hwReg);
@@ -59,7 +59,7 @@ void __readRegister(ChipDataStream& io_stream, IsolationChip::Ptr& io_isoChip)
 
             // Get this register from the flyweight factory.
             auto& factory = Flyweight<const IdScomRegister>::getSingleton();
-            auto hwReg    = factory.get(id, inst, attr, addr);
+            auto hwReg = factory.get(id, inst, attr, addr);
 
             // Add this register to the isolation chip.
             io_isoChip->addHardwareRegister(hwReg);
@@ -239,8 +239,8 @@ Register::ConstPtr __readExpr(ChipDataStream& io_stream,
 //------------------------------------------------------------------------------
 
 using TmpChildNodeMap = std::map<BitPosition_t, IsolationNode::Key>;
-using TmpNodeData     = std::pair<IsolationNode::Ptr, TmpChildNodeMap>;
-using TmpNodeMap      = std::map<IsolationNode::Key, TmpNodeData>;
+using TmpNodeData = std::pair<IsolationNode::Ptr, TmpChildNodeMap>;
+using TmpNodeMap = std::map<IsolationNode::Key, TmpNodeData>;
 
 void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
                 TmpNodeMap& io_tmpNodeMap, Version_t i_version)
@@ -264,8 +264,8 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
         HEI_ASSERT(0 != numIsoRules || 0 == numChildNodes);
 
         // Allocate memory for this isolation node.
-        auto isoNode =
-            std::make_shared<IsolationNode>(nodeId, nodeInst, regType);
+        auto isoNode = std::make_shared<IsolationNode>(nodeId, nodeInst,
+                                                       regType);
 
         // Add capture registers.
         for (unsigned int j = 0; j < numCapRegs; j++)
@@ -320,8 +320,8 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
             Instance_t childInst;
             io_stream >> bit >> childId >> childInst;
 
-            auto ret =
-                cMap.emplace(bit, IsolationNode::Key{childId, childInst});
+            auto ret = cMap.emplace(bit,
+                                    IsolationNode::Key{childId, childInst});
             HEI_ASSERT(ret.second); // Should not have duplicate entries
         }
 
@@ -340,13 +340,13 @@ void __insertNodes(IsolationChip::Ptr& io_isoChip,
 {
     for (const auto& n : i_tmpNodeMap)
     {
-        const IsolationNode::Ptr& node  = n.second.first;
+        const IsolationNode::Ptr& node = n.second.first;
         const TmpChildNodeMap& childMap = n.second.second;
 
         // Link the child nodes, if they exist.
         for (const auto& c : childMap)
         {
-            const BitPosition_t& bit           = c.first;
+            const BitPosition_t& bit = c.first;
             const IsolationNode::Key& childKey = c.second;
 
             // Find the child node in the temporary map.

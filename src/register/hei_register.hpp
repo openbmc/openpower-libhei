@@ -27,7 +27,7 @@ contain the result of mask1 & mask2.
 class Register
 {
   public: // Aliases
-    using Ptr      = std::shared_ptr<Register>;
+    using Ptr = std::shared_ptr<Register>;
     using ConstPtr = std::shared_ptr<const Register>;
 
   public:

@@ -60,7 +60,7 @@ bool HardwareRegister::read(const Chip& i_chip, bool i_force) const
     if (i_force || !queryCache(i_chip))
     {
         // Read this register from hardware.
-        uint64_t val  = 0;
+        uint64_t val = 0;
         accessFailure = registerRead(i_chip, getType(), getAddress(), val);
         if (!accessFailure)
         {
