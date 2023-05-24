@@ -474,112 +474,112 @@
                 }
             },
             {
-                "reg_name": "HWMS0",
+                "reg_name": "HW_MS0",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS1",
+                "reg_name": "HW_MS1",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS2",
+                "reg_name": "HW_MS2",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS3",
+                "reg_name": "HW_MS3",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS4",
+                "reg_name": "HW_MS4",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS5",
+                "reg_name": "HW_MS5",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS6",
+                "reg_name": "HW_MS6",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "HWMS7",
+                "reg_name": "HW_MS7",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS0",
+                "reg_name": "FW_MS0",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS1",
+                "reg_name": "FW_MS1",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS2",
+                "reg_name": "FW_MS2",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS3",
+                "reg_name": "FW_MS3",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS4",
+                "reg_name": "FW_MS4",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS5",
+                "reg_name": "FW_MS5",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS6",
+                "reg_name": "FW_MS6",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
                 }
             },
             {
-                "reg_name": "FWMS7",
+                "reg_name": "FW_MS7",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
