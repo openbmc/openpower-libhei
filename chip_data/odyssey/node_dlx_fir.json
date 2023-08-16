@@ -306,7 +306,7 @@
                 "22": {
                     "desc": "DL0 skitter drift detected"
                 },
-                "23:63": {
+                "23:44": {
                     "desc": "reserved"
                 }
             },

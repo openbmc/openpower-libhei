@@ -312,6 +312,9 @@
                 },
                 "45": {
                     "desc": "DSM errors port1"
+                },
+                "46:48": {
+                    "desc": "reserved"
                 }
             },
             "capture_groups": [

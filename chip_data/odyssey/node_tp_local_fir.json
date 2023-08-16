@@ -36,6 +36,91 @@
             "instances": {
                 "0": "0x01040108"
             }
+        },
+        "TP_ERR_STATUS": {
+            "instances": {
+                "0": "0x0103000F"
+            }
+        },
+        "TP_PSCOM_STATUS_ERR": {
+            "instances": {
+                "0": "0x01010001"
+            }
+        },
+        "TP_DTS_ERR": {
+            "instances": {
+                "0": "0x0105002F"
+            }
+        },
+        "TP_FMU_ERR_RPT": {
+            "instances": {
+                "0": "0x01010786"
+            }
+        },
+        "PCBCTL_ERR": {
+            "instances": {
+                "0": "0x000F001F"
+            }
+        },
+        "RESET_REG_B": {
+            "instances": {
+                "0": "0x000A0001"
+            }
+        },
+        "PPE_XIRAMDBG": {
+            "instances": {
+                "0": "0x000D0003"
+            }
+        },
+        "PPE_XIRAMEDR": {
+            "instances": {
+                "0": "0x000D0004"
+            }
+        },
+        "PPE_XIDBGPRO": {
+            "instances": {
+                "0": "0x000D0005"
+            }
+        },
+        "PPE_XIMEM": {
+            "instances": {
+                "0": "0x000D0007"
+            }
+        },
+        "PPE_XIICAC": {
+            "instances": {
+                "0": "0x000D0009"
+            }
+        },
+        "PPE_XIDBGINF": {
+            "instances": {
+                "0": "0x000D000F"
+            }
+        },
+        "PPE_PIBMEM_CNTL_REG": {
+            "instances": {
+                "0": "0x000D0010"
+            }
+        },
+        "PPE_PIBMEM_ADDR_REG": {
+            "instances": {
+                "0": "0x000D0011"
+            }
+        },
+        "PPE_PIBMEM_STATUS_REG": {
+            "instances": {
+                "0": "0x000D0015"
+            }
+        },
+        "PPE_FIR_MASK_REG": {
+            "instances": {
+                "0": "0x000D0018"
+            }
+        },
+        "PPE_ECC_CAPTURE_REG": {
+            "instances": {
+                "0": "0x000D001B"
+            }
         }
     },
     "isolation_nodes": {
@@ -192,10 +277,26 @@
                     "desc": "Error reported from one or more PCB responder - PLL lock/unlock"
                 },
                 "19": {
-                    "desc": "SBE - PPE internal hardware error"
+                    "desc": "SBE - PPE internal hardware error",
+                    "capture_groups": [
+                        {
+                            "group_name": "SPPE_HW_ERROR",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "20": {
-                    "desc": "SBE - PPE external hardware error"
+                    "desc": "SBE - PPE external hardware error",
+                    "capture_groups": [
+                        {
+                            "group_name": "SPPE_HW_ERROR",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "21": {
                     "desc": "SBE - PPE code error"
@@ -228,10 +329,10 @@
                     "desc": "unused"
                 },
                 "36": {
-                    "desc": "PIBMEM"
+                    "desc": "PIB interface - RAM UE ECC error"
                 },
                 "37": {
-                    "desc": "PIBMEM"
+                    "desc": "Direct interface to PIBMEM - RAM UE ECC error"
                 },
                 "38:44": {
                     "desc": "unused"
@@ -245,7 +346,123 @@
                 "63": {
                     "desc": "external local checkstop"
                 }
-            }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "TP_LOCAL_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
         }
+    },
+    "capture_groups": {
+        "TP_LOCAL_FIR": [
+            {
+                "reg_name": "TP_ERR_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TP_PSCOM_STATUS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TP_DTS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "TP_FMU_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PCBCTL_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "RESET_REG_B",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "SPPE_HW_ERROR": [
+            {
+                "reg_name": "PPE_XIRAMDBG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_XIRAMEDR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_XIDBGPRO",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_XIMEM",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_XIICAC",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_XIDBGINF",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_PIBMEM_CNTL_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_PIBMEM_ADDR_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_PIBMEM_STATUS_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_FIR_MASK_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PPE_ECC_CAPTURE_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
     }
 }

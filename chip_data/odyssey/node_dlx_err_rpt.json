@@ -75,12 +75,6 @@
                 }
             ],
             "bits": {
-                "50": {
-                    "desc": "buffer UE"
-                },
-                "51": {
-                    "desc": "insufficient working lanes"
-                },
                 "52": {
                     "desc": "bad CRC from TLXT"
                 },

@@ -36,6 +36,21 @@
             "instances": {
                 "0": "0x08040108"
             }
+        },
+        "MEM_PSCOM_STATUS_ERR": {
+            "instances": {
+                "0": "0x08010001"
+            }
+        },
+        "MEM_ERR_STATUS": {
+            "instances": {
+                "0": "0x0803000F"
+            }
+        },
+        "MEM_DTS_ERR": {
+            "instances": {
+                "0": "0x0805002F"
+            }
         }
     },
     "isolation_nodes": {
@@ -179,7 +194,37 @@
                 "63": {
                     "desc": "external local checkstop"
                 }
-            }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "MEM_LOCAL_FIR",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
         }
+    },
+    "capture_groups": {
+        "MEM_LOCAL_FIR": [
+            {
+                "reg_name": "MEM_PSCOM_STATUS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MEM_ERR_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "MEM_DTS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ]
     }
 }
