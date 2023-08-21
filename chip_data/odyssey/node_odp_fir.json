@@ -260,6 +260,76 @@
                 "0": "0x800c00830801303f",
                 "1": "0x800c00830801343f"
             }
+        },
+        "DBYTE0_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800100560801303f",
+                "1": "0x800100560801343f"
+            }
+        },
+        "DBYTE1_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800110560801303f",
+                "1": "0x800110560801343f"
+            }
+        },
+        "DBYTE2_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800120560801303f",
+                "1": "0x800120560801343f"
+            }
+        },
+        "DBYTE3_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800130560801303f",
+                "1": "0x800130560801343f"
+            }
+        },
+        "DBYTE4_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800140560801303f",
+                "1": "0x800140560801343f"
+            }
+        },
+        "DBYTE5_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800150560801303f",
+                "1": "0x800150560801343f"
+            }
+        },
+        "DBYTE6_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800160560801303f",
+                "1": "0x800160560801343f"
+            }
+        },
+        "DBYTE7_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800170560801303f",
+                "1": "0x800170560801343f"
+            }
+        },
+        "DBYTE8_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800180560801303f",
+                "1": "0x800180560801343f"
+            }
+        },
+        "DBYTE9_RX_FIFO_CHECK_STATUS": {
+            "reg_type": "IDSCOM",
+            "instances": {
+                "0": "0x800190560801303f",
+                "1": "0x800190560801343f"
+            }
         }
     },
     "isolation_nodes": {
@@ -407,7 +477,16 @@
                     "desc": "Parity Error (even parity) for D5ACSM Channel 0 Parity Error"
                 },
                 "11": {
-                    "desc": "PHY RX FIFO Check Error"
+                    "desc": "PHY RX FIFO Check Error",
+                    "capture_groups": [
+                        {
+                            "group_name": "RX_FIFO_REGS",
+                            "group_inst": {
+                                "0": 0,
+                                "1": 1
+                            }
+                        }
+                    ]
                 },
                 "12": {
                     "desc": "PHY RX TX PPT Error",
@@ -677,6 +756,78 @@
             },
             {
                 "reg_name": "ARC_ICCM_SB_ERR_CTR",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            }
+        ],
+        "RX_FIFO_REGS": [
+            {
+                "reg_name": "DBYTE0_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE1_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE2_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE3_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE4_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE5_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE6_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE7_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE8_RX_FIFO_CHECK_STATUS",
+                "reg_inst": {
+                    "0": 0,
+                    "1": 1
+                }
+            },
+            {
+                "reg_name": "DBYTE9_RX_FIFO_CHECK_STATUS",
                 "reg_inst": {
                     "0": 0,
                     "1": 1
