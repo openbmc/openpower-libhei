@@ -274,7 +274,10 @@
                     "desc": "unused"
                 },
                 "18": {
-                    "desc": "Error reported from one or more PCB responder - PLL lock/unlock"
+                    "desc": "PCB slave error",
+                    "child_node": {
+                        "name": "PLL_UNLOCK"
+                    }
                 },
                 "19": {
                     "desc": "SBE - PPE internal hardware error",

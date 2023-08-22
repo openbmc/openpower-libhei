@@ -1,0 +1,405 @@
+{
+    "version": 1,
+    "model_ec": ["ODYSSEY_10"],
+    "registers": {
+        "BC_OR_PCBSLV_ERROR": {
+            "instances": {
+                "0": "0x470F001F"
+            }
+        },
+        "PCBSLV_CONFIG": {
+            "instances": {
+                "1": "0x010F001E",
+                "8": "0x080F001E"
+            }
+        },
+        "PCBSLV_ERROR": {
+            "instances": {
+                "1": "0x010F001F",
+                "8": "0x080F001F"
+            }
+        }
+    },
+    "isolation_nodes": {
+        "PLL_UNLOCK": {
+            "instances": [0],
+            "rules": [
+                {
+                    "attn_type": ["CHIP_CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "or",
+                                "exprs": [
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 24
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 25
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 26
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 27
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 28
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 29
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 30
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 31
+                                    }
+                                ]
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x8000000000000000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["RECOV"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "or",
+                                "exprs": [
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 24
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 25
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 26
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 27
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 28
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 29
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 30
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 31
+                                    }
+                                ]
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x8000000000000000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["SP_ATTN"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "or",
+                                "exprs": [
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 24
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 25
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 26
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 27
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 28
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 29
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 30
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 31
+                                    }
+                                ]
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x8000000000000000"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "attn_type": ["UNIT_CS"],
+                    "node_inst": [0],
+                    "expr": {
+                        "expr_type": "and",
+                        "exprs": [
+                            {
+                                "expr_type": "or",
+                                "exprs": [
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 24
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 25
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 26
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 27
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 28
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 29
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 30
+                                    },
+                                    {
+                                        "expr_type": "lshift",
+                                        "expr": {
+                                            "expr_type": "reg",
+                                            "reg_name": "BC_OR_PCBSLV_ERROR"
+                                        },
+                                        "shift_value": 31
+                                    }
+                                ]
+                            },
+                            {
+                                "expr_type": "int",
+                                "int_value": "0x8000000000000000"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "bits": {
+                "0": {
+                    "desc": "PLL unlock"
+                }
+            },
+            "capture_groups": [
+                {
+                    "group_name": "PLL_UNLOCK",
+                    "group_inst": {
+                        "0": 0
+                    }
+                }
+            ]
+        }
+    },
+    "capture_groups": {
+        "PLL_UNLOCK": [
+            {
+                "reg_name": "PCBSLV_CONFIG",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "PCBSLV_CONFIG",
+                "reg_inst": {
+                    "0": 8
+                }
+            },
+            {
+                "reg_name": "BC_OR_PCBSLV_ERROR",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "PCBSLV_ERROR",
+                "reg_inst": {
+                    "0": 1
+                }
+            },
+            {
+                "reg_name": "PCBSLV_ERROR",
+                "reg_inst": {
+                    "0": 8
+                }
+            }
+        ]
+    }
+}
