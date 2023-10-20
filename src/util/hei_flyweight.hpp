@@ -57,7 +57,7 @@ class Flyweight
             iv_index.begin(), iv_index.end(), newEntry,
             [](const std::shared_ptr<T> a, const std::shared_ptr<T> b) {
             return *a < *b;
-            });
+        });
 
         // std::lower_bound() will return the first element that does not
         // compare less than newEntry. So if an element is found, we must make
