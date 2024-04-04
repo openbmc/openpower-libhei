@@ -251,34 +251,34 @@
                     "desc": "ATS Invalid IODA Table Address Register Table Select entry"
                 },
                 "36": {
-                    "desc": "ATS Reserved, macro bit 19"
+                    "desc": "BAR secure SMS not secure"
                 },
                 "37": {
                     "desc": "kill xlate epoch timeout."
                 },
                 "38": {
-                    "desc": "XSL Reserved, macro bit 19."
+                    "desc": "PEE secure SMF not secure"
                 },
                 "39": {
-                    "desc": "XSL Reserved, macro bit 20."
+                    "desc": "XSL in suspend mode when OTL sends cmd"
                 },
                 "40": {
-                    "desc": "XSL Reserved, macro bit 21."
+                    "desc": "Unsupported page size"
                 },
                 "41": {
-                    "desc": "XSL Reserved, macro bit 22."
+                    "desc": "Unexpected XLATE release"
                 },
                 "42": {
-                    "desc": "XSL Reserved, macro bit 23."
+                    "desc": "Kill XLATE done fail"
                 },
                 "43": {
-                    "desc": "XSL Reserved, macro bit 24."
+                    "desc": "XSL Internal Error"
                 },
                 "44": {
                     "desc": "XSL Reserved, macro bit 25."
                 },
                 "45": {
-                    "desc": "XSL Reserved, macro bit 26."
+                    "desc": "XSL wrap parity error"
                 },
                 "46": {
                     "desc": "XSL Reserved, macro bit 27."
