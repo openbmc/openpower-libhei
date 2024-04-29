@@ -25,8 +25,7 @@ class ScomRegister : public HardwareRegister
      */
     ScomRegister(RegisterId_t i_id, Instance_t i_instance,
                  RegisterAttributeFlags_t i_flags, uint32_t i_address) :
-        HardwareRegister(i_id, i_instance, i_flags),
-        iv_address(i_address)
+        HardwareRegister(i_id, i_instance, i_flags), iv_address(i_address)
     {}
 
     /** @brief Destructor. */
@@ -90,8 +89,7 @@ class IdScomRegister : public HardwareRegister
      */
     IdScomRegister(RegisterId_t i_id, Instance_t i_instance,
                    RegisterAttributeFlags_t i_flags, uint64_t i_address) :
-        HardwareRegister(i_id, i_instance, i_flags),
-        iv_address(i_address)
+        HardwareRegister(i_id, i_instance, i_flags), iv_address(i_address)
     {}
 
     /** @brief Destructor. */

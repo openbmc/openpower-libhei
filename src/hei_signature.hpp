@@ -35,8 +35,7 @@ class Signature
      */
     Signature(const Chip& i_chip, NodeId_t i_id, Instance_t i_instance,
               BitPosition_t i_bit, AttentionType_t i_attnType) :
-        iv_chip(i_chip),
-        iv_id(i_id), iv_instance(i_instance), iv_bit(i_bit),
+        iv_chip(i_chip), iv_id(i_id), iv_instance(i_instance), iv_bit(i_bit),
         iv_attnType(i_attnType)
     {}
 

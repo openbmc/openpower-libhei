@@ -53,8 +53,7 @@ class IsolationNode
      */
     IsolationNode(NodeId_t i_id, Instance_t i_instance,
                   RegisterType_t i_regType) :
-        iv_id(i_id),
-        iv_instance(i_instance), iv_regType(i_regType)
+        iv_id(i_id), iv_instance(i_instance), iv_regType(i_regType)
     {}
 
     /** @brief Destructor. */
