@@ -21,14 +21,14 @@ imported, or as a git subtree/submodule) or built as static library.
 ## User Application Requirements and APIs
 
 - The process to access hardware register data will vary per user application.
-  Therefore, this library will declare the hardware access [user APIs][], but
-  each user application must implement the APIs for their own environment.
+  Therefore, this library will declare the hardware access [user APIs][], but each
+  user application must implement the APIs for their own environment.
 - This library will not contain data regarding hardware specific information.
   Instead, that information will be provided by the user application in the form
   of the [Chip Data Files][].
 - Tracing, or logging, methods will vary per user application. Therefore, this
-  library will declare the tracing/logging [user APIs][], but each user
-  application must implement the APIs for their own environment.
+  library will declare the tracing/logging [user APIs][], but each user application
+  must implement the APIs for their own environment.
 
 ## Environment configuration
 

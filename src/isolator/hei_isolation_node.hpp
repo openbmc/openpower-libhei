@@ -110,6 +110,12 @@ class IsolationNode
      */
     std::map<BitPosition_t, const ConstPtr> iv_children;
 
+    /**
+     * This map is used to store the write operation rules for the isolation
+     * node as defined in the Chip Data Files.
+     */
+    std::map<OpRuleName_t, std::pair<OpRuleType_t, RegisterId_t>> iv_op_rules;
+
   public: // Member functions
     /**
      * @brief  Finds all active attentions on this node. If an active bit is a
@@ -151,8 +157,8 @@ class IsolationNode
      * This is only intended to be used during initialization of the isolator.
      * Will assert that a rule has not already been defined for this type.
      *
-     * @param The target attention type.
-     * @param The rule for this attention type.
+     * @param i_attnType The target attention type.
+     * @param i_rule The rule for this attention type.
      */
     void addRule(AttentionType_t i_attnType, Register::ConstPtr i_rule);
 
@@ -163,10 +169,23 @@ class IsolationNode
      * This is only intended to be used during initialization of the isolator.
      * Will assert that nothing has already been defined for this bit.
      *
-     * @param The target bit on this node.
-     * @param The child node to analyze for the given bit.
+     * @param i_bit The target bit on this node.
+     * @param i_child The child node to analyze for the given bit.
      */
     void addChild(BitPosition_t i_bit, ConstPtr i_child);
+
+    /**
+     * @brief Adds a new write operation for the isolation node.
+     *
+     * This is only intended to be used during initialization of the isolator.
+     * Will assert that nothing has already been defined for this type.
+     *
+     * @param i_opName The name of the operation.
+     * @param i_opType The type of the operation.
+     * @param i_regId The ID of the register to be written.
+     */
+    void addOpRule(OpRuleName_t i_opName, OpRuleType_t i_opType,
+                   RegisterId_t i_regId);
 
     /** @return The node ID. */
     NodeId_t getId() const
