@@ -90,6 +90,14 @@ def _num_attn_types(iterable: iter) -> bytes:
     return _num(1, iterable)
 
 
+def _op_name(name: str) -> bytes:
+    return _hash(1, name)
+
+
+def _num_op_rules(iterable: iter) -> bytes:
+    return _num(1, iterable)
+
+
 # -----------------------------------------------------------------------------
 # Isolation node capture register support
 
@@ -243,7 +251,7 @@ def binary_encode(model_ec: str, base: cd.Base, fp: object):
     # Header information.
     data += "CHIPDATA".encode()
     data += _model_ec(supported_model_ec[model_ec].id)
-    data += _version(2)
+    data += _version(3)
 
     # Register information.
     data += "REGS".encode()
@@ -267,6 +275,12 @@ def binary_encode(model_ec: str, base: cd.Base, fp: object):
         data += _node_name(node_name)
         data += _reg_type(iso_node.reg_type)
         data += _num_inst(iso_node.instances)
+
+        data += _num_op_rules(iso_node.op_rules)
+        for op_name, op_rule in sorted(iso_node.op_rules.items()):
+            data += _op_name(op_name)
+            data += _op_name(op_rule.op_rule)
+            data += _reg_name(op_rule.reg_name)
 
         for node_inst in sorted(iso_node.instances):
             cap_regs = _cap_regs(

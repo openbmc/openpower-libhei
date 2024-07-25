@@ -7,9 +7,21 @@
                 "0": "0x08012400"
             }
         },
+        "DLX_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012401"
+            }
+        },
         "DLX_FIR_MASK": {
             "instances": {
                 "0": "0x08012402"
+            }
+        },
+        "DLX_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012403"
             }
         },
         "DLX_FIR_CFG_CHIP_CS": {
@@ -224,6 +236,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "DLX_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "DLX_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "DLX_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "DLX_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Internal parity error in SCOM component"

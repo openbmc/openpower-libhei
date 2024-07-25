@@ -7,9 +7,21 @@
                 "0": "0x08011400"
             }
         },
+        "MCBIST_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011401"
+            }
+        },
         "MCBIST_FIR_MASK": {
             "instances": {
                 "0": "0x08011402"
+            }
+        },
+        "MCBIST_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011403"
             }
         },
         "MCBIST_FIR_CFG_CHIP_CS": {
@@ -274,6 +286,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MCBIST_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MCBIST_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MCBIST_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MCBIST_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Internal parity error in scom component"

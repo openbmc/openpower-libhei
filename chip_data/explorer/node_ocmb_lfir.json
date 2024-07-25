@@ -7,9 +7,33 @@
                 "0": "0x0804000A"
             }
         },
+        "OCMB_LFIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x0804000B"
+            }
+        },
+        "OCMB_LFIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x0804000C"
+            }
+        },
         "OCMB_LFIR_MASK": {
             "instances": {
                 "0": "0x0804000D"
+            }
+        },
+        "OCMB_LFIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x0804000E"
+            }
+        },
+        "OCMB_LFIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x0804000F"
             }
         },
         "OCMB_LFIR_ACT0": {
@@ -117,6 +141,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OCMB_LFIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "OCMB_LFIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OCMB_LFIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "OCMB_LFIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "CFIR access PCB error"

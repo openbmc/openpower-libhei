@@ -3,11 +3,11 @@
     "model_ec": ["EXPLORER_11", "EXPLORER_20"],
     "root_nodes": {
         "CHIP_CS": {
-            "name": "CHIPLET_OCMB_FIR",
+            "name": "CHIPLET_OCMB_FIR_CHIP_CS",
             "inst": 0
         },
         "RECOV": {
-            "name": "CHIPLET_OCMB_FIR",
+            "name": "CHIPLET_OCMB_FIR_RECOV",
             "inst": 0
         },
         "SP_ATTN": {
