@@ -131,10 +131,10 @@
             ],
             "bits": {
                 "0": {
-                    "desc": "MCD array ECC correctable error"
+                    "desc": "MCD array ECC uncorrectable error"
                 },
                 "1": {
-                    "desc": "MCD array ECC uncorrectable error"
+                    "desc": "MCD array ECC correctable error"
                 },
                 "2": {
                     "desc": "MCD PowerBus address parity error"

@@ -19,7 +19,7 @@
         }
     },
     "isolation_nodes": {
-        "CHIPLET_OCMB_FIR": {
+        "CHIPLET_OCMB_FIR_CHIP_CS": {
             "instances": [0],
             "rules": [
                 {
@@ -45,7 +45,66 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "read_set_write",
+                    "reg_name": "CHIPLET_OCMB_FIR_MASK"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "read_clear_write",
+                    "reg_name": "CHIPLET_OCMB_FIR_MASK"
+                }
+            },
+            "bits": {
+                "3": {
+                    "desc": "Attention from OCMB_LFIR",
+                    "child_node": {
+                        "name": "OCMB_LFIR"
+                    }
+                },
+                "4": {
+                    "desc": "Attention from MMIOFIR",
+                    "child_node": {
+                        "name": "MMIOFIR"
+                    }
+                },
+                "7": {
+                    "desc": "Attention from SRQFIR",
+                    "child_node": {
+                        "name": "SRQFIR"
+                    }
+                },
+                "8": {
+                    "desc": "Attention from MCBISTFIR",
+                    "child_node": {
+                        "name": "MCBISTFIR"
+                    }
+                },
+                "9": {
+                    "desc": "Attention from RDFFIR",
+                    "child_node": {
+                        "name": "RDFFIR"
+                    }
+                },
+                "11": {
+                    "desc": "Attention from TLXFIR",
+                    "child_node": {
+                        "name": "TLXFIR"
+                    }
+                },
+                "12": {
+                    "desc": "Attention from OMI_DL_FIR",
+                    "child_node": {
+                        "name": "OMI_DL_FIR"
+                    }
+                }
+            }
+        },
+        "CHIPLET_OCMB_FIR_RECOV": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["RECOV"],
                     "node_inst": [0],
@@ -75,6 +134,16 @@
                     }
                 }
             ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "read_set_write",
+                    "reg_name": "CHIPLET_OCMB_FIR_MASK"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "read_clear_write",
+                    "reg_name": "CHIPLET_OCMB_FIR_MASK"
+                }
+            },
             "bits": {
                 "3": {
                     "desc": "Attention from OCMB_LFIR",

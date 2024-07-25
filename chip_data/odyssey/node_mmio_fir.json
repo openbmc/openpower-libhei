@@ -7,9 +7,21 @@
                 "0": "0x08010870"
             }
         },
+        "MMIO_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010871"
+            }
+        },
         "MMIO_FIR_MASK": {
             "instances": {
                 "0": "0x08010872"
+            }
+        },
+        "MMIO_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010873"
             }
         },
         "MMIO_FIR_CFG_CHIP_CS": {
@@ -149,6 +161,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MMIO_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MMIO_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MMIO_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MMIO_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Interal SCOM logic parity error"

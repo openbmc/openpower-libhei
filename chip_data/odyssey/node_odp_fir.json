@@ -8,10 +8,24 @@
                 "1": "0x08013400"
             }
         },
+        "ODP_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08013001",
+                "1": "0x08013401"
+            }
+        },
         "ODP_FIR_MASK": {
             "instances": {
                 "0": "0x08013002",
                 "1": "0x08013402"
+            }
+        },
+        "ODP_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08013003",
+                "1": "0x08013403"
             }
         },
         "ODP_FIR_CFG_CHIP_CS": {
@@ -433,6 +447,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "ODP_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "ODP_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "ODP_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "ODP_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Internal parity error"

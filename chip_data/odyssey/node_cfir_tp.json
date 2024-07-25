@@ -27,9 +27,33 @@
                 "0": "0x01040040"
             }
         },
+        "CFIR_TP_CHIP_CS_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040050"
+            }
+        },
+        "CFIR_TP_CHIP_CS_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040060"
+            }
+        },
         "CFIR_TP_RECOV_MASK": {
             "instances": {
                 "0": "0x01040041"
+            }
+        },
+        "CFIR_TP_RECOV_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040051"
+            }
+        },
+        "CFIR_TP_RECOV_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040061"
             }
         },
         "CFIR_TP_SP_ATTN_MASK": {
@@ -37,14 +61,38 @@
                 "0": "0x01040042"
             }
         },
+        "CFIR_TP_SP_ATTN_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040052"
+            }
+        },
+        "CFIR_TP_SP_ATTN_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040062"
+            }
+        },
         "CFIR_TP_UNIT_CS_MASK": {
             "instances": {
                 "0": "0x01040043"
             }
+        },
+        "CFIR_TP_UNIT_CS_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040053"
+            }
+        },
+        "CFIR_TP_UNIT_CS_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040063"
+            }
         }
     },
     "isolation_nodes": {
-        "CFIR_TP": {
+        "CFIR_TP_CHIP_CS": {
             "instances": [0],
             "rules": [
                 {
@@ -70,7 +118,30 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_CHIP_CS_MASK_OR"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_CHIP_CS_MASK_CLEAR"
+                }
+            },
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR"
+                    }
+                }
+            }
+        },
+        "CFIR_TP_RECOV": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["RECOV"],
                     "node_inst": [0],
@@ -94,7 +165,30 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_RECOV_MASK_OR"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_RECOV_MASK_CLEAR"
+                }
+            },
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR"
+                    }
+                }
+            }
+        },
+        "CFIR_TP_SP_ATTN": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
@@ -118,7 +212,30 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_SP_ATTN_MASK_OR"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_SP_ATTN_MASK_CLEAR"
+                }
+            },
+            "bits": {
+                "4": {
+                    "desc": "Attention from TP_LOCAL_FIR",
+                    "child_node": {
+                        "name": "TP_LOCAL_FIR"
+                    }
+                }
+            }
+        },
+        "CFIR_TP_UNIT_CS": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
@@ -144,6 +261,16 @@
                     }
                 }
             ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_UNIT_CS_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_TP_UNIT_CS_MASK_CLEAR"
+                }
+            },
             "bits": {
                 "4": {
                     "desc": "Attention from TP_LOCAL_FIR",
