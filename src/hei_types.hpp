@@ -134,6 +134,32 @@ constexpr auto MAX_BIT_POSITION = std::numeric_limits<BitPosition_t>::max();
 using RegisterAddress_t = uint64_t;
 
 /**
+ * This is used to define the name of a write operation rule for a FIR,
+ * defined in the Chip Data Files.
+ *
+ * Values:
+ *   This is a hashed value of one of the following string names:
+ *   "FIR_SET", "FIR_CLEAR", "MASK_SET", "MASK_CLEAR".
+ *
+ * Range:
+ *   This is defined as a 1-byte field in the Chip Data Files.
+ */
+using OpRuleName_t = uint8_t;
+
+/**
+ * This is used to define the type of a write operation rule for a FIR,
+ * defined in the Chip Data Files.
+ *
+ * Values:
+ *   This is a hashed value of one of the following string names:
+ *   "atomic_or", "atomic_and", "read_set_write", "read_clear_write".
+ *
+ * Range:
+ *   This is defined as a 1-byte field in the Chip Data Files.
+ */
+using OpRuleType_t = uint8_t;
+
+/**
  * The hardware register attribute flags.
  *
  * Values:
