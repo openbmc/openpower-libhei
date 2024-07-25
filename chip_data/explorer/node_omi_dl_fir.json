@@ -7,9 +7,33 @@
                 "0": "0x08012800"
             }
         },
+        "OMI_DL_FIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012801"
+            }
+        },
+        "OMI_DL_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012802"
+            }
+        },
         "OMI_DL_FIR_MASK": {
             "instances": {
                 "0": "0x08012803"
+            }
+        },
+        "OMI_DL_FIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012804"
+            }
+        },
+        "OMI_DL_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012805"
             }
         },
         "OMI_DL_FIR_ACT0": {
@@ -204,6 +228,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OMI_DL_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "OMI_DL_FIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OMI_DL_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "OMI_DL_FIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "OMI-DL0 fatal error",

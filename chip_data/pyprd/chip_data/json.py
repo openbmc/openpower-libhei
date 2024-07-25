@@ -76,6 +76,8 @@ class _ChipDataEncoder(json.JSONEncoder):
 
             j["instances"] = o.instances
             j["rules"] = o.rules
+            if o.op_rules:
+                j["op_rules"] = o.op_rules
             j["bits"] = o.bits
 
             if o.capture_groups:
@@ -151,6 +153,10 @@ class _ChipDataEncoder(json.JSONEncoder):
             if o.capture_groups:
                 j["capture_groups"] = o.capture_groups
 
+            return j
+
+        if isinstance(o, cd.IsolationWriteOps):
+            j = {"op_rule": o.op_rule, "reg_name": o.reg_name}
             return j
 
         if isinstance(o, cd.RootNode):
@@ -270,6 +276,10 @@ def _decodeIsolationBit(d: dict) -> cd.IsolationBit:
     return bit
 
 
+def _decodeWriteOp(d: dict) -> cd.IsolationWriteOps:
+    return cd.IsolationWriteOps(d["op_rule"], d["reg_name"])
+
+
 def _decodeIsolationNode(d: dict) -> cd.IsolationNode:
     reg_type = d["reg_type"] if "reg_type" in d else "SCOM"
 
@@ -287,6 +297,10 @@ def _decodeIsolationNode(d: dict) -> cd.IsolationNode:
     if "capture_groups" in d:
         for e in d["capture_groups"]:
             node.addCaptureGroup(_decodeCaptureGroup(e))
+
+    if "op_rules" in d:
+        for k, v in d["op_rules"].items():
+            node.addWriteOp(k, _decodeWriteOp(v))
 
     return node
 

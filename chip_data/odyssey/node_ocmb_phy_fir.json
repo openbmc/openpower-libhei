@@ -7,9 +7,21 @@
                 "0": "0x08010C00"
             }
         },
+        "OCMB_PHY_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010C01"
+            }
+        },
         "OCMB_PHY_FIR_MASK": {
             "instances": {
                 "0": "0x08010C02"
+            }
+        },
+        "OCMB_PHY_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010C03"
             }
         },
         "OCMB_PHY_FIR_CFG_CHIP_CS": {
@@ -139,6 +151,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OCMB_PHY_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OCMB_PHY_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OCMB_PHY_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "OCMB_PHY_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "SCOM FSM or FIR register parity error"

@@ -7,9 +7,21 @@
                 "0": "0x01040100"
             }
         },
+        "TP_LOCAL_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040101"
+            }
+        },
         "TP_LOCAL_FIR_MASK": {
             "instances": {
                 "0": "0x01040102"
+            }
+        },
+        "TP_LOCAL_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x01040103"
             }
         },
         "TP_LOCAL_FIR_CFG_CHIP_CS": {
@@ -121,6 +133,16 @@
             "instances": {
                 "0": "0x000D001B"
             }
+        },
+        "SPICTL0_ERROR_INJECT": {
+            "instances": {
+                "0": "0x00070000"
+            }
+        },
+        "SPICTL0_STATUS_REG": {
+            "instances": {
+                "0": "0x00070008"
+            }
         }
     },
     "isolation_nodes": {
@@ -224,6 +246,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TP_LOCAL_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TP_LOCAL_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TP_LOCAL_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TP_LOCAL_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "CFIR/LFIR parity error"
@@ -232,19 +272,59 @@
                     "desc": "CPLT_CTRL - PCB access error"
                 },
                 "2": {
-                    "desc": "CC - PCB access error"
+                    "desc": "CC - PCB access error",
+                    "capture_groups": [
+                        {
+                            "group_name": "TP_ERR_STATUS_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "3": {
-                    "desc": "CC - clock control error"
+                    "desc": "CC - clock control error",
+                    "capture_groups": [
+                        {
+                            "group_name": "TP_ERR_STATUS_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "4": {
-                    "desc": "PSC - PSCOM Access Error"
+                    "desc": "PSC - PSCOM Access Error",
+                    "capture_groups": [
+                        {
+                            "group_name": "TP_PSCOM_STATUS_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "5": {
-                    "desc": "PSC - internal or ring interface error"
+                    "desc": "PSC - internal or ring interface error",
+                    "capture_groups": [
+                        {
+                            "group_name": "TP_PSCOM_STATUS_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "6": {
-                    "desc": "THERM - various errors"
+                    "desc": "THERM - various errors",
+                    "capture_groups": [
+                        {
+                            "group_name": "TP_DTS_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "7": {
                     "desc": "DBG - SCOM parity fail"
@@ -259,16 +339,40 @@
                     "desc": "Trace00 - SCOM parity error"
                 },
                 "11": {
-                    "desc": "ITR - FMU error"
+                    "desc": "ITR - FMU error",
+                    "capture_groups": [
+                        {
+                            "group_name": "TP_FMU_ERR_RPT_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "12": {
                     "desc": "ITR - PCB error"
                 },
                 "13": {
-                    "desc": "PCB master - timeout"
+                    "desc": "PCB master - timeout",
+                    "capture_groups": [
+                        {
+                            "group_name": "PCBCTL_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "14": {
-                    "desc": "I2CM - parity errors"
+                    "desc": "I2CM - parity errors",
+                    "capture_groups": [
+                        {
+                            "group_name": "RESET_REG_B_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "15:17": {
                     "desc": "unused"
@@ -323,25 +427,65 @@
                     "desc": "unused"
                 },
                 "30": {
-                    "desc": "PCB controller - multicast group member count underrun"
+                    "desc": "PCB controller - multicast group member count underrun",
+                    "capture_groups": [
+                        {
+                            "group_name": "PCBCTL_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "31": {
-                    "desc": "PCB controller - parity error"
+                    "desc": "PCB controller - parity error",
+                    "capture_groups": [
+                        {
+                            "group_name": "PCBCTL_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "32:35": {
                     "desc": "unused"
                 },
                 "36": {
-                    "desc": "PIB interface - RAM UE ECC error"
+                    "desc": "PIB interface - RAM UE ECC error",
+                    "capture_groups": [
+                        {
+                            "group_name": "PPE_PIBMEM_STATUS_REG_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "37": {
-                    "desc": "Direct interface to PIBMEM - RAM UE ECC error"
+                    "desc": "Direct interface to PIBMEM - RAM UE ECC error",
+                    "capture_groups": [
+                        {
+                            "group_name": "PPE_PIBMEM_STATUS_REG_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "38:44": {
                     "desc": "unused"
                 },
                 "45": {
-                    "desc": "SPI controller 0 error"
+                    "desc": "SPI controller 0 error",
+                    "capture_groups": [
+                        {
+                            "group_name": "SPI_CONTROLLER",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "46:62": {
                     "desc": "unused"
@@ -349,51 +493,75 @@
                 "63": {
                     "desc": "external local checkstop"
                 }
-            },
-            "capture_groups": [
-                {
-                    "group_name": "TP_LOCAL_FIR",
-                    "group_inst": {
-                        "0": 0
-                    }
-                }
-            ]
+            }
         }
     },
     "capture_groups": {
-        "TP_LOCAL_FIR": [
-            {
-                "reg_name": "TP_ERR_STATUS",
-                "reg_inst": {
-                    "0": 0
-                }
-            },
-            {
-                "reg_name": "TP_PSCOM_STATUS_ERR",
-                "reg_inst": {
-                    "0": 0
-                }
-            },
-            {
-                "reg_name": "TP_DTS_ERR",
-                "reg_inst": {
-                    "0": 0
-                }
-            },
-            {
-                "reg_name": "TP_FMU_ERR_RPT",
-                "reg_inst": {
-                    "0": 0
-                }
-            },
+        "PCBCTL_ERR_CG": [
             {
                 "reg_name": "PCBCTL_ERR",
                 "reg_inst": {
                     "0": 0
                 }
-            },
+            }
+        ],
+        "TP_FMU_ERR_RPT_CG": [
+            {
+                "reg_name": "TP_FMU_ERR_RPT",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "TP_DTS_ERR_CG": [
+            {
+                "reg_name": "TP_DTS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "TP_PSCOM_STATUS_ERR_CG": [
+            {
+                "reg_name": "TP_PSCOM_STATUS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "TP_ERR_STATUS_CG": [
+            {
+                "reg_name": "TP_ERR_STATUS",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "RESET_REG_B_CG": [
             {
                 "reg_name": "RESET_REG_B",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "SPI_CONTROLLER": [
+            {
+                "reg_name": "SPICTL0_ERROR_INJECT",
+                "reg_inst": {
+                    "0": 0
+                }
+            },
+            {
+                "reg_name": "SPICTL0_STATUS_REG",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "PPE_PIBMEM_STATUS_REG_CG": [
+            {
+                "reg_name": "PPE_PIBMEM_STATUS_REG",
                 "reg_inst": {
                     "0": 0
                 }

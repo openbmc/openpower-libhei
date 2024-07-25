@@ -24,7 +24,7 @@
         }
     },
     "isolation_nodes": {
-        "GFIR": {
+        "GFIR_CHIP_CS": {
             "instances": [0],
             "rules": [
                 {
@@ -34,7 +34,32 @@
                         "expr_type": "reg",
                         "reg_name": "GFIR_CHIP_CS"
                     }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_CHIP_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
                 },
+                "8": {
+                    "desc": "Attention from MEM chiplet",
+                    "child_node": {
+                        "name": "CFIR_MEM_CHIP_CS",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_RECOV": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["RECOV"],
                     "node_inst": [0],
@@ -42,7 +67,32 @@
                         "expr_type": "reg",
                         "reg_name": "GFIR_RECOV"
                     }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_RECOV",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
                 },
+                "8": {
+                    "desc": "Attention from MEM chiplet",
+                    "child_node": {
+                        "name": "CFIR_MEM_RECOV",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_SP_ATTN": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
@@ -50,7 +100,32 @@
                         "expr_type": "reg",
                         "reg_name": "GFIR_SP_ATTN"
                     }
+                }
+            ],
+            "bits": {
+                "1": {
+                    "desc": "Attention from TP chiplet",
+                    "child_node": {
+                        "name": "CFIR_TP_SP_ATTN",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
                 },
+                "8": {
+                    "desc": "Attention from MEM chiplet",
+                    "child_node": {
+                        "name": "CFIR_MEM_SP_ATTN",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                }
+            }
+        },
+        "GFIR_UNIT_CS": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
@@ -64,7 +139,7 @@
                 "1": {
                     "desc": "Attention from TP chiplet",
                     "child_node": {
-                        "name": "CFIR_TP",
+                        "name": "CFIR_TP_UNIT_CS",
                         "inst": {
                             "0": 0
                         }
@@ -73,7 +148,7 @@
                 "8": {
                     "desc": "Attention from MEM chiplet",
                     "child_node": {
-                        "name": "CFIR_MEM",
+                        "name": "CFIR_MEM_UNIT_CS",
                         "inst": {
                             "0": 0
                         }

@@ -7,9 +7,21 @@
                 "0": "0x08040100"
             }
         },
+        "MEM_LOCAL_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040101"
+            }
+        },
         "MEM_LOCAL_FIR_MASK": {
             "instances": {
                 "0": "0x08040102"
+            }
+        },
+        "MEM_LOCAL_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040103"
             }
         },
         "MEM_LOCAL_FIR_CFG_CHIP_CS": {
@@ -154,6 +166,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MEM_LOCAL_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MEM_LOCAL_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MEM_LOCAL_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MEM_LOCAL_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "CFIR/LFIR parity error"
@@ -162,19 +192,59 @@
                     "desc": "CPLT_CTRL - PCB access error"
                 },
                 "2": {
-                    "desc": "CC - PCB access error"
+                    "desc": "CC - PCB access error",
+                    "capture_groups": [
+                        {
+                            "group_name": "MEM_ERR_STATUS_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "3": {
-                    "desc": "CC - clock control error"
+                    "desc": "CC - clock control error",
+                    "capture_groups": [
+                        {
+                            "group_name": "MEM_ERR_STATUS_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "4": {
-                    "desc": "PSC - PSCOM Access Error"
+                    "desc": "PSC - PSCOM Access Error",
+                    "capture_groups": [
+                        {
+                            "group_name": "MEM_PSCOM_STATUS_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "5": {
-                    "desc": "PSC - internal or ring interface error"
+                    "desc": "PSC - internal or ring interface error",
+                    "capture_groups": [
+                        {
+                            "group_name": "MEM_PSCOM_STATUS_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "6": {
-                    "desc": "THERM - various errors"
+                    "desc": "THERM - various errors",
+                    "capture_groups": [
+                        {
+                            "group_name": "MEM_DTS_ERR_CG",
+                            "group_inst": {
+                                "0": 0
+                            }
+                        }
+                    ]
                 },
                 "7": {
                     "desc": "DBG - SCOM parity fail"
@@ -194,31 +264,27 @@
                 "63": {
                     "desc": "external local checkstop"
                 }
-            },
-            "capture_groups": [
-                {
-                    "group_name": "MEM_LOCAL_FIR",
-                    "group_inst": {
-                        "0": 0
-                    }
-                }
-            ]
+            }
         }
     },
     "capture_groups": {
-        "MEM_LOCAL_FIR": [
-            {
-                "reg_name": "MEM_PSCOM_STATUS_ERR",
-                "reg_inst": {
-                    "0": 0
-                }
-            },
+        "MEM_ERR_STATUS_CG": [
             {
                 "reg_name": "MEM_ERR_STATUS",
                 "reg_inst": {
                     "0": 0
                 }
-            },
+            }
+        ],
+        "MEM_PSCOM_STATUS_ERR_CG": [
+            {
+                "reg_name": "MEM_PSCOM_STATUS_ERR",
+                "reg_inst": {
+                    "0": 0
+                }
+            }
+        ],
+        "MEM_DTS_ERR_CG": [
             {
                 "reg_name": "MEM_DTS_ERR",
                 "reg_inst": {

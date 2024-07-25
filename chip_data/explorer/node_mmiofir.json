@@ -7,9 +7,33 @@
                 "0": "0x08010870"
             }
         },
+        "MMIOFIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010871"
+            }
+        },
+        "MMIOFIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010872"
+            }
+        },
         "MMIOFIR_MASK": {
             "instances": {
                 "0": "0x08010873"
+            }
+        },
+        "MMIOFIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010874"
+            }
+        },
+        "MMIOFIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08010875"
             }
         },
         "MMIOFIR_ACT0": {
@@ -139,6 +163,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MMIOFIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "MMIOFIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MMIOFIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "MMIOFIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "AFU desc unimp"

@@ -7,9 +7,33 @@
                 "0": "0x08011C00"
             }
         },
+        "RDFFIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011C01"
+            }
+        },
+        "RDFFIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011C02"
+            }
+        },
         "RDFFIR_MASK": {
             "instances": {
                 "0": "0x08011C03"
+            }
+        },
+        "RDFFIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011C04"
+            }
+        },
+        "RDFFIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011C05"
             }
         },
         "RDFFIR_ACT0": {
@@ -276,6 +300,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "RDFFIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "RDFFIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "RDFFIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "RDFFIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Mainline read MPE on rank 0"

@@ -7,9 +7,33 @@
                 "0": "0x08011400"
             }
         },
+        "SRQFIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011401"
+            }
+        },
+        "SRQFIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011402"
+            }
+        },
         "SRQFIR_MASK": {
             "instances": {
                 "0": "0x08011403"
+            }
+        },
+        "SRQFIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011404"
+            }
+        },
+        "SRQFIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011405"
             }
         },
         "SRQFIR_ACT0": {
@@ -134,6 +158,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "SRQFIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "SRQFIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "SRQFIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "SRQFIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "SRQ recoverable error"
