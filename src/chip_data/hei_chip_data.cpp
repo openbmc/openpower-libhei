@@ -18,6 +18,7 @@ using Version_t = uint8_t;
 
 constexpr Version_t VERSION_1 = 0x01;
 constexpr Version_t VERSION_2 = 0x02;
+constexpr Version_t VERSION_3 = 0x03;
 
 //------------------------------------------------------------------------------
 
@@ -251,6 +252,25 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
     Instance_t numInsts;
     io_stream >> nodeId >> regType >> numInsts;
 
+    // Version 3 and above: Read any write operations that exist.
+    std::map<OpRuleName_t, std::pair<OpRuleType_t, RegisterId_t>> opRules;
+    if (VERSION_3 <= i_version)
+    {
+        uint8_t numOpRules;
+        io_stream >> numOpRules;
+        for (unsigned int i = 0; i < numOpRules; i++)
+        {
+            OpRuleName_t opName;
+            OpRuleType_t opType;
+            RegisterId_t regId;
+            io_stream >> opName >> opType >> regId;
+
+            std::pair<OpRuleType_t, RegisterId_t> tmpPair = {opType, regId};
+            auto ret = opRules.emplace(opName, tmpPair);
+            HEI_ASSERT(ret.second || ret.first->second == tmpPair);
+        }
+    }
+
     for (unsigned int i = 0; i < numInsts; i++)
     {
         // Read the node instance metadata.
@@ -325,6 +345,16 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
             HEI_ASSERT(ret.second); // Should not have duplicate entries
         }
 
+        // Version 3 and above: Add any write operations to the isoNode.
+        if (VERSION_3 <= i_version)
+        {
+            for (const auto & rule : opRules)
+            {
+                isoNode->addOpRule(rule.first, rule.second.first,
+                                   rule.second.second);
+            }
+        }
+
         // Add this isolation node with the temporary child node map to the
         // returned map of nodes.
         auto ret = io_tmpNodeMap.emplace(IsolationNode::Key{nodeId, nodeInst},
@@ -397,7 +427,7 @@ void parseChipDataFile(void* i_buffer, size_t i_bufferSize,
     HEI_ASSERT(io_isoChips.end() == io_isoChips.find(chipType));
 
     // Check supported versions.
-    HEI_ASSERT(VERSION_1 <= version && version <= VERSION_2);
+    HEI_ASSERT(VERSION_1 <= version && version <= VERSION_3);
 
     // Allocate memory for the new isolation chip.
     auto isoChip = std::make_shared<IsolationChip>(chipType);

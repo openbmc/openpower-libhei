@@ -145,6 +145,17 @@ void IsolationNode::addChild(uint8_t i_bit, ConstPtr i_child)
 
 //------------------------------------------------------------------------------
 
+void IsolationNode::addOpRule(OpRuleName_t i_opName, OpRuleType_t i_opType,
+                              RegisterId_t i_regId)
+{
+    std::pair<OpRuleType_t, RegisterId_t> tmpPair = {i_opType, i_regId};
+    auto ret = iv_op_rules.emplace(i_opName, tmpPair);
+
+    HEI_ASSERT(ret.second || ret.first->second == tmpPair);
+}
+
+//------------------------------------------------------------------------------
+
 std::vector<const IsolationNode*> IsolationNode::cv_isolationStack{};
 
 //------------------------------------------------------------------------------
