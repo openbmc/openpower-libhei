@@ -196,6 +196,18 @@ objects provide a list of registers that should be captured and stored in log
 files for additional debug, if necessary. The array is used to maintain the
 order in which registers are captured and stored in the FFDC.
 
+### 3.5) Property: `op_rules` (optional, object)
+
+A JSON object where the keys are operation types as defined in the table below
+and the values are Operation Rule JSON objects.
+
+| Value        | Description                                |
+| ------------ | ------------------------------------------ |
+| `FIR_SET`    | Operation to set a bit in the FIR          |
+| `FIR_CLEAR`  | Operation to clear a bit in the FIR        |
+| `MASK_SET`   | Operation to set a bit in the FIR's mask   |
+| `MASK_CLEAR` | Operation to clear a bit in the FIR's mask |
+
 ---
 
 ## 4) Isolation Rule JSON Object
@@ -436,6 +448,30 @@ See appendix for details on instance maps.
 
 **Important:** If a group instance is not defined in this map, the register
 simply will not be captured.
+
+## 10) Operation Rule JSON Object
+
+The object describes the operation and register required to perform some write
+operation to a FIR. The operation to be performed is specified by the key value
+of the `op_rules` property of a Isolation Node JSON object.
+
+### 11.1) Property: `op_rule` (required, string)
+
+A string used to describe what action will need to be taken to write the
+indicated register.
+
+| Value              | Description                                             |
+| ------------------ | ------------------------------------------------------- |
+| `atomic_or`        | Treat indicated reg as an atomic OR reg to set a bit    |
+| `atomic_and`       | Treat indicated reg as an atomic AND reg to clear a bit |
+| `read_set_write`   | Read, modify, write indicated reg to set a bit          |
+| `read_clear_write` | Read, modify, write indicated reg to clear a bit        |
+
+### 11.2) Property: `reg_name` (required, string)
+
+A string used to indicate the register to be written to perform the desired
+write operation to the FIR or it's mask. The name of the register should match
+a register defined in the `registers` property of the Base JSON Object.
 
 ---
 

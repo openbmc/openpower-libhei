@@ -137,6 +137,15 @@
                         }
                     }
                 },
+                "op_rules": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^\\w+$": {
+                            "$ref": "#/$defs/isolation_op_rules"
+                        }
+                    }
+                },
                 "capture_groups": {
                     "type": "array",
                     "minItems": 1,
@@ -297,6 +306,23 @@
                     "uniqueItems": true,
                     "items": { "$ref": "#/$defs/capture_group" }
                 }
+            }
+        },
+        "isolation_op_rules": {
+            "type": "object",
+            "required": ["op_rule", "reg_name"],
+            "additionalProperties": false,
+            "properties": {
+                "op_rule": {
+                    "type": "string",
+                    "enum": [
+                        "atomic_or",
+                        "atomic_and",
+                        "read_set_write",
+                        "read_clear_write"
+                    ]
+                },
+                "reg_name": { "#ref": "#/$defs/name" }
             }
         },
         "capture_group": {

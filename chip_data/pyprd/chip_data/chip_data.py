@@ -210,6 +210,29 @@ class IsolationBit:
         self.capture_groups.append(group)
 
 
+def _check_op_type(op_type: str) -> str:
+    supported = ["FIR_SET", "FIR_CLEAR", "MASK_SET", "MASK_CLEAR"]
+    assert op_type in supported, "Unsupported operation type: " + op_type
+    return op_type
+
+
+def _check_op_rule(op_rule: str) -> str:
+    supported = [
+        "atomic_or",
+        "atomic_and",
+        "read_set_write",
+        "read_clear_write",
+    ]
+    assert op_rule in supported, "Unsupported operation rule: " + op_rule
+    return op_rule
+
+
+class IsolationWriteOps:
+    def __init__(self, op_rule: str, reg_name: str):
+        self.op_rule = _check_op_rule(op_rule)
+        self.reg_name = reg_name
+
+
 class IsolationNode:
     def __init__(self, reg_type: str = "SCOM"):
         self.reg_type = _check_reg_type(reg_type)
@@ -217,6 +240,7 @@ class IsolationNode:
         self.rules = []
         self.bits = {}
         self.capture_groups = []
+        self.op_rules = {}
 
     def addRule(self, rule: IsolationRule):
         self.rules.append(rule)
@@ -238,6 +262,9 @@ class IsolationNode:
 
     def addCaptureGroup(self, group: CaptureGroup):
         self.capture_groups.append(group)
+
+    def addWriteOp(self, op_type: str, op_rule: IsolationWriteOps):
+        self.op_rules[_check_op_type(op_type)] = op_rule
 
 
 class RootNode:

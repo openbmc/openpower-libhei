@@ -7,9 +7,21 @@
                 "0": "0x08012000"
             }
         },
+        "TLX_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012001"
+            }
+        },
         "TLX_FIR_MASK": {
             "instances": {
                 "0": "0x08012002"
+            }
+        },
+        "TLX_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012003"
             }
         },
         "TLX_FIR_CFG_CHIP_CS": {
@@ -179,6 +191,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TLX_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TLX_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TLX_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TLX_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Internal parity error"

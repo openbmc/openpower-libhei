@@ -38,6 +38,16 @@
                     }
                 }
             ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "read_set_write",
+                    "reg_name": "CHIPLET_OCMB_SPA_FIR_MASK"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "read_clear_write",
+                    "reg_name": "CHIPLET_OCMB_SPA_FIR_MASK"
+                }
+            },
             "bits": {
                 "1": {
                     "desc": "Attention from MMIOFIR",

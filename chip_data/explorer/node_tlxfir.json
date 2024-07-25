@@ -7,9 +7,33 @@
                 "0": "0x08012400"
             }
         },
+        "TLXFIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012401"
+            }
+        },
+        "TLXFIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012402"
+            }
+        },
         "TLXFIR_MASK": {
             "instances": {
                 "0": "0x08012403"
+            }
+        },
+        "TLXFIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012404"
+            }
+        },
+        "TLXFIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08012405"
             }
         },
         "TLXFIR_ACT0": {
@@ -159,6 +183,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TLXFIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "TLXFIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "TLXFIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "TLXFIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Info reg parity error"

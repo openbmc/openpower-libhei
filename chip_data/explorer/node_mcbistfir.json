@@ -7,9 +7,33 @@
                 "0": "0x08011800"
             }
         },
+        "MCBISTFIR_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011801"
+            }
+        },
+        "MCBISTFIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011802"
+            }
+        },
         "MCBISTFIR_MASK": {
             "instances": {
                 "0": "0x08011803"
+            }
+        },
+        "MCBISTFIR_MASK_AND": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011804"
+            }
+        },
+        "MCBISTFIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011805"
             }
         },
         "MCBISTFIR_ACT0": {
@@ -139,6 +163,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MCBISTFIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "MCBISTFIR_AND"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "MCBISTFIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_and",
+                    "reg_name": "MCBISTFIR_MASK_AND"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Invalid maint address"

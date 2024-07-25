@@ -167,10 +167,10 @@
                     "desc": "Correctable ECC error detected in RG logic"
                 },
                 "13": {
-                    "desc": "ECC Correctable Error detected on CQ outbound PowerBus interface"
+                    "desc": "ECC Correctable Error detected on CQ outbound PB interface"
                 },
                 "14": {
-                    "desc": "ECC Uncorrectable Error detected on CQ outbound PowerBus interface"
+                    "desc": "ECC Uncorrectable Error detected on CQ outbound PB interface"
                 },
                 "15": {
                     "desc": "PowerBus state machine hang detected in CQ logic"

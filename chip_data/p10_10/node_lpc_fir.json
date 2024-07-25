@@ -100,28 +100,28 @@
             ],
             "bits": {
                 "0": {
-                    "desc": "OPB_Master_LS_received_a_transfer_size_value_unequal_to_1-_or_2-_or_4-Byte"
+                    "desc": "OPB Master LS received transfer size unequal to 1- or 2- or 4-Byte"
                 },
                 "1": {
-                    "desc": "OPB_Master_LS_received_a_invalid_command_no_ci_store_and_no_ci_load"
+                    "desc": "OPB Master LS received an action 0 invalid command no ci store and no ci load"
                 },
                 "2": {
-                    "desc": "OPB_Master_LS_received_a_address_which_was_not_aligned_to_the_received_transfer_size"
+                    "desc": "OPB Master LS received a address not aligned to received transfer size"
                 },
                 "3": {
-                    "desc": "OPB_Master_LS_detected_OPB_ErrAck_which_was_activated_by_the_accessed_OPB_slave"
+                    "desc": "OPB Master LS detected OPB ErrAck activated by the accessed OPB slave"
                 },
                 "4": {
-                    "desc": "the_OPB_arbiter_activated_the_OPB_Timeout_signal_Typical_reason_is_that_the_OPB_access_did_not_hit_any_available_OPB_slave"
+                    "desc": "The OPB arbiter activated OPB Timeout signal"
                 },
                 "5": {
-                    "desc": "the_OPB_Master_LS_was_not_able_to_end_the_requested_OPB_access_within_the_OPB_Master_LS_hang_timeout_time"
+                    "desc": "OPB Master LS not able to end requested OPB access within the OPB Master LS hang timeout time"
                 },
                 "6": {
-                    "desc": "a parity_error_was_detected_in_the_OPB_Master_LS_command_buffer"
+                    "desc": "A parity error was detected in the OPB Master LS command buffer"
                 },
                 "7": {
-                    "desc": "a parity_error_was_detected_in_the_OPB_Master_LS_data_buffer"
+                    "desc": "A parity error was detected in the OPB Master LS data buffer"
                 },
                 "8": {
                     "desc": "spare"

@@ -7,9 +7,21 @@
                 "0": "0x08011000"
             }
         },
+        "SRQ_FIR_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011001"
+            }
+        },
         "SRQ_FIR_MASK": {
             "instances": {
                 "0": "0x08011002"
+            }
+        },
+        "SRQ_FIR_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08011003"
             }
         },
         "SRQ_FIR_CFG_CHIP_CS": {
@@ -174,6 +186,24 @@
                     }
                 }
             ],
+            "op_rules": {
+                "FIR_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "SRQ_FIR_OR"
+                },
+                "FIR_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "SRQ_FIR"
+                },
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "SRQ_FIR_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "SRQ_FIR_MASK"
+                }
+            },
             "bits": {
                 "0": {
                     "desc": "Internal parity error"
@@ -313,7 +343,10 @@
                 "45": {
                     "desc": "DSM errors port1"
                 },
-                "46:48": {
+                "46": {
+                    "desc": "Firmware initiated channel fail"
+                },
+                "47:48": {
                     "desc": "reserved"
                 }
             },

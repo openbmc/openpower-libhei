@@ -27,9 +27,33 @@
                 "0": "0x08040040"
             }
         },
+        "CFIR_MEM_CHIP_CS_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040050"
+            }
+        },
+        "CFIR_MEM_CHIP_CS_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040060"
+            }
+        },
         "CFIR_MEM_RECOV_MASK": {
             "instances": {
                 "0": "0x08040041"
+            }
+        },
+        "CFIR_MEM_RECOV_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040051"
+            }
+        },
+        "CFIR_MEM_RECOV_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040061"
             }
         },
         "CFIR_MEM_SP_ATTN_MASK": {
@@ -37,14 +61,38 @@
                 "0": "0x08040042"
             }
         },
+        "CFIR_MEM_SP_ATTN_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040052"
+            }
+        },
+        "CFIR_MEM_SP_ATTN_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040062"
+            }
+        },
         "CFIR_MEM_UNIT_CS_MASK": {
             "instances": {
                 "0": "0x08040043"
             }
+        },
+        "CFIR_MEM_UNIT_CS_MASK_OR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040053"
+            }
+        },
+        "CFIR_MEM_UNIT_CS_MASK_CLEAR": {
+            "access": "WO",
+            "instances": {
+                "0": "0x08040063"
+            }
         }
     },
     "isolation_nodes": {
-        "CFIR_MEM": {
+        "CFIR_MEM_CHIP_CS": {
             "instances": [0],
             "rules": [
                 {
@@ -70,7 +118,102 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_CHIP_CS_MASK_OR"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_CHIP_CS_MASK_CLEAR"
+                }
+            },
+            "bits": {
+                "4": {
+                    "desc": "Attention from MEM_LOCAL_FIR",
+                    "child_node": {
+                        "name": "MEM_LOCAL_FIR"
+                    }
+                },
+                "5": {
+                    "desc": "Attention from DLX_FIR",
+                    "child_node": {
+                        "name": "DLX_FIR"
+                    }
+                },
+                "6": {
+                    "desc": "Attention from MCBIST_FIR",
+                    "child_node": {
+                        "name": "MCBIST_FIR"
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MMIO_FIR",
+                    "child_node": {
+                        "name": "MMIO_FIR"
+                    }
+                },
+                "8": {
+                    "desc": "Attention from RDF_FIR 0",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from RDF_FIR 1",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from SRQ_FIR",
+                    "child_node": {
+                        "name": "SRQ_FIR"
+                    }
+                },
+                "11": {
+                    "desc": "Attention from TLX_FIR",
+                    "child_node": {
+                        "name": "TLX_FIR"
+                    }
+                },
+                "12": {
+                    "desc": "Attention from ODP_FIR 0",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from ODP_FIR 1",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from OCMB_PHY_FIR",
+                    "child_node": {
+                        "name": "OCMB_PHY_FIR"
+                    }
+                }
+            }
+        },
+        "CFIR_MEM_RECOV": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["RECOV"],
                     "node_inst": [0],
@@ -94,7 +237,102 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_RECOV_MASK_OR"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_RECOV_MASK_CLEAR"
+                }
+            },
+            "bits": {
+                "4": {
+                    "desc": "Attention from MEM_LOCAL_FIR",
+                    "child_node": {
+                        "name": "MEM_LOCAL_FIR"
+                    }
+                },
+                "5": {
+                    "desc": "Attention from DLX_FIR",
+                    "child_node": {
+                        "name": "DLX_FIR"
+                    }
+                },
+                "6": {
+                    "desc": "Attention from MCBIST_FIR",
+                    "child_node": {
+                        "name": "MCBIST_FIR"
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MMIO_FIR",
+                    "child_node": {
+                        "name": "MMIO_FIR"
+                    }
+                },
+                "8": {
+                    "desc": "Attention from RDF_FIR 0",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from RDF_FIR 1",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from SRQ_FIR",
+                    "child_node": {
+                        "name": "SRQ_FIR"
+                    }
+                },
+                "11": {
+                    "desc": "Attention from TLX_FIR",
+                    "child_node": {
+                        "name": "TLX_FIR"
+                    }
+                },
+                "12": {
+                    "desc": "Attention from ODP_FIR 0",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from ODP_FIR 1",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from OCMB_PHY_FIR",
+                    "child_node": {
+                        "name": "OCMB_PHY_FIR"
+                    }
+                }
+            }
+        },
+        "CFIR_MEM_SP_ATTN": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["SP_ATTN"],
                     "node_inst": [0],
@@ -118,7 +356,102 @@
                             }
                         ]
                     }
+                }
+            ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_SP_ATTN_MASK_OR"
                 },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_SP_ATTN_MASK_CLEAR"
+                }
+            },
+            "bits": {
+                "4": {
+                    "desc": "Attention from MEM_LOCAL_FIR",
+                    "child_node": {
+                        "name": "MEM_LOCAL_FIR"
+                    }
+                },
+                "5": {
+                    "desc": "Attention from DLX_FIR",
+                    "child_node": {
+                        "name": "DLX_FIR"
+                    }
+                },
+                "6": {
+                    "desc": "Attention from MCBIST_FIR",
+                    "child_node": {
+                        "name": "MCBIST_FIR"
+                    }
+                },
+                "7": {
+                    "desc": "Attention from MMIO_FIR",
+                    "child_node": {
+                        "name": "MMIO_FIR"
+                    }
+                },
+                "8": {
+                    "desc": "Attention from RDF_FIR 0",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "9": {
+                    "desc": "Attention from RDF_FIR 1",
+                    "child_node": {
+                        "name": "RDF_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "10": {
+                    "desc": "Attention from SRQ_FIR",
+                    "child_node": {
+                        "name": "SRQ_FIR"
+                    }
+                },
+                "11": {
+                    "desc": "Attention from TLX_FIR",
+                    "child_node": {
+                        "name": "TLX_FIR"
+                    }
+                },
+                "12": {
+                    "desc": "Attention from ODP_FIR 0",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 0
+                        }
+                    }
+                },
+                "13": {
+                    "desc": "Attention from ODP_FIR 1",
+                    "child_node": {
+                        "name": "ODP_FIR",
+                        "inst": {
+                            "0": 1
+                        }
+                    }
+                },
+                "14": {
+                    "desc": "Attention from OCMB_PHY_FIR",
+                    "child_node": {
+                        "name": "OCMB_PHY_FIR"
+                    }
+                }
+            }
+        },
+        "CFIR_MEM_UNIT_CS": {
+            "instances": [0],
+            "rules": [
                 {
                     "attn_type": ["UNIT_CS"],
                     "node_inst": [0],
@@ -144,6 +477,16 @@
                     }
                 }
             ],
+            "op_rules": {
+                "MASK_SET": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_UNIT_CS_MASK_OR"
+                },
+                "MASK_CLEAR": {
+                    "op_rule": "atomic_or",
+                    "reg_name": "CFIR_MEM_UNIT_CS_MASK_CLEAR"
+                }
+            },
             "bits": {
                 "4": {
                     "desc": "Attention from MEM_LOCAL_FIR",
