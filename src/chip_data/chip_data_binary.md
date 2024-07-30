@@ -101,6 +101,24 @@ The node ID must be unique for all nodes within a Chip Data File.
 the same register type expressed in this field. This will ensure there is no
 ambiguity when resolving the bitwise expressions in the isolation rules.
 
+**Version 3 and newer:**
+
+Beginning with **version 3** the chip data binary will support defining write
+operations for FIR bits. The following will be appended to the Isolation Node
+data after the number of node instances:
+
+| Bytes | Desc                  | Value/Example               |
+| :---: | :-------------------- | :-------------------------- |
+|   1   | # of write operations | Number of write ops defined |
+
+Then, each write operation will have the following data:
+
+| Bytes | Desc              | Value/Example                    |
+| :---: | :---------------- | :------------------------------- |
+|   1   | operation name ID | See appendix for supported names |
+|   1   | operation rule ID | See appendix for supported rules |
+|   3   | register ID       | See section 2 for details        |
+
 #### 3.1) Isolation Node Instances
 
 Much like a register, a node can have multiple instances. Each instance will
@@ -344,3 +362,21 @@ A left shift operation (i.e. `EXPR >> shift_value`).
 |   1   | expression type = 0x14 |
 |   1   | shift value            |
 |  \*   | sub-expression         |
+
+### 4) Supported Write Operation Names
+
+| Value | Description                                |
+| :---: | :----------------------------------------- |
+|   1   | Operation to set a bit in the FIR          |
+|   2   | Operation to clear a bit in the FIR        |
+|   3   | Operation to set a bit in the FIR's mask   |
+|   4   | Operation to clear a bit in the FIR's mask |
+
+### 5) Supported Write Operation Rules
+
+| Value | Description                                          |
+| :---: | :--------------------------------------------------- |
+|   1   | Indicated reg ID is an atomic OR reg to set a bit    |
+|   2   | Indicated reg ID is an atomic AND reg to clear a bit |
+|   3   | Read, modify, write indicated reg ID to set a bit    |
+|   4   | Read, modify, write indicated reg ID to clear a bit  |
