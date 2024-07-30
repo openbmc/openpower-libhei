@@ -91,7 +91,18 @@ def _num_attn_types(iterable: iter) -> bytes:
 
 
 def _op_name(name: str) -> bytes:
-    return _hash(1, name)
+    m = {"FIR_SET": 1, "FIR_CLEAR": 2, "MASK_SET": 3, "MASK_CLEAR": 4}
+    return _bin(1, m[name])
+
+
+def _op_rule(rule: str) -> bytes:
+    m = {
+        "atomic_or": 1,
+        "atomic_and": 2,
+        "read_set_write": 3,
+        "read_clear_write": 4,
+    }
+    return _bin(1, m[rule])
 
 
 def _num_op_rules(iterable: iter) -> bytes:
@@ -279,7 +290,7 @@ def binary_encode(model_ec: str, base: cd.Base, fp: object):
         data += _num_op_rules(iso_node.op_rules)
         for op_name, op_rule in sorted(iso_node.op_rules.items()):
             data += _op_name(op_name)
-            data += _op_name(op_rule.op_rule)
+            data += _op_rule(op_rule.op_rule)
             data += _reg_name(op_rule.reg_name)
 
         for node_inst in sorted(iso_node.instances):

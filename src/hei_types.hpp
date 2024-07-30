@@ -138,26 +138,36 @@ using RegisterAddress_t = uint64_t;
  * defined in the Chip Data Files.
  *
  * Values:
- *   This is a hashed value of one of the following string names:
- *   "FIR_SET", "FIR_CLEAR", "MASK_SET", "MASK_CLEAR".
+ *   The supported write operation values are listed in the enum.
  *
  * Range:
  *   This is defined as a 1-byte field in the Chip Data Files.
  */
-using OpRuleName_t = uint8_t;
+enum OpRuleName_t : uint8_t
+{
+    FIR_SET = 1,    ///< Operation to set a FIR bit
+    FIR_CLEAR = 2,  ///< Operation to clear a FIR bit
+    MASK_SET = 3,   ///< Operation to set a FIR mask bit
+    MASK_CLEAR = 4, ///< Operation to set a FIR mask bit
+};
 
 /**
  * This is used to define the type of a write operation rule for a FIR,
  * defined in the Chip Data Files.
  *
  * Values:
- *   This is a hashed value of one of the following string names:
- *   "atomic_or", "atomic_and", "read_set_write", "read_clear_write".
+ *   The supported write operation types are listed in the enum.
  *
  * Range:
  *   This is defined as a 1-byte field in the Chip Data Files.
  */
-using OpRuleType_t = uint8_t;
+enum OpRuleType_t : uint8_t
+{
+    ATOMIC_OR = 1,        ///< Indicated reg ID is an atomic OR used to write
+    ATOMIC_AND = 2,       ///< Indicated reg ID is an atomic AND used to clear
+    READ_SET_WRITE = 3,   ///< Read, set, write indicated reg ID
+    READ_CLEAR_WRITE = 4, ///< Read, clear, write indicated reg ID
+};
 
 /**
  * The hardware register attribute flags.
