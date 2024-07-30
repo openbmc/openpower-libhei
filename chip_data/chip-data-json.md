@@ -449,13 +449,15 @@ See appendix for details on instance maps.
 **Important:** If a group instance is not defined in this map, the register
 simply will not be captured.
 
+---
+
 ## 10) Operation Rule JSON Object
 
 The object describes the operation and register required to perform some write
 operation to a FIR. The operation to be performed is specified by the key value
 of the `op_rules` property of a Isolation Node JSON object.
 
-### 11.1) Property: `op_rule` (required, string)
+### 10.1) Property: `op_rule` (required, string)
 
 A string used to describe what action will need to be taken to write the
 indicated register.
@@ -467,7 +469,7 @@ indicated register.
 | `read_set_write`   | Read, modify, write indicated reg to set a bit          |
 | `read_clear_write` | Read, modify, write indicated reg to clear a bit        |
 
-### 11.2) Property: `reg_name` (required, string)
+### 10.2) Property: `reg_name` (required, string)
 
 A string used to indicate the register to be written to perform the desired
 write operation to the FIR or it's mask. The name of the register should match a
@@ -475,9 +477,9 @@ register defined in the `registers` property of the Base JSON Object.
 
 ---
 
-## 10) Appendix
+## 11) Appendix
 
-### 10.1) Number Formats
+### 11.1) Number Formats
 
 All numbers in the Chip Data files are unsigned integers. When possible, the
 JSON integer data type should be used for performance and file size.
@@ -486,19 +488,19 @@ readability, some properties allow a string representation of the number
 specifically for numbers that are better served to be in the hexadecimal format.
 In which case, the string value must start with '0x'.
 
-### 10.2) Number Ranges
+### 11.2) Number Ranges
 
 A number range represents consecutive ascending or descending numbers (including
 both endpoints) and are expressed using a colon (e.g. "8:15" or "15:8").
 
-### 10.3) Instance Maps
+### 11.3) Instance Maps
 
 Instance Maps are a simple JSON object mapping one type of instance to another.
 Say for example you are targeting a specific capture group instance and you want
 to capture all of the associated registers for FFDC. The Capture Register JSON
 object instance maps define how group instances map to register instances.
 
-### 10.4) Supported Chip Models and EC Levels
+### 11.4) Supported Chip Models and EC Levels
 
 | Value         | Description          |
 | ------------- | -------------------- |
@@ -508,7 +510,7 @@ object instance maps define how group instances map to register instances.
 | `P10_10`      | P10 EC 1.0           |
 | `P10_20`      | P10 EC 2.0           |
 
-### 10.5) Supported Attention Types
+### 11.5) Supported Attention Types
 
 **Important:** A chip checkstop is often associated with a system checkstop,
 which is certainly true for processor chips. However, systems may, but not
@@ -523,7 +525,7 @@ chips.
 | `SP_ATTN`   | SW or HW event requiring action by the SP firmware.    |
 | `HOST_ATTN` | SW or HW event requiring action by the host firmware.  |
 
-### 10.6) Supported Register Types
+### 11.6) Supported Register Types
 
 - POWER Systems SCOM register (default)
 
@@ -538,7 +540,7 @@ chips.
   - Register length: 8 bytes
   - Bit order: ascending (0-63, left to right)
 
-### 10.7) Supported Register Access Types
+### 11.7) Supported Register Access Types
 
 | Value | Description                     |
 | ----- | ------------------------------- |
