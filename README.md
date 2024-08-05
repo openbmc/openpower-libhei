@@ -50,7 +50,7 @@ imported, or as a git subtree/submodule) or built as static library.
 
 For a standard OpenBMC release build, you want something like:
 
-```
+```sh
 meson -Dtests=disabled <build_dir>
 ninja -C <build_dir>
 ninja -C <build_dir> install
@@ -58,7 +58,7 @@ ninja -C <build_dir> install
 
 For a test / debug build, a typical configuration is:
 
-```
+```sh
 meson -Dtests=enabled <build_dir>
 ninja -C <build_dir> test
 ```
