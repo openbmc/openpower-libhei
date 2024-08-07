@@ -6,5 +6,6 @@ test_src = files(
     'exp20_tlx_err_rpt_1.cpp',
     'omi_dl_fatal.cpp',
     'tod_fault.cpp',
+    'ody_mcbist2.cpp',
 )
 

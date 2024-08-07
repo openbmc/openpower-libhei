@@ -187,6 +187,23 @@ class IsolationNode
     void addOpRule(OpRuleName_t i_opName, OpRuleType_t i_opType,
                    RegisterId_t i_regId);
 
+    /**
+     * @brief Returns a write operation for the isolation node based on the
+     *        input operation name.
+     *
+     * @param i_name The name of the operation.
+     * @return The operation type and reg ID of the operation rule in a pair.
+     */
+    std::pair<OpRuleType_t, RegisterId_t> getOpRule(OpRuleName_t i_name) const;
+
+    /**
+     * @brief Returns whether the write operation rule exists for the node
+     *
+     * @param i_name The name of the operation.
+     * @return True if the operation exists, else false.
+     */
+    bool doesOpExist(OpRuleName_t i_name) const;
+
     /** @return The node ID. */
     NodeId_t getId() const
     {
