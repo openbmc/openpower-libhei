@@ -46,6 +46,7 @@ class SimulatorData
         SAMPLE = 0xdeadbeef,
         EXPLORER_11 = 0x60d20011,
         EXPLORER_20 = 0x60d20020,
+        ODYSSEY_10 = 0x60c00010,
         P10_10 = 0x20da0010,
         P10_20 = 0x20da0020,
     };

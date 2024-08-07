@@ -101,6 +101,42 @@ bool HardwareRegister::write(const Chip& i_chip) const
 
 //------------------------------------------------------------------------------
 
+void HardwareRegister::setBit(const Chip& i_chip, uint64_t i_pos) const
+{
+    // Get the buffer from the register cache.
+    BitString& bs = accessCache(i_chip);
+    bs.setBit(i_pos);
+}
+
+//------------------------------------------------------------------------------
+
+void HardwareRegister::setAllBits(const Chip& i_chip) const
+{
+    // Get the buffer from the register cache.
+    BitString& bs = accessCache(i_chip);
+    bs.setAll();
+}
+
+//------------------------------------------------------------------------------
+
+void HardwareRegister::clearBit(const Chip& i_chip, uint64_t i_pos) const
+{
+    // Get the buffer from the register cache.
+    BitString& bs = accessCache(i_chip);
+    bs.clearBit(i_pos);
+}
+
+//------------------------------------------------------------------------------
+
+void HardwareRegister::clearAllBits(const Chip& i_chip) const
+{
+    // Get the buffer from the register cache.
+    BitString& bs = accessCache(i_chip);
+    bs.clearAll();
+}
+
+//------------------------------------------------------------------------------
+
 HardwareRegister::Cache HardwareRegister::cv_cache{};
 
 //------------------------------------------------------------------------------
