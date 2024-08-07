@@ -73,4 +73,148 @@ void Isolator::isolate(const std::vector<Chip>& i_chipList,
     }
 }
 
+//------------------------------------------------------------------------------
+
+#ifdef __HEI_ENABLE_HW_WRITE
+
+bool __atomicOr(Signature i_sig, HardwareRegister::ConstPtr i_hwReg)
+{
+    // Input register is for an atomic OR register used for setting a bit. Get
+    // the bit in the input signature and write that bit to the register.
+    i_hwReg->clearAllBits(i_sig.getChip());
+    i_hwReg->setBit(i_sig.getChip(), i_sig.getBit());
+
+    return i_hwReg->write(i_sig.getChip());
+}
+
+bool __atomicAnd(Signature i_sig, HardwareRegister::ConstPtr i_hwReg)
+{
+    // Input register is for an atomic AND register used for clearing a bit. Get
+    // the bit in the input signature and write that bit to the register.
+    i_hwReg->setAllBits(i_sig.getChip());
+    i_hwReg->clearBit(i_sig.getChip(), i_sig.getBit());
+
+    return i_hwReg->write(i_sig.getChip());
+}
+
+bool __readSetWrite(Signature i_sig, HardwareRegister::ConstPtr i_hwReg)
+{
+    // Perform a read, modify, write to set a bit. Get the bit from the input
+    // signature.
+    if (i_hwReg->read(i_sig.getChip(), true))
+    {
+        HEI_ERR("Failed to read reg ID 0x%04x", i_hwReg->getId());
+        return true;
+    }
+    i_hwReg->setBit(i_sig.getChip(), i_sig.getBit());
+
+    return i_hwReg->write(i_sig.getChip());
+}
+
+bool __readClearWrite(Signature i_sig, HardwareRegister::ConstPtr i_hwReg)
+{
+    // Perform a read, modify, write to clear a bit. Get the bit from the input
+    // signature.
+    if (i_hwReg->read(i_sig.getChip(), true))
+    {
+        HEI_ERR("Failed to read reg ID 0x%04x", i_hwReg->getId());
+        return true;
+    }
+    i_hwReg->clearBit(i_sig.getChip(), i_sig.getBit());
+
+    return i_hwReg->write(i_sig.getChip());
+}
+
+bool Isolator::performWriteOp(OpRuleName_t i_op, Signature i_sig)
+{
+    // Return true on a failure.
+    bool writefail = false;
+
+    // Use the signature to determine the relevant isolation node.
+    IsolationNode::Key nodeKey = {i_sig.getId(), i_sig.getInstance()};
+    IsolationChip::ConstPtr isoChip = iv_isoChips.at(i_sig.getChip().getType());
+    IsolationNode::ConstPtr node = isoChip->getIsolationNode(nodeKey);
+
+    // If the operation name does not exist for the node, print an error
+    // message and return.
+    if (!node->doesOpExist(i_op))
+    {
+        HEI_ERR("Operation rule %d does not exist for node 0x%04x", i_op,
+                node->getId());
+        writeFail = true;
+        return writeFail;
+    }
+
+    // Get the write operation defined in the node.
+    std::pair<OpRuleType_t, RegisterId_t> op = node->getOpRule(i_op);
+
+    // Get the relevant hardware register from the isolation chip. The instance
+    // of the register should match the instance of the signature.
+    HardwareRegister::Key regKey = {op.second, i_sig.getInstance()};
+    HardwareRegister::ConstPtr hwReg = isoChip->getHardwareRegister(regKey);
+
+    // Perform write operation dependent on the operation type.
+    switch (op.first)
+    {
+        case ATOMIC_OR:
+        {
+            if (__atomicOr(i_sig, hwReg))
+            {
+                HEI_ERR("Failed performing ATOMIC_OR write operation %d on "
+                        "node 0x%04x",
+                        i_op, node->getId());
+                writeFail = true;
+            }
+            break;
+        }
+        case ATOMIC_AND:
+        {
+            if (__atomicAnd(i_sig, hwReg))
+            {
+                HEI_ERR("Failed performing ATOMIC_AND write operation %d on "
+                        "node 0x%04x",
+                        i_op, node->getId());
+                writeFail = true;
+            }
+            break;
+        }
+        case READ_SET_WRITE:
+        {
+            if (__readSetWrite(i_sig, hwReg))
+            {
+                HEI_ERR("Failed performing READ_SET_WRITE write operation %d "
+                        "on node 0x%04x",
+                        i_op, node->getId());
+                writeFail = true;
+            }
+            break;
+        }
+        case READ_CLEAR_WRITE:
+        {
+            if (__readClearWrite(i_sig, hwReg))
+            {
+                HEI_ERR("Failed performing READ_CLEAR_WRITE write operation %d "
+                        "on node 0x%04x",
+                        i_op, node->getId());
+                writeFail = true;
+            }
+            break;
+        }
+        default:
+        {
+            HEI_ERR("Invalid operation type %d for op %d on node 0x%04x",
+                    op.first, i_op, node->getId());
+            writeFail = true;
+        }
+    }
+
+    // Flush the affected register from the cache so it is re-read from hardware
+    // next time it is read.
+    hwReg->flush(i_sig.getChip());
+
+    return writeFail;
+}
+
+#endif
+
 } // end namespace libhei
