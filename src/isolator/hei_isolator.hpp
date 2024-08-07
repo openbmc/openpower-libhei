@@ -76,6 +76,18 @@ class Isolator
     void isolate(const std::vector<Chip>& i_chipList,
                  IsolationData& o_isoData) const;
 
+#ifdef __HEI_ENABLE_HW_WRITE
+    /**
+     * @brief  Performs the given write operation on the input signature. The
+     *         node and bit in the input signature will determine which register
+     *         and bit are to be written by the operation.
+     * @param  i_op  The given write operation rule. See the OpRuleName_t enum
+     *               for supported values.
+     * @param  i_sig The signature to determine what's to be written.
+     */
+    void performWriteOp(OpRuleName_t i_op, Signature i_sig);
+#endif
+
 }; // end class Isolator
 
 } // end namespace libhei

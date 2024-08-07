@@ -156,6 +156,21 @@ void IsolationNode::addOpRule(OpRuleName_t i_opName, OpRuleType_t i_opType,
 
 //------------------------------------------------------------------------------
 
+std::pair<OpRuleType_t, RegisterId_t>
+    IsolationNode::getOpRule(OpRuleName_t i_name) const
+{
+    return iv_op_rules.at(i_name);
+}
+
+//------------------------------------------------------------------------------
+
+bool IsolationNode::doesOpExist(OpRuleName_t i_name) const
+{
+    return (0 != iv_op_rules.count(i_name));
+}
+
+//------------------------------------------------------------------------------
+
 std::vector<const IsolationNode*> IsolationNode::cv_isolationStack{};
 
 //------------------------------------------------------------------------------

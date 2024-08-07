@@ -188,6 +188,32 @@ class HardwareRegister : public Register
 
 #endif // __HEI_ENABLE_HW_WRITE
 
+    /**
+     * @brief Sets the target position to 1 in the cached bit string.
+     * @param i_chip The target chip in which this register belongs.
+     * @param i_pos  The target position.
+     */
+    void setBit(const Chip& i_chip, uint64_t i_pos) const;
+
+    /**
+     * @brief Sets the entire cached bit string to 1s.
+     * @param i_chip The target chip in which this register belongs.
+     */
+    void setAllBits(const Chip& i_chip) const;
+
+    /**
+     * @brief Sets the target position to 0 in the cached bit string.
+     * @param i_chip The target chip in which this register belongs.
+     * @param i_pos  The target position.
+     */
+    void clearBit(const Chip& i_chip, uint64_t i_pos) const;
+
+    /**
+     * @brief Sets the entire cached bit string to 0s.
+     * @param i_chip The target chip in which this register belongs.
+     */
+    void clearAllBits(const Chip& i_chip) const;
+
   protected:
     /**
      * @brief  Provides access to this register's BitString.
