@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232a6b13_7400d997",
+        "filename": "src/isolator/hei_isolator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2024-08-13T16:43:25Z",
+      "side": 1,
+      "message": "return something for errors, probably bool",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 4
+      },
+      "revId": "0a480f5bff3049243fde201eeec2c4b5cc7f58aa",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
