@@ -284,8 +284,8 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
         HEI_ASSERT(0 != numIsoRules || 0 == numChildNodes);
 
         // Allocate memory for this isolation node.
-        auto isoNode = std::make_shared<IsolationNode>(nodeId, nodeInst,
-                                                       regType);
+        auto isoNode =
+            std::make_shared<IsolationNode>(nodeId, nodeInst, regType);
 
         // Add capture registers.
         for (unsigned int j = 0; j < numCapRegs; j++)
@@ -340,8 +340,8 @@ void __readNode(ChipDataStream& io_stream, const IsolationChip::Ptr& i_isoChip,
             Instance_t childInst;
             io_stream >> bit >> childId >> childInst;
 
-            auto ret = cMap.emplace(bit,
-                                    IsolationNode::Key{childId, childInst});
+            auto ret =
+                cMap.emplace(bit, IsolationNode::Key{childId, childInst});
             HEI_ASSERT(ret.second); // Should not have duplicate entries
         }
 

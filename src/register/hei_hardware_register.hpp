@@ -55,8 +55,7 @@ class HardwareRegister : public Register
      */
     HardwareRegister(RegisterId_t i_id, Instance_t i_instance,
                      RegisterAttributeFlags_t i_flags) :
-        Register(),
-        iv_id(i_id), iv_instance(i_instance), iv_flags(i_flags)
+        Register(), iv_id(i_id), iv_instance(i_instance), iv_flags(i_flags)
     {}
 
   private: // Instance variables
