@@ -38,8 +38,7 @@ class IsolationData
     {
         RegDumpEntry(RegisterId_t i_regId, Instance_t i_regInst,
                      std::shared_ptr<BitStringBuffer> i_data) :
-            regId(i_regId),
-            regInst(i_regInst), data(i_data)
+            regId(i_regId), regInst(i_regInst), data(i_data)
         {}
 
         RegisterId_t regId;                    ///< 3-byte register ID

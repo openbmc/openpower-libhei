@@ -125,8 +125,8 @@ class SimulatorData
     void addSignature(const Signature& i_signature)
     {
         // First check if this entry already exists.
-        auto itr = std::find(iv_expSigList.begin(), iv_expSigList.end(),
-                             i_signature);
+        auto itr =
+            std::find(iv_expSigList.begin(), iv_expSigList.end(), i_signature);
         ASSERT_EQ(iv_expSigList.end(), itr);
 
         // Add the new entry.
