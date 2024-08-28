@@ -27,6 +27,15 @@ package_data_glob = "/".join(data_dir_components)
 
 # This is a custom build class that is used to dynamically build the data files.
 class my_build_py(build_py):
+    user_options = build_py.user_options + [
+        ("chip_config=", None, "List of chip IDs to build PEL parser JSON")
+    ]
+
+    def initialize_options(self):
+        # Default chip_config option is all valid chip types
+        self.chip_config = ["p10_10", "p10_20", "explorer", "odyssey"]
+        return super().initialize_options()
+
     def run(self):
         if not self.dry_run:  # honor --dry-run flag
             # Make sure the build directory for the data exists.
@@ -36,9 +45,7 @@ class my_build_py(build_py):
             self.mkpath(data_dir)
 
             # Generate the PEL parser data JSON from the Chip Data XML.
-            # TODO: The list of data file directories will need to be
-            #       configurable via the package config in the bitbake recipes.
-            for chip in ("p10_10", "p10_20", "explorer", "odyssey"):
+            for chip in self.chip_config:
                 gen_peltool_json(chip, data_dir)
 
         # Call the superclass run() to ensure everything else builds.
