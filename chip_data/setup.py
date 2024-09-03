@@ -1,4 +1,5 @@
 import os
+import sys
 
 from parse_chip_data import gen_peltool_json
 from setuptools import setup
@@ -24,22 +25,14 @@ data_dir_components = [*package_name.split("."), "data"]
 # Windows. Setuptools will automatically convert the slashes where appropriate.
 package_data_glob = "/".join(data_dir_components)
 
+# These are the possible chip config options to build the PEL parser data json
+# from. By default all configs will be built. The '--chip-config' option can be
+# used in recipes to specify manually.
+chipConfig = ["p10_10", "p10_20", "explorer", "odyssey"]
+
 
 # This is a custom build class that is used to dynamically build the data files.
 class my_build_py(build_py):
-    user_options = build_py.user_options + [
-        ("chipConfig=", None, "List of chip IDs to build PEL parser JSON")
-    ]
-
-    def initialize_options(self):
-        # Default chip_config option is all valid chip types
-        self.chipConfig = ["p10_10", "p10_20", "explorer", "odyssey"]
-        return super().initialize_options()
-
-    def finalize_options(self):
-        if not isinstance(self.chipConfig, list):
-            self.chipConfig = self.chipConfig.split(",")
-        return super().finalize_options()
 
     def run(self):
         if not self.dry_run:  # honor --dry-run flag
@@ -50,12 +43,16 @@ class my_build_py(build_py):
             self.mkpath(data_dir)
 
             # Generate the PEL parser data JSON from the Chip Data XML.
-            for chip in self.chipConfig:
+            for chip in chipConfig:
                 gen_peltool_json(chip, data_dir)
 
         # Call the superclass run() to ensure everything else builds.
         super().run()
 
+
+if "--chip-config" in sys.argv:
+    chipConfig = sys.argv.pop(sys.argv.index("--chip-config") + 1).split(",")
+    sys.argv.remove("--chip-config")
 
 setup(
     name="openpower-hw-diags-pel-parser-data",
