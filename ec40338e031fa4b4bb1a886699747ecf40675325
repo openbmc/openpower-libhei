@@ -33,6 +33,42 @@
       "message": "move this up by chipConfig as well for clarity",
       "revId": "ec40338e031fa4b4bb1a886699747ecf40675325",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b6ca3f_ac4e4597",
+        "filename": "chip_data/setup.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2024-09-05T16:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9750403b_18e84a28",
+      "revId": "ec40338e031fa4b4bb1a886699747ecf40675325",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5659b76b_4509106a",
+        "filename": "chip_data/setup.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2024-09-05T16:48:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67e352fd_46baf4de",
+      "revId": "ec40338e031fa4b4bb1a886699747ecf40675325",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
