@@ -40,11 +40,11 @@ def gen_chip_data_binary(indir: str, outdir: str) -> None:
             binary_encode(model_ec, base, fp)
 
 
-def gen_peltool_json(indir: str, outdir: str) -> None:
-    for model_ec, base in _import_chip_data(indir).items():
+def gen_peltool_json(cdIndir: str, outdir: str, exSigPath=None) -> None:
+    for model_ec, base in _import_chip_data(cdIndir).items():
         file = f"pel_parser_data_{model_ec.lower()}.json"
         with open(os.path.join(outdir, file), "w") as fp:
-            peltool_encode(model_ec, base, fp)
+            peltool_encode(model_ec, base, fp, exSigPath)
 
 
 if __name__ == "__main__":

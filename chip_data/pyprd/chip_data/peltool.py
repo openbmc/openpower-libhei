@@ -1,4 +1,6 @@
 import json
+import os.path
+import re
 from collections import namedtuple
 
 from pyprd.chip_data import chip_data as cd
@@ -25,7 +27,7 @@ def _format_addr(reg_type: str, reg_addr: int) -> str:
 # Public functions
 
 
-def peltool_encode(model_ec: str, base: cd.Base, fp: object):
+def peltool_encode(model_ec: str, base: cd.Base, fp: object, exSigPath: str):
     """
     Pulls the necessary information from the Chip Data object and writes the
     eBMC PEL parser (peltool) JSON data to the given file pointer. Note that
@@ -45,6 +47,7 @@ def peltool_encode(model_ec: str, base: cd.Base, fp: object):
         "attn_types": {},
         "registers": {},
         "signatures": {},
+        "extra_signatures": {},
     }
 
     for attn_type in base.root_nodes.keys():
@@ -73,6 +76,21 @@ def peltool_encode(model_ec: str, base: cd.Base, fp: object):
 
         for pos, bit in iso_node.bits.items():
             node[1][pos] = bit.desc
+
+    # If the input extra signature file exists, add those to the data.
+    if os.path.isfile(exSigPath):
+        with open(exSigPath, "r") as sigFp:
+            fileData = sigFp.read()
+            sigPattern = r'PRD_EXTRA_SIG\s*\(\s*([^"]*)\s*,\s*(0x[0-9A-Fa-f]{8})\s*,\s*"([^"]*)"'
+
+            sigs = re.findall(sigPattern, fileData)
+            for sig in sigs:
+                hexValue = sig[1].lower()
+                # Remove the 0x prefix from the hex string for consistency with
+                # other hex IDs used.
+                hexValue = hexValue[2:]
+                desc = sig[2]
+                data["extra_signatures"][hexValue] = desc
 
     json.dump(data, fp, indent=4, sort_keys=True)
     fp.write("\n")
