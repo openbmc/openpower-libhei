@@ -78,7 +78,7 @@ class SimulatorData
      *        initialize() API which will initialize the isolator with the Chip
      *        Data File associated with this chip.
      */
-    void addChip(const Chip& i_chip);
+    void addChip(const Chip& i_chip, const char* i_chipPath = "");
 
     /** @brief Retrieve ScomReg from map and return its value */
     uint64_t getScomReg(const Chip& i_chip, uint32_t i_address)
@@ -154,9 +154,15 @@ class SimulatorData
     }
 
     /**
+     * @brief Runs the simulation for isolation and verifies the expected
+     *        signatures.
+     */
+    void simIsolate(IsolationData& o_isoData);
+
+    /**
      * @brief After an iteration is set up with registers and expected
      *        signatures, this is called to run the simulation and verify the
-     *        expected signatures.
+     *        expected signatures and will then flush the iteration data.
      */
     void endIteration();
 };
