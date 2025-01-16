@@ -22,7 +22,7 @@ const std::map<SimulatorData::SimChipType, const char*>
 
 //------------------------------------------------------------------------------
 
-void SimulatorData::addChip(const Chip& i_chip)
+void SimulatorData::addChip(const Chip& i_chip, const char* i_chipPath)
 {
     // First check if this entry already exists.
     auto chip_itr = std::find(iv_chipList.begin(), iv_chipList.end(), i_chip);
@@ -42,10 +42,20 @@ void SimulatorData::addChip(const Chip& i_chip)
     // Add the new entry.
     iv_typeList.push_back(chipType);
 
-    // Look for the file path
-    auto itr2 = cv_chipPath.find(static_cast<SimChipType>(chipType));
-    ASSERT_NE(cv_chipPath.end(), itr2);
-    const char* path = itr2->second;
+    // Look for the file path, if a path was provided use that instead of one
+    // of the hardcoded values in the map.
+    ASSERT_TRUE(nullptr != i_chipPath);
+    const char* path = "";
+    if (0 != strcmp(i_chipPath, ""))
+    {
+        path = i_chipPath;
+    }
+    else
+    {
+        auto itr2 = cv_chipPath.find(static_cast<SimChipType>(chipType));
+        ASSERT_NE(cv_chipPath.end(), itr2);
+        path = itr2->second;
+    }
 
     // Open the Chip Data File
     std::ifstream cdf{path, std::ifstream::binary};
@@ -103,11 +113,11 @@ const char* __attn(AttentionType_t i_type)
 
 //------------------------------------------------------------------------------
 
-void SimulatorData::endIteration()
+void SimulatorData::simIsolate(IsolationData& o_isoData)
 {
     // Start by calling libhei::isolate().
     IsolationData isoData{};
-    isolate(iv_chipList, isoData);
+    isolate(iv_chipList, o_isoData);
 
     /* TODO: Currently used for debug. Eventually, we want this written to file.
     for (const auto& e : isoData.getRegisterDump())
@@ -123,7 +133,7 @@ void SimulatorData::endIteration()
     */
 
     // Get the list of signatures found in isolation.
-    std::vector<Signature> givenSigList = isoData.getSignatureList();
+    std::vector<Signature> givenSigList = o_isoData.getSignatureList();
 
     // Print out the expected signature list and verify matches with given list.
     HEI_INF("Signature summary:")
@@ -163,6 +173,15 @@ void SimulatorData::endIteration()
 
     // Final check for mismatches.
     ASSERT_FALSE(mismatch);
+}
+
+//------------------------------------------------------------------------------
+
+void SimulatorData::endIteration()
+{
+    // First call simIsolate to isolate and check the expected signatures.
+    IsolationData isoData{};
+    simIsolate(isoData);
 
     // The iteration is complete so we can flush the data.
     flushIterationData();
