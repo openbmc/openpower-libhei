@@ -22,6 +22,30 @@
       },
       "revId": "f08351823b254d63a1a976a038eadb0f92e145a5",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2c53c8c_a612ef34",
+        "filename": "test/simulator/simulator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2025-01-21T19:17:51Z",
+      "side": 1,
+      "message": "If an incorrect string is input this will hit the cdf.good() assert below, however, if nullptr is input for some reason, that seg faults out. Therefore, added an assert to check that i_chipPath is not nullptr.",
+      "parentUuid": "b03e7c18_ab9fbcf4",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "f08351823b254d63a1a976a038eadb0f92e145a5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
