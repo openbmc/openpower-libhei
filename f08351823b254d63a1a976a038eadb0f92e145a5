@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03e7c18_ab9fbcf4",
+        "filename": "test/simulator/simulator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000360
+      },
+      "writtenOn": "2025-01-21T17:20:23Z",
+      "side": 1,
+      "message": "Try testing out bad paths just in case. Add handling as necessary.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 2
+      },
+      "revId": "f08351823b254d63a1a976a038eadb0f92e145a5",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
