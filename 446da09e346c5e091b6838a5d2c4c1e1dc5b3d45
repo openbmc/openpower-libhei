@@ -1,0 +1,9 @@
+Verified+1: OpenBMC CI <openbmcbump-ci@yahoo.com>
+Code-Review+2: Zane Shelley <zshelle@us.ibm.com>
+Submitted-by: Zane Shelley <zshelle@us.ibm.com>
+Submitted-at: Tue, 21 Jan 2025 19:49:19 +0000
+Reviewed-on: https://gerrit.openbmc.org/c/openbmc/openpower-libhei/+/77281
+Comments-Total: 2
+Comments-Unresolved: 1
+Project: openbmc/openpower-libhei
+Branch: refs/heads/master
