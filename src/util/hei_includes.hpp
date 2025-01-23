@@ -22,14 +22,22 @@
 #include <hei_user_interface.hpp>
 
 // Common macros used throughout this library
+// Only defined if not already defined so that the user application can
+// supersede these definitions with their own if so desired.
+#ifndef HEI_ASSERT
 #define HEI_ASSERT(expression) assert(expression)
+#endif
 
+#ifndef HEI_ERR
 #define HEI_ERR(...)                                                           \
     {                                                                          \
         libhei::hei_err((char*)__VA_ARGS__);                                   \
     }
+#endif
 
+#ifndef HEI_INF
 #define HEI_INF(...)                                                           \
     {                                                                          \
         libhei::hei_inf((char*)__VA_ARGS__);                                   \
     }
+#endif
