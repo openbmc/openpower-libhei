@@ -83,7 +83,7 @@ subdir('chip_data')
 
 build_tests = get_option('tests')
 
-if not build_tests.disabled()
+if build_tests.allowed()
     subdir('test')
 endif
 
