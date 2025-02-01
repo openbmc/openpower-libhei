@@ -109,8 +109,8 @@ class IsolationChip
      * @return The target hardware register. Will assert that the target
      *         register exists in iv_regs.
      */
-    HardwareRegister::ConstPtr
-        getHardwareRegister(HardwareRegister::Key i_key) const;
+    HardwareRegister::ConstPtr getHardwareRegister(
+        HardwareRegister::Key i_key) const;
 
     /**
      * @brief  Retrieves an isolation node from this chip, if it exists.
