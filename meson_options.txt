@@ -1,3 +1,0 @@
-option('tests', type: 'feature', description: 'Build tests')
-option('chip_config', type : 'array', choices: ['p10', 'explorer', 'odyssey'],
-       description : 'Configured chips to build data files for')
