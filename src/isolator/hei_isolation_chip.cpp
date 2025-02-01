@@ -64,8 +64,8 @@ void IsolationChip::addRootNode(AttentionType_t i_attnType,
 
 //------------------------------------------------------------------------------
 
-HardwareRegister::ConstPtr
-    IsolationChip::getHardwareRegister(HardwareRegister::Key i_key) const
+HardwareRegister::ConstPtr IsolationChip::getHardwareRegister(
+    HardwareRegister::Key i_key) const
 {
     auto itr = iv_regs.find(i_key);
     HEI_ASSERT(iv_regs.end() != itr); // The register should exist.
@@ -75,8 +75,8 @@ HardwareRegister::ConstPtr
 
 //------------------------------------------------------------------------------
 
-IsolationNode::ConstPtr
-    IsolationChip::getIsolationNode(IsolationNode::Key i_key) const
+IsolationNode::ConstPtr IsolationChip::getIsolationNode(
+    IsolationNode::Key i_key) const
 {
     auto itr = iv_nodes.find(i_key);
     HEI_ASSERT(iv_nodes.end() != itr); // The node should exist.
