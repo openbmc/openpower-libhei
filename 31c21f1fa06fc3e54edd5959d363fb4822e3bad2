@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2224cc0_7573eb8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-02-03T16:58:24Z",
+      "side": 1,
+      "message": "It\u0027d be helpful if you can merge this today.  Since I had to manually fix this one up, if you don\u0027t merge it today, my nightly automation will end up just reverting it back tomorrow.",
+      "revId": "31c21f1fa06fc3e54edd5959d363fb4822e3bad2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "22473419_26acbc6a",
@@ -62,6 +79,30 @@
       "side": 1,
       "message": "It looks like if I sort the \u0027files\u0027 it might do it all on one line.",
       "parentUuid": "9daf3049_1271e009",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 45
+      },
+      "revId": "31c21f1fa06fc3e54edd5959d363fb4822e3bad2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "254842d8_8a48a7a5",
+        "filename": "test/simulator/meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000000
+      },
+      "writtenOn": "2025-02-03T16:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b734889_68ede08f",
       "range": {
         "startLine": 2,
         "startChar": 0,
