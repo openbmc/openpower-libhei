@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22473419_26acbc6a",
+        "filename": "test/simulator/meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000359
+      },
+      "writtenOn": "2025-02-03T16:29:46Z",
+      "side": 1,
+      "message": "This seems inconsistent with all the other changes.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 45
+      },
+      "revId": "31c21f1fa06fc3e54edd5959d363fb4822e3bad2",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    }
+  ]
+}
