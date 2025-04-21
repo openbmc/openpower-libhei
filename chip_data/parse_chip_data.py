@@ -36,6 +36,8 @@ def _import_chip_data(indir: str) -> dict:
 def gen_chip_data_binary(indir: str, outdir: str) -> None:
     for model_ec, base in _import_chip_data(indir).items():
         file = f"chip_data_{model_ec.lower()}.cdb"
+        if not os.path.exists(outdir):
+            os.makedirs(outdir)
         with open(os.path.join(outdir, file), "wb") as fp:
             binary_encode(model_ec, base, fp)
 
@@ -43,6 +45,8 @@ def gen_chip_data_binary(indir: str, outdir: str) -> None:
 def gen_peltool_json(cdIndir: str, outdir: str, exSigPath=None) -> None:
     for model_ec, base in _import_chip_data(cdIndir).items():
         file = f"pel_parser_data_{model_ec.lower()}.json"
+        if not os.path.exists(outdir):
+            os.makedirs(outdir)
         with open(os.path.join(outdir, file), "w") as fp:
             peltool_encode(model_ec, base, fp, exSigPath)
 

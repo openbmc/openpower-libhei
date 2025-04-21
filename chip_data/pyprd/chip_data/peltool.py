@@ -78,7 +78,7 @@ def peltool_encode(model_ec: str, base: cd.Base, fp: object, exSigPath: str):
             node[1][pos] = bit.desc
 
     # If the input extra signature file exists, add those to the data.
-    if os.path.isfile(exSigPath):
+    if exSigPath and os.path.isfile(exSigPath):
         with open(exSigPath, "r") as sigFp:
             fileData = sigFp.read()
             sigPattern = r'PRD_EXTRA_SIG\s*\(\s*([^"]*)\s*,\s*(0x[0-9A-Fa-f]{8})\s*,\s*"([^"]*)"'

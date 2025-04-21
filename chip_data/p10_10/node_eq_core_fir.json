@@ -385,7 +385,7 @@
                     "desc": "PC system checkstop - Recoverable error received when recovery disabled"
                 },
                 "29": {
-                    "desc": "LSU SRAM recoverable error (DCACHE parity error, ERAT parity error, etc)"
+                    "desc": "LSU SRAM recoverable error (DCACHE or ERAT PE,etc)"
                 },
                 "30": {
                     "desc": "LSU set deleted"

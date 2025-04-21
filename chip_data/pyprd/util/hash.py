@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+
+import argparse
+
+
 def hash_string(num_bytes: int, string: str) -> int:
     """
     Converts a string into an integer hash value. This is primarily used to
@@ -40,3 +45,12 @@ def hash_string_format(num_bytes: int, string: str) -> str:
     Returns a formatted hex string of the given string's hash value.
     """
     return "{0:0{1}x}".format(hash_string(num_bytes, string), num_bytes * 2)
+
+
+if __name__ == "__main__":
+
+    cli = argparse.ArgumentParser()
+    cli.add_argument("num_bytes", help="Number of bytes to hash to")
+    cli.add_argument("string_name", help="String to hash")
+    args = cli.parse_args()
+    print(hex(hash_string(int(args.num_bytes), args.string_name)))
