@@ -58,6 +58,19 @@ class Isolator
         return theIsolator;
     }
 
+    /**
+     * @brief Provides access to an isolation chip within this object.
+     * @param i_chipType The chip type of the isolation chip to access.
+     * @return ConstPtr to the isolation chip object.
+     */
+    IsolationChip::ConstPtr getIsoChip(ChipType_t i_chipType) const
+    {
+        auto itr = iv_isoChips.find(i_chipType);
+        HEI_ASSERT(iv_isoChips.end() != itr); // The IsolationChip should exist.
+
+        return itr->second;
+    }
+
     /** @brief See API wrapper description in hei_main.hpp. */
     void initialize(void* i_buffer, size_t i_bufferSize)
     {
