@@ -528,7 +528,6 @@ chips.
 ### 11.6) Supported Register Types
 
 - POWER Systems SCOM register (default)
-
   - Property value: `SCOM`
   - Address length: 4 bytes
   - Register length: 8 bytes

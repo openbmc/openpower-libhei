@@ -234,7 +234,6 @@ metadata will be the following for each root node:
 ### 1) Supported Register Types
 
 - Power Systems SCOM register
-
   - Type value: 0x01
   - Address size: 4 bytes
   - Register size: 8 bytes
