@@ -128,7 +128,7 @@ bool __readClearWrite(Signature i_sig, HardwareRegister::ConstPtr i_hwReg)
 bool Isolator::performWriteOp(OpRuleName_t i_op, Signature i_sig)
 {
     // Return true on a failure.
-    bool writefail = false;
+    bool writeFail = false;
 
     // Use the signature to determine the relevant isolation node.
     IsolationNode::Key nodeKey = {i_sig.getId(), i_sig.getInstance()};
