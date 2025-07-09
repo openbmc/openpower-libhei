@@ -37,7 +37,7 @@ foreach chip_dir, out_files : cdb_files
 
     # Get all JSON files in the chip directory. This is a bit of a workaround
     # because meson does not allow wildcards.
-    json_list = run_command('json_list.sh', source_dir)
+    json_list = run_command('json_list.sh', source_dir, check: true)
     in_files = json_list.stdout().strip().split('\n')
 
     custom_target(
