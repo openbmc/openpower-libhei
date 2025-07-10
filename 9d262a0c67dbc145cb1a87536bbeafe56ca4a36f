@@ -16,6 +16,24 @@
       "message": "What is the requirement here? We have other projects that use this library were newer levels of meson are currently not available.",
       "revId": "9d262a0c67dbc145cb1a87536bbeafe56ca4a36f",
       "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f214cc5_0c382756",
+        "filename": "meson.build",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1000397
+      },
+      "writtenOn": "2025-07-10T00:10:28Z",
+      "side": 1,
+      "message": "Resolve meson warnings:\n```\nWARNING: Project targets \u0027\u003e\u003d0.51.0\u0027 but uses feature introduced in \u00271.1\u0027: meson.options file. Use meson_options.txt instead\nProject name: openpower-libhei\nProject version: 0.1\nC++ compiler for the host machine: c++ (gcc 14.2.0 \"c++ (Ubuntu 14.2.0-4ubuntu2) 14.2.0\")\nC++ linker for the host machine: c++ ld.bfd 2.43.1\nHost machine cpu family: x86_64\nHost machine cpu: x86_64\nFound pkg-config: YES (/usr/bin/pkg-config) 1.8.1\nProgram parse_chip_data.py found: YES (/home/georgeliu/work/gerrit/devtool/openpower-libhei/chip_data/parse_chip_data.py)\nmeson.build:86: WARNING: Project targets \u0027\u003e\u003d0.51.0\u0027 but uses feature introduced in \u00270.59.0\u0027: feature_option.allowed().\nRun-time dependency GTest found: YES 1.15.2\nRun-time dependency GMock found: YES 1.15.2\nBuild targets in project: 11\nWARNING: Project specifies a minimum meson_version \u0027\u003e\u003d0.51.0\u0027 but uses features which were added in newer versions:\n * 0.59.0: {\u0027feature_option.allowed()\u0027}\n * 1.1: {\u0027meson.options file\u0027}\n```",
+      "parentUuid": "19cbc306_f25560f5",
+      "revId": "9d262a0c67dbc145cb1a87536bbeafe56ca4a36f",
+      "serverId": "adbd0a64-1f21-4d83-b585-671fe73cb6e4"
     }
   ]
 }
